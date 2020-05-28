@@ -11,7 +11,7 @@ class Server {
     constructor() {
         this._intance = Server;
         this.app = express();
-        this.port = process.env.port;
+        this.port = argv.process.env.port;
         this.httpServer = http.createServer(this.app);
         this.io = socketIO(this.httpServer); // sacar segundo parametro..Options
         this.escucharSockets();
