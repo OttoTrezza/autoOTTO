@@ -43,14 +43,14 @@ server.app.use(cors({ origin: true, credentials: true }));
 
 // Rutas
 //middlewear
-server.app.use('/medico', medicoRoutes);
-server.app.use('/hospital', hospitalRoutes);
-server.app.use('/usuario', usuarioRoutes);
-server.app.use('/login', loginRoutes);
-server.app.use('/upload', uploadRoutes);
-server.app.use('/img', imagenesRoutes);
-server.app.use('/mensajes', mensajesRoutes);
-server.app.use('/busqueda', busquedaRoutes);
+server.app.use('/public/medico', medicoRoutes);
+server.app.use('/public/hospital', hospitalRoutes);
+server.app.use('/public/usuario', usuarioRoutes);
+server.app.use('/public/login', loginRoutes);
+server.app.use('/public/upload', uploadRoutes);
+server.app.use('/public/img', imagenesRoutes);
+server.app.use('/public/mensajes', mensajesRoutes);
+server.app.use('/public/busqueda', busquedaRoutes);
 
 // server.app.use(express.static(publicPath));
 
@@ -74,7 +74,7 @@ mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err, res) => {
 
 server.start(() => { // Me quedo escuchando el puerto 80!
     console.log(`Servidor corriendo en el puerto ${ process.env.PORT }`);
-    //  console.log(`Escuchando puerto: 3000.`);
+    console.log(`Escuchando puerto: 3000.`);
 });
 // app.listen(3000, () => {
 //     console.log('Express server,Puerto 3000:\x1b[32m%s\x1b[0m', 'online');
