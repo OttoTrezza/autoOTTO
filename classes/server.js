@@ -1,4 +1,4 @@
-const argv = require('yargs').argv;
+// const argv = require('yargs').argv;
 var express = require('express');
 require('../config/config');
 var socketIO = require('socket.io');
@@ -11,7 +11,7 @@ class Server {
     constructor() {
         this._intance = Server;
         this.app = express();
-        this.port = argv.process.env.port;
+        this.port = process.env.port;
         this.httpServer = http.createServer(this.app);
         this.io = socketIO(this.httpServer); // sacar segundo parametro..Options
         this.escucharSockets();
