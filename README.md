@@ -45,8 +45,9 @@ npm start en backend
 ng serve -o --port 4201 en frontend
 
 protractor.config.js linea 15 
-    baseUrl: 'http://localhost:4201/',
-pasar el puerto a 4200 antes de mandarlo a produccion
+    baseUrl: 'http://localhost:4200/',
+pasar el puerto a 4200 antes de mandarlo a produccion(local)
+
 
 
 
