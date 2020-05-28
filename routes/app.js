@@ -7,7 +7,7 @@ app.get('/', (req, res, next) => {
         mensaje: 'peticion realizada correctamente..192.168.0.38:3000'
     });
 });
-// app.use('/public/', express.static('public/'));
+app.use('/public/', express.static('public/'));
 // app.post('/mensajes', (req, res) => {
 //     var cuerpo = req.body.cuerpo;
 //     var de = req.body.de;
