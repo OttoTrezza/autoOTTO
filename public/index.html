@@ -26,6 +26,60 @@
     <script>
         window.rew = window.dep = null;
     </script>
+
+
+    <style>
+        .cube {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 30px auto;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        
+        .face {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            font-size: 80px;
+            text-align: center;
+            line-height: 150px;
+            background-color: #999999;
+            box-shadow: inset 0 0 20px #333333;
+            opacity: 0.6;
+        }
+        
+        .cube .one {
+            -webkit-transform: translateZ(75px);
+            transform: translateZ(75px);
+        }
+        
+        .cube .two {
+            -webkit-transform: rotateY(90deg) translateZ(75px);
+            transform: rotateY(90deg) translateZ(75px);
+        }
+        
+        .cube .three {
+            -webkit-transform: rotateY(180deg) translateZ(75px);
+            transform: rotateY(180deg) translateZ(75px);
+        }
+        
+        .cube .four {
+            -webkit-transform: rotateY(-90deg) translateZ(75px);
+            transform: rotateY(-90deg) translateZ(75px);
+        }
+        
+        .cube .five {
+            -webkit-transform: rotateX(90deg) translateZ(75px);
+            transform: rotateX(90deg) translateZ(75px);
+        }
+        
+        .cube .six {
+            -webkit-transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
+            transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
+        }
+    </style>
 <link rel="stylesheet" href="https://auto-otto.herokuapp.com/public/styles.8bfd53ca00070da2c497.css"></head>
 
 <body class="fix-header card-no-border fix-sidebar">
@@ -64,6 +118,6 @@
     <!--Custom JavaScript -->
     <script src="public/assets/js/custom.js"></script>
 
-<script src="https://auto-otto.herokuapp.com/public/runtime.00a3366bb4edc1921e44.js" defer></script><script src="https://auto-otto.herokuapp.com/public/polyfills-es5.4aa215163a7506e67601.js" nomodule defer></script><script src="https://auto-otto.herokuapp.com/public/polyfills.883c904d5a04021d125e.js" defer></script><script src="https://auto-otto.herokuapp.com/public/main.a3a17b92f425c5692a9d.js" defer></script></body>
+<script src="https://auto-otto.herokuapp.com/public/runtime.ae0a0846963346f7ca2a.js" defer></script><script src="https://auto-otto.herokuapp.com/public/polyfills-es5.4aa215163a7506e67601.js" nomodule defer></script><script src="https://auto-otto.herokuapp.com/public/polyfills.883c904d5a04021d125e.js" defer></script><script src="https://auto-otto.herokuapp.com/public/main.a3a17b92f425c5692a9d.js" defer></script></body>
 
 </html>
