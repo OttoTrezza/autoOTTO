@@ -40,8 +40,9 @@ SocketIOClient client;
 // const char* ssid     = "Q6_7339"; //Wifi SSID
 // const char* password = "trezza12"; //Wifi Pass
 
- char host[] = "192.168.0.38"; //nodejs host
- int port = 3000; //nodejs port 3000
+ char host[] = "https://auto-otto.herokuapp.com/"; //nodejs host
+ int port = 80; //nodejs port 3000
+// char url[] = "https://auto-otto.herokuapp.com/";
 
 /*****************************/
 
@@ -275,7 +276,7 @@ void setup()
    Serial.println("WiFi connected");
    Serial.println("IP address: ");
    Serial.println(WiFi.localIP());
-   if (!client.connect(host, 3000)) {
+   if (!client.connect(host, 3000, url)) {
      Serial.println("connection failed");
      return;
    }
