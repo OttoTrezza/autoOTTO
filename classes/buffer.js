@@ -100,7 +100,7 @@ class ValorControl {
 
     getUltimoValor() {
 
-        return `Valor ${this.ultimo}`;
+        return this.ultimo;
     }
     getUltimos4() {
 

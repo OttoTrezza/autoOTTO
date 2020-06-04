@@ -144,21 +144,22 @@ exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
         valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1, payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityY, payload.accelerationincludinggravityZ, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha);
+        let Sarmiento = valorControl.getUltimoValor();
         msg = {
-            de: payload.de,
-            sala: payload.sala,
-            beta1: payload.beta1,
-            gamma1: payload.gamma1,
-            alpha1: payload.alpha1,
-            accelerationx1: payload.accelerationx1,
-            accelerationy1: payload.accelerationy1,
-            accelerationz1: payload.accelerationz1,
-            accelerationincludinggravityx1: payload.accelerationincludinggravityx1,
-            accelerationincludinggravityy1: payload.accelerationincludinggravityy1,
-            accelerationincludinggravityz1: payload.accelerationincludinggravityz1,
-            rotationratebeta1: payload.rotationratebeta1,
-            rotationrategamma1: payload.rotationrategamma1,
-            rotationratealpha1: payload.rotationratealpha1,
+            de: Sarmiento.de,
+            sala: Sarmiento.sala,
+            beta1: Sarmiento.beta1,
+            gamma1: Sarmiento.gamma1,
+            alpha1: Sarmiento.alpha1,
+            accelerationx1: Sarmiento.accelerationx1,
+            accelerationy1: Sarmiento.accelerationy1,
+            accelerationz1: Sarmiento.accelerationz1,
+            accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
+            accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
+            accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
+            rotationratebeta1: Sarmiento.rotationratebeta1,
+            rotationrategamma1: Sarmiento.rotationrategamma1,
+            rotationratealpha1: Sarmiento.rotationratealpha1,
         };
         cliente.to(payload.sala).emit('ElSarmiento-nuevo', msg);
 
