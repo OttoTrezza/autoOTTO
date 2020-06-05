@@ -146,7 +146,7 @@ exports.ElSarmiento = (cliente) => {
         valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1, payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityY, payload.accelerationincludinggravityZ, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha);
         let Sarmiento = valorControl.getUltimoValor();
         msg = {
-            de: Sarmiento.de,
+            de: 'test16',
             sala: Sarmiento.sala,
             beta1: Sarmiento.beta1,
             gamma1: Sarmiento.gamma1,
