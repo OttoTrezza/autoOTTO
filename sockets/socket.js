@@ -143,7 +143,7 @@ exports.mensajesp = (cliente) => {
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
-        valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1, payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityY, payload.accelerationincludinggravityZ, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha);
+        valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
         let Sarmiento = valorControl.getUltimoValor();
         msg = {
             de: 'test16',
@@ -151,15 +151,15 @@ exports.ElSarmiento = (cliente) => {
             beta1: Sarmiento.beta1,
             gamma1: Sarmiento.gamma1,
             alpha1: Sarmiento.alpha1,
-            accelerationx1: Sarmiento.accelerationx1,
-            accelerationy1: Sarmiento.accelerationy1,
-            accelerationz1: Sarmiento.accelerationz1,
-            accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
-            accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
-            accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
-            rotationratebeta1: Sarmiento.rotationratebeta1,
-            rotationrategamma1: Sarmiento.rotationrategamma1,
-            rotationratealpha1: Sarmiento.rotationratealpha1,
+            // accelerationx1: Sarmiento.accelerationx1,
+            // accelerationy1: Sarmiento.accelerationy1,
+            // accelerationz1: Sarmiento.accelerationz1,
+            // accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
+            // accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
+            // accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
+            // rotationratebeta1: Sarmiento.rotationratebeta1,
+            // rotationrategamma1: Sarmiento.rotationrategamma1,
+            // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
         cliente.to(payload.sala).emit('ElSarmiento-nuevo', msg);
 
