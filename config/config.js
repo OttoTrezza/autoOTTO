@@ -25,7 +25,7 @@ GOOGLE_CLIENT_ID = '584414601747-ve69u1oukn9kq53u3den4hm8f986jcsc.apps.googleuse
 GOOGLE_SECRET = 'bTCYI-p9t-i8RrZcGc-ZAcue';
 
 SERVER_PORT = 3000;
-// ///heroku logs tail
+// ///
 // ============================
 // SEED de autenticacion
 // ============================
