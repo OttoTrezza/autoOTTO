@@ -42,6 +42,8 @@ class Server {
                 socket.LongPulse(cliente);
                 // Mensajesp
                 socket.mensajesp(cliente);
+                // ElSarmiento
+                socket.ElSarmiento(cliente);
                 // dir
                 socket.dir(cliente);
                 // sen
