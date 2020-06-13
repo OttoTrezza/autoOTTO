@@ -4,11 +4,20 @@ const fs = require('fs');
 
 
 class Valor {
-    constructor(numero, numero1, numero2, canal, cond1) {
+    constructor(beta1, gamma1, alpha1, canal, cond1) { // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
 
-        this.numero = numero;
-        this.numero1 = numero1; // frecuencia
-        this.numero2 = numero2; // long pulse
+        this.beta1 = beta1;
+        this.gamma1 = gamma1;
+        this.alpha1 = alpha1;
+        // this.accelerationx = accelerationx;
+        // this.accelerationy = accelerationy;
+        // this.accelerationz = accelerationz;
+        // this.accelerationincludinggravityx = accelerationincludinggravityx;
+        // this.accelerationincludinggravityY = accelerationincludinggravityY;
+        // this.accelerationincludinggravityZ = accelerationincludinggravityZ;
+        // this.rotationratebeta = rotationratebeta;
+        // this.rotationrategamma = rotationrategamma;
+        // this.rotationratealpha = rotationratealpha;
         this.canal = canal;
         this.cond1 = cond1;
     }
@@ -41,30 +50,45 @@ class ValorControl {
 
 
 
-    siguiente(numero1, numero2, canal) {
+    siguiente(beta1, gamma1, alpha1, canal) { //  accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
 
-        let valor = new Valor(this.ultimo, numero1, numero2, canal);
+        let valor = new Valor(this.ultimo, beta1, gamma1, alpha1, canal); // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
 
         this.grabarArchivo();
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
+        let beta1Valor = this.getUltimoValor.valores.beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
+        let gamma1Valor = this.getUltimoValor.valores.gamma1;
+        let alpha1Valor = this.getUltimoValor.valores.alpha1;
+        // let accelerationxValor = this.getUltimoValor.valores[0].accelerationx;
+        // let accelerationyValor = this.getUltimoValor.valores[0].accelerationy;
+        // let accelerationzValor = this.getUltimoValor.valores[0].accelerationz;
+        // let accelerationincludinggravityxValor = this.getUltimoValor.valores[0].accelerationincludinggravityx;
+        // let accelerationincludinggravityYValor = this.getUltimoValor.valores[0].accelerationincludinggravityY;
+        // let accelerationincludinggravityZValor = this.getUltimoValor.valores[0].accelerationincludinggravityZ;
+        // let rotationratebetaValor = this.getUltimoValor.valores[0].rotationratebeta;
+        // let rotationrategammaValor = this.getUltimoValor.valores[0].rotationrategamma;
+        // let rotationratealphaValor = this.getUltimoValor.valores[0].rotationratealpha;
 
-        let numeroValor = this.valores[0].numero; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
-        let numero1Valor = this.valores[0].numero1;
-        let numero2Valor = this.valores[0].numero2;
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Valor(numeroValor, numero1Valor, numero2Valor, canal); // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
+        let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor, canal); // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO) // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityYValor, accelerationincludinggravityZValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor,
         console.log(atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
-        this.ultimos14.unshift(numero1Valor);
-        this.ultimos24.unshift(numero2Valor);
+        this.ultimos14.unshift(atenderValor);
+        this.ultimos24.unshift(atenderValor);
         if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4.splice(-1, 1);
+
+            this.ultimos24.splice(-1, 1);
+        }
+        if (this.ultimos4.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
             this.ultimos14.splice(-1, 1);
+        }
+        if (this.ultimos4.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
             this.ultimos24.splice(-1, 1);
         }
         console.log('Ultimos 4');
@@ -76,7 +100,7 @@ class ValorControl {
 
     getUltimoValor() {
 
-        return `Valor ${this.ultimo}`;
+        return this.ultimo;
     }
     getUltimos4() {
 
@@ -86,7 +110,10 @@ class ValorControl {
 
         return this.ultimos14;
     }
+    getUltimos24() {
 
+        return this.ultimos14;
+    }
 
     reiniciarConteo() {
 
