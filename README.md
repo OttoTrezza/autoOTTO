@@ -19,7 +19,7 @@ PARA INICAR PROYECTO(version de produccion)
 
 en Adminpro/udemy1.2.0...
 protractor.config.js linea 15 
-    public/assets/images/logo-text.png: 'http://localhost:4201/',
+    assets/images/logo-text.png: 'http://localhost:4201/',
 pasar el puerto a 4200 antes de mandarlo a produccion
 
 
