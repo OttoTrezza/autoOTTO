@@ -3,7 +3,6 @@ require('../config/config');
 var socketIO = require('socket.io');
 var http = require('http');
 const socket = require('../sockets/socket');
-// const path = require('path');
 
 class Server {
 

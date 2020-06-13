@@ -147,7 +147,7 @@ exports.ElSarmiento = (cliente) => {
         let Sarmiento = valorControl.getUltimoValor();
         msg = {
             de: 'test16',
-            sala: 'juegos', // Sarmiento.sala
+            sala: Sarmiento.sala,
             beta1: Sarmiento.beta1,
             gamma1: Sarmiento.gamma1,
             alpha1: Sarmiento.alpha1,
