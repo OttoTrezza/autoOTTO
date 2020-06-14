@@ -60,18 +60,18 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let beta1Valor = this.getUltimoValor.valores.beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
-        let gamma1Valor = this.getUltimoValor.valores.gamma1;
-        let alpha1Valor = this.getUltimoValor.valores.alpha1;
-        let accelerationxValor = this.getUltimoValor.valores.accelerationx;
-        let accelerationyValor = this.getUltimoValor.valores.accelerationy;
-        let accelerationzValor = this.getUltimoValor.valores.accelerationz;
-        let accelerationincludinggravityxValor = this.getUltimoValor.valores.accelerationincludinggravityx;
-        let accelerationincludinggravityyValor = this.getUltimoValor.valores.accelerationincludinggravityy;
-        let accelerationincludinggravityzValor = this.getUltimoValor.valores.accelerationincludinggravityz;
-        let rotationratebetaValor = this.getUltimoValor.valores.rotationratebeta;
-        let rotationrategammaValor = this.getUltimoValor.valores.rotationrategamma;
-        let rotationratealphaValor = this.getUltimoValor.valores.rotationratealpha;
+        let beta1Valor = this.getUltimoValor.beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
+        let gamma1Valor = this.getUltimoValor.gamma1;
+        let alpha1Valor = this.getUltimoValor.alpha1;
+        let accelerationxValor = this.getUltimoValor.accelerationx;
+        let accelerationyValor = this.getUltimoValor.accelerationy;
+        let accelerationzValor = this.getUltimoValor.accelerationz;
+        let accelerationincludinggravityxValor = this.getUltimoValor.accelerationincludinggravityx;
+        let accelerationincludinggravityyValor = this.getUltimoValor.accelerationincludinggravityy;
+        let accelerationincludinggravityzValor = this.getUltimoValor.accelerationincludinggravityz;
+        let rotationratebetaValor = this.getUltimoValor.rotationratebeta;
+        let rotationrategammaValor = this.getUltimoValor.rotationrategamma;
+        let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
 
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
