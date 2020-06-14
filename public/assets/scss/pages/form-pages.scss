@@ -12,7 +12,7 @@ Custom-select
 ******************/
 
 .custom-select {
-    background: url(../../assets/images/custom-select.png) right .75rem center no-repeat;
+    background: url(../../public/assets/images/custom-select.png) right .75rem center no-repeat;
 }
 
 
@@ -485,6 +485,7 @@ form p:last-child {
 
 [type="checkbox"] {
     /* checkbox aspect */
+    position: relative;
 }
 
 [type="checkbox"]+label {
