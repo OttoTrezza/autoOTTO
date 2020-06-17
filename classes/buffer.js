@@ -4,20 +4,20 @@ const fs = require('fs');
 
 
 class Valor {
-    constructor(beta1, gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1) {
+    constructor(beta1, gamma1, alpha1, canal, cond1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha,
 
         this.beta1 = beta1;
         this.gamma1 = gamma1;
         this.alpha1 = alpha1;
-        this.accelerationx = accelerationx;
-        this.accelerationy = accelerationy;
-        this.accelerationz = accelerationz;
-        this.accelerationincludinggravityx = accelerationincludinggravityx;
-        this.accelerationincludinggravityy = accelerationincludinggravityy;
-        this.accelerationincludinggravityy = accelerationincludinggravityz;
-        this.rotationratebeta = rotationratebeta;
-        this.rotationrategamma = rotationrategamma;
-        this.rotationratealpha = rotationratealpha;
+        // this.accelerationx = accelerationx;
+        // this.accelerationy = accelerationy;
+        // this.accelerationz = accelerationz;
+        // this.accelerationincludinggravityx = accelerationincludinggravityx;
+        // this.accelerationincludinggravityy = accelerationincludinggravityy;
+        // this.accelerationincludinggravityy = accelerationincludinggravityz;
+        // this.rotationratebeta = rotationratebeta;
+        // this.rotationrategamma = rotationrategamma;
+        // this.rotationratealpha = rotationratealpha;
         this.canal = canal;
         this.cond1 = cond1;
     }
