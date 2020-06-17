@@ -2,6 +2,7 @@ var usuarios_lista = require('../classes/usuarios-lista');
 var Usuario = require('../models/usuario');
 var { ValorControl } = require('../classes/buffer');
 var socketIO = require('socket.io');
+require('../config/config');
 var io = require('socket.io');
 exports.usuariosConectados = new usuarios_lista.UsuariosLista();
 
@@ -41,7 +42,7 @@ exports.entrarChat = (cliente) => {
 
         const pay = {
             de: 'Administrador',
-            cuerpo: 'Nuevo usuario'
+            cuerpo: process.env.PORT
         };
 
         cliente.to(payload.sala).emit('mensaje-nuevo', pay);
