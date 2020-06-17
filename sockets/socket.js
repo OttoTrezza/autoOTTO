@@ -149,9 +149,9 @@ exports.ElSarmiento = (cliente) => {
         msg = {
             de: payload.de,
             sala: payload.sala,
-            beta1: Sarmiento.beta1,
-            gamma1: Sarmiento.gamma1,
-            alpha1: Sarmiento.alpha1
+            beta1: payload.beta1,
+            gamma1: payload.gamma1,
+            alpha1: Sarmiento
                 // accelerationx1: Sarmiento.accelerationx1,
                 // accelerationy1: Sarmiento.accelerationy1,
                 // accelerationz1: Sarmiento.accelerationz1,
