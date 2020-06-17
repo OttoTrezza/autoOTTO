@@ -50,10 +50,10 @@ class ValorControl {
 
 
 
-    siguiente(beta1, gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha, canal) {
+    siguiente(beta1, gamma1, alpha1, canal) { //  accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
         this.ultimo = this.ultimo + 1;
 
-        let valor = new Valor(this.ultimo, beta1, gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha, canal);
+        let valor = new Valor(this.ultimo, beta1, gamma1, alpha1, canal); //  accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
 
         this.grabarArchivo();
@@ -63,19 +63,19 @@ class ValorControl {
         let beta1Valor = this.getUltimoValor.beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
         let gamma1Valor = this.getUltimoValor.gamma1;
         let alpha1Valor = this.getUltimoValor.alpha1;
-        let accelerationxValor = this.getUltimoValor.accelerationx;
-        let accelerationyValor = this.getUltimoValor.accelerationy;
-        let accelerationzValor = this.getUltimoValor.accelerationz;
-        let accelerationincludinggravityxValor = this.getUltimoValor.accelerationincludinggravityx;
-        let accelerationincludinggravityyValor = this.getUltimoValor.accelerationincludinggravityy;
-        let accelerationincludinggravityzValor = this.getUltimoValor.accelerationincludinggravityz;
-        let rotationratebetaValor = this.getUltimoValor.rotationratebeta;
-        let rotationrategammaValor = this.getUltimoValor.rotationrategamma;
-        let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
+        // let accelerationxValor = this.getUltimoValor.accelerationx;
+        // let accelerationyValor = this.getUltimoValor.accelerationy;
+        // let accelerationzValor = this.getUltimoValor.accelerationz;
+        // let accelerationincludinggravityxValor = this.getUltimoValor.accelerationincludinggravityx;
+        // let accelerationincludinggravityyValor = this.getUltimoValor.accelerationincludinggravityy;
+        // let accelerationincludinggravityzValor = this.getUltimoValor.accelerationincludinggravityz;
+        // let rotationratebetaValor = this.getUltimoValor.rotationratebeta;
+        // let rotationrategammaValor = this.getUltimoValor.rotationrategamma;
+        // let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
 
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor, accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal); // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
+        let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor, canal); //  accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, //  DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
         console.log(atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14.unshift(atenderValor);
