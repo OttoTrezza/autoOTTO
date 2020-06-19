@@ -176,11 +176,12 @@ exports.ElSarmiento = (cliente) => {
                 // rotationrategamma1: Sarmiento.rotationrategamma1,
                 // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
-        cliente.to('juegos').emit('ElSarmiento-nuevo', msg);
+        // cliente.to('juegos').emit('ElSarmiento-nuevo', msg);
         cliente.emit('ElSarmiento-nuevo', msg);
-        cliente.to('juegos').emit('ElSarmiento-nuevo1', msg1);
+        // cliente.to('juegos').emit('ElSarmiento-nuevo1', msg1);
         cliente.emit('ElSarmiento-nuevo1', msg1);
-        console.log(payload.de, 'ha enviado esto', msg);
+        console.log(payload.de, 'ha enviado esto', msg, msg1);
+
     });
 };
 
