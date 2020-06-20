@@ -4,7 +4,7 @@ const fs = require('fs');
 
 
 class Valor {
-    constructor(beta1, gamma1, alpha1, canal, cond1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha,
+    constructor(beta1, gamma1, alpha1) { // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1
 
         this.beta1 = beta1;
         this.gamma1 = gamma1;
@@ -18,8 +18,8 @@ class Valor {
         // this.rotationratebeta = rotationratebeta;
         // this.rotationrategamma = rotationrategamma;
         // this.rotationratealpha = rotationratealpha;
-        this.canal = canal;
-        this.cond1 = cond1;
+        // this.canal = canal;
+        // this.cond1 = cond1;
     }
 }
 
@@ -50,10 +50,10 @@ class ValorControl {
 
 
 
-    siguiente(beta1, gamma1, alpha1, canal) { //  accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
+    siguiente(beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
 
-        let valor = new Valor(this.ultimo, beta1, gamma1, alpha1, canal); //  accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(this.ultimo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
 
         this.grabarArchivo();
@@ -75,7 +75,7 @@ class ValorControl {
 
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor, canal); //  accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, //  DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
+        let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
         console.log(atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14.unshift(atenderValor);

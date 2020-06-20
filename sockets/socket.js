@@ -2,7 +2,6 @@ var usuarios_lista = require('../classes/usuarios-lista');
 var Usuario = require('../models/usuario');
 var { ValorControl } = require('../classes/buffer');
 var socketIO = require('socket.io');
-require('../config/config');
 var io = require('socket.io');
 exports.usuariosConectados = new usuarios_lista.UsuariosLista();
 
@@ -42,7 +41,7 @@ exports.entrarChat = (cliente) => {
 
         const pay = {
             de: 'Administrador',
-            cuerpo: process.env.PORT
+            cuerpo: 'Nuevo usuario'
         };
 
         cliente.to(payload.sala).emit('mensaje-nuevo', pay);
@@ -72,6 +71,7 @@ exports.WSmensaje = (cliente) => {
         }
 
         io.to(cliente).emit('WStype_TEXT', payload);
+        callback(msg);
     });
 };
 
@@ -85,7 +85,7 @@ exports.frecuencia = (cliente) => {
         };
         cliente.to(payload.sala).emit('frecuencia', msg);
         console.log('frecuencia', msg);
-
+        callback(msg);
     });
 };
 exports.LongPulse = (cliente) => {
@@ -97,7 +97,7 @@ exports.LongPulse = (cliente) => {
         };
         cliente.to(payload.sala).emit('LongPulse', msg);
         console.log('LongPulse', msg);
-
+        callback(msg);
     });
 };
 // Escuchar mensajes
@@ -115,7 +115,7 @@ exports.mensaje = (cliente) => {
 
         console.log(payload.de, 'ha enviado esto', payload.cuerpo);
         // cliente.emit('mensaje-nuevo', pay);
-
+        callback(msg);
 
         //  io.emit('mensaje-nuevo', payl);
         // console.log('payload', msg);
@@ -138,6 +138,7 @@ exports.mensajesp = (cliente) => {
 
 
         console.log(payload.de, 'ha enviado esto', payload.cuerpo, payload.cuerpo1);
+        callback(msg);
     });
 };
 // Escuchar mensajes
@@ -145,13 +146,13 @@ exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
         valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
-        let Sarmiento = valorControl.getUltimos4();
+        let Sarmiento = valorControl.getUltimoValor();
         msg = {
             de: payload.de,
             sala: payload.sala,
             beta1: payload.beta1,
             gamma1: payload.gamma1,
-            alpha1: payload.alpha1
+            alpha1: Sarmiento
                 // accelerationx1: Sarmiento.accelerationx1,
                 // accelerationy1: Sarmiento.accelerationy1,
                 // accelerationz1: Sarmiento.accelerationz1,
@@ -162,26 +163,16 @@ exports.ElSarmiento = (cliente) => {
                 // rotationrategamma1: Sarmiento.rotationrategamma1,
                 // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
-        msg1 = {
-            de: payload.de,
-            sala: payload.sala,
-            Sarmiento: Sarmiento
-                // accelerationx1: Sarmiento.accelerationx1,
-                // accelerationy1: Sarmiento.accelerationy1,
-                // accelerationz1: Sarmiento.accelerationz1,
-                // accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
-                // accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
-                // accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
-                // rotationratebeta1: Sarmiento.rotationratebeta1,
-                // rotationrategamma1: Sarmiento.rotationrategamma1,
-                // rotationratealpha1: Sarmiento.rotationratealpha1,
-        };
-        // cliente.to('juegos').emit('ElSarmiento-nuevo', msg);
+        // msg1 = {
+        //     de: payload.de,
+        //     sala: payload.sala,
+        //     Sarmiento
+        // };
+        cliente.to('juegos').emit('ElSarmiento-nuevo', msg);
         cliente.emit('ElSarmiento-nuevo', msg);
-        // cliente.to('juegos').emit('ElSarmiento-nuevo1', msg1);
-        cliente.emit('ElSarmiento-nuevo1', msg1);
-        console.log(payload.de, 'ha enviado esto', msg, msg1);
-
+        // cliente.emit('ElSarmiento1-nuevo', msg1);
+        console.log(payload.de, 'ha enviado esto', msg);
+        callback(msg);
     });
 };
 
@@ -194,6 +185,7 @@ exports.dir = (cliente) => {
         };
         cliente.to(payload.sala).emit('mensajedir-nuevo', msg);
         console.log(msg.de, 'ha enviado est direccion', msg.dir);
+        callback(msg);
     });
 };
 // Escuchar sen
@@ -205,6 +197,7 @@ exports.sen = (cliente) => {
         };
         cliente.to(payload.sala).emit('mensajesen-nuevo', msg);
         console.log(msg.de, 'ha enviado est sentido', msg.sen);
+        callback(msg);
     });
 };
 
@@ -259,6 +252,7 @@ exports.obtenerSalas = (cliente) => {
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
+
     });
 };
 
