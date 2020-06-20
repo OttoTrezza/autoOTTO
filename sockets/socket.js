@@ -148,22 +148,22 @@ exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
         valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
-        let Sarmiento = valorControl.getUltimoValor();
+        // let Sarmiento = valorControl.getUltimoValor();
         msg = {
             de: payload.de,
             sala: payload.sala,
             beta1: payload.beta1,
             gamma1: payload.gamma1,
-            alpha1: Sarmiento
-                // accelerationx1: Sarmiento.accelerationx1,
-                // accelerationy1: Sarmiento.accelerationy1,
-                // accelerationz1: Sarmiento.accelerationz1,
-                // accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
-                // accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
-                // accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
-                // rotationratebeta1: Sarmiento.rotationratebeta1,
-                // rotationrategamma1: Sarmiento.rotationrategamma1,
-                // rotationratealpha1: Sarmiento.rotationratealpha1,
+            // alpha1: Sarmiento
+            // accelerationx1: Sarmiento.accelerationx1,
+            // accelerationy1: Sarmiento.accelerationy1,
+            // accelerationz1: Sarmiento.accelerationz1,
+            // accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
+            // accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
+            // accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
+            // rotationratebeta1: Sarmiento.rotationratebeta1,
+            // rotationrategamma1: Sarmiento.rotationrategamma1,
+            // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
         // msg1 = {
         //     de: payload.de,
