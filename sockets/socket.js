@@ -170,7 +170,7 @@ exports.ElSarmiento = (cliente) => {
         //     sala: payload.sala,
         //     Sarmiento
         // };
-        cliente.to('juegos').emit('ElSarmiento-nuevo', msg);
+        cliente.to('Juegos').emit('ElSarmiento-nuevo', msg);
         cliente.emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);
