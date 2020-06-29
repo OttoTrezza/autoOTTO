@@ -1,9 +1,6 @@
 var usuarios_lista = require('../classes/usuarios-lista');
 var Usuario = require('../models/usuario');
 var { ValorControl } = require('../classes/buffer');
-var socketIO = require('socket.io');
-require('../config/config');
-
 var io = require('socket.io');
 exports.usuariosConectados = new usuarios_lista.UsuariosLista();
 
@@ -37,16 +34,17 @@ exports.entrarChat = (cliente) => {
         cliente.join(usuarioLis.sala);
         usuarios = this.usuariosConectados.getUsuariosEnSala(usuarioLis.sala);
 
-        console.log('lassalas1', falas);
         cliente.emit('usuarios-activos', usuarios);
         cliente.emit('salas', falas);
+        if (payload.nombre === 'autoOTTO') {
+            const pay = {
+                de: payload.nombre,
+                cuerpo: 'Auto conectado a la red'
+            };
 
-        const pay = {
-            de: 'Administrador',
-            cuerpo: process.env.PORT
-        };
+            cliente.to(payload.sala).emit('mensaje-auto', pay);
+        }
 
-        cliente.to(payload.sala).emit('mensaje-nuevo', pay);
     });
 };
 
@@ -54,12 +52,25 @@ exports.entrarChat = (cliente) => {
 exports.desconectar = (cliente) => {
     cliente.on('disconnect', () => {
         console.log('Cliente desconectado', cliente.id);
-        usuario2 = this.usuariosConectados.getCliente(cliente.id);
+        let usuario2 = this.usuariosConectados.getCliente(cliente.id);
+        if (usuario2.nombre === 'autoOTTO') {
+            const pay = {
+                de: payload.nombre,
+                cuerpo: 'Auto Desconectado de la red'
+            };
+            cliente.to(cliente.sala).emit('mensaje-auto', pay);
+        } else {
+            const pay = {
+                de: 'Administrador',
+                cuerpo: 'Cliente Desconectado'
+            };
+            cliente.to(cliente.sala).emit('mensaje-nuevo', pay);
+        }
         sal = 'Juegos';
         this.usuariosConectados.borrarUsuario(cliente.id);
         //  console.log(cliente.id);
         usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
-        cliente.to('Juegos').emit('usuarios-activos', usuarios);
+        cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
         // this.usuarios = this.usuariosConectados.getLista();
         // io.emit('usuarios-activos', this.usuariosConectados.getLista());
 
@@ -124,7 +135,28 @@ exports.mensaje = (cliente) => {
         // return callback(msg);
     });
 };
+// Escuchar mensajes
+exports.mensajeAutoOTTO = (cliente) => {
+    cliente.on('mensaje-autoOTTO', (payload, callback) => {
 
+        msg = {
+            de: payload.de,
+            cuerpo: payload.cuerpo,
+            img: payload.img,
+            // sala: payload.sala
+        };
+        cliente.to(payload.sala).emit('mensaje-nuevo-auto', msg);
+        cliente.emit('mensaje-nuevo-auto', msg);
+
+        console.log(payload.de, 'ha enviado esto', payload.cuerpo);
+        // cliente.emit('mensaje-nuevo', pay);
+        callback(msg);
+
+        //  io.emit('mensaje-nuevo', payl);
+        // console.log('payload', msg);
+        // return callback(msg);
+    });
+};
 
 // Escuchar mensajes
 exports.mensajesp = (cliente) => {
@@ -148,29 +180,29 @@ exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
         valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
-        // let Sarmiento = valorControl.getUltimoValor();
+        let Sarmiento = valorControl.getUltimoValor();
         msg = {
             de: payload.de,
             sala: payload.sala,
             beta1: payload.beta1,
             gamma1: payload.gamma1,
-            // alpha1: Sarmiento
-            // accelerationx1: Sarmiento.accelerationx1,
-            // accelerationy1: Sarmiento.accelerationy1,
-            // accelerationz1: Sarmiento.accelerationz1,
-            // accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
-            // accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
-            // accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
-            // rotationratebeta1: Sarmiento.rotationratebeta1,
-            // rotationrategamma1: Sarmiento.rotationrategamma1,
-            // rotationratealpha1: Sarmiento.rotationratealpha1,
+            alpha1: Sarmiento
+                // accelerationx1: Sarmiento.accelerationx1,
+                // accelerationy1: Sarmiento.accelerationy1,
+                // accelerationz1: Sarmiento.accelerationz1,
+                // accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
+                // accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
+                // accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
+                // rotationratebeta1: Sarmiento.rotationratebeta1,
+                // rotationrategamma1: Sarmiento.rotationrategamma1,
+                // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
         // msg1 = {
         //     de: payload.de,
         //     sala: payload.sala,
         //     Sarmiento
         // };
-        cliente.to('Juegos').emit('ElSarmiento-nuevo', msg);
+        cliente.to('juegos').emit('ElSarmiento-nuevo', msg);
         cliente.emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);

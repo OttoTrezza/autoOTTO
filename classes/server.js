@@ -44,6 +44,8 @@ class Server {
                 socket.mensajesp(cliente);
                 // ElSarmiento
                 socket.ElSarmiento(cliente);
+                socket.mensajeAutoOTTO(cliente);
+
                 // dir
                 socket.dir(cliente);
                 // sen
