@@ -1,7 +1,6 @@
 var usuarios_lista = require('../classes/usuarios-lista');
 var Usuario = require('../models/usuario');
 var { ValorControl } = require('../classes/buffer');
-var socketIO = require('socket.io');
 var io = require('socket.io');
 exports.usuariosConectados = new usuarios_lista.UsuariosLista();
 
@@ -35,16 +34,17 @@ exports.entrarChat = (cliente) => {
         cliente.join(usuarioLis.sala);
         usuarios = this.usuariosConectados.getUsuariosEnSala(usuarioLis.sala);
 
-        console.log('lassalas1', falas);
         cliente.emit('usuarios-activos', usuarios);
         cliente.emit('salas', falas);
+        if (payload.nombre === 'autoOTTO') {
+            const pay = {
+                de: payload.nombre,
+                cuerpo: 'Auto conectado a la red'
+            };
 
-        const pay = {
-            de: 'Administrador',
-            cuerpo: 'Nuevo usuario'
-        };
+            cliente.to(payload.sala).emit('mensaje-auto', pay);
+        }
 
-        cliente.to(payload.sala).emit('mensaje-nuevo', pay);
     });
 };
 
@@ -52,12 +52,25 @@ exports.entrarChat = (cliente) => {
 exports.desconectar = (cliente) => {
     cliente.on('disconnect', () => {
         console.log('Cliente desconectado', cliente.id);
-        usuario2 = this.usuariosConectados.getCliente(cliente.id);
+        let usuario2 = this.usuariosConectados.getCliente(cliente.id);
+        if (usuario2.nombre === 'autoOTTO') {
+            const pay = {
+                de: payload.nombre,
+                cuerpo: 'Auto Desconectado de la red'
+            };
+            cliente.to(cliente.sala).emit('mensaje-auto', pay);
+        } else {
+            const pay = {
+                de: 'Administrador',
+                cuerpo: 'Cliente Desconectado'
+            };
+            cliente.to(cliente.sala).emit('mensaje-nuevo', pay);
+        }
         sal = 'Juegos';
         this.usuariosConectados.borrarUsuario(cliente.id);
         //  console.log(cliente.id);
         usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
-        cliente.to('Juegos').emit('usuarios-activos', usuarios);
+        cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
         // this.usuarios = this.usuariosConectados.getLista();
         // io.emit('usuarios-activos', this.usuariosConectados.getLista());
 
@@ -122,7 +135,28 @@ exports.mensaje = (cliente) => {
         // return callback(msg);
     });
 };
+// Escuchar mensajes
+exports.mensajeAutoOTTO = (cliente) => {
+    cliente.on('mensaje-autoOTTO', (payload, callback) => {
 
+        msg = {
+            de: payload.de,
+            cuerpo: payload.cuerpo,
+            img: payload.img,
+            // sala: payload.sala
+        };
+        cliente.to(payload.sala).emit('mensaje-nuevo-auto', msg);
+        cliente.emit('mensaje-nuevo-auto', msg);
+
+        console.log(payload.de, 'ha enviado esto', payload.cuerpo);
+        // cliente.emit('mensaje-nuevo', pay);
+        callback(msg);
+
+        //  io.emit('mensaje-nuevo', payl);
+        // console.log('payload', msg);
+        // return callback(msg);
+    });
+};
 
 // Escuchar mensajes
 exports.mensajesp = (cliente) => {

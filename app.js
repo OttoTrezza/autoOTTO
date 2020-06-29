@@ -15,6 +15,7 @@ var medicoRoutes = require('./routes/medico');
 var uploadRoutes = require('./routes/upload');
 var imagenesRoutes = require('./routes/imagenes');
 var mensajesRoutes = require('./routes/mensajes');
+var autoOTTORoutes = require('./routes/autoOTTO');
 var busquedaRoutes = require('./routes/busqueda');
 
 //inicializar variables
@@ -50,6 +51,7 @@ server.app.use('/login', loginRoutes);
 server.app.use('/upload', uploadRoutes);
 server.app.use('/img', imagenesRoutes);
 server.app.use('/mensajes', mensajesRoutes);
+server.app.use('/autoOTTO', autoOTTORoutes);
 server.app.use('/busqueda', busquedaRoutes);
 
 // server.app.use(express.static(publicPath));

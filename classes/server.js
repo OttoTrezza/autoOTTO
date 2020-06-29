@@ -37,6 +37,7 @@ class Server {
                 // socket.obtenerSalas(cliente);
                 // Mensajes
                 socket.mensaje(cliente);
+                socket.mensajeAutoOTTO(cliente);
                 socket.frecuencia(cliente);
                 socket.LongPulse(cliente);
                 // Mensajesp
