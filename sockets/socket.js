@@ -127,13 +127,13 @@ exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
         valorControl.siguiente(payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
-        let Sarmiento = valorControl.getUltimoValor();
+        let Sarmiento = valorControl.getUltimos4();
         msg = {
             de: payload.de,
             sala: payload.sala,
             beta1: payload.beta1,
             gamma1: payload.gamma1,
-            alpha1: Sarmiento
+            alpha1: payload.alpha1
                 // accelerationx1: Sarmiento.accelerationx1,
                 // accelerationy1: Sarmiento.accelerationy1,
                 // accelerationz1: Sarmiento.accelerationz1,
@@ -144,12 +144,14 @@ exports.ElSarmiento = (cliente) => {
                 // rotationrategamma1: Sarmiento.rotationrategamma1,
                 // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
-        // msg1 = {
-        //     de: payload.de,
-        //     sala: payload.sala,
-        //     Sarmiento
-        // };
-        // cliente.to('juegos').emit('ElSarmiento-nuevo', msg);
+        msg1 = {
+            de: payload.de,
+            sala: payload.sala,
+            beta1: Sarmiento.beta1,
+            gamma1: Sarmiento.gamma1,
+            alpha1: Sarmiento
+        };
+        cliente.emit('ElSarmiento-nuevo', msg1);
         cliente.emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);

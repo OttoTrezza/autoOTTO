@@ -92,7 +92,7 @@ void setup()
    String JSON;
    doc["nombre"] = "autoOTTO";
    doc["sala"] = "Juegos";
-   doc["img"] = "5d38d563ec2c35d0344d862f-611.png";
+   doc["img"] = "";
    serializeJson(doc, JSON);
    client.sendJSON("entrarChat",JSON);
  
