@@ -27,7 +27,7 @@ exports.entrarChat = (cliente) => {
             id: cliente.id,
             salas: falas
         };
-
+        sal = 'Juegos';
         if (!this.usuariosConectados.getUsuario(usuarioLis.nombre)) {
             this.usuariosConectados.agregar(usuarioLis);
         }
@@ -189,9 +189,9 @@ exports.obtenerUsuarios = (cliente) => {
 };
 
 // Obtener Salas
-exports.obtenerSalas = (cliente) => {
+exports.obtenerSalas = (cliente, sal) => {
     cliente.on('obtener-salas', (callback) => {
-        salas = obtenerSalsas();
+        salas = obtenerSalsas(sal);
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
