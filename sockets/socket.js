@@ -53,19 +53,19 @@ exports.desconectar = (cliente) => {
     cliente.on('disconnect', () => {
         console.log('Cliente desconectado', cliente.id);
         let usuario2 = this.usuariosConectados.getCliente(cliente.id);
-        if (usuario2.nombre === 'autoOTTO') {
-            const pay = {
-                de: usuario2.nombre,
-                cuerpo: 'Auto Desconectado de la red'
-            };
-            cliente.to(cliente.sala).emit('mensaje-auto', pay);
-        } else {
-            const pay = {
-                de: 'Administrador',
-                cuerpo: 'Cliente Desconectado'
-            };
-            cliente.to(cliente.sala).emit('mensaje-nuevo', pay);
-        }
+        // if (usuario2.nombre === 'autoOTTO') {
+        const pay = {
+            de: 'autoOTTO',
+            cuerpo: usuario2
+        };
+        cliente.to(cliente.sala).emit('mensaje-auto', pay);
+        // } else {
+        //     const pay = {
+        //         de: 'Administrador',
+        //         cuerpo: 'Cliente Desconectado'
+        //     };
+        //     cliente.to(cliente.sala).emit('mensaje-nuevo', pay);
+        // }
         sal = 'Juegos';
         this.usuariosConectados.borrarUsuario(cliente.id);
         //  console.log(cliente.id);
