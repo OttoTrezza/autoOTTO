@@ -71,48 +71,11 @@ exports.desconectar = (cliente) => {
         //  console.log(cliente.id);
         usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
         cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
-        // this.usuarios = this.usuariosConectados.getLista();
-        // io.emit('usuarios-activos', this.usuariosConectados.getLista());
+
 
     });
 };
-// Escuchar mensajes de WebSocket
-exports.WSmensaje = (cliente) => {
-    cliente.on('WStype_TEXT', (payload, callback) => {
-        if (payload[0] === '#') {
-            rgb(cliente, payload);
-        }
 
-        io.to(cliente).emit('WStype_TEXT', payload);
-        callback(msg);
-    });
-};
-
-
-exports.frecuencia = (cliente) => {
-    cliente.on('frecuencia', (payload, callback) => {
-        msg = {
-            de: payload.de,
-            frec: payload.frec,
-            sala: payload.sala
-        };
-        cliente.to(payload.sala).emit('frecuencia', msg);
-        console.log('frecuencia', msg);
-        callback(msg);
-    });
-};
-exports.LongPulse = (cliente) => {
-    cliente.on('LongPulse', (payload, callback) => {
-        msg = {
-            de: payload.de,
-            LongP: payload.LongP,
-            sala: payload.sala
-        };
-        cliente.to(payload.sala).emit('LongPulse', msg);
-        console.log('LongPulse', msg);
-        callback(msg);
-    });
-};
 // Escuchar mensajes
 exports.mensaje = (cliente) => {
     cliente.on('mensaje', (payload, callback) => {
@@ -158,23 +121,7 @@ exports.mensajeAutoOTTO = (cliente) => {
     });
 };
 
-// Escuchar mensajes
-exports.mensajesp = (cliente) => {
-    cliente.on('mensajesp', (payload, callback) => {
-        msg = {
-            de: payload.de,
-            sala: payload.sala,
-            cuerpo: payload.cuerpo1,
-            cuerpo1: payload.cuerpo2
-        };
 
-        cliente.to(payload.sala).emit('mensajesp-nuevo', msg);
-
-
-        console.log(payload.de, 'ha enviado esto', payload.cuerpo, payload.cuerpo1);
-        callback(msg);
-    });
-};
 // Escuchar mensajes
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
@@ -210,45 +157,7 @@ exports.ElSarmiento = (cliente) => {
     });
 };
 
-// Escuchar dir
-exports.dir = (cliente) => {
-    cliente.on('dir', (payload, callback) => {
-        msg = {
-            de: payload.de,
-            dir: payload.dir
-        };
-        cliente.to(payload.sala).emit('mensajedir-nuevo', msg);
-        console.log(msg.de, 'ha enviado est direccion', msg.dir);
-        callback(msg);
-    });
-};
-// Escuchar sen
-exports.sen = (cliente) => {
-    cliente.on('sen', (payload, callback) => {
-        msg = {
-            de: payload.de,
-            sen: payload.sen
-        };
-        cliente.to(payload.sala).emit('mensajesen-nuevo', msg);
-        console.log(msg.de, 'ha enviado est sentido', msg.sen);
-        callback(msg);
-    });
-};
 
-// Mensaje Nuevo ( SIEMPRE RESPUESTA DEL SERVER!!!)
-
-// exports.mensaje = (cliente, io) => {
-//     cliente.on('mensaje-nuevo', (payload) => {
-
-//         console.log('Mensaje recibido', payload);
-
-//         io.to(this.cliente).emit('resp', payload);
-
-//         //  io.emit('mensaje-nuevo', payl);
-//         console.log('payload', payl);
-//         //   return callback(payl);
-//     });
-// };
 
 
 // Configurar usuario
@@ -322,3 +231,97 @@ obtenerSalsas = (cliente, sal) => {
         });
 
 };
+
+// // Escuchar mensajes de WebSocket
+// exports.WSmensaje = (cliente) => {
+//     cliente.on('WStype_TEXT', (payload, callback) => {
+//         if (payload[0] === '#') {
+//             rgb(cliente, payload);
+//         }
+
+//         io.to(cliente).emit('WStype_TEXT', payload);
+//         callback(msg);
+//     });
+// };
+
+
+// exports.frecuencia = (cliente) => {
+//     cliente.on('frecuencia', (payload, callback) => {
+//         msg = {
+//             de: payload.de,
+//             frec: payload.frec,
+//             sala: payload.sala
+//         };
+//         cliente.to(payload.sala).emit('frecuencia', msg);
+//         console.log('frecuencia', msg);
+//         callback(msg);
+//     });
+// };
+// exports.LongPulse = (cliente) => {
+//     cliente.on('LongPulse', (payload, callback) => {
+//         msg = {
+//             de: payload.de,
+//             LongP: payload.LongP,
+//             sala: payload.sala
+//         };
+//         cliente.to(payload.sala).emit('LongPulse', msg);
+//         console.log('LongPulse', msg);
+//         callback(msg);
+//     });
+// };
+// // Escuchar mensajes
+// exports.mensajesp = (cliente) => {
+//     cliente.on('mensajesp', (payload, callback) => {
+//         msg = {
+//             de: payload.de,
+//             sala: payload.sala,
+//             cuerpo: payload.cuerpo1,
+//             cuerpo1: payload.cuerpo2
+//         };
+
+//         cliente.to(payload.sala).emit('mensajesp-nuevo', msg);
+
+
+//         console.log(payload.de, 'ha enviado esto', payload.cuerpo, payload.cuerpo1);
+//         callback(msg);
+//     });
+// };
+// // Escuchar dir
+// exports.dir = (cliente) => {
+//     cliente.on('dir', (payload, callback) => {
+//         msg = {
+//             de: payload.de,
+//             dir: payload.dir
+//         };
+//         cliente.to(payload.sala).emit('mensajedir-nuevo', msg);
+//         console.log(msg.de, 'ha enviado est direccion', msg.dir);
+//         callback(msg);
+//     });
+// };
+// // Escuchar sen
+// exports.sen = (cliente) => {
+//     cliente.on('sen', (payload, callback) => {
+//         msg = {
+//             de: payload.de,
+//             sen: payload.sen
+//         };
+//         cliente.to(payload.sala).emit('mensajesen-nuevo', msg);
+//         console.log(msg.de, 'ha enviado est sentido', msg.sen);
+//         callback(msg);
+//     });
+// };
+
+// Mensaje Nuevo ( SIEMPRE RESPUESTA DEL SERVER!!!)
+
+// exports.mensaje = (cliente, io) => {
+//     cliente.on('mensaje-nuevo', (payload) => {
+
+//         console.log('Mensaje recibido', payload);
+
+//         io.to(this.cliente).emit('resp', payload);
+
+//         //  io.emit('mensaje-nuevo', payl);
+//         console.log('payload', payl);
+//         //   return callback(payl);
+//     });
+// };
