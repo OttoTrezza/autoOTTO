@@ -149,7 +149,7 @@ exports.ElSarmiento = (cliente) => {
             sala: payload.sala,
             beta1: Sarmiento.beta1,
             gamma1: Sarmiento.gamma1,
-            alpha1: Sarmiento.Valor.alpha1
+            alpha1: Sarmiento.alpha1
         };
         cliente.emit('ElSarmiento-nuevo', msg1);
         cliente.emit('ElSarmiento-nuevo', msg);
