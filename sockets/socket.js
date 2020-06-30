@@ -55,7 +55,7 @@ exports.desconectar = (cliente) => {
         let usuario2 = this.usuariosConectados.getCliente(cliente.id);
         if (usuario2.nombre === 'autoOTTO') {
             const pay = {
-                de: payload.nombre,
+                de: usuario2.nombre,
                 cuerpo: 'Auto Desconectado de la red'
             };
             cliente.to(cliente.sala).emit('mensaje-auto', pay);
