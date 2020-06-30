@@ -38,18 +38,18 @@ class Server {
                 // socket.obtenerSalas(cliente);
                 // Mensajes
                 socket.mensaje(cliente);
-                socket.frecuencia(cliente);
-                socket.LongPulse(cliente);
+                // socket.frecuencia(cliente);
+                // socket.LongPulse(cliente);
                 // Mensajesp
-                socket.mensajesp(cliente);
+                // socket.mensajesp(cliente);
                 // ElSarmiento
                 socket.ElSarmiento(cliente);
                 socket.mensajeAutoOTTO(cliente);
 
                 // dir
-                socket.dir(cliente);
+                // socket.dir(cliente);
                 // sen
-                socket.sen(cliente);
+                // socket.sen(cliente);
                 // Desconectar
                 socket.desconectar(cliente);
                 //   cliente.on('disconect', () => {
