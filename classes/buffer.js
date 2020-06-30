@@ -100,7 +100,7 @@ class ValorControl {
 
     getUltimoValor() {
 
-        return this.valores[this.ultimo];
+        return this.valores[1];
     }
     getUltimos4() {
 
