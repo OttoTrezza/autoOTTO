@@ -203,6 +203,7 @@ function obtenerMenu(ROLE) {
             icono: 'mdi mdi-gauge',
             submenu: [
                 { titulo: 'Dashboard', url: '/dashboard' },
+                { titulo: 'AutoOTTO', url: '/autoOTTO' },
                 { titulo: 'ProgressBar', url: '/progress' },
                 { titulo: 'Gráficas', url: '/graficas1' },
                 { titulo: 'Promesas', url: '/promesas' },
