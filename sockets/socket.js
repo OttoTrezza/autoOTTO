@@ -155,6 +155,7 @@ exports.ElSarmiento = (cliente) => {
         cliente.emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);
+        console.log(payload.de, 'ha enviado esto', msg1);
         callback(msg);
     });
 };
