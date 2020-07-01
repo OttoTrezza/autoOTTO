@@ -34,6 +34,7 @@ class ValorControl {
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
+        this.codigoEvento = 2;
 
         let data = require('./data/data.json');
         console.log('data', data);
@@ -46,6 +47,7 @@ class ValorControl {
         this.ultimos4a = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
+        this.codigoEvento = data.codigoEvento;
         // } else {
         //     this.reiniciarConteo();
         // }
@@ -102,42 +104,38 @@ class ValorControl {
         console.log(this.ultimos4);
         this.grabarArchivo();
         // return atenderValor;
-        this.analisisUltimos4(this.ultimos4, this.ultimos4a, callback => {
-            if (callback === 2) {
-                console.log('ADENTROOOOO');
-            }
-        });
+        this.analisisUltimos4(this.ultimos4, this.ultimos4a);
     }
-    analisisUltimos4(ultimos4, ultimos4a, callback) {
+    analisisUltimos4(ultimos4, ultimos4a) {
         if (ultimos4 == undefined) {
             console.log('error');
-            CodigoEvento = 0;
-            callback(CodigoEvento);
+            this.codigoEvento = 0;
             return;
         }
 
         if (ultimos4[0].beta1 > ultimos4[1].beta1) {
             console.log('es mayor');
-            CodigoEvento = 1;
-            callback(CodigoEvento);
+            this.codigoEvento = 1;
             return;
         }
         if (ultimos4a[0].beta1 > ultimos4a[1].beta1) {
             console.log('es mayor aaaaaaaaaaaaa');
-            CodigoEvento = 1;
-            callback(CodigoEvento);
+            this.codigoEvento = 1;
             return;
         }
-        CodigoEvento = 2;
-        callback(CodigoEvento);
+        this.codigoEvento = 2;
         return;
+
     }
 
     getUltimoValor() {
 
         return this.valor;
     }
+    getCodigoEvento() {
 
+        return this.codigoEvento;
+    }
 
     getUltimos4() {
 
@@ -157,6 +155,7 @@ class ValorControl {
         this.ultimo = 0;
         this.valores = [];
         this.ultimos4 = [];
+        this.ultimos4a = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
 
@@ -172,8 +171,10 @@ class ValorControl {
             hoy: this.hoy,
             valores: this.valores,
             ultimos4: this.ultimos4,
+            ultimos4a: this.ultimos4a,
             ultimos14: this.ultimos14,
-            ultimos24: this.ultimos24
+            ultimos24: this.ultimos24,
+            codigoEvento: this.codigoEvento
         };
         let jsonDataString = JSON.stringify(jsonData);
         fs.writeFileSync('./classes/data/data.json', jsonDataString);

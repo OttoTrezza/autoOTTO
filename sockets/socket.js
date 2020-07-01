@@ -149,6 +149,16 @@ exports.ElSarmiento = (cliente) => {
         cliente.emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);
+        let codEv = valorControl.getCodigoEvento();
+        if (codEv == 1) {
+            msg = {
+                de: payload.de,
+                cuerpo: 'Adennnnnntroooo',
+                img: payload.img,
+                // sala: payload.sala
+            };
+            cliente.emit('mensaje-nuevo-auto', msg);
+        }
         //  console.log(payload.de, 'ha enviado esto', msg1);
         callback(msg);
     });
