@@ -149,10 +149,10 @@ exports.ElSarmiento = (cliente) => {
         msg1 = {
             de: payload.de,
             cuerpo: Sarmiento.beta1 + '*' + Sarmiento.gamma1 + '*' + Sarmiento.alpha1,
-            codEv: 4
+            img: ''
         };
-        cliente.emit('mensaje-auto', msg1);
-        cliente.emit('ElSarmiento-nuevo', msg);
+        cliente.to(payload.sala).emit('mensaje-nuevo-auto', msg1);
+        cliente.to(payload.sala).emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);
         let codEv = valorControl.getCodigoEvento();
@@ -164,7 +164,7 @@ exports.ElSarmiento = (cliente) => {
             };
 
             cliente.to(payload.sala).emit('mensaje-auto', pay);
-            cliente.emit('mensaje-auto', pay);
+            // cliente.emit('mensaje-auto', pay);
             console.log('adentroo enviado', codEv);
         }
         if (codEv == 2) {
@@ -174,7 +174,7 @@ exports.ElSarmiento = (cliente) => {
                 codEv
             };
 
-            cliente.emit('mensaje-auto', pay);
+            cliente.to(payload.sala).emit('mensaje-auto', pay);
             console.log('adentroo enviado', codEv);
         }
         //  console.log(payload.de, 'ha enviado esto', msg1);
@@ -191,7 +191,7 @@ exports.configurarUsuario = (cliente) => {
         console.log('configUsuar', payload.nombre, payload.sala);
         // this.usuariosConectados.actualizarSalas(cliente.id, );
 
-        cliente.emit('usuarios-activos', usuarios);
+        cliente.to(payload.sala).emit('usuarios-activos', usuarios);
 
 
         callback({
