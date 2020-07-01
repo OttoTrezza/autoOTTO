@@ -43,7 +43,6 @@ class ValorControl {
 
         // if (data.hoy === this.hoy) {
         this.ultimo = data.ultimo;
-        this.dispositivo = data.dispositivos[0];
         this.dispositivos = data.dispositivos;
         this.valores = data.valores;
         this.valor = data.valores[0];
