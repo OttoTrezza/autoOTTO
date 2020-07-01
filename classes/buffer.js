@@ -63,7 +63,7 @@ class ValorControl {
         //  this.dispositivos.push(valor.dispositivo);
         //  let dispos = this.getDispositivos();
         this.valores.push(valor);
-        this.dispositivos.push(dispositivo);
+
 
         this.valor = { dispositivo, beta1, gamma1, alpha1 };
         this.grabarArchivo();
@@ -145,7 +145,19 @@ class ValorControl {
     }
     getDispositivos() {
 
-        return this.dispositivos;
+        let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo);
+        let i;
+        for (valoreslis of this.valores) {
+            if (this.getDispositivos().contains(this.valor.dispositivo)) {
+                i = i;
+                return this.dispositivos;
+            } else {
+                this.dispositivos[i] = this.valor.dispositivo;
+                i++;
+                return this.dispositivos;
+            }
+
+        }
     }
     getThisDispositivo() {
 
