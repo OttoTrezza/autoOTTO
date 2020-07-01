@@ -35,17 +35,17 @@ class ValorControl {
         this.ultimos24 = [];
 
         let data = require('./data/data.json');
-        console.log(data);
+        console.log('data', data);
 
-        if (data.hoy === this.hoy) {
-            this.ultimo = data.ultimo;
-            this.valores = data.valores;
-            this.ultimos4 = data.ultimos4;
-            this.ultimos14 = data.ultimos14;
-            this.ultimos24 = data.ultimos24;
-        } else {
-            this.reiniciarConteo();
-        }
+        // if (data.hoy === this.hoy) {
+        this.ultimo = data.ultimo;
+        this.valores = data.valores;
+        this.ultimos4 = data.ultimos4;
+        this.ultimos14 = data.ultimos14;
+        this.ultimos24 = data.ultimos24;
+        // } else {
+        //     this.reiniciarConteo();
+        // }
     }
 
 
@@ -76,7 +76,7 @@ class ValorControl {
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
-        console.log(atenderValor);
+        // console.log(atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14.unshift(atenderValor);
         this.ultimos24.unshift(atenderValor);
@@ -91,8 +91,8 @@ class ValorControl {
         if (this.ultimos4.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
             this.ultimos24.splice(-1, 1);
         }
-        console.log('Ultimos 4');
-        console.log(this.ultimos4);
+        // console.log('Ultimos 4');
+        // console.log(this.ultimos4);
         this.grabarArchivo();
         // return atenderValor;
 
@@ -100,7 +100,7 @@ class ValorControl {
 
     getUltimoValor() {
 
-        return this.valores[1];
+        return this.valores[0];
     }
 
 
