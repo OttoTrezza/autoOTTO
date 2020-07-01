@@ -63,6 +63,7 @@ class ValorControl {
         //  this.dispositivos.push(valor.dispositivo);
         //  let dispos = this.getDispositivos();
         this.valores.push(valor);
+        this.dispositivos.push(dispositivo);
 
         this.valor = { dispositivo, beta1, gamma1, alpha1 };
         this.grabarArchivo();
