@@ -106,13 +106,14 @@ class ValorControl {
         // return atenderValor;
         this.analisisUltimos4(this.ultimos4, this.ultimos4a);
     }
-    analisisUltimos4(ultimos4, ultimos4a) {
+    analisisUltimos4(ultimos4) {
         if (ultimos4 == undefined) {
             console.log('error');
             this.codigoEvento = 0;
             return;
         }
-
+        console.log('ultimos4', ultimos4);
+        console.log('ultimos4[0]', ultimos4[0]);
         // if (ultimos4[0].beta1 < ultimos4[3].beta1) {
         //     console.log('es mayor');
         //     this.codigoEvento = 1;
