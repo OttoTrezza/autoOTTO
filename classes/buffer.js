@@ -95,7 +95,7 @@ class ValorControl {
             this.ultimos24.splice(-1, 1);
         }
         // console.log('Ultimos 4');
-        // console.log(this.ultimos4);
+        console.log(this.ultimos4);
         this.grabarArchivo();
         // return atenderValor;
 

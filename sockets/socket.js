@@ -132,7 +132,7 @@ exports.ElSarmiento = (cliente) => {
         msg = {
             de: payload.de,
             sala: payload.sala,
-            beta1: payload.beta1,
+            beta1: Sarmiento.beta1,
             gamma1: Sarmiento.gamma1,
             alpha1: Sarmiento.alpha1
                 // accelerationx1: Sarmiento.accelerationx1,
@@ -145,14 +145,7 @@ exports.ElSarmiento = (cliente) => {
                 // rotationrategamma1: Sarmiento.rotationrategamma1,
                 // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
-        // msg1 = {
-        //     de: payload.de,
-        //     sala: payload.sala,
-        //     beta1: Sarmiento.beta1,
-        //     gamma1: Sarmiento.gamma1,
-        //     alpha1: Sarmiento.alpha1
-        // };
-        // cliente.emit('ElSarmiento-nuevo', msg1);
+
         cliente.emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);
