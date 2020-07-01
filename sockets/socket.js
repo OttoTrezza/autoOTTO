@@ -146,8 +146,12 @@ exports.ElSarmiento = (cliente) => {
                 // rotationrategamma1: Sarmiento.rotationrategamma1,
                 // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
-
-        cliente.to(payload.sala).emit('ElSarmiento-nuevo', msg);
+        msg1 = {
+            de: payload.de,
+            cuerpo: Sarmiento.beta1 + '*' + Sarmiento.gamma1 + '*' + Sarmiento.alpha1,
+            codEv: 4
+        };
+        cliente.emit('mensaje-auto', msg1);
         cliente.emit('ElSarmiento-nuevo', msg);
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);
