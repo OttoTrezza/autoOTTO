@@ -164,8 +164,8 @@ exports.ElSarmiento = (cliente) => {
                 cuerpo: 'Movimiento-1',
                 img: ''
             };
-            cliente.to(payload.sala).emit('mensaje-nuevo-auto', pay);
-            cliente.emit('mensaje-nuevo-auto', pay);
+            cliente.to(payload.sala).emit('mensaje-auto', pay);
+            cliente.emit('mensaje-auto', pay);
             // cliente.emit('mensaje-auto', pay);
             console.log('adentroo enviado', codEv);
         }
@@ -176,8 +176,8 @@ exports.ElSarmiento = (cliente) => {
                 cuerpo: 'sin magicMoves',
                 img: ''
             };
-            cliente.to(payload.sala).emit('mensaje-nuevo-auto', pay);
-            cliente.emit('mensaje-nuevo-auto', pay);
+            cliente.to(payload.sala).emit('mensaje-auto', pay);
+            cliente.emit('mensaje-auto', pay);
         }
         //  console.log(payload.de, 'ha enviado esto', msg1);
         callback(msg);
