@@ -145,7 +145,7 @@ class ValorControl {
     }
     getDispositivos() {
 
-        let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo);
+        let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo !== '');
         let i;
         for (valoreslis of this.valores) {
             if (this.getDispositivos().contains(this.valor.dispositivo)) {
