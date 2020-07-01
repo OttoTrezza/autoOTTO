@@ -107,11 +107,12 @@ class ValorControl {
         this.analisisUltimos4(this.ultimos24);
     }
     analisisUltimos4(ultimos24) {
-        if (ultimos24 == undefined) {
-            console.log('error');
+        if (ultimos24[3] == undefined) {
+            ultimos24[3] = '0';
             this.codigoEvento = 0;
             return;
         }
+
         let betasaaa0 = ultimos24[0].beta1;
         let betasaaa1 = ultimos24[3].beta1;
         let betasa0 = parseInt(betasaaa0);
