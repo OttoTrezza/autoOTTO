@@ -76,7 +76,7 @@ class ValorControl {
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
-        // console.log(atenderValor);
+        console.log(atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14.unshift(atenderValor);
         this.ultimos24.unshift(atenderValor);
@@ -100,7 +100,7 @@ class ValorControl {
 
     getUltimoValor() {
 
-        return this.valores[0];
+        return this.atenderValor;
     }
 
 
