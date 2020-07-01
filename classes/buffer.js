@@ -113,11 +113,11 @@ class ValorControl {
             return;
         }
 
-        if (ultimos4[0].beta1 < ultimos4[3].beta1) {
-            console.log('es mayor');
-            this.codigoEvento = 1;
-            return;
-        }
+        // if (ultimos4[0].beta1 < ultimos4[3].beta1) {
+        //     console.log('es mayor');
+        //     this.codigoEvento = 1;
+        //     return;
+        // }
         if (ultimos4a[0].beta1 > ultimos4a[4].beta1) {
             console.log('es mayor aaaaaaaaaaaaa');
             this.codigoEvento = 1;
@@ -158,6 +158,7 @@ class ValorControl {
         this.ultimos4a = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
+        this.codigoEvento = 0;
 
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
