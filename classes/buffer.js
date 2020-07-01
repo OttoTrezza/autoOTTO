@@ -30,6 +30,7 @@ class ValorControl {
         this.ultimo = 0;
         this.hoy = new Date().getDay();
         this.valores = [];
+        this.valor = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -40,6 +41,7 @@ class ValorControl {
         // if (data.hoy === this.hoy) {
         this.ultimo = data.ultimo;
         this.valores = data.valores;
+        this.valor = data.valores[0];
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
@@ -55,6 +57,7 @@ class ValorControl {
 
         let valor = new Valor(beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
+        this.valor = valor;
 
         this.grabarArchivo();
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
