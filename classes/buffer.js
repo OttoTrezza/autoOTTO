@@ -63,9 +63,9 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let beta1Valor = this.getUltimoValor.beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
-        let gamma1Valor = this.getUltimoValor.gamma1;
-        let alpha1Valor = this.getUltimoValor.alpha1;
+        let beta1Valor = this.getUltimoValor().beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
+        let gamma1Valor = this.getUltimoValor().gamma1;
+        let alpha1Valor = this.getUltimoValor().alpha1;
         // let accelerationxValor = this.getUltimoValor.accelerationx;
         // let accelerationyValor = this.getUltimoValor.accelerationy;
         // let accelerationzValor = this.getUltimoValor.accelerationz;
