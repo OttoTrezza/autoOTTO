@@ -102,10 +102,7 @@ class ValorControl {
 
         return this.valores[1];
     }
-    getUltimoValorgamma1() {
 
-        return this.valores[1].gamma1;
-    }
 
     getUltimos4() {
 
