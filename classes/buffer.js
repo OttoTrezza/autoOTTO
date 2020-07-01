@@ -112,9 +112,10 @@ class ValorControl {
             this.codigoEvento = 0;
             return;
         }
-
-        let betasa0 = parseInt(ultimos24[0].beta1);
-        let betasa1 = parseInt(ultimos24[10].beta1);
+        let betasaaa0 = ultimos24[0].beta1;
+        let betasaaa1 = ultimos24[3].beta1;
+        let betasa0 = parseInt(betasaaa0);
+        let betasa1 = parseInt(betasaaa1);
         //  let vala = parseInt(valuer);
         if (betasa0 > betasa1) {
             console.log('es mayor');
