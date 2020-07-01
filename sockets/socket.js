@@ -158,6 +158,7 @@ exports.ElSarmiento = (cliente) => {
                 // sala: payload.sala
             };
             cliente.emit('mensaje-nuevo-auto', msg);
+            console.log('adentroo enviado', codEv);
         }
         //  console.log(payload.de, 'ha enviado esto', msg1);
         callback(msg);
