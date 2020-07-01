@@ -39,7 +39,8 @@ exports.entrarChat = (cliente) => {
         if (payload.nombre === 'autoOTTO') {
             const pay = {
                 de: payload.nombre,
-                cuerpo: 'Auto conectado a la red'
+                cuerpo: 'Auto conectado a la red',
+                codEv: 0
             };
 
             cliente.to(payload.sala).emit('mensaje-auto', pay);
@@ -151,13 +152,13 @@ exports.ElSarmiento = (cliente) => {
         console.log(payload.de, 'ha enviado esto', msg);
         let codEv = valorControl.getCodigoEvento();
         if (codEv == 1) {
-            msg = {
+            const pay = {
                 de: payload.de,
-                cuerpo: 'Adennnnnntroooo',
-                img: payload.img,
-                // sala: payload.sala
+                cuerpo: 'Movimiento-1',
+                codEv
             };
-            cliente.emit('mensaje-nuevo-auto', msg);
+
+            cliente.to(payload.sala).emit('mensaje-auto', pay);
             console.log('adentroo enviado', codEv);
         }
         //  console.log(payload.de, 'ha enviado esto', msg1);
