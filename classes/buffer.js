@@ -107,7 +107,7 @@ class ValorControl {
         this.analisisUltimos4(this.ultimos24);
     }
     analisisUltimos4(ultimos24) {
-        if (ultimos4 == undefined) {
+        if (ultimos24 == undefined) {
             console.log('error');
             this.codigoEvento = 0;
             return;
