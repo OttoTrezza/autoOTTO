@@ -117,7 +117,10 @@ class ValorControl {
         // console.log('ultimos4[0].beta1', ultimos4[0].beta1);
         // let ultimos4val = parseInt(ultimos4[0].beta1);
         // let ultimos4vala = parseInt(ultimos4[3].beta1);
-        if (ultimos4[0].beta1) {
+        let valuer = ultimos4[0].beta1;
+
+        let vala = parseInt(valuer);
+        if (vala) {
             console.log('es mayor');
             this.codigoEvento = 1;
             return;
