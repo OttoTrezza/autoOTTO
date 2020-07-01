@@ -120,7 +120,7 @@ class ValorControl {
         let valuer = ultimos4[0].beta1;
 
         let vala = parseInt(valuer);
-        if (vala) {
+        if (vala > 10) {
             console.log('es mayor');
             this.codigoEvento = 1;
             return;
