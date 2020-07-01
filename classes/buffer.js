@@ -110,7 +110,7 @@ class ValorControl {
         if (ultimos24[3] == undefined) {
             ultimos24[3] = '0';
             this.codigoEvento = 0;
-            return;
+            return this.codigoEvento;
         }
 
         let betasaaa0 = ultimos24[0].beta1;
@@ -121,7 +121,7 @@ class ValorControl {
         if (betasa0 > betasa1) {
             console.log('es mayor');
             this.codigoEvento = 1;
-            return;
+            return this.codigoEvento;
         }
         // if (ultimos4[0] > ultimos4[4]) {
         //     console.log('es mayor aaaaaaaaaaaaa');
@@ -129,7 +129,7 @@ class ValorControl {
         //     return;
         // }
         this.codigoEvento = 2;
-        return;
+        return this.codigoEvento;
 
     }
 

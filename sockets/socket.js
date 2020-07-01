@@ -160,6 +160,17 @@ exports.ElSarmiento = (cliente) => {
             };
 
             cliente.to(payload.sala).emit('mensaje-auto', pay);
+            cliente.emit('mensaje-auto', pay);
+            console.log('adentroo enviado', codEv);
+        }
+        if (codEv == 2) {
+            const pay = {
+                de: payload.de,
+                cuerpo: 'sin magicMoves',
+                codEv
+            };
+
+            cliente.emit('mensaje-auto', pay);
             console.log('adentroo enviado', codEv);
         }
         //  console.log(payload.de, 'ha enviado esto', msg1);
