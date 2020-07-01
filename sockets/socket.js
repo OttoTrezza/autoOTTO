@@ -157,27 +157,27 @@ exports.ElSarmiento = (cliente) => {
         // cliente.emit('ElSarmiento1-nuevo', msg1);
         console.log(payload.de, 'ha enviado esto', msg);
         let codEv = valorControl.getCodigoEvento();
+
         if (codEv == 1) {
             const pay = {
                 de: payload.de,
                 cuerpo: 'Movimiento-1',
-                codEv
+                img: ''
             };
-
-            cliente.to(payload.sala).emit('mensaje-auto', pay);
-            cliente.emit('mensaje-auto', pay);
+            cliente.to(payload.sala).emit('mensaje-nuevo-auto', pay);
+            cliente.emit('mensaje-nuevo-auto', pay);
             // cliente.emit('mensaje-auto', pay);
             console.log('adentroo enviado', codEv);
         }
+
         if (codEv == 2) {
             const pay = {
                 de: payload.de,
                 cuerpo: 'sin magicMoves',
-                codEv
+                img: ''
             };
-
-            cliente.to(payload.sala).emit('mensaje-auto', pay);
-            console.log('adentroo enviado', codEv);
+            cliente.to(payload.sala).emit('mensaje-nuevo-auto', pay);
+            cliente.emit('mensaje-nuevo-auto', pay);
         }
         //  console.log(payload.de, 'ha enviado esto', msg1);
         callback(msg);
