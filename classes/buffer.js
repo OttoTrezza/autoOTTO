@@ -104,9 +104,9 @@ class ValorControl {
         console.log(this.ultimos4);
         this.grabarArchivo();
         // return atenderValor;
-        this.analisisUltimos4(this.ultimos4);
+        this.analisisUltimos4(this.ultimos24);
     }
-    analisisUltimos4(ultimos4) {
+    analisisUltimos4(ultimos24) {
         if (ultimos4 == undefined) {
             console.log('error');
             this.codigoEvento = 0;
