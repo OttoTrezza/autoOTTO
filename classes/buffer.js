@@ -43,6 +43,7 @@ class ValorControl {
         this.valores = data.valores;
         this.valor = data.valores[0];
         this.ultimos4 = data.ultimos4;
+        this.ultimos4a = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
         // } else {
@@ -79,26 +80,57 @@ class ValorControl {
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
-        console.log('atenderValor', atenderValor);
-        this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
-        this.ultimos14.unshift(atenderValor);
-        this.ultimos24.unshift(atenderValor);
+        let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
+        this.ultimos4.unshift(analisisValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
+        this.ultimos14.unshift(analisisValor);
+        this.ultimos24.unshift(analisisValor);
+
+        this.ultimos4a.unshift(atenderValor);
         if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4.splice(-1, 1);
-
-            this.ultimos24.splice(-1, 1);
         }
-        if (this.ultimos4.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+        if (this.ultimos4a.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4a.splice(-1, 1);
+        }
+        if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
             this.ultimos14.splice(-1, 1);
         }
-        if (this.ultimos4.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+        if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
             this.ultimos24.splice(-1, 1);
         }
         // console.log('Ultimos 4');
         console.log(this.ultimos4);
         this.grabarArchivo();
         // return atenderValor;
+        this.analisisUltimos4(this.ultimos4, this.ultimos4a, callback => {
+            if (callback === 2) {
+                console.log('ADENTROOOOO');
+            }
+        });
+    }
+    analisisUltimos4(ultimos4, ultimos4a, callback) {
+        if (ultimos4 == undefined) {
+            console.log('error');
+            CodigoEvento = 0;
+            callback(CodigoEvento);
+            return;
+        }
 
+        if (ultimos4[0].beta1 > ultimos4[1].beta1) {
+            console.log('es mayor');
+            CodigoEvento = 1;
+            callback(CodigoEvento);
+            return;
+        }
+        if (ultimos4a[0].beta1 > ultimos4a[1].beta1) {
+            console.log('es mayor aaaaaaaaaaaaa');
+            CodigoEvento = 1;
+            callback(CodigoEvento);
+            return;
+        }
+        CodigoEvento = 2;
+        callback(CodigoEvento);
+        return;
     }
 
     getUltimoValor() {
