@@ -70,9 +70,13 @@ class ValorControl {
     rellenar(dispositivo, beta1, gamma1, alpha1) {
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1);
         this.valores.push(valor);
-        this.ultimos4a.push(valor);
-        this.ultimos14a.push(valor);
-        this.ultimos24a.push(valor);
+        let valor1 = new Valor(dispositivo, beta1, gamma1, alpha1);
+        this.ultimos4a.push(valor1);
+
+        let valor2 = new Valor(dispositivo, beta1, gamma1, alpha1);
+        this.ultimos14a.push(valor2);
+        let valor3 = new Valor(dispositivo, beta1, gamma1, alpha1);
+        this.ultimos24a.push(valor3);
         this.grabarArchivo();
     }
     siguiente(dispositivo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
