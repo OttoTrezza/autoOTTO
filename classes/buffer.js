@@ -147,15 +147,15 @@ class ValorControl {
         }
     }
     getDispositivos() {
-        for (this.dispositivo of this.dispositivos) {
-            if (dispos.dispositivo == undefined) {
+        for (this.valor of this.dispositivos) {
+            if (this.dispositivos.valor == undefined) {
                 const dispofalso = {
                     dispositivo: 'Sin Dispositivo',
                     beta1: 0,
                     gamma1: 0,
                     alpha1: 0
                 };
-                dispos.push(dispofalso);
+                this.dispositivos.push(dispofalso);
             }
         }
 

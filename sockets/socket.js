@@ -155,17 +155,7 @@ exports.ElSarmiento = (cliente) => {
         cliente.to('Juegos').emit('ElSarmiento-nuevo', msg);
         cliente.emit('ElSarmiento-nuevo', msg);
         let dispos = valorControl.getDispositivos();
-        for (dispos.dispositivo of dispos) {
-            if (dispos.dispositivo == undefined) {
-                const dispofalso = {
-                    dispositivo: 'Sin Dispositivo',
-                    beta1: 0,
-                    gamma1: 0,
-                    alpha1: 0
-                };
-                dispos.push(dispofalso);
-            }
-        }
+
         let va0 = valorControl.getUltimoValor(dispos[0]);
         const paya = {
             de: dispos[0].dispositivo,
