@@ -32,7 +32,7 @@ class ValorControl {
         this.ultimo = 0;
         this.hoy = new Date().getDay();
         this.valores = [];
-        this.dispositivos = [];
+        this.dispositivos = {};
         this.valor = {};
         this.ultimos4a = [];
         this.ultimos14a = [];
@@ -52,7 +52,7 @@ class ValorControl {
         this.ultimo = data.ultimo;
         this.dispositivos = data.dispositivos;
         this.valores = data.valores;
-        this.valor = data.valores[0];
+        this.valor = data.valor;
         this.ultimos4a = data.ultimos4a;
         this.ultimos14a = data.ultimos14a;
         this.ultimos2a4 = data.ultimos24a;
@@ -76,7 +76,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
-
+        this.dispositivos.push(dispositivo);
         //  let valoreslis1 = this.valores.find(valoreslis1 => valoreslis1.dispositivo === dispositivo);
 
         console.log('DISPOSITIVOS', this.dispositivos);
@@ -100,7 +100,6 @@ class ValorControl {
         // let rotationrategammaValor = this.getUltimoValor.rotationrategamma;
         // let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
         let atenderValor = new Valor(dispositivor, beta1Valor, gamma1Valor, alpha1Valor);
-
         this.ultimos4a.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14a.unshift(atenderValor);
         this.ultimos24a.unshift(atenderValor);
