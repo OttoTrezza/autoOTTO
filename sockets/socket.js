@@ -168,48 +168,48 @@ exports.ElSarmiento = (cliente) => {
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
 
-        //  if (!valorControl.getUltimoValor(dispos.dispositivo)) {
+        // //  if (!valorControl.getUltimoValor(dispos.dispositivo)) {
 
-        const paya1 = {
-            de: 'Sin datos',
-            sala: 'Juegos',
-            beta1: 0,
-            gamma1: 0,
-            alpha1: 0
-        };
-        // } else {
-        // let va1 = valorControl.getUltimoValor(dispos.dispositivo);
         // const paya1 = {
-        //     de: va1.dispositivo,
+        //     de: 'Sin datos',
         //     sala: 'Juegos',
-        //     beta1: va1.beta1,
-        //     gamma1: va1.gamma1,
-        //     alpha1: va1.alpha1
+        //     beta1: 0,
+        //     gamma1: 0,
+        //     alpha1: 0
         // };
+        // // } else {
+        // // let va1 = valorControl.getUltimoValor(dispos.dispositivo);
+        // // const paya1 = {
+        // //     de: va1.dispositivo,
+        // //     sala: 'Juegos',
+        // //     beta1: va1.beta1,
+        // //     gamma1: va1.gamma1,
+        // //     alpha1: va1.alpha1
+        // // };
 
-        cliente.to('Juegos').emit('Dispo2', paya1);
-        cliente.emit('Dispo2', paya1);
+        // cliente.to('Juegos').emit('Dispo2', paya1);
+        // cliente.emit('Dispo2', paya1);
 
-        // if (!valorControl.getUltimoValor(dispos.dispositivo)) {
+        // // if (!valorControl.getUltimoValor(dispos.dispositivo)) {
 
-        const paya2 = {
-            de: 'Sin datos',
-            sala: 'Juegos',
-            beta1: 0,
-            gamma1: 0,
-            alpha1: 0
-        };
-        // } else {
-        //     let va2 = valorControl.getUltimoValor(dispos.dispositivo);
-        //     const paya2 = {
-        //         de: va2.dispositivo,
-        //         sala: 'Juegos',
-        //         beta1: va2.beta1,
-        //         gamma1: va2.gamma1,
-        //         alpha1: va2.alpha1
-        //     };
-        cliente.to('Juegos').emit('Dispo3', paya2);
-        cliente.emit('Dispo3', paya2);
+        // const paya2 = {
+        //     de: 'Sin datos',
+        //     sala: 'Juegos',
+        //     beta1: 0,
+        //     gamma1: 0,
+        //     alpha1: 0
+        // };
+        // // } else {
+        // //     let va2 = valorControl.getUltimoValor(dispos.dispositivo);
+        // //     const paya2 = {
+        // //         de: va2.dispositivo,
+        // //         sala: 'Juegos',
+        // //         beta1: va2.beta1,
+        // //         gamma1: va2.gamma1,
+        // //         alpha1: va2.alpha1
+        // //     };
+        // cliente.to('Juegos').emit('Dispo3', paya2);
+        // cliente.emit('Dispo3', paya2);
 
         console.log(payload.de, 'ha enviado esto', msg);
         let codEv = valorControl.getCodigoEvento();
