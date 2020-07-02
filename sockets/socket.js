@@ -152,16 +152,10 @@ exports.ElSarmiento = (cliente) => {
                 // rotationrategamma1: Sarmiento.rotationrategamma1,
                 // rotationratealpha1: Sarmiento.rotationratealpha1,
         };
-        // msg1 = {
-        //     de: payload.de,
-        //     cuerpo: Sarmiento.beta1 + '*' + Sarmiento.gamma1 + '*' + Sarmiento.alpha1,
-        //     img: ''
-        // };
-        // cliente.emit('mensaje-nuevo-auto', msg1);
         cliente.to('Juegos').emit('ElSarmiento-nuevo', msg);
         cliente.emit('ElSarmiento-nuevo', msg);
-        let dispos = valorControl.getDispositivos();
 
+        let dispos = valorControl.getDispositivos();
         let va0 = valorControl.getUltimoValor(payload.de);
         const paya = {
             de: va0.dispositivo,
@@ -173,7 +167,7 @@ exports.ElSarmiento = (cliente) => {
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
 
-        if (valorControl.getUltimoValor(dispos[1]) === undefined) {
+        if (!valorControl.getUltimoValor(dispos[1])) {
 
             const paya1 = {
                 de: 'Sin datos',
@@ -183,64 +177,69 @@ exports.ElSarmiento = (cliente) => {
                 alpha1: 0
             };
         } else {
+            let va1 = valorControl.getUltimoValor(dispos[1]);
             const paya1 = {
-                de: va0.dispositivo,
+                de: va1.dispositivo,
                 sala: 'Juegos',
-                beta1: va0.beta1,
-                gamma1: va0.gamma1,
-                alpha1: va0.alpha1
+                beta1: va1.beta1,
+                gamma1: va1.gamma1,
+                alpha1: va1.alpha1
             };
+
+            cliente.to('Juegos').emit('Dispo2', paya1);
+            cliente.emit('Dispo2', paya1);
+
+            if (!valorControl.getUltimoValor(dispos[2])) {
+
+                const paya2 = {
+                    de: 'Sin datos',
+                    sala: 'Juegos',
+                    beta1: 0,
+                    gamma1: 0,
+                    alpha1: 0
+                };
+            } else {
+                let va2 = valorControl.getUltimoValor(dispos[2]);
+                const paya2 = {
+                    de: va2.dispositivo,
+                    sala: 'Juegos',
+                    beta1: va2.beta1,
+                    gamma1: va2.gamma1,
+                    alpha1: va2.alpha1
+                };
+                cliente.to('Juegos').emit('Dispo3', paya2);
+                cliente.emit('Dispo3', paya2);
+
+                console.log(payload.de, 'ha enviado esto', msg);
+                let codEv = valorControl.getCodigoEvento();
+
+                if (codEv == 1) {
+                    const pay = {
+                        de: payload.de,
+                        cuerpo: 'Movimiento-1',
+                        img: ''
+                    };
+                    cliente.to(payload.sala).emit('mensaje-auto', pay);
+                    cliente.emit('mensaje-auto', pay);
+                    // cliente.emit('mensaje-auto', pay);
+                    console.log('adentroo enviado', codEv);
+                }
+
+                if (codEv == 2) {
+                    const pay = {
+                        de: payload.de,
+                        cuerpo: 'sin magicMoves',
+                        img: ''
+                    };
+                    cliente.to(payload.sala).emit('mensaje-auto', pay);
+                    cliente.emit('mensaje-auto', pay);
+                }
+                //  console.log(payload.de, 'ha enviado esto', msg1);
+                callback(msg);
+
+            }
+
         }
-        cliente.to('Juegos').emit('Dispo2', paya1);
-        cliente.emit('Dispo2', paya1);
-
-        if (valorControl.getUltimoValor(dispos[2]) === undefined) {
-
-            const paya2 = {
-                de: 'Sin datos',
-                sala: 'Juegos',
-                beta1: 0,
-                gamma1: 0,
-                alpha1: 0
-            };
-        } else {
-            const paya2 = {
-                de: va2.dispositivo,
-                sala: 'Juegos',
-                beta1: va2.beta1,
-                gamma1: va2.gamma1,
-                alpha1: va2.alpha1
-            };
-        }
-        cliente.to('Juegos').emit('Dispo3', paya2);
-        cliente.emit('Dispo3', paya2);
-
-        console.log(payload.de, 'ha enviado esto', msg);
-        let codEv = valorControl.getCodigoEvento();
-
-        if (codEv == 1) {
-            const pay = {
-                de: payload.de,
-                cuerpo: 'Movimiento-1',
-                img: ''
-            };
-            cliente.to(payload.sala).emit('mensaje-auto', pay);
-            cliente.emit('mensaje-auto', pay);
-            // cliente.emit('mensaje-auto', pay);
-            console.log('adentroo enviado', codEv);
-        }
-
-        if (codEv == 2) {
-            const pay = {
-                de: payload.de,
-                cuerpo: 'sin magicMoves',
-                img: ''
-            };
-            cliente.to(payload.sala).emit('mensaje-auto', pay);
-            cliente.emit('mensaje-auto', pay);
-        }
-        //  console.log(payload.de, 'ha enviado esto', msg1);
-        callback(msg);
     });
 };
 
