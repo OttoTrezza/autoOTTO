@@ -101,23 +101,23 @@ class ValorControl {
         // let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
         let atenderValor = new Valor(dispositivor, beta1Valor, gamma1Valor, alpha1Valor);
 
-        this.ultimos4a.dispositivo.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
-        this.ultimos14a.dispositivo.unshift(atenderValor);
-        this.ultimos24a.dispositivo.unshift(atenderValor);
-        if (this.ultimos4a.dispositivo.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4a.dispositivo.splice(-1, 1);
+        this.ultimos4a.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
+        this.ultimos14a.unshift(atenderValor);
+        this.ultimos24a.unshift(atenderValor);
+        if (this.ultimos4a.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4a.splice(-1, 1);
         }
-        if (this.ultimos14a.dispositivo.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.ultimos14a.dispositivo.splice(-1, 1);
+        if (this.ultimos14a.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+            this.ultimos14a.splice(-1, 1);
         }
-        if (this.ultimos24a.dispositivo.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-            this.ultimos24a.dispositivo.splice(-1, 1);
+        if (this.ultimos24a.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+            this.ultimos24a.splice(-1, 1);
         }
         // console.log('Ultimos 4');
-        console.log(this.ultimos4a.dispositivo);
+        console.log(this.ultimos4a);
         this.grabarArchivo();
         // return atenderValor;
-        this.analisisUltimos24(this.ultimos24a.dispositivo);
+        this.analisisUltimos24(this.ultimos24a);
 
     }
 
