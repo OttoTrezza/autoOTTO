@@ -146,18 +146,22 @@ class ValorControl {
             }
         }
     }
-    getDispositivos() {
-        for (this.valor of this.dispositivos) {
-            if (this.dispositivos.valor == undefined) {
-                const dispofalso = {
-                    dispositivo: 'Sin Dispositivo',
-                    beta1: 0,
-                    gamma1: 0,
-                    alpha1: 0
-                };
+    getDispositivos(cuantos) {
+
+
+        if (this.dispositivos.length < cuantos) {
+            const dispofalso = {
+                dispositivo: 'Sin Dispositivo',
+                beta1: 0,
+                gamma1: 0,
+                alpha1: 0
+            };
+            for (i = 1; i < cuantos; i++) {
                 this.dispositivos.push(dispofalso);
             }
+
         }
+
 
         return this.dispositivos;
     }
