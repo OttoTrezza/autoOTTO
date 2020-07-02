@@ -66,7 +66,7 @@ class ValorControl {
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
 
-        if (this.getDispositivos().includes(valor.dispositivo || '')) {
+        if (this.getDispositivos() == undefined) {
             this.dispositivos.push(valor);
         }
 
