@@ -69,9 +69,7 @@ class ValorControl {
         if (this.getDispositivos().includes(dispositivo) || this.getDispositivos() !== undefined) {
             this.dispositivos.push(valor);
         }
-        // if (this.dispositivos.contains(!dispositivo)) {
-        //     this.dispositivos.push(dispositivo);
-        // }
+
         this.valor = { dispositivo, beta1, gamma1, alpha1 };
         this.grabarArchivo();
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
