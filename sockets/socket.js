@@ -47,7 +47,7 @@ exports.entrarChat = (cliente) => {
         }
 
     });
-    if (valorControl.getDispositivos().length < 4) {
+    if (valorControl.getDispositivos() == undefined) {
         valorControl.rellenar('Sin Dispositivo', 0, 0, 0);
         valorControl.rellenar('Sin Dispositivo', 0, 0, 0);
         valorControl.rellenar('Sin Dispositivo', 0, 0, 0);
