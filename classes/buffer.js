@@ -60,11 +60,14 @@ class ValorControl {
     siguiente(dispositivo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
-        //  this.dispositivos.push(valor.dispositivo);
-        //  let dispos = this.getDispositivos();
         this.valores.push(valor);
 
-
+        if (dispositivo.exists(this.getDispositivos())) {
+            this.dispositivos.push(dispositivos);
+        }
+        // if (this.dispositivos.contains(!dispositivo)) {
+        //     this.dispositivos.push(dispositivo);
+        // }
         this.valor = { dispositivo, beta1, gamma1, alpha1 };
         this.grabarArchivo();
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
@@ -109,14 +112,14 @@ class ValorControl {
         }
     }
     analisisUltimos24(ultimos24) {
-        if (ultimos24[3] == undefined) {
-            ultimos24[3] = '0';
+        if (ultimos24[5] == undefined) {
+            ultimos24[5] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
 
         let betasaaa0 = ultimos24[0].beta1;
-        let betasaaa1 = ultimos24[3].beta1;
+        let betasaaa1 = ultimos24[5].beta1;
         let betasa0 = parseInt(betasaaa0);
         let betasa1 = parseInt(betasaaa1);
         //  let vala = parseInt(valuer);
@@ -145,14 +148,8 @@ class ValorControl {
     }
     getDispositivos() {
 
-        let valoreslist = this.valores.dispositivo.filter(valoresList => valoresList.dispositivo !== 'sin nombre');
-        let i;
-        for (valoreslist of this.valores) {
-            if (valoreslis.dispositivo !== dispositivo) {
-                return this.dispositivo;
-            }
 
-        }
+        return this.dispositivos;
     }
     getThisDispositivo() {
 
@@ -180,6 +177,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
+        this.dispositivos = {};
         this.ultimos4 = [];
         this.ultimos4a = [];
         this.ultimos14 = [];
@@ -197,6 +195,7 @@ class ValorControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             valores: this.valores,
+            dispositivos: this.dispositivos,
             ultimos4: this.ultimos4,
             ultimos4a: this.ultimos4a,
             ultimos14: this.ultimos14,
