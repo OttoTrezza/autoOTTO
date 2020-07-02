@@ -158,7 +158,7 @@ exports.ElSarmiento = (cliente) => {
 
         let va0 = valorControl.getUltimoValor(dispos).forEach(dispositivo, dispos);
         const paya = {
-            de: dispos[0],
+            de: dispos,
             sala: 'Juegos',
             beta1: va0.beta1,
             gamma1: va0.gamma1,
