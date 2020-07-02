@@ -172,31 +172,49 @@ exports.ElSarmiento = (cliente) => {
         };
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
-        // if (available) {
-        //     let va1 = valorControl.getUltimoValor(dispos[1]);
-        //     const paya1 = {
-        //         de: dispos[1],
-        //         sala: 'Juegos',
-        //         beta1: va1.beta1,
-        //         gamma1: va1.gamma1,
-        //         alpha1: va1.alpha1
-        //     };
-        //     cliente.to('Juegos').emit('Dispo2', paya1);
-        //     cliente.emit('Dispo2', paya1);
-        // }
-        // if (available) {
-        //     let va2 = valorControl.getUltimoValor(dispos[2]);
-        //     const paya2 = {
-        //         de: dispos[2],
-        //         sala: 'Juegos',
-        //         beta1: va2.beta1,
-        //         gamma1: va2.gamma1,
-        //         alpha1: va2.alpha1
-        //     };
-        //     cliente.to('Juegos').emit('Dispo3', paya2);
-        //     cliente.emit('Dispo3', paya2);
-        // }
-        // cliente.emit('ElSarmiento1-nuevo', msg1);
+
+        if (valorControl.getUltimoValor(dispos[1]) === undefined) {
+
+            const paya1 = {
+                de: 'Sin datos',
+                sala: 'Juegos',
+                beta1: 0,
+                gamma1: 0,
+                alpha1: 0
+            };
+        } else {
+            const paya1 = {
+                de: va0.dispositivo,
+                sala: 'Juegos',
+                beta1: va0.beta1,
+                gamma1: va0.gamma1,
+                alpha1: va0.alpha1
+            };
+        }
+        cliente.to('Juegos').emit('Dispo2', paya1);
+        cliente.emit('Dispo2', paya1);
+
+        if (valorControl.getUltimoValor(dispos[2]) === undefined) {
+
+            const paya2 = {
+                de: 'Sin datos',
+                sala: 'Juegos',
+                beta1: 0,
+                gamma1: 0,
+                alpha1: 0
+            };
+        } else {
+            const paya2 = {
+                de: va2.dispositivo,
+                sala: 'Juegos',
+                beta1: va2.beta1,
+                gamma1: va2.gamma1,
+                alpha1: va2.alpha1
+            };
+        }
+        cliente.to('Juegos').emit('Dispo3', paya2);
+        cliente.emit('Dispo3', paya2);
+
         console.log(payload.de, 'ha enviado esto', msg);
         let codEv = valorControl.getCodigoEvento();
 
