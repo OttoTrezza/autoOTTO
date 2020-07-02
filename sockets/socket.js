@@ -167,7 +167,7 @@ exports.ElSarmiento = (cliente) => {
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
 
-        if (!valorControl.getUltimoValor(dispos[1].dispositivo)) {
+        if (!valorControl.getUltimoValor(dispos.dispositivo)) {
 
             const paya1 = {
                 de: 'Sin datos',
@@ -177,7 +177,7 @@ exports.ElSarmiento = (cliente) => {
                 alpha1: 0
             };
         } else {
-            let va1 = valorControl.getUltimoValor(dispos[1].dispositivo);
+            let va1 = valorControl.getUltimoValor(dispos.dispositivo);
             const paya1 = {
                 de: va1.dispositivo,
                 sala: 'Juegos',
@@ -189,7 +189,7 @@ exports.ElSarmiento = (cliente) => {
             cliente.to('Juegos').emit('Dispo2', paya1);
             cliente.emit('Dispo2', paya1);
 
-            if (!valorControl.getUltimoValor(dispos[2].dispositivo)) {
+            if (!valorControl.getUltimoValor(dispos.dispositivo)) {
 
                 const paya2 = {
                     de: 'Sin datos',
@@ -199,7 +199,7 @@ exports.ElSarmiento = (cliente) => {
                     alpha1: 0
                 };
             } else {
-                let va2 = valorControl.getUltimoValor(dispos[2].dispositivo);
+                let va2 = valorControl.getUltimoValor(dispos.dispositivo);
                 const paya2 = {
                     de: va2.dispositivo,
                     sala: 'Juegos',
