@@ -33,11 +33,14 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.dispositivos = [];
-        this.valor = {};
-        this.ultimos4 = [];
-        this.ultimos14 = [];
-        this.ultimos24 = [];
-        this.codigoEvento = 2;
+
+        this.dispositivo = [
+            this.valor = {},
+            this.ultimos4 = [],
+            this.ultimos14 = [],
+            this.ultimos24 = [],
+            this.codigoEvento = 2
+        ];
 
         let data = require('./data/data.json');
         console.log('data', data);
@@ -46,14 +49,14 @@ class ValorControl {
         this.ultimo = data.ultimo;
         this.dispositivos = data.dispositivos;
         this.valores = data.valores;
-        this.valor = data.valores[0];
-        this.ultimos4 = data.ultimos4;
-        this.ultimos14 = data.ultimos14;
-        this.ultimos24 = data.ultimos24;
-        this.codigoEvento = data.codigoEvento;
-        // } else {
-        //     this.reiniciarConteo();
-        // }
+        this.dispositivo = [
+            this.valor = data.valores[0],
+            this.ultimos4 = data.ultimos4,
+            this.ultimos14 = data.ultimos14,
+            this.ultimos24 = data.ultimos24,
+            this.codigoEvento = data.codigoEvento
+        ];
+
     }
 
     rellenar(dispositivo, beta1, gamma1, alpha1) {
@@ -65,23 +68,13 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
+        this.dispositivos.push(valor);
+        //  let valoreslis1 = this.valores.find(valoreslis1 => valoreslis1.dispositivo === dispositivo);
 
-        let valoreslis1 = this.dispositivos.find(valoreslis1 => valoreslis1.dispositivo === dispositivo);
-        for (valoreslis1 of this.dispositivos) {
-            if (valoreslis1.dispositivo !== dispositivo) {
-                this.dispositivos.push(valor);
-                this.grabarArchivo();
-                console.log('DISPOSITIVOS', this.dispositivos);
-            }
-        }
-
-
-        this.grabarArchivo();
         console.log('DISPOSITIVOS', this.dispositivos);
-
-
         this.valor = { dispositivo, beta1, gamma1, alpha1 };
         this.grabarArchivo();
+
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
@@ -102,23 +95,23 @@ class ValorControl {
         let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo === dispositivo);
         for (valoreslis of this.valores) {
             if (valoreslis.dispositivo === dispositivo) {
-                this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
-                this.ultimos14.unshift(atenderValor);
-                this.ultimos24.unshift(atenderValor);
-                if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-                    this.ultimos4.splice(-1, 1);
+                this.dispositivo.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
+                this.dispositivo.ultimos14.unshift(atenderValor);
+                this.dispositivo.ultimos24.unshift(atenderValor);
+                if (this.dispositivo.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+                    this.dispositivo.ultimos4.splice(-1, 1);
                 }
-                if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-                    this.ultimos14.splice(-1, 1);
+                if (this.dispositivo.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+                    this.dispositivo.ultimos14.splice(-1, 1);
                 }
-                if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-                    this.ultimos24.splice(-1, 1);
+                if (this.dispositivo.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+                    this.dispositivo.ultimos24.splice(-1, 1);
                 }
                 // console.log('Ultimos 4');
-                console.log(this.ultimos4);
+                console.log(this.dispositivo.ultimos4);
                 this.grabarArchivo();
                 // return atenderValor;
-                this.analisisUltimos24(this.ultimos24);
+                this.analisisUltimos24(this.dispositivo.ultimos24);
                 break;
             }
         }
