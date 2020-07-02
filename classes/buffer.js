@@ -68,6 +68,8 @@ class ValorControl {
 
         if (this.getDispositivos() !== undefined) {
             this.dispositivos.push(valor);
+            this.grabarArchivo();
+            console.log('DISPOSITIVOS', this.dispositivos);
         }
 
         this.valor = { dispositivo, beta1, gamma1, alpha1 };
