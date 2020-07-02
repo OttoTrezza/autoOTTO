@@ -147,7 +147,17 @@ class ValorControl {
         }
     }
     getDispositivos() {
-
+        for (this.dispositivo of this.dispositivos) {
+            if (dispos.dispositivo == undefined) {
+                const dispofalso = {
+                    dispositivo: 'Sin Dispositivo',
+                    beta1: 0,
+                    gamma1: 0,
+                    alpha1: 0
+                };
+                dispos.push(dispofalso);
+            }
+        }
 
         return this.dispositivos;
     }
@@ -177,7 +187,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.dispositivos = {};
+        this.dispositivos = [];
         this.ultimos4 = [];
         this.ultimos4a = [];
         this.ultimos14 = [];
