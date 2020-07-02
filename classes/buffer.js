@@ -76,7 +76,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
-        this.dispositivos.push(dispositivo);
+        this.dispositivos = +dispositivo;
         //  let valoreslis1 = this.valores.find(valoreslis1 => valoreslis1.dispositivo === dispositivo);
 
         console.log('DISPOSITIVOS', this.dispositivos);
