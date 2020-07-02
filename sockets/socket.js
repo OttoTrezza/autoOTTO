@@ -154,7 +154,7 @@ exports.ElSarmiento = (cliente) => {
         // cliente.emit('mensaje-nuevo-auto', msg1);
         cliente.to('Juegos').emit('ElSarmiento-nuevo', msg);
         cliente.emit('ElSarmiento-nuevo', msg);
-
+        let dispos = valorControl.getDispositivos();
         let va0 = valorControl.getUltimoValor(dispos[0]);
         const paya = {
             de: dispos[0],
