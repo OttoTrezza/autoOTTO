@@ -33,14 +33,11 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.dispositivos = [];
-        this.valor = {};
-        this.dispositivo = [
-
-            this.ultimos4 = [],
-            this.ultimos14 = [],
-            this.ultimos24 = [],
-            this.codigoEvento = 2
-        ];
+        this.valor = [dispositivo = {}];
+        this.ultimos4 = [dispositivo = []];
+        this.ultimos14 = [dispositivo = []];
+        this.ultimos24 = [dispositivo = []];
+        this.codigoEvento = 2;
 
         let data = require('./data/data.json');
         console.log('data', data);
@@ -50,13 +47,11 @@ class ValorControl {
         this.dispositivos = data.dispositivos;
         this.valores = data.valores;
         this.valor = data.valores[0];
-        this.dispositivo = [
+        this.ultimos4.dispositivo = data.ultimos4.dispositivo;
+        this.ultimos14.dispositivo = data.ultimos14.dispositivo;
+        this.ultimos24.dispositivo = data.ultimos24.dispositivo;
+        this.codigoEvento = data.codigoEvento;
 
-            this.ultimos4 = data.ultimos4,
-            this.ultimos14 = data.ultimos14,
-            this.ultimos24 = data.ultimos24,
-            this.codigoEvento = data.codigoEvento
-        ];
 
     }
 
@@ -69,17 +64,17 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
-        this.dispositivos.push(valor);
+
         //  let valoreslis1 = this.valores.find(valoreslis1 => valoreslis1.dispositivo === dispositivo);
 
         console.log('DISPOSITIVOS', this.dispositivos);
-        this.valor = { dispositivo, beta1, gamma1, alpha1 };
+        this.valor.dispositivo = { dispositivo, beta1, gamma1, alpha1 };
         this.grabarArchivo();
 
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-
+        let dispositivor = this.getUltimoValor(dispositivo).dispositivo;
         let beta1Valor = this.getUltimoValor(dispositivo).beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
         let gamma1Valor = this.getUltimoValor(dispositivo).gamma1;
         let alpha1Valor = this.getUltimoValor(dispositivo).alpha1;
@@ -92,31 +87,29 @@ class ValorControl {
         // let rotationratebetaValor = this.getUltimoValor.rotationratebeta;
         // let rotationrategammaValor = this.getUltimoValor.rotationrategamma;
         // let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
-        let atenderValor = new Valor(dispositivo, beta1Valor, gamma1Valor, alpha1Valor);
-        let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo === dispositivo);
-        for (valoreslis of this.valores) {
-            if (valoreslis.dispositivo === dispositivo) {
-                this.dispositivo.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
-                this.dispositivo.ultimos14.unshift(atenderValor);
-                this.dispositivo.ultimos24.unshift(atenderValor);
-                if (this.dispositivo.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-                    this.dispositivo.ultimos4.splice(-1, 1);
-                }
-                if (this.dispositivo.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-                    this.dispositivo.ultimos14.splice(-1, 1);
-                }
-                if (this.dispositivo.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-                    this.dispositivo.ultimos24.splice(-1, 1);
-                }
-                // console.log('Ultimos 4');
-                console.log(this.dispositivo.ultimos4);
-                this.grabarArchivo();
-                // return atenderValor;
-                this.analisisUltimos24(this.dispositivo.ultimos24);
-                break;
-            }
+        let atenderValor = new Valor(dispositivor, beta1Valor, gamma1Valor, alpha1Valor);
+
+        this.ultimos4.dispositivo.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
+        this.ultimos14.dispositivo.unshift(atenderValor);
+        this.ultimos24.dispositivo.unshift(atenderValor);
+        if (this.ultimos4.dispositivo.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4.dispositivo.splice(-1, 1);
         }
+        if (this.ultimos14.dispositivo.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+            this.ultimos14.dispositivo.splice(-1, 1);
+        }
+        if (this.ultimos24.dispositivo.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+            this.ultimos24.dispositivo.splice(-1, 1);
+        }
+        // console.log('Ultimos 4');
+        console.log(this.ultimos4.dispositivo);
+        this.grabarArchivo();
+        // return atenderValor;
+        this.analisisUltimos24(this.ultimos24.dispositivo);
+
     }
+
+
     analisisUltimos24(ultimos24) {
         if (ultimos24[5] == undefined) {
             ultimos24[5] = '0';
@@ -165,17 +158,17 @@ class ValorControl {
         return this.codigoEvento;
     }
 
-    getUltimos4() {
+    getUltimos4(dispositivo) {
 
-        return this.ultimos4;
+        return this.ultimos4.dispositivo;
     }
-    getUltimos14() {
+    getUltimos14(dispositivo) {
 
-        return this.ultimos14;
+        return this.ultimos14.dispositivo;
     }
-    getUltimos24() {
+    getUltimos24(dispositivo) {
 
-        return this.ultimos14;
+        return this.ultimos24.dispositivo;
     }
 
     reiniciarConteo() {
@@ -184,7 +177,6 @@ class ValorControl {
         this.valores = [];
         this.dispositivos = [];
         this.ultimos4 = [];
-        this.ultimos4a = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
         this.codigoEvento = 0;
@@ -201,10 +193,9 @@ class ValorControl {
             hoy: this.hoy,
             valores: this.valores,
             dispositivos: this.dispositivos,
-            ultimos4: this.ultimos4,
-            ultimos4a: this.ultimos4a,
-            ultimos14: this.ultimos14,
-            ultimos24: this.ultimos24,
+            ultimos4.dispositivo: this.ultimos4.dispositivo,
+            ultimos14.dispositivo: this.ultimos14.dispositivo,
+            ultimos24.dispositivo: this.ultimos24.dispositivo,
             codigoEvento: this.codigoEvento
         };
         let jsonDataString = JSON.stringify(jsonData);
