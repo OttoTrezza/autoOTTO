@@ -10,6 +10,7 @@ class Valor {
         this.beta1 = beta1;
         this.gamma1 = gamma1;
         this.alpha1 = alpha1;
+        this.posenLista = [0];
         // this.accelerationx = accelerationx;
         // this.accelerationy = accelerationy;
         // this.accelerationz = accelerationz;
@@ -55,14 +56,17 @@ class ValorControl {
         // }
     }
 
-
-
+    rellenar(dispositivo, beta1, gamma1, alpha1) {
+        let valor = new Valor(dispositivo, beta1, gamma1, alpha1);
+        this.valores.push(valor);
+        this.grabarArchivo();
+    }
     siguiente(dispositivo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
 
-        if (dispositivo.includes(this.getDispositivos())) {
+        if (this.getDispositivos().includes(dispositivo)) {
             this.dispositivos.push(valor);
         }
         // if (this.dispositivos.contains(!dispositivo)) {
