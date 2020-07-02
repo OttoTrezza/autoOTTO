@@ -156,7 +156,7 @@ exports.ElSarmiento = (cliente) => {
         cliente.emit('ElSarmiento-nuevo', msg);
         let dispos = valorControl.getDispositivos();
 
-        let va0 = valorControl.getUltimoValor(dispos[0]);
+        let va0 = valorControl.getUltimoValor(dispos).forEach(dispositivo, dispos);
         const paya = {
             de: dispos[0],
             sala: 'Juegos',
