@@ -66,11 +66,19 @@ class ValorControl {
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
 
-        if (this.getDispositivos() !== undefined) {
-            this.dispositivos.push(valor);
-            this.grabarArchivo();
-            console.log('DISPOSITIVOS', this.dispositivos);
+        let valoreslis1 = this.dispositivos.find(valoreslis1 => valoreslis1.dispositivo === dispositivo);
+        for (valoreslis1 of this.dispositivos) {
+            if (valoreslis1.dispositivo !== dispositivo) {
+                this.dispositivos.push(valor);
+                this.grabarArchivo();
+                console.log('DISPOSITIVOS', this.dispositivos);
+            }
         }
+
+
+        this.grabarArchivo();
+        console.log('DISPOSITIVOS', this.dispositivos);
+
 
         this.valor = { dispositivo, beta1, gamma1, alpha1 };
         this.grabarArchivo();
