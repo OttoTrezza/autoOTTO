@@ -145,16 +145,11 @@ class ValorControl {
     }
     getDispositivos() {
 
-        let valoreslis = this.valores.find(valor => valor.dispositivo);
+        let valoreslist = this.valores.dispositivo.filter(valoresList => valoresList.dispositivo !== 'sin nombre');
         let i;
-        for (valoreslis of this.valores) {
-            if (this.getDispositivos().contains(this.valor.dispositivo)) { // encontrar lista de dispositivos
-                i = i;
-                return this.dispositivos;
-            } else {
-                this.dispositivos[i] = this.valor.dispositivo;
-                i++;
-                return this.dispositivos;
+        for (valoreslist of this.valores) {
+            if (valoreslis.dispositivo !== dispositivo) {
+                return this.dispositivo;
             }
 
         }
