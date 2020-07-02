@@ -63,7 +63,7 @@ class ValorControl {
         this.valores.push(valor);
 
         if (dispositivo.includes(this.getDispositivos())) {
-            this.dispositivos.push(dispositivos);
+            this.dispositivos.push(valor);
         }
         // if (this.dispositivos.contains(!dispositivo)) {
         //     this.dispositivos.push(dispositivo);
