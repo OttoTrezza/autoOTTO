@@ -55,7 +55,7 @@ class ValorControl {
         this.valor = data.valor;
         this.ultimos4a = data.ultimos4a;
         this.ultimos14a = data.ultimos14a;
-        this.ultimos2a4 = data.ultimos24a;
+        this.ultimos24a = data.ultimos24a;
         this.ultimos4b = data.ultimos4b;
         this.ultimos14b = data.ultimos14b;
         this.ultimos24b = data.ultimos24b;
@@ -70,6 +70,9 @@ class ValorControl {
     rellenar(dispositivo, beta1, gamma1, alpha1) {
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1);
         this.valores.push(valor);
+        this.ultimos4a.push(valor);
+        this.ultimos14a.push(valor);
+        this.ultimos24a.push(valor);
         this.grabarArchivo();
     }
     siguiente(dispositivo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
