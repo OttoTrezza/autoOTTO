@@ -58,23 +58,24 @@ class ValorControl {
 
 
     // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
-    siguiente(pija1, dispo1, beta1, gamma1, alpha1) {
+    siguiente(pos1, dispo1, beta1, gamma1, alpha1) {
         this.ultimo = this.ultimo + 1;
-        this.pos1 = pija1; // si no es igual a ninguno de la lista, pos +1; 
-        if (pija1 === 0) {
+
+        if (pos1 == undefined) {
             this.posiciones = { 1: dispo1, 2: 'sin dispositivo', 3: 'sin dispositivo', 4: 'sin dispositivo' };
+            pos1 = 0;
             //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
         } else {
-            pija1 = pija1 + 1;
-            this.posiciones[pija1] = dispo1; // this.posiciones[1] = dispo;
-            console.log('this.posiciones1, pija', this.posiciones, pija1);
+            pos1 = pos1 + 1;
+            this.posiciones[pos1] = dispo1; // this.posiciones[1] = dispo;
+            console.log('this.posiciones1, pos1', this.posiciones, pos1);
             this.grabarArchivo();
         }
 
-        let valor = new Valor(pija1, dispo1, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
-        this.valor = { pija1, dispo1, beta1, gamma1, alpha1 };
+        this.valor = { pos1, dispo1, beta1, gamma1, alpha1 };
 
         this.grabarArchivo();
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
