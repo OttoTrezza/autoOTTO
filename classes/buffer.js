@@ -96,6 +96,7 @@ class ValorControl {
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(dispositivo, beta1Valor, gamma1Valor, alpha1Valor);
         this.ultimoValor = atenderValor;
+        console.log('atenderValor', atenderValor);
         this.ultimos4a.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14a.unshift(atenderValor);
         this.ultimos24a.unshift(atenderValor);
