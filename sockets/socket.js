@@ -520,7 +520,7 @@ exports.ElSarmiento = (cliente) => {
             cliente.emit('mensaje-auto', pay);
         }
         //  console.log(payload.de, 'ha enviado esto', msg1);
-        callback(msg);
+        callback(paya);
     });
 };
 
