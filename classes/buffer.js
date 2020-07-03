@@ -44,7 +44,6 @@ class ValorControl {
         this.valores = data.valores;
         this.valor = data.valores[0];
         this.ultimos4 = data.ultimos4;
-        this.ultimos4a = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
         this.codigoEvento = data.codigoEvento;
@@ -84,22 +83,18 @@ class ValorControl {
         let atenderValor = new Valor(beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
-        this.ultimos14.unshift(atenderValor);
-        this.ultimos24.unshift(atenderValor);
-
-        this.ultimos4a.unshift(atenderValor);
         if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4.splice(-1, 1);
         }
-        if (this.ultimos4a.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4a.splice(-1, 1);
-        }
+        this.ultimos14.unshift(atenderValor);
         if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
             this.ultimos14.splice(-1, 1);
         }
+        this.ultimos24.unshift(atenderValor);
         if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
             this.ultimos24.splice(-1, 1);
         }
+
         // console.log('Ultimos 4');
         console.log(this.ultimos4);
         this.grabarArchivo();
@@ -160,7 +155,6 @@ class ValorControl {
         this.ultimo = 0;
         this.valores = [];
         this.ultimos4 = [];
-        this.ultimos4a = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
         this.codigoEvento = 0;
@@ -177,7 +171,6 @@ class ValorControl {
             hoy: this.hoy,
             valores: this.valores,
             ultimos4: this.ultimos4,
-            ultimos4a: this.ultimos4a,
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
             codigoEvento: this.codigoEvento
