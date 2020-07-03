@@ -495,7 +495,7 @@ exports.ElSarmiento = (cliente) => {
         // cliente.to('Juegos').emit('Dispo3', paya2);
         // cliente.emit('Dispo3', paya2);
 
-        console.log(payload.de, 'ha enviado esto', msg);
+        console.log(payload.de, 'ha enviado esto', paya);
         let codEv = valorControl.getCodigoEvento();
 
         if (codEv == 1) {
