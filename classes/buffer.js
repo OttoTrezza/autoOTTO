@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = [];
+        this.posiciones = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -63,7 +63,9 @@ class ValorControl {
         if (this.posiciones == undefined) {
             this.posiciones[0] = dispo;
             console.log('this.posiciones', this.posiciones);
-        } else {
+        } else if (this.posiciones.length()) {
+            let nu = this.posiciones.length();
+            this.posiciones[nu + 1] = dispo;
             console.log('this.posiciones1', this.posiciones);
         }
 
@@ -171,7 +173,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = [];
+        this.posiciones = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
