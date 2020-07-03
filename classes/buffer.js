@@ -65,7 +65,7 @@ class ValorControl {
             console.log('this.posiciones', this.posiciones);
         } else {
 
-            this.posiciones[1] = dispo;
+            // this.posiciones[1] = dispo;
             console.log('this.posiciones1', this.posiciones);
         }
 
