@@ -63,10 +63,13 @@ class ValorControl {
         if (this.posiciones == undefined) {
             this.posiciones = { 1: dispo, 2: 'sin dispositivo', 3: 'sin dispositivo', 4: 'sin dispositivo' };
             console.log('this.posiciones', this.posiciones);
+            this.grabarArchivo();
+            pija = 0;
         } else {
-            let pija = 0;
-            this.posiciones[pija + 1] = dispo; // this.posiciones[1] = dispo;
+            let pija = 1;
+            this.posiciones[pija] = dispo; // this.posiciones[1] = dispo;
             console.log('this.posiciones1, pija', this.posiciones, pija);
+            this.grabarArchivo();
         }
 
         let valor = new Valor(this.pos, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
