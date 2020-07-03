@@ -5,12 +5,12 @@ const fs = require('fs');
 
 class Valor {
     constructor(pos1, dispo, beta1, gamma1, alpha1) { // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1
-
+        this.pos = pos1;
         this.dispo = dispo;
         this.beta1 = beta1;
         this.gamma1 = gamma1;
         this.alpha1 = alpha1;
-        this.pos = pos1;
+
         // this.accelerationx = accelerationx;
         // this.accelerationy = accelerationy;
         // this.accelerationz = accelerationz;
