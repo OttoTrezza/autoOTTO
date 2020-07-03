@@ -58,23 +58,23 @@ class ValorControl {
 
 
     // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
-    siguiente(pija, dispo, beta1, gamma1, alpha1) {
+    siguiente(pija1, dispo1, beta1, gamma1, alpha1) {
         this.ultimo = this.ultimo + 1;
-        this.pos = 0; // si no es igual a ninguno de la lista, pos +1; 
-        if (pija === 0) {
-            this.posiciones = { 1: dispo, 2: 'sin dispositivo', 3: 'sin dispositivo', 4: 'sin dispositivo' };
+        this.pos = pija1; // si no es igual a ninguno de la lista, pos +1; 
+        if (pija1 === 0) {
+            this.posiciones = { 1: dispo1, 2: 'sin dispositivo', 3: 'sin dispositivo', 4: 'sin dispositivo' };
             //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
         } else {
-            let pija = 1;
-            this.posiciones[pija] = dispo; // this.posiciones[1] = dispo;
-            console.log('this.posiciones1, pija', this.posiciones, pija);
+            pija1 = pija1 + 1;
+            this.posiciones[pija1] = dispo1; // this.posiciones[1] = dispo;
+            console.log('this.posiciones1, pija', this.posiciones, pija1);
             this.grabarArchivo();
         }
 
-        let valor = new Valor(this.pija, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(pija1, dispo1, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
-        this.valor = { dispo, beta1, gamma1, alpha1 };
+        this.valor = { pija1, dispo1, beta1, gamma1, alpha1 };
 
         this.grabarArchivo();
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
@@ -82,7 +82,7 @@ class ValorControl {
         }
         let dispoValor = this.getUltimoValor();
         console.log('dispoValor', dispoValor);
-        let nomre = dispoValor.dispo;
+        let nomre = dispoValor.dispo1;
         console.log('dispoValor.dispo', dispoValor.dispo);
         // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
         //  let dispoValor = this.getUltimoValor().dispo;

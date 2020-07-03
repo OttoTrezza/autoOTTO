@@ -117,11 +117,10 @@ exports.ElSarmiento = (cliente) => {
         const paya = {
             pos: va0.pos,
             de: va0.dispo,
-            sala: 'Juegos',
             beta1: va0.beta1,
             gamma1: va0.gamma1,
             alpha1: va0.alpha1,
-
+            sala: 'Juegos'
         };
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
