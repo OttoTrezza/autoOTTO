@@ -60,7 +60,7 @@ class ValorControl {
     siguiente(dispo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
         this.pos = 0; // si no es igual a ninguno de la lista, pos +1; 
-        if (this.posiciones.length === 0) {
+        if (this.posiciones === undefined) {
             this.posiciones.push(dispo);
             console.log('this.posiciones', this.posiciones);
         } else {
