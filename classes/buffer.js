@@ -1,11 +1,11 @@
 // **YO SIGO SIENDO SERVER**//
 
 const fs = require('fs');
+// , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1
 
 
 class Valor {
-    constructor(dispositivo, beta1, gamma1, alpha1) { // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1
-
+    constructor(dispositivo, beta1, gamma1, alpha1) {
         this.dispositivo = dispositivo;
         this.beta1 = beta1;
         this.gamma1 = gamma1;
@@ -47,28 +47,30 @@ class ValorControl {
 
         let data = require('./data/data.json');
         console.log('data', data);
+        if (data.hoy === this.hoy) {
+            this.ultimo = data.ultimo;
+            this.valores = data.valores;
+            this.valor = data.valor;
+            this.dispositivos = data.dispositivos;
+            this.ultimos4a = data.ultimos4a;
+            this.ultimos14a = data.ultimos14a;
+            this.ultimos24a = data.ultimos24a;
+            this.ultimos4b = data.ultimos4b;
+            this.ultimos14b = data.ultimos14b;
+            this.ultimos24b = data.ultimos24b;
+            this.ultimos4c = data.ultimos4c;
+            this.ultimos14c = data.ultimos14c;
+            this.ultimos24c = data.ultimos24c;
+            this.codigoEvento = data.codigoEvento;
+        } else {
+            this.reiniciarConteo();
+        }
 
-        // if (data.hoy === this.hoy) {
-        this.ultimo = data.ultimo;
-
-        this.valores = data.valores;
-        this.valor = data.valor;
-        this.dispositivos = data.dispositivos;
-        this.ultimos4a = data.ultimos4a;
-        this.ultimos14a = data.ultimos14a;
-        this.ultimos24a = data.ultimos24a;
-        this.ultimos4b = data.ultimos4b;
-        this.ultimos14b = data.ultimos14b;
-        this.ultimos24b = data.ultimos24b;
-        this.ultimos4c = data.ultimos4c;
-        this.ultimos14c = data.ultimos14c;
-        this.ultimos24c = data.ultimos24c;
-        this.codigoEvento = data.codigoEvento;
     }
 
     siguiente(dispositivo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
-        let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(this.ultimo, dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
         this.dispositivos = dispositivo;
         //  let valoreslis1 = this.valores.find(valoreslis1 => valoreslis1.dispositivo === dispositivo);
@@ -93,6 +95,7 @@ class ValorControl {
         // let rotationratebetaValor = this.getUltimoValor.rotationratebeta;
         // let rotationrategammaValor = this.getUltimoValor.rotationrategamma;
         // let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
+        this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(dispositivor, beta1Valor, gamma1Valor, alpha1Valor);
         this.ultimos4a.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14a.unshift(atenderValor);
@@ -116,32 +119,32 @@ class ValorControl {
 
 
     analisisUltimos24(ultimos24a) {
-        if (ultimos24a[5] == undefined) {
-            ultimos24a[5] = '0';
-            this.codigoEvento = 0;
+            if (ultimos24a[5] == undefined) {
+                ultimos24a[5] = '0';
+                this.codigoEvento = 0;
+                return this.codigoEvento;
+            }
+
+            let betasaaa0 = ultimos24a[0].beta1;
+            let betasaaa1 = ultimos24a[5].beta1;
+            let betasa0 = parseInt(betasaaa0);
+            let betasa1 = parseInt(betasaaa1);
+            //  let vala = parseInt(valuer);
+            if (betasa0 > betasa1) {
+                console.log('es mayor');
+                this.codigoEvento = 1;
+                return this.codigoEvento;
+            }
+            // if (ultimos4[0] > ultimos4[4]) {
+            //     console.log('es mayor aaaaaaaaaaaaa');
+            //     this.codigoEvento = 1;
+            //     return;
+            // }
+            this.codigoEvento = 2;
             return this.codigoEvento;
+
         }
-
-        let betasaaa0 = ultimos24a[0].beta1;
-        let betasaaa1 = ultimos24a[5].beta1;
-        let betasa0 = parseInt(betasaaa0);
-        let betasa1 = parseInt(betasaaa1);
-        //  let vala = parseInt(valuer);
-        if (betasa0 > betasa1) {
-            console.log('es mayor');
-            this.codigoEvento = 1;
-            return this.codigoEvento;
-        }
-        // if (ultimos4[0] > ultimos4[4]) {
-        //     console.log('es mayor aaaaaaaaaaaaa');
-        //     this.codigoEvento = 1;
-        //     return;
-        // }
-        this.codigoEvento = 2;
-        return this.codigoEvento;
-
-    }
-
+        // el ultimo ticket por dispositivo
     getUltimoValor(dispositivo) {
         let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo === dispositivo);
         for (valoreslis of this.valores) {
@@ -207,6 +210,12 @@ class ValorControl {
             ultimos4a: this.ultimos4a,
             ultimos14a: this.ultimos14a,
             ultimos24a: this.ultimos24a,
+            ultimos4b: this.ultimos4b,
+            ultimos14b: this.ultimos14b,
+            ultimos24b: this.ultimos24b,
+            ultimos4c: this.ultimos4c,
+            ultimos14c: this.ultimos14c,
+            ultimos24c: this.ultimos24c,
             codigoEvento: this.codigoEvento
         };
         let jsonDataString = JSON.stringify(jsonData);
