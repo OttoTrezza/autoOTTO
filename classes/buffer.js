@@ -71,9 +71,9 @@ class ValorControl {
             pos1 = 0;
             //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
-        } else {
+        } else if (!this.posiciones.includes(pos1)) {
             pos1 = pos1 + 1;
-            this.posiciones.pos1 = dispo1; // this.posiciones[1] = dispo;
+            this.posiciones[pos1] = dispo1; // this.posiciones[1] = dispo;
             console.log('this.posiciones1, pos1', this.posiciones, pos1);
             this.grabarArchivo();
         }
