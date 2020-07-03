@@ -161,7 +161,7 @@ class ValorControl {
         return this.ultimos4;
     }
     getUltimos4Dispo(pos) {
-        return this.ultimos4.filter(valor => valor.pos1 === pos);
+        return this.ultimos4.filter(valor => valor.pos1 === 0);
     }
     getUltimos14() {
 
