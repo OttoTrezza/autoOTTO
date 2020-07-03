@@ -61,7 +61,7 @@ class ValorControl {
     siguiente(pos1, dispo1, beta1, gamma1, alpha1) {
         this.ultimo = this.ultimo + 1;
 
-        if (pos1 == undefined) {
+        if (pos1 === 0) {
             this.posiciones = {
                 1: dispo1,
                 2: 'sin dispositivo',
@@ -71,7 +71,7 @@ class ValorControl {
             pos1 = 0;
             //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
-        } else if (!this.posiciones[0].includes(pos1)) {
+        } else if (!this.posiciones.includes(dispo1)) {
             pos1 = pos1 + 1;
             this.posiciones[pos1] = dispo1; // this.posiciones[1] = dispo;
             console.log('this.posiciones1, pos1', this.posiciones, pos1);
