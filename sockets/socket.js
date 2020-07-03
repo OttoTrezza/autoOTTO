@@ -440,33 +440,10 @@ exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
         valorControl.siguiente(payload.de, payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
-        let Sarmiento = valorControl.getUltimoValor();
 
-        msg = {
-            de: payload.de,
-            sala: payload.sala,
-            beta1: Sarmiento.beta1,
-            gamma1: Sarmiento.gamma1,
-            alpha1: Sarmiento.alpha1
-
-            // accelerationx1: Sarmiento.accelerationx1,
-            // accelerationy1: Sarmiento.accelerationy1,
-            // accelerationz1: Sarmiento.accelerationz1,
-            // accelerationincludinggravityx1: Sarmiento.accelerationincludinggravityx1,
-            // accelerationincludinggravityy1: Sarmiento.accelerationincludinggravityy1,
-            // accelerationincludinggravityz1: Sarmiento.accelerationincludinggravityz1,
-            // rotationratebeta1: Sarmiento.rotationratebeta1,
-            // rotationrategamma1: Sarmiento.rotationrategamma1,
-            // rotationratealpha1: Sarmiento.rotationratealpha1,
-        };
-        cliente.to('Juegos').emit('ElSarmiento-nuevo', msg);
-        cliente.emit('ElSarmiento-nuevo', msg);
-
-        // let dispos = valorControl.getDispositivos();
-        // console.log('Dispos', dispos);
         let va0 = valorControl.getUltimoValor();
         const paya = {
-            de: va0.dispositivo,
+            de: va0.dispo,
             sala: 'Juegos',
             beta1: va0.beta1,
             gamma1: va0.gamma1,
@@ -587,13 +564,6 @@ exports.obtenerSalas = (cliente, sal) => {
         callback = { entro: true };
 
     });
-};
-
-// rgb servidor a esp
-rgb = (cliente, payload) => {
-    rgb = payload.cuerpo;
-    cliente.to(cliente).emit('WStype_TEXT', rgb);
-    console.log('Emitido a esp', rgb);
 };
 
 obtenerSalsas = (cliente, sal) => {
