@@ -103,17 +103,19 @@ class ValorControl {
 
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
+
         let atenderValor = new Valor(pos1Valor, dispo1Valor, beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
-        this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
+
+        this.ultimos4.pos1Valor.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4.splice(-1, 1);
         }
-        this.ultimos14.unshift(atenderValor);
+        this.ultimos14.pos1Valor.unshift(atenderValor);
         if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
             this.ultimos14.splice(-1, 1);
         }
-        this.ultimos24.unshift(atenderValor);
+        this.ultimos24.pos1Valor.unshift(atenderValor);
         if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
             this.ultimos24.splice(-1, 1);
         }
@@ -122,7 +124,7 @@ class ValorControl {
         console.log(this.ultimos4);
         this.grabarArchivo();
         // return atenderValor;
-        this.analisisUltimos24(this.ultimos24);
+        this.analisisUltimos24(this.ultimos24.pos1Valor);
     }
     analisisUltimos24(ultimos24) {
         if (ultimos24[3] == undefined) {
@@ -151,7 +153,7 @@ class ValorControl {
 
     }
     getDispositivosConectados() {
-        return this.valores.filter(valor => valor.dispo === 'ignacio1');
+        return this.valores;
     }
 
     getUltimoValor() {
