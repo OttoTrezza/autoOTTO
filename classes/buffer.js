@@ -34,9 +34,24 @@ class ValorControl {
         this.valores = [];
         this.valor = {};
         this.posiciones = [];
-        this.ultimos4 = [];
-        this.ultimos14 = [];
-        this.ultimos24 = [];
+        this.ultimos4 = [{
+            1: [],
+            2: [],
+            3: [],
+            4: []
+        }];
+        this.ultimos14 = [{
+            1: [],
+            2: [],
+            3: [],
+            4: []
+        }];
+        this.ultimos24 = [{
+            1: [],
+            2: [],
+            3: [],
+            4: []
+        }];
         this.codigoEvento = 2;
 
         let data = require('./data/data.json');
