@@ -64,7 +64,7 @@ class ValorControl {
             this.posiciones = { 1: dispo };
             console.log('this.posiciones', this.posiciones);
         } else {
-            let pija = this.posiciones.length();
+            let pija = this.posiciones.indexOf();
             this.posiciones[pija + 1] = { pija: dispo }; // this.posiciones[1] = dispo;
             console.log('this.posiciones1, pija', this.posiciones, pija);
         }
