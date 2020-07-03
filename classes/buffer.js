@@ -119,11 +119,9 @@ class ValorControl {
         }
         this.grabarArchivo();
         this.analisisUltimos24(this.ultimos24);
-        let as = this.getUltimos4Dispo(0);
-        let ad = this.getUltimos4Dispo(1);
-        let ae = this.getUltimos4Dispo(2);
-        let af = this.getUltimos4Dispo(3);
-        console.log('todo', as, ad, ae, af);
+        let as = this.getUltimos4Dispo(pos1Valor);
+
+        console.log('todo', as);
     }
     analisisUltimos24(ultimos24) {
         if (ultimos24[3] == undefined) {
