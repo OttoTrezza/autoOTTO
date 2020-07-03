@@ -47,24 +47,24 @@ class ValorControl {
 
         let data = require('./data/data.json');
         console.log('data', data);
-        if (data.hoy === this.hoy) {
-            this.ultimo = data.ultimo;
-            this.valores = data.valores;
-            this.valor = data.valor;
-            this.dispositivos = data.dispositivos;
-            this.ultimos4a = data.ultimos4a;
-            this.ultimos14a = data.ultimos14a;
-            this.ultimos24a = data.ultimos24a;
-            this.ultimos4b = data.ultimos4b;
-            this.ultimos14b = data.ultimos14b;
-            this.ultimos24b = data.ultimos24b;
-            this.ultimos4c = data.ultimos4c;
-            this.ultimos14c = data.ultimos14c;
-            this.ultimos24c = data.ultimos24c;
-            this.codigoEvento = data.codigoEvento;
-        } else {
-            this.reiniciarConteo();
-        }
+        //  if (data.hoy === this.hoy) {
+        this.ultimo = data.ultimo;
+        this.valores = data.valores;
+        this.valor = data.valor;
+        this.dispositivos = data.dispositivos;
+        this.ultimos4a = data.ultimos4a;
+        this.ultimos14a = data.ultimos14a;
+        this.ultimos24a = data.ultimos24a;
+        this.ultimos4b = data.ultimos4b;
+        this.ultimos14b = data.ultimos14b;
+        this.ultimos24b = data.ultimos24b;
+        this.ultimos4c = data.ultimos4c;
+        this.ultimos14c = data.ultimos14c;
+        this.ultimos24c = data.ultimos24c;
+        this.codigoEvento = data.codigoEvento;
+        //  } else {
+        //    this.reiniciarConteo();
+        // }
 
     }
 
