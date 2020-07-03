@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = {};
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -44,7 +44,7 @@ class ValorControl {
         // if (data.hoy === this.hoy) {
         this.ultimo = data.ultimo;
         this.valores = data.valores;
-        this.valor = data.valores[0];
+        this.valor = data.valor;
         this.posiciones = data.posiciones;
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
@@ -171,7 +171,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = {};
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
