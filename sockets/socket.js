@@ -109,14 +109,14 @@ exports.mensajeAutoOTTO = (cliente) => {
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
 
-        valorControl.siguiente(payload.pos, payload.de, payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
+        valorControl.siguiente(payload.pos1, payload.de, payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
 
         let va0 = valorControl.getUltimoValor();
         let dispoConec = valorControl.getDispositivosConectados();
         console.log('DISPOCONEC', dispoConec);
         const paya = {
-            pos: va0.pos,
-            de: va0.dispo,
+            pos1: va0.pos1,
+            de1: va0.dispo1,
             beta1: va0.beta1,
             gamma1: va0.gamma1,
             alpha1: va0.alpha1,

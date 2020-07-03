@@ -5,8 +5,8 @@ const fs = require('fs');
 
 class Valor {
     constructor(pos1, dispo1, beta1, gamma1, alpha1) { // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1
-        this.pos = pos1;
-        this.dispo = dispo1;
+        this.pos1 = pos1;
+        this.dispo1 = dispo1;
         this.beta1 = beta1;
         this.gamma1 = gamma1;
         this.alpha1 = alpha1;
@@ -81,13 +81,7 @@ class ValorControl {
             return 'No hay Valores';
         }
         let pos1Valor = this.getUltimoValor().pos1;
-        let dispoValor = this.getUltimoValor();
-        let nomre = dispoValor.dispo1;
-
-        // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
-        //  let dispoValor = this.getUltimoValor().dispo;
-
-
+        let dispo1Valor = this.getUltimoValor().dispo1;
         let beta1Valor = this.getUltimoValor().beta1;
         let gamma1Valor = this.getUltimoValor().gamma1;
         let alpha1Valor = this.getUltimoValor().alpha1;
@@ -103,7 +97,7 @@ class ValorControl {
 
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Valor(pos1Valor, nomre, beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
+        let atenderValor = new Valor(pos1Valor, dispo1Valor, beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
