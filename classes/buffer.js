@@ -69,6 +69,7 @@ class ValorControl {
         let dispoValor = this.getUltimoValor();
         console.log('dispoValor', dispoValor);
         let nomre = dispoValor.dispo;
+        console.log('dispoValor.dispo', dispoValor.dispo);
         let beta1Valor = this.getUltimoValor().beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
         let gamma1Valor = this.getUltimoValor().gamma1;
         let alpha1Valor = this.getUltimoValor().alpha1;
