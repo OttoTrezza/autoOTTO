@@ -64,8 +64,8 @@ class ValorControl {
             this.posiciones = { 1: dispo, 2: 'sin dispositivo', 3: 'sin dispositivo', 4: 'sin dispositivo' };
             console.log('this.posiciones', this.posiciones);
         } else {
-            let pija = 1;
-            this.posiciones[pija + 1] = { pija: dispo }; // this.posiciones[1] = dispo;
+            let pija = 0;
+            this.posiciones[pija + 1] = dispo; // this.posiciones[1] = dispo;
             console.log('this.posiciones1, pija', this.posiciones, pija);
         }
 
