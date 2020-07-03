@@ -4,12 +4,13 @@ const fs = require('fs');
 
 
 class Valor {
-    constructor(dispo, beta1, gamma1, alpha1) { // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1
+    constructor(pos1, dispo, beta1, gamma1, alpha1) { // , accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityy, accelerationincludinggravityz, rotationratebeta, rotationrategamma, rotationratealpha, canal, cond1
 
         this.dispo = dispo;
         this.beta1 = beta1;
         this.gamma1 = gamma1;
         this.alpha1 = alpha1;
+        this.pos = pos1;
         // this.accelerationx = accelerationx;
         // this.accelerationy = accelerationy;
         // this.accelerationz = accelerationz;
@@ -57,14 +58,13 @@ class ValorControl {
 
 
     // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
-    siguiente(dispo, beta1, gamma1, alpha1) {
+    siguiente(pija, dispo, beta1, gamma1, alpha1) {
         this.ultimo = this.ultimo + 1;
         this.pos = 0; // si no es igual a ninguno de la lista, pos +1; 
-        if (this.posiciones == undefined) {
+        if (pija === 0) {
             this.posiciones = { 1: dispo, 2: 'sin dispositivo', 3: 'sin dispositivo', 4: 'sin dispositivo' };
-            console.log('this.posiciones', this.posiciones);
+            //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
-            pija = 0;
         } else {
             let pija = 1;
             this.posiciones[pija] = dispo; // this.posiciones[1] = dispo;
@@ -72,7 +72,7 @@ class ValorControl {
             this.grabarArchivo();
         }
 
-        let valor = new Valor(this.pos, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(this.pija, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
         this.valor = { dispo, beta1, gamma1, alpha1 };
 
