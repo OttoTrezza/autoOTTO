@@ -47,12 +47,7 @@ exports.entrarChat = (cliente) => {
         }
 
     });
-    if (valorControl.getDispositivos() == undefined) {
-        valorControl.rellenar('Sin Dispositivoa', 0, 0, 0);
-        valorControl.rellenar('Sin Dispositivob', 0, 0, 0);
-        valorControl.rellenar('Sin Dispositivoc', 0, 0, 0);
-        valorControl.rellenar('Sin Dispositivod', 0, 0, 0);
-    }
+
 };
 
 
