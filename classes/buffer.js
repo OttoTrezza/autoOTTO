@@ -64,22 +64,8 @@ class ValorControl {
         this.ultimos14c = data.ultimos14c;
         this.ultimos24c = data.ultimos24c;
         this.codigoEvento = data.codigoEvento;
-
-
     }
 
-    rellenar(dispositivo, beta1, gamma1, alpha1) {
-        let valora = new Valor(dispositivo, beta1, gamma1, alpha1);
-        this.valores.push(valor);
-        let valorb = new Valor(dispositivo, beta1, gamma1, alpha1);
-        this.ultimos4a.push(valorb);
-
-        let valor2 = new Valor(dispositivo, beta1, gamma1, alpha1);
-        this.ultimos14a.push(valor2);
-        let valor3 = new Valor(dispositivo, beta1, gamma1, alpha1);
-        this.ultimos24a.push(valor3);
-        this.grabarArchivo();
-    }
     siguiente(dispositivo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
         let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
