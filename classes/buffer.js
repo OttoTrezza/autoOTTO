@@ -10,7 +10,7 @@ class Valor {
         this.beta1 = beta1;
         this.gamma1 = gamma1;
         this.alpha1 = alpha1;
-        this.posenLista = [0];
+        // this.posenLista = [0];
         // this.accelerationx = accelerationx;
         // this.accelerationy = accelerationy;
         // this.accelerationz = accelerationz;
@@ -32,8 +32,8 @@ class ValorControl {
         this.ultimo = 0;
         this.hoy = new Date().getDay();
         this.valores = [];
-        this.dispositivos = {};
         this.valor = {};
+        this.dispositivos = [];
         this.ultimos4a = [];
         this.ultimos14a = [];
         this.ultimos24a = [];
@@ -50,9 +50,10 @@ class ValorControl {
 
         // if (data.hoy === this.hoy) {
         this.ultimo = data.ultimo;
-        this.dispositivos = data.dispositivos;
+
         this.valores = data.valores;
         this.valor = data.valor;
+        this.dispositivos = data.dispositivos;
         this.ultimos4a = data.ultimos4a;
         this.ultimos14a = data.ultimos14a;
         this.ultimos24a = data.ultimos24a;
@@ -68,10 +69,10 @@ class ValorControl {
     }
 
     rellenar(dispositivo, beta1, gamma1, alpha1) {
-        let valor = new Valor(dispositivo, beta1, gamma1, alpha1);
+        let valora = new Valor(dispositivo, beta1, gamma1, alpha1);
         this.valores.push(valor);
-        let valor1 = new Valor(dispositivo, beta1, gamma1, alpha1);
-        this.ultimos4a.push(valor1);
+        let valorb = new Valor(dispositivo, beta1, gamma1, alpha1);
+        this.ultimos4a.push(valorb);
 
         let valor2 = new Valor(dispositivo, beta1, gamma1, alpha1);
         this.ultimos14a.push(valor2);
