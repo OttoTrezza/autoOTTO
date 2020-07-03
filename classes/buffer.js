@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = [];
+        this.posiciones = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -171,7 +171,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = [];
+        this.posiciones = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
