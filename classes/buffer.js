@@ -68,6 +68,7 @@ class ValorControl {
         }
         let dispoValor = this.getUltimoValor();
         console.log('dispoValor', dispoValor);
+        let nomre = dispoValor.dispo;
         let beta1Valor = this.getUltimoValor().beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
         let gamma1Valor = this.getUltimoValor().gamma1;
         let alpha1Valor = this.getUltimoValor().alpha1;
@@ -83,7 +84,7 @@ class ValorControl {
 
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Valor(dispoValor, beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
+        let atenderValor = new Valor(nomre, beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
         this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
