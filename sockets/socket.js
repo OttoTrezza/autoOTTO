@@ -112,12 +112,15 @@ exports.ElSarmiento = (cliente) => {
         valorControl.siguiente(payload.de, payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
 
         let va0 = valorControl.getUltimoValor();
+        let dispoConec = valorControl.getDispositivosConectados(payload.sala);
+        console.log('DISPOCONEC', dispoConec);
         const paya = {
             de: va0.dispo,
             sala: 'Juegos',
             beta1: va0.beta1,
             gamma1: va0.gamma1,
-            alpha1: va0.alpha1
+            alpha1: va0.alpha1,
+
         };
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
