@@ -63,9 +63,9 @@ class ValorControl {
         if (this.posiciones == undefined) {
             this.posiciones = dispo;
             console.log('this.posiciones', this.posiciones);
-        } else if (this.posiciones.length()) {
-            let nu = this.posiciones.length();
-            this.posiciones[nu + 1] = dispo;
+        } else {
+
+            this.posiciones[1] = dispo;
             console.log('this.posiciones1', this.posiciones);
         }
 
