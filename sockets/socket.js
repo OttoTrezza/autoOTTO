@@ -463,7 +463,7 @@ exports.ElSarmiento = (cliente) => {
         cliente.emit('ElSarmiento-nuevo', msg);
 
         // let dispos = valorControl.getDispositivos();
-        console.log('Dispos', dispos);
+        // console.log('Dispos', dispos);
         let va0 = valorControl.getUltimoValor();
         const paya = {
             de: va0.dispositivo,
