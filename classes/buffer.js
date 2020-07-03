@@ -34,24 +34,9 @@ class ValorControl {
         this.valores = [];
         this.valor = {};
         this.posiciones = [];
-        this.ultimos4 = {
-            1: [],
-            2: [],
-            3: [],
-            4: []
-        };
-        this.ultimos14 = {
-            1: [],
-            2: [],
-            3: [],
-            4: []
-        };
-        this.ultimos24 = {
-            1: [],
-            2: [],
-            3: [],
-            4: []
-        };
+        this.ultimos4 = [];
+        this.ultimos14 = [];
+        this.ultimos24 = [];
         this.codigoEvento = 2;
 
         let data = require('./data/data.json');
@@ -122,15 +107,15 @@ class ValorControl {
         let atenderValor = new Valor(pos1Valor, dispo1Valor, beta1Valor, gamma1Valor, alpha1Valor); // accelerationxValor, accelerationyValor, accelerationzValor, accelerationincludinggravityxValor, accelerationincludinggravityyValor, accelerationincludinggravityzValor, rotationratebetaValor, rotationrategammaValor, rotationratealphaValor, canal // DECLARO EL TICKET QUE VOYT A ATENDER(VIENE CON NºTICKET Y ESCRITORIO)
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
 
-        this.ultimos4[pos1Valor].unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
+        this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4.splice(-1, 1);
         }
-        this.ultimos14[pos1Valor].unshift(atenderValor);
+        this.ultimos14.unshift(atenderValor);
         if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
             this.ultimos14.splice(-1, 1);
         }
-        this.ultimos24[pos1Valor].unshift(atenderValor);
+        this.ultimos24.unshift(atenderValor);
         if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
             this.ultimos24.splice(-1, 1);
         }
@@ -139,7 +124,7 @@ class ValorControl {
         console.log(this.ultimos4);
         this.grabarArchivo();
         // return atenderValor;
-        this.analisisUltimos24(this.ultimos24[pos1Valor]);
+        this.analisisUltimos24(this.ultimos24);
     }
     analisisUltimos24(ultimos24) {
         if (ultimos24[3] == undefined) {
@@ -183,6 +168,9 @@ class ValorControl {
     getUltimos4() {
 
         return this.ultimos4;
+    }
+    getUltimos4Dispo(pos) {
+        return this.ultimos4.filter(valor => valor.pos1 === pos);
     }
     getUltimos14() {
 
