@@ -80,7 +80,7 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let dispositivor = this.getUltimoValor(dispositivo).dispositivo;
+        // let dispositivor = this.getUltimoValor(dispositivo).dispositivo;
         let beta1Valor = this.getUltimoValor(dispositivo).beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
         let gamma1Valor = this.getUltimoValor(dispositivo).gamma1;
         let alpha1Valor = this.getUltimoValor(dispositivo).alpha1;
