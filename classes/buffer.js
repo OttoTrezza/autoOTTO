@@ -69,12 +69,10 @@ class ValorControl {
                 4: 'sin dispositivo'
             };
             pos1 = 0;
-            //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
         } else if (!this.posiciones.includes(dispo1)) {
             pos1 = pos1 + 1;
-            this.posiciones[pos1] = dispo1; // this.posiciones[1] = dispo;
-            console.log('this.posiciones1, pos1', this.posiciones, pos1);
+            this.posiciones[pos1] = dispo1;
             this.grabarArchivo();
         }
 
@@ -119,12 +117,13 @@ class ValorControl {
         if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
             this.ultimos24.splice(-1, 1);
         }
-
-        // console.log('Ultimos 4');
-        console.log(this.ultimos4);
         this.grabarArchivo();
-        // return atenderValor;
         this.analisisUltimos24(this.ultimos24);
+        let as = this.getUltimos4Dispo(0);
+        let ad = this.getUltimos4Dispo(1);
+        let ae = this.getUltimos4Dispo(2);
+        let af = this.getUltimos4Dispo(3);
+        console.log('todo', as, ad, ae, af);
     }
     analisisUltimos24(ultimos24) {
         if (ultimos24[3] == undefined) {
@@ -132,25 +131,17 @@ class ValorControl {
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
-
         let betasaaa0 = ultimos24[0].beta1;
         let betasaaa1 = ultimos24[3].beta1;
         let betasa0 = parseInt(betasaaa0);
         let betasa1 = parseInt(betasaaa1);
-        //  let vala = parseInt(valuer);
         if (betasa0 > betasa1) {
             console.log('es mayor');
             this.codigoEvento = 1;
             return this.codigoEvento;
         }
-        // if (ultimos4[0] > ultimos4[4]) {
-        //     console.log('es mayor aaaaaaaaaaaaa');
-        //     this.codigoEvento = 1;
-        //     return;
-        // }
         this.codigoEvento = 2;
         return this.codigoEvento;
-
     }
     getDispositivosConectados() {
         return this.valores;
