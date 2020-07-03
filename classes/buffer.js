@@ -61,7 +61,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         this.pos = 0; // si no es igual a ninguno de la lista, pos +1; 
         if (this.posiciones == undefined) {
-            this.posiciones[0] = dispo;
+            this.posiciones = dispo;
             console.log('this.posiciones', this.posiciones);
         } else if (this.posiciones.length()) {
             let nu = this.posiciones.length();
