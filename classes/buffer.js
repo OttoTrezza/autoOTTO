@@ -64,9 +64,9 @@ class ValorControl {
             this.posiciones = { 1: dispo };
             console.log('this.posiciones', this.posiciones);
         } else {
-
-            // this.posiciones[1] = dispo;
-            console.log('this.posiciones1', this.posiciones);
+            let pija = this.posiciones.length();
+            this.posiciones[pija + 1] = { pija: dispo }; // this.posiciones[1] = dispo;
+            console.log('this.posiciones1, pija', this.posiciones, pija);
         }
 
         let valor = new Valor(this.pos, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
