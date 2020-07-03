@@ -70,20 +70,20 @@ class ValorControl {
 
     siguiente(dispositivo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
-        let valor = new Valor(this.ultimo, dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(dispositivo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
 
-        console.log('DISPOSITIVOS', this.dispositivos);
-        this.valor = { dispositivo, beta1, gamma1, alpha1 };
+
+        this.valor = [dispositivo, beta1, gamma1, alpha1];
         this.grabarArchivo();
 
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
         // let dispositivor = this.getUltimoValor(dispositivo).dispositivo;
-        let beta1Valor = this.getUltimoValor(dispositivo); // .beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
-        let gamma1Valor = this.getUltimoValor(dispositivo); // .gamma1;
-        let alpha1Valor = this.getUltimoValor(dispositivo); // .alpha1;
+        let beta1Valor = this.getUltimoValor(dispositivo).beta1; // .beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
+        let gamma1Valor = this.getUltimoValor(dispositivo).gamma1; // .gamma1;
+        let alpha1Valor = this.getUltimoValor(dispositivo).alpha1; // .alpha1;
         // let accelerationxValor = this.getUltimoValor.accelerationx;
         // let accelerationyValor = this.getUltimoValor.accelerationy;
         // let accelerationzValor = this.getUltimoValor.accelerationz;
@@ -95,6 +95,7 @@ class ValorControl {
         // let rotationratealphaValor = this.getUltimoValor.rotationratealpha;
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(dispositivo, beta1Valor, gamma1Valor, alpha1Valor);
+        this.ultimoValor = atenderValor;
         this.ultimos4a.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
         this.ultimos14a.unshift(atenderValor);
         this.ultimos24a.unshift(atenderValor);
@@ -144,12 +145,13 @@ class ValorControl {
         }
         // el ultimo ticket por dispositivo
     getUltimoValor(dispositivo) {
-        let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo === dispositivo);
-        for (valoreslis of this.valores) {
-            if (valoreslis.dispositivo === dispositivo) {
-                return this.valor;
-            }
-        }
+        return this.ultimoValor;
+        // let valoreslis = this.valores.find(valoreslis => valoreslis.dispositivo === dispositivo);
+        // for (valoreslis of this.valores) {
+        //     if (valoreslis.dispositivo === dispositivo) {
+        //         return valor;
+        //     }
+        // }
     }
     getDispositivos() {
 
