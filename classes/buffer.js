@@ -33,7 +33,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = {};
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -62,7 +62,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
 
         if (pos1 == undefined) {
-            this.posiciones = { 1: dispo1, 2: 'sin dispositivo', 3: 'sin dispositivo', 4: 'sin dispositivo' };
+            this.posiciones = [dispo1, 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'];
             pos1 = 0;
             //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
@@ -175,7 +175,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = {};
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
