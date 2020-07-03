@@ -129,8 +129,8 @@ class ValorControl {
         return this.codigoEvento;
 
     }
-    getDispositivosConectados(sala) {
-        return this.valores.filter(valor => valor.sala === sala);
+    getDispositivosConectados() {
+        return this.valores.filter(valor => valor.beta1 !== 0);
     }
 
     getUltimoValor() {

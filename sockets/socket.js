@@ -112,7 +112,7 @@ exports.ElSarmiento = (cliente) => {
         valorControl.siguiente(payload.de, payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
 
         let va0 = valorControl.getUltimoValor();
-        let dispoConec = valorControl.getDispositivosConectados(payload.sala);
+        let dispoConec = valorControl.getDispositivosConectados('Juegos');
         console.log('DISPOCONEC', dispoConec);
         const paya = {
             de: va0.dispo,
