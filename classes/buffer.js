@@ -32,6 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -44,6 +45,7 @@ class ValorControl {
         this.ultimo = data.ultimo;
         this.valores = data.valores;
         this.valor = data.valores[0];
+        this.posiciones = data.posiciones;
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
@@ -57,8 +59,15 @@ class ValorControl {
 
     siguiente(dispo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.ultimo = this.ultimo + 1;
+        this.pos = 0; // si no es igual a ninguno de la lista, pos +1; 
+        if (this.posiciones.length === 0) {
+            this.posiciones.push(dispo);
+            console.log('this.posiciones', this.posiciones);
+        } else {
+            console.log('this.posiciones1', this.posiciones);
+        }
 
-        let valor = new Valor(dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(pos, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
         this.valor = { dispo, beta1, gamma1, alpha1 };
 
@@ -162,6 +171,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -178,6 +188,7 @@ class ValorControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             valores: this.valores,
+            posiciones: this.posiciones,
             ultimos4: this.ultimos4,
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
