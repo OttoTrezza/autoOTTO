@@ -130,7 +130,7 @@ class ValorControl {
 
     }
     getDispositivosConectados() {
-        return this.valores.filter(valor => valor.dispo !== 'chota');
+        return this.valores.filter(valor => valor.dispo === 'ignacio1');
     }
 
     getUltimoValor() {
