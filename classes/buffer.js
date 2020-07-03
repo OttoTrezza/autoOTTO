@@ -62,13 +62,18 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
 
         if (pos1 == undefined) {
-            this.posiciones = [dispo1, 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'];
+            this.posiciones = {
+                1: dispo1,
+                2: 'sin dispositivo',
+                3: 'sin dispositivo',
+                4: 'sin dispositivo'
+            };
             pos1 = 0;
             //  console.log('this.posiciones', this.posiciones);
             this.grabarArchivo();
         } else {
             pos1 = pos1 + 1;
-            this.posiciones[pos1] = dispo1; // this.posiciones[1] = dispo;
+            this.posiciones.pos1 = dispo1; // this.posiciones[1] = dispo;
             console.log('this.posiciones1, pos1', this.posiciones, pos1);
             this.grabarArchivo();
         }
