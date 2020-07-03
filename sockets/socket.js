@@ -1,7 +1,6 @@
 var usuarios_lista = require('../classes/usuarios-lista');
 var Usuario = require('../models/usuario');
 var { ValorControl } = require('../classes/buffer');
-var io = require('socket.io');
 exports.usuariosConectados = new usuarios_lista.UsuariosLista();
 
 const valorControl = new ValorControl();
