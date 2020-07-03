@@ -56,8 +56,8 @@ class ValorControl {
     }
 
 
-
-    siguiente(dispo, beta1, gamma1, alpha1) { // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+    // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+    siguiente(dispo, beta1, gamma1, alpha1) {
         this.ultimo = this.ultimo + 1;
         this.pos = 0; // si no es igual a ninguno de la lista, pos +1; 
         if (this.posiciones == undefined) {
@@ -69,7 +69,7 @@ class ValorControl {
             console.log('this.posiciones1', this.posiciones);
         }
 
-        let valor = new Valor(pos, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
+        let valor = new Valor(this.pos, dispo, beta1, gamma1, alpha1); // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
         this.valores.push(valor);
         this.valor = { dispo, beta1, gamma1, alpha1 };
 
