@@ -66,7 +66,8 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let dispoValor = JSON.stringify(this.getUltimoValor().dispo);
+        let dispoValor = this.getUltimoValor();
+        console.log('dispoValor', dispoValor);
         let beta1Valor = this.getUltimoValor().beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
         let gamma1Valor = this.getUltimoValor().gamma1;
         let alpha1Valor = this.getUltimoValor().alpha1;
