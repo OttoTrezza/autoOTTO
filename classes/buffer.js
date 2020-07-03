@@ -61,7 +61,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         this.pos = 0; // si no es igual a ninguno de la lista, pos +1; 
         if (this.posiciones == undefined) {
-            this.posiciones = dispo;
+            this.posiciones = { 1: dispo };
             console.log('this.posiciones', this.posiciones);
         } else {
 
@@ -81,7 +81,9 @@ class ValorControl {
         console.log('dispoValor', dispoValor);
         let nomre = dispoValor.dispo;
         console.log('dispoValor.dispo', dispoValor.dispo);
-        let beta1Valor = this.getUltimoValor().beta1; // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
+        // EXTRAIGO EL NUMERO PARA ROMPER LA RELACION QUE TIENE JSCRIPT CON QUE TODOS LOS OBJETOS SON PASADOS POR REFERENCIA
+        //  let dispoValor = this.getUltimoValor().dispo;
+        let beta1Valor = this.getUltimoValor().beta1;
         let gamma1Valor = this.getUltimoValor().gamma1;
         let alpha1Valor = this.getUltimoValor().alpha1;
         // let accelerationxValor = this.getUltimoValor.accelerationx;
