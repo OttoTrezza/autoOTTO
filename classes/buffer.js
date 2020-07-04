@@ -66,8 +66,9 @@ class ValorControl {
                 4: 'sin dispositivo'
             };
             pos1 = 1;
+            this.posiciones[pos1] = dispo1;
             this.grabarArchivo();
-        } else if (!this.posiciones.includes(dispo1)) {
+        } else if (this.posiciones[pos1] !== dispo1) {
             pos1 = 2;
             this.posiciones[pos1] = dispo1;
             this.grabarArchivo();
