@@ -96,7 +96,9 @@ exports.mensajeAutoOTTO = (cliente) => {
         };
         cliente.to(payload.sala).emit('mensaje-nuevo-auto', msg);
         cliente.emit('mensaje-nuevo-auto', msg);
-
+        if (payload.cuerpo === 'reiniciarConteo') {
+            valorControl.reiniciarConteo();
+        }
         console.log(payload.de, 'ha enviado esto', payload.cuerpo);
 
         callback(msg);
