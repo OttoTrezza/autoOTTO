@@ -54,10 +54,7 @@ class ValorControl {
         //     this.reiniciarConteo();
         // }
     }
-
-
-    // accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha,
-    siguiente(pos1, dispo1, beta1, gamma1, alpha1) {
+    siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
 
         if (pos1 === 0) {
