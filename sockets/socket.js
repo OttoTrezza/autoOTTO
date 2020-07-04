@@ -155,6 +155,54 @@ exports.ElSarmiento = (cliente) => {
 };
 
 
+// Escuchar mensajes
+exports.ElSarmientoGravity = (cliente) => {
+    cliente.on('ElSarmientoGravity', (payload, callback) => {
+
+        valorControl.siguiente(payload.pos1, payload.de, payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
+
+        let va0 = valorControl.getUltimoValor();
+        let dispoConec = valorControl.getDispositivosConectados();
+        console.log('DISPOCONEC', dispoConec);
+        const paya = {
+            pos1: va0.pos1,
+            de1: va0.dispo1,
+            beta1: va0.beta1,
+            gamma1: va0.gamma1,
+            alpha1: va0.alpha1,
+            sala: 'Juegos'
+        };
+        cliente.to('Juegos').emit('Dispo2', paya);
+        cliente.emit('Dispo2', paya);
+
+        // console.log(payload.de, 'ha enviado esto', paya);
+        // let codEv = valorControl.getCodigoEvento();
+
+        // if (codEv == 1) {
+        //     const pay = {
+        //         de: payload.de,
+        //         cuerpo: 'Movimiento-1',
+        //         img: ''
+        //     };
+        //     cliente.to(payload.sala).emit('mensaje-auto', pay);
+        //     cliente.emit('mensaje-auto', pay);
+        //     // cliente.emit('mensaje-auto', pay);
+        //     console.log('adentroo enviado', codEv);
+        // }
+
+        // if (codEv == 2) {
+        //     const pay = {
+        //         de: payload.de,
+        //         cuerpo: 'sin magicMoves',
+        //         img: ''
+        //     };
+        //     cliente.to(payload.sala).emit('mensaje-auto', pay);
+        //     cliente.emit('mensaje-auto', pay);
+        // }
+        // //  console.log(payload.de, 'ha enviado esto', msg1);
+        callback(paya);
+    });
+};
 
 
 // Configurar usuario

@@ -23,34 +23,16 @@ class Server {
             this.io.on('connection', cliente => {
 
                 console.log('Cliente conectado', cliente.id);
-                // console.log('Cliente conectado', cliente);
-                // Conectar usuario
                 socket.conectarCliente(cliente);
-                // Entrar c*hat
                 socket.entrarChat(cliente);
-                // Entrar chat
-                // socket.entrarChats(cliente);
                 // Configurar usuario
                 socket.configurarUsuario(cliente);
                 // Obtener usuarios activos
                 socket.obtenerUsuarios(cliente);
-                // Obtener salas activas
-                // socket.obtenerSalas(cliente);
-                // Mensajes
                 socket.mensaje(cliente);
-                // socket.frecuencia(cliente);
-                // socket.LongPulse(cliente);
-                // Mensajesp
-                // socket.mensajesp(cliente);
-                // ElSarmiento
                 socket.ElSarmiento(cliente);
+                socket.ElSarmientoGravity(cliente);
                 socket.mensajeAutoOTTO(cliente);
-
-                // dir
-                // socket.dir(cliente);
-                // sen
-                // socket.sen(cliente);
-                // Desconectar
                 socket.desconectar(cliente);
                 //   cliente.on('disconect', () => {
                 //        console.log('Cliente Desconectado');
