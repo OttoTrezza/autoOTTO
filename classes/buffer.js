@@ -56,10 +56,11 @@ class ValorControl {
     }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
+        let posicione = this.getDispositivosConectados();
 
-        if (pos1 === 0) {
+        if (posicione === undefined) {
             this.posiciones = {
-                1: dispo1,
+                1: 'sin dispositivo',
                 2: 'sin dispositivo',
                 3: 'sin dispositivo',
                 4: 'sin dispositivo'
@@ -67,7 +68,7 @@ class ValorControl {
             pos1 = 1;
             this.grabarArchivo();
         } else if (!this.posiciones.includes(dispo1)) {
-            pos1 = pos1 + 1;
+            pos1 = 2;
             this.posiciones[pos1] = dispo1;
             this.grabarArchivo();
         }
