@@ -60,15 +60,15 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let posicione = this.getDispositivosConectados();
 
-        if (posicione[1] === 'sin dispositivo') {
+        if (this.posiciones[0] === 'sin dispositivo') {
             this.posiciones[poso] = dispo1;
             pos1 = 0;
             this.grabarArchivo();
-        } else if (posicione[poso] === 'sin dispositivo') {
+        } else if (this.posiciones[poso] === 'sin dispositivo') {
             this.posiciones.poso = dispo1;
             this.grabarArchivo();
         } else
-            this.posicione[poso] = dispo1;
+            posicione[poso] = dispo1;
         this.grabarArchivo();
         let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
         this.valores.push(valor);
