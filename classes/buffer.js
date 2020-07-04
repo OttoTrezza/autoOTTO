@@ -60,7 +60,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let posicione = this.getDispositivosConectados();
 
-        if (this.posiciones[0] === 'sin dispositivo') {
+        if (this.posiciones.poso === 'sin dispositivo') {
             this.posiciones[poso] = dispo1;
             pos1 = 0;
             this.grabarArchivo();
