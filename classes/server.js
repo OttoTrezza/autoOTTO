@@ -31,7 +31,6 @@ class Server {
                 socket.obtenerUsuarios(cliente);
                 socket.mensaje(cliente);
                 socket.ElSarmiento(cliente);
-                socket.ElSarmientoGravity(cliente);
                 socket.mensajeAutoOTTO(cliente);
                 socket.desconectar(cliente);
                 //   cliente.on('disconect', () => {
