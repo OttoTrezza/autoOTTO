@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = {};
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -56,18 +56,19 @@ class ValorControl {
         //  }
     }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
-        let poso = parseInt(pos1);
+        poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
         let posicione = this.getDispositivosConectados();
 
-        if (posicione .0 === 'sin dispositivo') {
-            this.posiciones.poso = dispo1;
+        if (posicione[0] === 'sin dispositivo') {
+            this.posiciones[poso] = dispo1;
             pos1 = 0;
             this.grabarArchivo();
-        } else if (posicione.poso === 'sin dispositivo') {
+        } else if (posicione[poso] === 'sin dispositivo') {
             this.posiciones.poso = dispo1;
             this.grabarArchivo();
-        } else this.posiciones.poso = dispo1;
+        } else
+            this.posicione[poso] = dispo1;
         this.grabarArchivo();
         let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
         this.valores.push(valor);
@@ -168,15 +169,10 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = {
-            0: 'sin dispositivo',
-            1: 'sin dispositivo',
-            2: 'sin dispositivo',
-            3: 'sin dispositivo'
-        };
-        this.ultimos4 = {};
-        this.ultimos14 = {};
-        this.ultimos24 = {};
+        this.posiciones = ['sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'];
+        this.ultimos4 = [];
+        this.ultimos14 = [];
+        this.ultimos24 = [];
         this.codigoEvento = 0;
 
         console.log('Se ha inicializado el sistema');
