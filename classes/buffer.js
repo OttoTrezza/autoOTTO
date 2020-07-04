@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = [{}];
+        this.posiciones = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -60,7 +60,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let posicione = this.getDispositivosConectados();
 
-        if (posicione[0] === 'sin dispositivo') {
+        if (posicione .0 === 'sin dispositivo') {
             this.posiciones.poso = dispo1;
             pos1 = 0;
             this.grabarArchivo();
@@ -168,12 +168,12 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = [{
+        this.posiciones = {
             0: 'sin dispositivo',
             1: 'sin dispositivo',
             2: 'sin dispositivo',
             3: 'sin dispositivo'
-        }];
+        };
         this.ultimos4 = {};
         this.ultimos14 = {};
         this.ultimos24 = {};
