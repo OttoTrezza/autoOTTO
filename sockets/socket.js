@@ -160,7 +160,7 @@ exports.ElSarmientoGravity = (cliente) => {
     cliente.on('ElSarmientoGravity', (payload, callback) => {
 
         valorControl.siguiente(payload.pos1, payload.de, payload.beta1, payload.gamma1, payload.alpha1); // , payload.accelerationx, payload.accelerationy, payload.accelerationz, payload.accelerationincludinggravityx, payload.accelerationincludinggravityy, payload.accelerationincludinggravityz, payload.rotationratebeta, payload.rotationrategamma, payload.rotationratealpha
-
+        console.log('grav', payload);
         let va0 = valorControl.getUltimoValor();
         let dispoConec = valorControl.getDispositivosConectados();
         console.log('DISPOCONEC', dispoConec);
