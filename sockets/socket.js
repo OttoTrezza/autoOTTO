@@ -116,7 +116,7 @@ exports.ElSarmiento = (cliente) => {
         console.log('DISPOCONEC', dispoConec);
         const paya = {
             pos1: va0.pos1,
-            de1: va0.dispo1,
+            de: va0.dispo1,
             beta1: va0.beta1,
             gamma1: va0.gamma1,
             alpha1: va0.alpha1,
