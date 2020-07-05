@@ -58,14 +58,7 @@ class ValorControl {
     }
 
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
-        this.ultimo = this.ultimo + 1;
-        let gaga = JSON.stringify(dispo1);
-
-        if (this.possi.includes(gaga)) {
-            this.grabarArchivo();
-        } else {
-
-
+            this.ultimo = this.ultimo + 1;
 
             this.possi.unshift(dispo1);
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
@@ -87,172 +80,172 @@ class ValorControl {
 
 
 
-        // let posicione = this.getDispositivosConectadosporPos(0);
+    // let posicione = this.getDispositivosConectadosporPos(0);
 
-        // console.log('buffer posiciones', this.posiciones);
-        //     switch (item) {
-        //         case dispo1: //esta es la posicion en la tabla en la que estoy yo
-        //             pos1 = index; // confirmo mi posicion grabando pos1
-        //             outfor = true;
-        //             break;
-        //         case !dispo1: // esta es un posicion de la tabla que no esta vacia y no es mi posicion
-        //             //  console.log('sigo buscando');
-        //             break;
-        //         case undefined:
-        //             pos1 = index;
-        //             outfor = true;
-        //             break;
-        //         default:
-        //             console.log('defaul del switch');
-        //     }
-        //     if (outfor === true) {
-        //         outfor = false;
-        //         return;
-        //     }
-        // });
+    // console.log('buffer posiciones', this.posiciones);
+    //     switch (item) {
+    //         case dispo1: //esta es la posicion en la tabla en la que estoy yo
+    //             pos1 = index; // confirmo mi posicion grabando pos1
+    //             outfor = true;
+    //             break;
+    //         case !dispo1: // esta es un posicion de la tabla que no esta vacia y no es mi posicion
+    //             //  console.log('sigo buscando');
+    //             break;
+    //         case undefined:
+    //             pos1 = index;
+    //             outfor = true;
+    //             break;
+    //         default:
+    //             console.log('defaul del switch');
+    //     }
+    //     if (outfor === true) {
+    //         outfor = false;
+    //         return;
+    //     }
+    // });
 
-        // let outfor = false;
-        // let nombredispo = this.posiciones[p];
-
-
-
-        // this.posiciones[p] = dispo1;
-        // this.grabarArchivo();
+    // let outfor = false;
+    // let nombredispo = this.posiciones[p];
 
 
-        // this.posiciones[p] = dispo1;
-        // this.grabarArchivo();
-        let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
-        this.valores.push(valor);
-        this.valor = valor;
-        // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
-        this.grabarArchivo();
-        if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
-            return 'No hay Valores';
-        }
-        let pos1Valor = this.getUltimoValor().pos1;
-        let dispo1Valor = this.getUltimoValor().dispo1;
-        let beta1Valor = this.getUltimoValor().beta1;
-        let gamma1Valor = this.getUltimoValor().gamma1;
-        let alpha1Valor = this.getUltimoValor().alpha1;
-        let accelerationx1Valor = this.getUltimoValor().accelerationx1;
-        let accelerationy1Valor = this.getUltimoValor().accelerationy1;
-        let accelerationz1Valor = this.getUltimoValor().accelerationz1;
-        let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
-        let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
-        let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
-        let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
-        let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
-        let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
+
+    // this.posiciones[p] = dispo1;
+    // this.grabarArchivo();
 
 
-        this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-
-
-        let atenderValor = new Valor(pos1Valor, dispo1Valor, beta1Valor, gamma1Valor, alpha1Valor, accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor);
-        //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
-
-        this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
-        if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4.splice(-1, 1);
-        }
-        this.ultimos14.unshift(atenderValor);
-        if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.ultimos14.splice(-1, 1);
-        }
-        this.ultimos24.unshift(atenderValor);
-        if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-            this.ultimos24.splice(-1, 1);
-        }
-        this.grabarArchivo();
-        this.analisisUltimos24(this.ultimos24);
-        // let as = this.getUltimos4Dispo(pos1Valor);
-
-        //  console.log('todo', as);
+    // this.posiciones[p] = dispo1;
+    // this.grabarArchivo();
+    let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
+    this.valores.push(valor);
+    this.valor = valor;
+    // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
+    this.grabarArchivo();
+    if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
+        return 'No hay Valores';
     }
-    analisisUltimos24(ultimos24) {
-        if (ultimos24[3] == undefined) {
-            ultimos24[3] = '0';
-            this.codigoEvento = 0;
-            return this.codigoEvento;
-        }
-        let betasaaa0 = ultimos24[0].beta1;
-        let betasaaa1 = ultimos24[3].beta1;
-        let betasa0 = parseInt(betasaaa0);
-        let betasa1 = parseInt(betasaaa1);
-        if (betasa0 > betasa1) {
-            console.log('es mayor');
-            this.codigoEvento = 1;
-            return this.codigoEvento;
-        }
-        this.codigoEvento = 2;
-        return this.codigoEvento;
+    let pos1Valor = this.getUltimoValor().pos1;
+    let dispo1Valor = this.getUltimoValor().dispo1;
+    let beta1Valor = this.getUltimoValor().beta1;
+    let gamma1Valor = this.getUltimoValor().gamma1;
+    let alpha1Valor = this.getUltimoValor().alpha1;
+    let accelerationx1Valor = this.getUltimoValor().accelerationx1;
+    let accelerationy1Valor = this.getUltimoValor().accelerationy1;
+    let accelerationz1Valor = this.getUltimoValor().accelerationz1;
+    let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
+    let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
+    let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
+    let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
+    let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
+    let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
+
+
+    this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
+
+
+    let atenderValor = new Valor(pos1Valor, dispo1Valor, beta1Valor, gamma1Valor, alpha1Valor, accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor);
+    //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
+
+    this.ultimos4.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4
+    if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        this.ultimos4.splice(-1, 1);
     }
-    getDispositivosConectados() {
-        return this.possi;
+    this.ultimos14.unshift(atenderValor);
+    if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+        this.ultimos14.splice(-1, 1);
     }
-    getDispositivosConectadosporPos(po) {
-
-        return this.posiciones[po];
+    this.ultimos24.unshift(atenderValor);
+    if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+        this.ultimos24.splice(-1, 1);
     }
+    this.grabarArchivo();
+    this.analisisUltimos24(this.ultimos24);
+    // let as = this.getUltimos4Dispo(pos1Valor);
 
-    getUltimoValor() {
-
-        return this.valor;
-    }
-    getCodigoEvento() {
-
-        return this.codigoEvento;
-    }
-
-    getUltimos4() {
-
-        return this.ultimos4;
-    }
-    getUltimos4Dispo(pos) {
-        return this.ultimos4.filter(valor => valor.pos1 === pos);
-    }
-    getUltimos14() {
-
-        return this.ultimos14;
-    }
-    getUltimos24() {
-
-        return this.ultimos14;
-    }
-
-    reiniciarConteo() {
-
-        this.ultimo = 0;
-        this.valores = [];
-        this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
-        this.ultimos4 = [];
-        this.ultimos14 = [];
-        this.ultimos24 = [];
+    //  console.log('todo', as);
+}
+analisisUltimos24(ultimos24) {
+    if (ultimos24[3] == undefined) {
+        ultimos24[3] = '0';
         this.codigoEvento = 0;
-        this.possi = [];
-
-        console.log('Se ha inicializado el sistema');
-        this.grabarArchivo();
-
+        return this.codigoEvento;
     }
-
-    grabarArchivo() {
-
-        let jsonData = {
-            ultimo: this.ultimo,
-            hoy: this.hoy,
-            valores: this.valores,
-            poss: this.poss,
-            ultimos4: this.ultimos4,
-            ultimos14: this.ultimos14,
-            ultimos24: this.ultimos24,
-            codigoEvento: this.codigoEvento,
-            possi: this.possi
-        };
-        let jsonDataString = JSON.stringify(jsonData);
-        fs.writeFileSync('./classes/data/data.json', jsonDataString);
+    let betasaaa0 = ultimos24[0].beta1;
+    let betasaaa1 = ultimos24[3].beta1;
+    let betasa0 = parseInt(betasaaa0);
+    let betasa1 = parseInt(betasaaa1);
+    if (betasa0 > betasa1) {
+        console.log('es mayor');
+        this.codigoEvento = 1;
+        return this.codigoEvento;
     }
+    this.codigoEvento = 2;
+    return this.codigoEvento;
+}
+getDispositivosConectados() {
+    return this.possi;
+}
+getDispositivosConectadosporPos(po) {
+
+    return this.posiciones[po];
+}
+
+getUltimoValor() {
+
+    return this.valor;
+}
+getCodigoEvento() {
+
+    return this.codigoEvento;
+}
+
+getUltimos4() {
+
+    return this.ultimos4;
+}
+getUltimos4Dispo(pos) {
+    return this.ultimos4.filter(valor => valor.pos1 === pos);
+}
+getUltimos14() {
+
+    return this.ultimos14;
+}
+getUltimos24() {
+
+    return this.ultimos14;
+}
+
+reiniciarConteo() {
+
+    this.ultimo = 0;
+    this.valores = [];
+    this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
+    this.ultimos4 = [];
+    this.ultimos14 = [];
+    this.ultimos24 = [];
+    this.codigoEvento = 0;
+    this.possi = [];
+
+    console.log('Se ha inicializado el sistema');
+    this.grabarArchivo();
+
+}
+
+grabarArchivo() {
+
+    let jsonData = {
+        ultimo: this.ultimo,
+        hoy: this.hoy,
+        valores: this.valores,
+        poss: this.poss,
+        ultimos4: this.ultimos4,
+        ultimos14: this.ultimos14,
+        ultimos24: this.ultimos24,
+        codigoEvento: this.codigoEvento,
+        possi: this.possi
+    };
+    let jsonDataString = JSON.stringify(jsonData);
+    fs.writeFileSync('./classes/data/data.json', jsonDataString);
+}
 
 
 }
