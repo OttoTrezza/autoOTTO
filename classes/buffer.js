@@ -59,7 +59,7 @@ class ValorControl {
         let poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
 
-        let posicione = ValorControl.getDispositivosConectadosporPos(0);
+        let posicione = this.getDispositivosConectadosporPos(0);
         console.log('buffer posicione y this.posi', posicione, this.posiciones, pos1);
         //     switch (item) {
         //         case dispo1: //esta es la posicion en la tabla en la que estoy yo
