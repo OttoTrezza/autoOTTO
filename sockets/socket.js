@@ -110,7 +110,7 @@ exports.mensajeAutoOTTO = (cliente) => {
 // Escuchar mensajes
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
-
+        valorContro.reiniciarConteo();
         valorControl.siguiente(payload.pos1, payload.de, payload.beta1, payload.gamma1, payload.alpha1, payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1);
 
         let va0 = valorControl.getUltimoValor();

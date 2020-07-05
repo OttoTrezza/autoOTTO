@@ -36,6 +36,7 @@ class ValorControl {
         this.ultimos14 = [];
         this.ultimos24 = [];
         this.codigoEvento = 2;
+        this.possi = [];
 
         let data = require('./data/data.json');
         console.log('data', data);
@@ -49,6 +50,7 @@ class ValorControl {
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
         this.codigoEvento = data.codigoEvento;
+        this.possi = data.possi;
 
         //  } else {
         //      this.reiniciarConteo();
@@ -59,13 +61,13 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
 
         // if (this.poss.length === 0) {
-        //     this.poss.push(dispo1);
+        //     this.poss.push(dispo1);iiiiiiii
         //     console.log('lista', this.poss);
         // }
 
-        this.poss.unshift(dispo1);
-        if (this.poss.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.poss.splice(-1, 1);
+        this.possi.unshift(dispo1);
+        if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
+            this.possi.splice(-1, 1);
         }
         this.grabarArchivo();
 
@@ -225,6 +227,7 @@ class ValorControl {
         this.ultimos14 = [];
         this.ultimos24 = [];
         this.codigoEvento = 0;
+        this.possi = [];
 
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
@@ -241,7 +244,8 @@ class ValorControl {
             ultimos4: this.ultimos4,
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
-            codigoEvento: this.codigoEvento
+            codigoEvento: this.codigoEvento,
+            possi: this.possi
         };
         let jsonDataString = JSON.stringify(jsonData);
         fs.writeFileSync('./classes/data/data.json', jsonDataString);
