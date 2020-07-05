@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = [];
+        this.posiciones = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -58,12 +58,12 @@ class ValorControl {
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         let poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
-        let posicione = this.getDispositivosConectados();
+
 
         for (let p = 0; p <= 4; p++) {
             let outfor = false;
-            let posi = this.getDispositivosConectadosporPos(p);
-            switch (posi) {
+            let nombredispo = this.posiciones[p];
+            switch (nombredispo) {
                 case dispo1: //esta es la posicion en la tabla en la que estoy yo
                     pos1 = p; // confirmo mi posicion grabando pos1
                     outfor = true;
@@ -193,7 +193,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
+        this.posiciones = {}; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
