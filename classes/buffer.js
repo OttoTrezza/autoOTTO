@@ -54,8 +54,15 @@ class ValorControl {
         //      this.reiniciarConteo();
         //  }y
     }
+
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
+
+        if (this.poss.length === 0) {
+            this.poss.push(dispo1);
+            console.log('lista', this.poss);
+        }
+
         if (dispo1 === 'ignacio1') {
             pos1 = 0;
         }
