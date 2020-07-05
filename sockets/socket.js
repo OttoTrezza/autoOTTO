@@ -115,7 +115,7 @@ exports.ElSarmiento = (cliente) => {
 
         let va0 = valorControl.getUltimoValor();
         let dispoConec = valorControl.getDispositivosConectados();
-        let dispoConecult4 = valorControl.getDispositivosConectadosporPos(0);
+        //  let dispoConecult4 = valorControl.getDispositivosConectadosporPos(0);
         // let dispoConecult41 = valorControl.getDispositivosConectadosporPos(1);
         console.log('DISPOCONEC', dispoConec);
         console.log('dispoConecult4 0', dispoConecult4);
