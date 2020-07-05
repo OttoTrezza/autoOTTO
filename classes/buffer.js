@@ -41,20 +41,20 @@ class ValorControl {
         let data = require('./data/data.json');
         console.log('data', data);
 
-        //if (data.hoy === this.hoy) {
-        this.ultimo = data.ultimo;
-        this.valores = data.valores;
-        this.valor = data.valor;
-        this.poss = data.poss;
-        this.ultimos4 = data.ultimos4;
-        this.ultimos14 = data.ultimos14;
-        this.ultimos24 = data.ultimos24;
-        this.codigoEvento = data.codigoEvento;
-        this.possi = data.possi;
+        if (data.hoy === this.hoy) {
+            this.ultimo = data.ultimo;
+            this.valores = data.valores;
+            this.valor = data.valor;
+            this.poss = data.poss;
+            this.ultimos4 = data.ultimos4;
+            this.ultimos14 = data.ultimos14;
+            this.ultimos24 = data.ultimos24;
+            this.codigoEvento = data.codigoEvento;
+            this.possi = data.possi;
 
-        //  } else {
-        //      this.reiniciarConteo();
-        //  }y
+        } else {
+            this.reiniciarConteo();
+        }
     }
 
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
