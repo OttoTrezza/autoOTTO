@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = [{ 0: 'sin dispositivo', 1: 'sin dispositivo', 2: 'sin dispositivo', 3: 'sin dispositivo' }];
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -60,15 +60,35 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let posicione = this.getDispositivosConectados();
 
-        if (this.posiciones[0] === 'sin dispositivo') {
-            this.posiciones[0] = dispo1;
-            pos1 = 0;
+        for (let p = 0; p <= 4; p++) {
+            let outfor = false;
+            let posi = this.getDispositivosConectadosporPos(p);
+            switch (posi) {
+                case dispo1: //esta es la posicion en la tabla en la que estoy yo
+                    pos1 = p; // confirmo mi posicion grabando pos1
+                    outfor = true;
+                    break;
+                case !dispo1: // esta es un posicion de la tabla que no esta vacia y no es mi posicion
+                    //  console.log('sigo buscando');
+                    break;
+                case undefined:
+                    pos1 = p;
+                    outfor = true;
+                    break;
+                default:
+                    console.log('defaul del switch');
+
+            }
+            if (outfor === true) {
+                outfor = false;
+                break;
+            }
+
+            this.posiciones[p] = dispo1;
             this.grabarArchivo();
-        } else if (this.posiciones[1] === 'sin dispositivo') {
-            this.posiciones[1] = dispo1;
-            this.grabarArchivo();
-        } else
-            posicione[poso] = dispo1;
+
+        }
+        this.posiciones[p] = dispo1;
         this.grabarArchivo();
         let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
         this.valores.push(valor);
@@ -139,6 +159,9 @@ class ValorControl {
     getDispositivosConectados() {
         return this.posiciones;
     }
+    getDispositivosConectadosporPos(po) {
+        return this.posiciones[po];
+    }
 
     getUltimoValor() {
 
@@ -169,7 +192,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = ['sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'];
+        this.posiciones = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
