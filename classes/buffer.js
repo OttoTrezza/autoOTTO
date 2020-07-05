@@ -58,14 +58,14 @@ class ValorControl {
 
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
-        if (this.possi.length === 0) {
+        if (this.possi.length == 0) {
             this.possi.unshift(dispo1);
             this.grabarArchivo();
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
             }
         } else {
-            this.possi.forEach(function(value, index, array) {
+            function arra(value, index, array) {
                 if (value === dispo1) {
                     pos1 = index;
                 } else {
@@ -75,9 +75,11 @@ class ValorControl {
                         array.splice(-1, 1);
                     }
                 }
-            });
-            this.grabarArchivo();
+            }
+            this.possi.forEach(arra);
         }
+        this.grabarArchivo();
+
 
         let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
         this.valores.push(valor);
