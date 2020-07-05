@@ -65,58 +65,20 @@ class ValorControl {
                 this.possi.splice(-1, 1);
             }
         } else {
-            this.possi.forEach(function(value, index, dispo1) {
+            this.possi.forEach(function(value, index, array) {
                 if (value === dispo1) {
                     pos1 = index;
                 } else {
-                    this.possi.unshift(dispo1);
+                    array.unshift(dispo1);
                     this.grabarArchivo();
-                    if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
-                        this.possi.splice(-1, 1);
+                    if (array.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
+                        array.splice(-1, 1);
                     }
                 }
             });
 
         }
-        // this.grabarArchivo();
 
-
-
-        // let posicione = this.getDispositivosConectadosporPos(0);
-
-        // console.log('buffer posiciones', this.posiciones);
-        //     switch (item) {
-        //         case dispo1: //esta es la posicion en la tabla en la que estoy yo
-        //             pos1 = index; // confirmo mi posicion grabando pos1
-        //             outfor = true;
-        //             break;
-        //         case !dispo1: // esta es un posicion de la tabla que no esta vacia y no es mi posicion
-        //             //  console.log('sigo buscando');
-        //             break;
-        //         case undefined:
-        //             pos1 = index;
-        //             outfor = true;
-        //             break;
-        //         default:
-        //             console.log('defaul del switch');
-        //     }
-        //     if (outfor === true) {
-        //         outfor = false;
-        //         return;
-        //     }
-        // });
-
-        // let outfor = false;
-        // let nombredispo = this.posiciones[p];
-
-
-
-        // this.posiciones[p] = dispo1;
-        // this.grabarArchivo();
-
-
-        // this.posiciones[p] = dispo1;
-        // this.grabarArchivo();
         let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
         this.valores.push(valor);
         this.valor = valor;
