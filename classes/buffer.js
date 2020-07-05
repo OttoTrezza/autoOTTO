@@ -59,6 +59,12 @@ class ValorControl {
         if (dispo1 === 'ignacio1') {
             pos1 = 0;
         }
+        if (dispo1 === 'Otto') {
+            pos1 = 1;
+        }
+        if (dispo1 === 'invitado') {
+            pos1 = 2;
+        }
         this.grabarArchivo();
 
 
