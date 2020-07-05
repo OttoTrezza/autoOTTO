@@ -60,22 +60,21 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         if (this.possi.length === 0) {
             this.possi.unshift(dispo1);
+            this.grabarArchivo();
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
             }
+
+        } else if (this.possi.includes(dispo1)) {
+            console.log('esta');
+
+        } else {
+            this.possi.unshift(dispo1);
             this.grabarArchivo();
+            if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
+                this.possi.splice(-1, 1);
+            }
         }
-        if (dispo1 === this.possi[0]) {
-            pos1 = 0;
-        }
-        if (dispo1 === this.possi[1]) {
-            pos1 = 1;
-        }
-        if (dispo1 === this.possi[2]) {
-            pos1 = 2;
-        }
-
-
 
         // this.grabarArchivo();
 
