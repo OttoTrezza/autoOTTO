@@ -4,7 +4,8 @@ const fs = require('fs');
 
 class Posicion {
     constructor(pos1, dispo1) {
-        this.nombre[pos1] = dispo1;
+        this.pose1 = pos1;
+        this.nombre = dispo1;
     }
 }
 class Valor {
