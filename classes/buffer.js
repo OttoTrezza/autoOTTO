@@ -62,7 +62,7 @@ class ValorControl {
 
         for (let p = 0; p <= 4; p++) {
             let outfor = false;
-            let nombredispo = this.posiciones[p];
+            let nombredispo = this.posiciones.p;
             switch (nombredispo) {
                 case dispo1: //esta es la posicion en la tabla en la que estoy yo
                     pos1 = p; // confirmo mi posicion grabando pos1
