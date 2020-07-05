@@ -160,6 +160,7 @@ class ValorControl {
         return this.posiciones;
     }
     getDispositivosConectadosporPos(po) {
+        this.posiciones[po] = 0;
         return this.posiciones[po];
     }
 
