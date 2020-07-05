@@ -64,18 +64,20 @@ class ValorControl {
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
             }
-
-        } else if (this.possi.includes(dispo1)) {
-            console.log('esta');
-
         } else {
-            this.possi.unshift(dispo1);
-            this.grabarArchivo();
-            if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
-                this.possi.splice(-1, 1);
-            }
-        }
+            this.possi.forEach(function(value, index, dispo1) {
+                if (value === dispo1) {
+                    pos1 = index;
+                } else {
+                    this.possi.unshift(dispo1);
+                    this.grabarArchivo();
+                    if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
+                        this.possi.splice(-1, 1);
+                    }
+                }
+            });
 
+        }
         // this.grabarArchivo();
 
 
