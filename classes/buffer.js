@@ -59,8 +59,9 @@ class ValorControl {
 
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
+        let gaga = JSON.stringify(dispo1);
 
-        if (this.possi.includes(dispo1)) {
+        if (this.possi.includes(gaga)) {
             this.grabarArchivo();
         } else {
 
