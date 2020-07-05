@@ -70,13 +70,13 @@ class ValorControl {
                     pos1 = index;
                 } else {
                     array.unshift(dispo1);
-                    this.grabarArchivo();
+
                     if (array.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                         array.splice(-1, 1);
                     }
                 }
             });
-
+            this.grabarArchivo();
         }
 
         let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
