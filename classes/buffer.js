@@ -58,10 +58,16 @@ class ValorControl {
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
 
-        if (this.poss.length === 0) {
-            this.poss.push(dispo1);
-            console.log('lista', this.poss);
+        // if (this.poss.length === 0) {
+        //     this.poss.push(dispo1);
+        //     console.log('lista', this.poss);
+        // }
+
+        this.poss.unshift(dispo1);
+        if (this.poss.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
+            this.poss.splice(-1, 1);
         }
+        this.grabarArchivo();
 
         if (dispo1 === 'ignacio1') {
             pos1 = 0;
