@@ -61,6 +61,9 @@ class ValorControl {
         }
         if (dispo1 === 'Otto') {
             pos1 = 1;
+            beta1 = accelerationincludinggravityx1;
+            gamma1 = accelerationincludinggravityy1;
+            alpha1 = accelerationincludinggravityz1;
         }
         if (dispo1 === 'invitado') {
             pos1 = 2;
