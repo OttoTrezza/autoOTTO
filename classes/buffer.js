@@ -58,13 +58,15 @@ class ValorControl {
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         let poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
-        this.posiciones[0] = dispo1;
-        this.posiciones[1] = 'sin datos';
-        this.posiciones[2] = 'sin datos';
-        this.posiciones[3] = 'sin datos';
+        if (this.posiciones.length === 0) {
+            this.posiciones.push(dispo1);
+            this.grabarArchivo();
+        }
+
+
         // let posicione = this.getDispositivosConectadosporPos(0);
 
-        console.log('buffer posicione y this.posi', this.posiciones, pos1);
+        console.log('buffer posiciones', this.posiciones);
         //     switch (item) {
         //         case dispo1: //esta es la posicion en la tabla en la que estoy yo
         //             pos1 = index; // confirmo mi posicion grabando pos1

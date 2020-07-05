@@ -114,8 +114,8 @@ exports.ElSarmiento = (cliente) => {
         valorControl.siguiente(payload.pos1, payload.de, payload.beta1, payload.gamma1, payload.alpha1, payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1);
 
         let va0 = valorControl.getUltimoValor();
-        let dispoConec = valorControl.getDispositivosConectados();
-        console.log('DISPOCONEC', dispoConec);
+        // let dispoConec = valorControl.getDispositivosConectados();
+        //  console.log('DISPOCONEC', dispoConec);
         const paya = {
             pos1: va0.pos1,
             de: va0.dispo1,
