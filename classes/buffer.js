@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = ['sin datos', 'sin datos', 'sin datos', 'sin datos'];
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -58,7 +58,10 @@ class ValorControl {
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         let poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
-
+        this.posiciones[0] = dispo1;
+        this.posiciones[1] = 'sin datos';
+        this.posiciones[2] = 'sin datos';
+        this.posiciones[3] = 'sin datos';
         // let posicione = this.getDispositivosConectadosporPos(0);
 
         console.log('buffer posicione y this.posi', this.posiciones, pos1);
