@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = [];
+        this.posiciones = ['sin nombre', 'sin nombre', 'sin nombre', 'sin nombre'];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -59,7 +59,7 @@ class ValorControl {
         let poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
 
-        this.posiciones.forEach(function(item, index, dispo1) {
+        this.posiciones.forEach(function(item, index, array) {
             switch (item) {
                 case dispo1: //esta es la posicion en la tabla en la que estoy yo
                     pos1 = index; // confirmo mi posicion grabando pos1
