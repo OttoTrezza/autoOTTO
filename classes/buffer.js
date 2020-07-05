@@ -60,25 +60,27 @@ class ValorControl {
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
 
-        // if (this.poss.length === 0) {
-        //     this.poss.push(dispo1);iiiiiiii
-        //     console.log('lista', this.poss);
-        // }
+        if (this.possi.includes(dispo1)) {
+            this.grabarArchivo();
+        } else {
 
-        this.possi.unshift(dispo1);
-        if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.possi.splice(-1, 1);
-        }
-        this.grabarArchivo();
 
-        if (dispo1 === 'ignacio1') {
-            pos1 = 0;
-        }
-        if (dispo1 === 'Otto') {
-            pos1 = 1;
-        }
-        if (dispo1 === 'invitado') {
-            pos1 = 2;
+
+            this.possi.unshift(dispo1);
+            if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
+                this.possi.splice(-1, 1);
+            }
+            this.grabarArchivo();
+
+            if (dispo1 === this.possi[0]) {
+                pos1 = 0;
+            }
+            if (dispo1 === this.possi[1]) {
+                pos1 = 1;
+            }
+            if (dispo1 === this.possi[2]) {
+                pos1 = 2;
+            }
         }
         // this.grabarArchivo();
 
@@ -163,9 +165,9 @@ class ValorControl {
         }
         this.grabarArchivo();
         this.analisisUltimos24(this.ultimos24);
-        let as = this.getUltimos4Dispo(pos1Valor);
+        // let as = this.getUltimos4Dispo(pos1Valor);
 
-        console.log('todo', as);
+        //  console.log('todo', as);
     }
     analisisUltimos24(ultimos24) {
         if (ultimos24[3] == undefined) {
@@ -186,7 +188,7 @@ class ValorControl {
         return this.codigoEvento;
     }
     getDispositivosConectados() {
-        return this.posiciones;
+        return this.possi;
     }
     getDispositivosConectadosporPos(po) {
 
