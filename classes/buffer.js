@@ -59,7 +59,7 @@ class ValorControl {
         let poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
 
-        this.posiciones.forEach(function(item, index, array) {
+        this.posiciones.forEach(function(item, index, dispo1) {
             switch (item) {
                 case dispo1: //esta es la posicion en la tabla en la que estoy yo
                     pos1 = index; // confirmo mi posicion grabando pos1
@@ -77,6 +77,8 @@ class ValorControl {
             }
             if (outfor === true) {
                 outfor = false;
+                this.posiciones[index] = dispo1;
+                this.grabarArchivo();
                 return;
             }
         });
@@ -86,8 +88,7 @@ class ValorControl {
 
 
 
-        this.posiciones[p] = dispo1;
-        this.grabarArchivo();
+
 
 
         this.posiciones[p] = dispo1;
