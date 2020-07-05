@@ -65,7 +65,7 @@ class ValorControl {
 
         this.ultimo = this.ultimo + 1;
 
-        this.pos.push(poso);
+        this.posiciones.push(poso);
         console.log('buffer pos y pos length', this.pos, this.pos.length);
         this.grabarArchivo();
 
