@@ -2,7 +2,11 @@
 
 const fs = require('fs');
 
-
+class Posicion {
+    constructor(dispo1) {
+        this.pos = [];
+    }
+}
 class Valor {
     constructor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.pos1 = pos1;
@@ -56,10 +60,12 @@ class ValorControl {
         //  }
     }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
-        let poso = parseInt(pos1);
+        let poso = new Posicion(dispo1);
+
         this.ultimo = this.ultimo + 1;
 
-        this.posiciones.push(dispo1);
+        this.pos.push(poso);
+        console.log('buffer pos y pos length', this.pos, this.pos.length);
         this.grabarArchivo();
 
 
