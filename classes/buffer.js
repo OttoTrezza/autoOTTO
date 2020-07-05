@@ -32,7 +32,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = ['sin nombre', 'sin nombre', 'sin nombre', 'sin nombre'];
+        this.posiciones = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -59,40 +59,40 @@ class ValorControl {
         let poso = parseInt(pos1);
         this.ultimo = this.ultimo + 1;
 
-        this.posiciones.forEach(function(item, index, array) {
-            switch (item) {
-                case dispo1: //esta es la posicion en la tabla en la que estoy yo
-                    pos1 = index; // confirmo mi posicion grabando pos1
-                    outfor = true;
-                    break;
-                case !dispo1: // esta es un posicion de la tabla que no esta vacia y no es mi posicion
-                    //  console.log('sigo buscando');
-                    break;
-                case undefined:
-                    pos1 = index;
-                    outfor = true;
-                    break;
-                default:
-                    console.log('defaul del switch');
-            }
-            if (outfor === true) {
-                outfor = false;
-                this.posiciones[index] = dispo1;
-                this.grabarArchivo();
-                return;
-            }
-        });
+        let posicione = ValorControl.getDispositivosConectados();
+        console.log('buffer posicione y this.posi', posicione, this.posiciones, pos1);
+        //     switch (item) {
+        //         case dispo1: //esta es la posicion en la tabla en la que estoy yo
+        //             pos1 = index; // confirmo mi posicion grabando pos1
+        //             outfor = true;
+        //             break;
+        //         case !dispo1: // esta es un posicion de la tabla que no esta vacia y no es mi posicion
+        //             //  console.log('sigo buscando');
+        //             break;
+        //         case undefined:
+        //             pos1 = index;
+        //             outfor = true;
+        //             break;
+        //         default:
+        //             console.log('defaul del switch');
+        //     }
+        //     if (outfor === true) {
+        //         outfor = false;
+        //         return;
+        //     }
+        // });
 
-        let outfor = false;
-        let nombredispo = this.posiciones[p];
-
+        // let outfor = false;
+        // let nombredispo = this.posiciones[p];
 
 
 
+        // this.posiciones[p] = dispo1;
+        // this.grabarArchivo();
 
 
-        this.posiciones[p] = dispo1;
-        this.grabarArchivo();
+        // this.posiciones[p] = dispo1;
+        // this.grabarArchivo();
         let valor = new Valor(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1);
         this.valores.push(valor);
         this.valor = valor;
