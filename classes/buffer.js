@@ -31,7 +31,7 @@ class ValorControl {
         this.hoy = new Date().getDay();
         this.valores = [];
         this.valor = {};
-        this.posiciones = [];
+        this.poss = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -44,7 +44,7 @@ class ValorControl {
         this.ultimo = data.ultimo;
         this.valores = data.valores;
         this.valor = data.valor;
-        this.posiciones = data.posiciones;
+        this.poss = data.poss;
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
@@ -52,7 +52,7 @@ class ValorControl {
 
         //  } else {
         //      this.reiniciarConteo();
-        //  }
+        //  }y
     }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
@@ -65,7 +65,7 @@ class ValorControl {
         if (dispo1 === 'invitado') {
             pos1 = 2;
         }
-        this.grabarArchivo();
+        // this.grabarArchivo();
 
 
 
@@ -207,7 +207,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.posiciones = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
+        this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -224,7 +224,7 @@ class ValorControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             valores: this.valores,
-            posiciones: this.posiciones,
+            poss: this.poss,
             ultimos4: this.ultimos4,
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
