@@ -44,7 +44,7 @@ exports.entrarChat = (cliente) => {
             };
             cliente.to(payload.sala).emit('mensaje-auto', pay);
         }
-        valorControl.reiniciarConteo();
+        // valorControl.reiniciarConteo();
     });
 };
 
@@ -62,7 +62,7 @@ exports.desconectar = (cliente) => {
         console.log('Cliente desconectado', cliente.id);
         usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
         cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
-        valorControl.reiniciarConteo();
+        // valorControl.reiniciarConteo();
     });
 };
 
