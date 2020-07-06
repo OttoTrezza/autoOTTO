@@ -73,7 +73,7 @@ class ValorControl {
         } else {
 
             let ind = this.possi.findIndex(dispo1);
-            pos1 = ind;
+            pos1 = ind - 1;
             // forEach(this.arra);
         }
 
