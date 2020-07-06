@@ -70,8 +70,8 @@ class ValorControl {
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
             }
+            pos1 = this.possi.lenth;
         } else {
-
             let ind = this.possi.findIndex(dispo1);
             pos1 = ind - 1;
             // forEach(this.arra);
