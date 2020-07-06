@@ -138,7 +138,7 @@ exports.ElSarmiento = (cliente) => {
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
 
-        console.log(payload.de, 'ha enviado esto', paya);
+        // console.log(payload.de, 'ha enviado esto', paya);
         let codEv = valorControl.getCodigoEvento();
 
         if (codEv == 1) {
@@ -150,7 +150,7 @@ exports.ElSarmiento = (cliente) => {
             cliente.to(payload.sala).emit('mensaje-auto', pay);
             cliente.emit('mensaje-auto', pay);
             // cliente.emit('mensaje-auto', pay);
-            console.log('adentroo enviado', codEv);
+            //   console.log('adentroo enviado', codEv);
         }
 
         if (codEv == 2) {
