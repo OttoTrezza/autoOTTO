@@ -53,7 +53,7 @@ exports.desconectar = (cliente) => {
         console.log('Cliente desconectado', cliente.id);
         let usuario2 = this.usuariosConectados.getCliente(cliente.id);
         const pay = {
-            de: usuario2,
+            de: usuario2.nombre,
             cuerpo: 'Desconectado'
         };
         cliente.to('Juegos').emit('mensaje-nuevo-auto', pay);
@@ -63,7 +63,7 @@ exports.desconectar = (cliente) => {
         usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
         cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
         // valorControl.reiniciarConteo();
-        valorControl.sacarDlista(usuario2);
+        valorControl.sacarDlista(usuario2.nombre);
     });
 };
 
