@@ -61,28 +61,29 @@ class ValorControl {
         this.reiniciarConteo();
 
     }
+    arra(value, index, array) {
+        if (value === array[0]) {
+            pos1 = index;
+        } else {
+            array.unshift('Otto');
 
+            if (array.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
+                array.splice(-1, 1);
+            }
+        }
+    }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
         if (this.possi.length === 0) {
+            console.log('length', this.possi.length);
             this.possi.unshift(dispo1);
             this.grabarArchivo();
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
             }
         } else {
-            function arra(value, index, array) {
-                if (value === 'ignacio1') {
-                    pos1 = index;
-                } else {
-                    array.unshift('Otto');
 
-                    if (array.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
-                        array.splice(-1, 1);
-                    }
-                }
-            }
-            this.possi.forEach(arra);
+            this.possi.forEach(this.arra);
         }
         this.grabarArchivo();
 
