@@ -63,7 +63,7 @@ class ValorControl {
     }
     arra(value, index, array) {
         if (value === array[0]) {
-            pos1 = index;
+            this.pos1 = index;
         } else {
             array.unshift('Otto');
 
