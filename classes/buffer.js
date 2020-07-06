@@ -61,19 +61,7 @@ class ValorControl {
         this.reiniciarConteo();
 
     }
-    arra(value, index, array, pos1, dispo1) {
-        if (value === dispo1) {
-            pos1 = index;
-            return;
-        } else {
-            console.log('ERROR- deberias estar!');
-            array.unshift(dispo1);
-            if (array.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
-                array.splice(-1, 1);
-            }
 
-        }
-    }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
         if (pos1 === 999) {
@@ -84,7 +72,9 @@ class ValorControl {
             }
         } else {
 
-            this.possi.forEach(this.arra);
+            let ind = this.possi.findIndex(dispo1);
+            pos1 = ind;
+            // forEach(this.arra);
         }
 
 
