@@ -142,7 +142,8 @@ class ValorControl {
             this.ultimos24b.splice(-1, 1);
         }
         this.grabarArchivo();
-        this.analisisUltimos24(this.ultimos24);
+        this.analisisUltimos24(this.ultimos24a);
+        this.analisisUltimos24(this.ultimos24b);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
         //  console.log('todo', as);
