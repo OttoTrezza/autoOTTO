@@ -52,7 +52,7 @@ exports.desconectar = (cliente) => {
         console.log('Cliente desconectado', cliente.id);
         let usuario2 = this.usuariosConectados.getCliente(cliente.id);
         const pay = {
-            de: usuario2.nombre,
+            de: usuario2,
             cuerpo: 'Desconectado'
         };
         cliente.to('Juegos').emit('mensaje-nuevo-auto', pay);
