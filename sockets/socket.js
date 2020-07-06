@@ -63,6 +63,7 @@ exports.desconectar = (cliente) => {
         usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
         cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
         // valorControl.reiniciarConteo();
+        valorControl.sacarDlista(usuario2);
     });
 };
 
@@ -97,6 +98,9 @@ exports.mensajeAutoOTTO = (cliente) => {
         cliente.emit('mensaje-nuevo-auto', msg);
         if (payload.cuerpo === 'reiniciarConteo') {
             valorControl.reiniciarConteo();
+        }
+        if (payload.cuerpo === 'salirDsala') {
+            valorControl.sacarDlista(payload.de);
         }
         console.log(payload.de, 'ha enviado esto', payload.cuerpo);
 

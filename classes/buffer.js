@@ -66,6 +66,14 @@ class ValorControl {
             return index;
         }
     }
+    sacarDlista(nombre) {
+        let culo = 0;
+        while (culo !== 1) {
+            this.possi.unshift(this.possi.pop());
+            let nome = this.possi[this.possi.length];
+            if (nome === nombre) { culo = 1; }
+        }
+    }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
         if (pos1 === 999) {
@@ -77,7 +85,7 @@ class ValorControl {
             pos1 = this.possi.lenth;
         } else {
             let ind = this.possi.findIndex(this.fInd);
-            pos1 = ind - 1;
+            pos1 = ind;
             // forEach(this.arra);
         }
 
