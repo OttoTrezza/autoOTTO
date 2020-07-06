@@ -68,11 +68,12 @@ class ValorControl {
     }
     sacarDlista(nombre) {
         let culo = 0;
-        while (culo !== 1) {
+        let cho = (this.possi.indexOf(nombre) - this.possi.length);
+        cho = cho + 1;
+        for (culo; culo <= cho; culo++) {
             this.possi.unshift(this.possi.pop());
-            let nome = this.possi[this.possi.length];
-            if (nome === nombre) { culo = 1; }
         }
+        this.grabarArchivo();
     }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
