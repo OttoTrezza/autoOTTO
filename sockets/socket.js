@@ -44,6 +44,7 @@ exports.entrarChat = (cliente) => {
             };
             cliente.to(payload.sala).emit('mensaje-auto', pay);
         }
+        valorControl.reiniciarConteo();
     });
 };
 
