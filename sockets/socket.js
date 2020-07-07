@@ -6,10 +6,29 @@ exports.usuariosConectados = new usuarios_lista.UsuariosLista();
 
 const valorControl = new ValorControl();
 
-exports.conectarCliente = (cliente) => {
+exports.conectar = (cliente) => {
     // console.log('cliente', cliente);
-    cliente.on('connect', () => {
-        console.log('ENTRO ESP');
+    cliente.on('conectar', () => {
+        console.log('cliente conectado: id', cliente.id);
+    });
+};
+
+exports.desconectar = (cliente) => {
+    cliente.on('desconectar', () => {
+        console.log('Cliente desconectado: id', cliente.id);
+        let usuario2 = this.usuariosConectados.getCliente(cliente.id);
+        const pay = {
+            de: usuario2.nombre,
+            cuerpo: 'Desconectado'
+        };
+        cliente.to('Juegos').emit('mensaje-nuevo-auto', pay);
+        sal = 'Juegos';
+        this.usuariosConectados.borrarUsuario(cliente.id);
+        console.log('Cliente desconectado', cliente.id);
+        usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
+        cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
+        // valorControl.reiniciarConteo();
+        valorControl.sacarDlista(usuario2.nombre);
     });
 };
 
@@ -48,26 +67,8 @@ exports.entrarChat = (cliente) => {
     });
 };
 
-exports.desconectar = (cliente) => {
-    cliente.on('disconnect', () => {
-        console.log('Cliente desconectado', cliente.id);
-        let usuario2 = this.usuariosConectados.getCliente(cliente.id);
-        const pay = {
-            de: usuario2.nombre,
-            cuerpo: 'Desconectado'
-        };
-        cliente.to('Juegos').emit('mensaje-nuevo-auto', pay);
-        sal = 'Juegos';
-        this.usuariosConectados.borrarUsuario(cliente.id);
-        console.log('Cliente desconectado', cliente.id);
-        usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
-        cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
-        // valorControl.reiniciarConteo();
-        valorControl.sacarDlista(usuario2.nombre);
-    });
-};
 
-// Escuchar mensajes
+// Escuchar mensajes(Chat de mensajes)
 exports.mensaje = (cliente) => {
     cliente.on('mensaje', (payload, callback) => {
 
@@ -85,7 +86,7 @@ exports.mensaje = (cliente) => {
 
     });
 };
-// Escuchar mensajes
+// Escuchar mensajes(Chat de auto)
 exports.mensajeAutoOTTO = (cliente) => {
     cliente.on('mensaje-autoOTTO', (payload, callback) => {
 
@@ -110,7 +111,7 @@ exports.mensajeAutoOTTO = (cliente) => {
 };
 
 
-// Escuchar mensajes
+// Escuchar mensajes(eventos deviceMotionOrientation)
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
         // valorControl.reiniciarConteo();
@@ -173,57 +174,7 @@ exports.ElSarmiento = (cliente) => {
 };
 
 
-// // Escuchar mensajes
-// exports.ElSarmientoGravity = (cliente) => {
-//     cliente.on('ElSarmientoGravity', (payload, callback) => {
-
-//         valorControl.siguiente(payload.pos1, payload.de, payload.beta1, payload.gamma1, payload.alpha1, payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1);
-//         console.log('grav', payload);
-//         let va0 = valorControl.getUltimoValor();
-//         let dispoConec = valorControl.getDispositivosConectados();
-//         console.log('DISPOCONEC', dispoConec);
-//         const paya = {
-//             pos1: va0.pos1,
-//             de1: va0.dispo1,
-//             beta1: va0.beta1,
-//             gamma1: va0.gamma1,
-//             alpha1: va0.alpha1,
-//             sala: 'Juegos'
-//         };
-//         cliente.to('Juegos').emit('Dispo2', paya);
-//         cliente.emit('Dispo2', paya);
-
-//         // console.log(payload.de, 'ha enviado esto', paya);
-//         // let codEv = valorControl.getCodigoEvento();
-
-//         // if (codEv == 1) {
-//         //     const pay = {
-//         //         de: payload.de,
-//         //         cuerpo: 'Movimiento-1',
-//         //         img: ''
-//         //     };
-//         //     cliente.to(payload.sala).emit('mensaje-auto', pay);
-//         //     cliente.emit('mensaje-auto', pay);
-//         //     // cliente.emit('mensaje-auto', pay);
-//         //     console.log('adentroo enviado', codEv);
-//         // }
-
-//         // if (codEv == 2) {
-//         //     const pay = {
-//         //         de: payload.de,
-//         //         cuerpo: 'sin magicMoves',
-//         //         img: ''
-//         //     };
-//         //     cliente.to(payload.sala).emit('mensaje-auto', pay);
-//         //     cliente.emit('mensaje-auto', pay);
-//         // }
-//         // //  console.log(payload.de, 'ha enviado esto', msg1);
-//         callback(paya);
-//     });
-// };
-
-
-// Configurar usuario
+// Configurar usuario(metodo general)
 exports.configurarUsuario = (cliente) => {
     cliente.on('configurar-usuario', (payload, callback) => {
         console.log('configUsuar', payload.nombre, payload.sala);
@@ -240,7 +191,7 @@ exports.configurarUsuario = (cliente) => {
     });
 };
 
-// Obtener Usuarios
+// Obtener Usuarios(metodo general)
 exports.obtenerUsuarios = (cliente) => {
     cliente.on('obtener-usuarios', (pay, callback) => {
         usuarios = this.usuariosConectados.getUsuariosEnSala(pay);
@@ -251,7 +202,7 @@ exports.obtenerUsuarios = (cliente) => {
     });
 };
 
-// Obtener Salas
+// Obtener Salas(metodo general)
 exports.obtenerSalas = (cliente, sal) => {
     cliente.on('obtener-salas', (callback) => {
         salas = obtenerSalsas(sal);
