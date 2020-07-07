@@ -76,19 +76,18 @@ class ValorControl {
     }
     siguiente(pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1) {
         this.ultimo = this.ultimo + 1;
-        if (pos1 === 999) {
+
+        let ind = this.possi.findIndex((dispo1) => {
+            return dispo1;
+        });
+        pos1 = ind;
+        if (pos1 === -1) {
             this.possi.unshift(dispo1);
             this.grabarArchivo();
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
             }
-            pos1 = this.possi.lenth;
-        } else {
-            console.log('pos1, dispo1', pos1, dispo1);
-            let ind = this.possi.findIndex((dispo1) => {
-                return dispo1;
-            });
-            pos1 = ind;
+            pos1 = this.possi.lenth - 1;
             console.log('pos1, ind, dispo1', pos1, ind, dispo1);
             // forEach(this.arra);
         }
