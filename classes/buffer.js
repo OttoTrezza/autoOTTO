@@ -82,9 +82,9 @@ class ValorControl {
             }
             pos1 = this.possi.lenth;
         } else {
-            let ind = this.possi.findIndex(fInf(dispo1, pos1), s => {
-                if (element === disp1) {
-                    s(index);
+            let ind = this.possi.findIndex((dispo1) => {
+                if (value === dispo1) {
+                    return true;
                 }
             });
             pos1 = ind;
