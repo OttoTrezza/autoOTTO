@@ -15,8 +15,8 @@ exports.conectar = (cliente) => {
 
 exports.desconectar = (cliente) => {
     cliente.on('desconectar', (payload) => {
-        console.log('Cliente desconectado: id', cliente.id);
-        let usuario2 = this.usuariosConectados.getCliente(payload.nombre);
+        console.log('Cliente desconectado: id', payload.nombre);
+        let usuario2 = this.usuariosConectados.getCliente(cliente.id);
         const pay = {
             de: usuario2.nombre,
             cuerpo: 'Desconectado'
@@ -205,7 +205,7 @@ exports.obtenerUsuarios = (cliente) => {
 // Obtener Salas(metodo general)
 exports.obtenerSalas = (cliente) => {
     cliente.on('obtener-salas', (callback) => {
-        salas = obtenerSalsas(cliente);
+        salas = this.obtenerSalsas(cliente);
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
