@@ -203,9 +203,9 @@ exports.obtenerUsuarios = (cliente) => {
 };
 
 // Obtener Salas(metodo general)
-exports.obtenerSalas = (cliente, sal) => {
+exports.obtenerSalas = (cliente) => {
     cliente.on('obtener-salas', (callback) => {
-        salas = obtenerSalsas(sal);
+        salas = obtenerSalsas(cliente);
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
@@ -213,7 +213,7 @@ exports.obtenerSalas = (cliente, sal) => {
     });
 };
 
-obtenerSalsas = (cliente, sal) => {
+obtenerSalsas = (cliente) => {
 
     let falas = [];
     Usuario.find({}, 'sala')
