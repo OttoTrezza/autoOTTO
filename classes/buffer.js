@@ -67,7 +67,7 @@ class ValorControl {
         let culo = 0;
         let cho = (this.possi.indexOf(nombre) - this.possi.length);
         cho = cho + 1;
-        for (culo; culo <= cho; culo++) {
+        for (culo; culo < cho; culo++) {
             let alda = this.possi.pop();
             this.possi.unshift(alda);
         }
