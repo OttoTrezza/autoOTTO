@@ -61,7 +61,7 @@ class ValorControl {
         this.reiniciarConteo();
 
     }
-    const fInd = (element) => element === dispo1;
+
 
     sacarDlista(nombre) {
         let culo = 0;
@@ -82,7 +82,11 @@ class ValorControl {
             }
             pos1 = this.possi.lenth;
         } else {
-            let ind = this.possi.findIndex(fInf);
+            let ind = this.possi.findIndex(fInf(dispo1, pos1), s => {
+                if (element === disp1) {
+                    s(index);
+                }
+            });
             pos1 = ind;
             // forEach(this.arra);
         }
