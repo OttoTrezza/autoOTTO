@@ -68,7 +68,8 @@ class ValorControl {
         let cho = (this.possi.indexOf(nombre) - this.possi.length);
         cho = cho + 1;
         for (culo; culo <= cho; culo++) {
-            this.possi.unshift(this.possi.pop());
+            let alda = this.possi.pop();
+            this.possi.unshift(alda);
         }
         this.grabarArchivo();
     }
@@ -82,7 +83,7 @@ class ValorControl {
             }
             pos1 = this.possi.lenth;
         } else {
-            console.log('pos1, dispo1');
+            console.log('pos1, dispo1', pos1, dispo1);
             let ind = this.possi.findIndex((dispo1) => {
                 return dispo1;
             });
