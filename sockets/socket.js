@@ -9,13 +9,13 @@ const valorControl = new ValorControl();
 exports.conectar = (cliente) => {
     // console.log('cliente', cliente);
     cliente.on('conectar', (payload) => {
-        console.log('cliente conectado: id', payload.nombre);
+        console.log('cliente conectado: id', payload);
     });
 };
 
 exports.desconectar = (cliente) => {
     cliente.on('desconectar', (payload) => {
-        console.log('Cliente desconectado: id', payload.nombre);
+        console.log('Cliente desconectado: id', payload);
         let usuario2 = this.usuariosConectados.getCliente(cliente.id);
         const pay = {
             de: usuario2.nombre,
