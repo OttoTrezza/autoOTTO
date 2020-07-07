@@ -83,9 +83,7 @@ class ValorControl {
             pos1 = this.possi.lenth;
         } else {
             let ind = this.possi.findIndex((dispo1) => {
-                if (value === dispo1) {
-                    return true;
-                }
+                return dispo1;
             });
             pos1 = ind;
             // forEach(this.arra);
