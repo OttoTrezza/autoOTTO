@@ -228,10 +228,10 @@ obtenerSalsas = () => {
                     falas[i] = salas[i].sala;
                 }
                 if (falas) console.log('falas111', falas);
-                this.usuariosConectados.actualizarSalas(cliente.id, falas);
-                usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
-                cliente.emit('usuarios-activos', usuarios);
-                cliente.emit('salas-activas', falas);
+                // this.usuariosConectados.actualizarSalas(cliente.id, falas);
+                //    usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
+                //   cliente.emit('usuarios-activos', usuarios);
+                //   cliente.emit('salas-activas', falas);
                 return falas;
             }
 
