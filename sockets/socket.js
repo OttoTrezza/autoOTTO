@@ -8,15 +8,15 @@ const valorControl = new ValorControl();
 
 exports.conectar = (cliente) => {
     // console.log('cliente', cliente);
-    cliente.on('conectar', () => {
-        console.log('cliente conectado: id', cliente.id);
+    cliente.on('conectar', (payload) => {
+        console.log('cliente conectado: id', payload.nombre);
     });
 };
 
 exports.desconectar = (cliente) => {
-    cliente.on('desconectar', () => {
+    cliente.on('desconectar', (payload) => {
         console.log('Cliente desconectado: id', cliente.id);
-        let usuario2 = this.usuariosConectados.getCliente(cliente.id);
+        let usuario2 = this.usuariosConectados.getCliente(payload.nombre);
         const pay = {
             de: usuario2.nombre,
             cuerpo: 'Desconectado'
