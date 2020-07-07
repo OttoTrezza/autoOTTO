@@ -80,7 +80,7 @@ class ValorControl {
         let ind = this.possi.findIndex((element) => element === dispo1);
 
         pos1 = ind;
-        console.log('pos1, ind, dispo1', pos1, ind, dispo1);
+        // console.log('pos1, ind, dispo1', pos1, ind, dispo1);
 
         if (pos1 === -1) {
             this.possi.unshift(dispo1);
@@ -89,7 +89,7 @@ class ValorControl {
                 this.possi.splice(-1, 1);
             }
             pos1 = this.possi.lenth - 1;
-            console.log('pos1, ind, dispo1', pos1, ind, dispo1);
+            //   console.log('pos1, ind, dispo1', pos1, ind, dispo1);
             // forEach(this.arra);
         }
 

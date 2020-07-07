@@ -18,16 +18,16 @@ exports.desconectar = (cliente) => {
         console.log('Cliente desconectado: id', payload);
         let usuario2 = this.usuariosConectados.getCliente(cliente.id);
         const pay = {
-            de: usuario2.nombre,
+            de: usuario2,
             cuerpo: 'Desconectado'
         };
         cliente.to(payload.sala).emit('mensaje-nuevo-auto', pay);
         this.usuariosConectados.borrarUsuario(cliente.id);
         console.log('Cliente desconectado', cliente.id);
         usuarios = this.usuariosConectados.getUsuariosEnSala(payload.sala);
-        cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
+        cliente.to(payload.sala).emit('usuarios-activos', usuarios);
         // valorControl.reiniciarConteo();
-        valorControl.sacarDlista(usuario2.nombre);
+        // valorControl.sacarDlista(usuario2);
     });
 };
 
