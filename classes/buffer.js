@@ -82,10 +82,12 @@ class ValorControl {
             }
             pos1 = this.possi.lenth;
         } else {
+            console.log('pos1, dispo1');
             let ind = this.possi.findIndex((dispo1) => {
                 return dispo1;
             });
             pos1 = ind;
+            console.log('pos1, ind, dispo1', pos1, ind, dispo1);
             // forEach(this.arra);
         }
 
