@@ -221,7 +221,6 @@ obtenerSalsas = () => {
             } else {
                 // console.log('salasbusqueda', salas);
                 var i;
-                falas[salas.length] = [];
                 for (i = 0; i < salas.length; i++) {
                     falas[i] = salas[i].sala;
                 }

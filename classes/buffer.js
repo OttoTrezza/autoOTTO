@@ -78,9 +78,12 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
 
         let ind = this.possi.findIndex((dispo1) => {
+
             return dispo1;
         });
         pos1 = ind;
+        console.log('pos1, ind, dispo1', pos1, ind, dispo1);
+
         if (pos1 === -1) {
             this.possi.unshift(dispo1);
             this.grabarArchivo();
