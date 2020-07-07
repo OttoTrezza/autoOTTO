@@ -133,9 +133,9 @@ exports.ElSarmiento = (cliente) => {
             rotationratebeta1: va0.rotationratebeta1,
             rotationrategamma1: va0.rotationrategamma1,
             rotationratealpha1: va0.rotationratealpha1,
-            sala: payload.sala
+            sala: 'juegos'
         };
-        cliente.to(payload.sala).emit('Dispo1', paya);
+        cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
 
         // console.log(payload.de, 'ha enviado esto', paya);
