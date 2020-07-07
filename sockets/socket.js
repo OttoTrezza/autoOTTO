@@ -21,11 +21,10 @@ exports.desconectar = (cliente) => {
             de: usuario2.nombre,
             cuerpo: 'Desconectado'
         };
-        cliente.to('Juegos').emit('mensaje-nuevo-auto', pay);
-        sal = 'Juegos';
+        cliente.to(payload.sala).emit('mensaje-nuevo-auto', pay);
         this.usuariosConectados.borrarUsuario(cliente.id);
         console.log('Cliente desconectado', cliente.id);
-        usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
+        usuarios = this.usuariosConectados.getUsuariosEnSala(payload.sala);
         cliente.to(cliente.sala).emit('usuarios-activos', usuarios);
         // valorControl.reiniciarConteo();
         valorControl.sacarDlista(usuario2.nombre);
@@ -38,15 +37,14 @@ exports.entrarChat = (cliente) => {
         //=====================================================================
         //Obtener todas las salas
         //=====================================================================
-        falas = obtenerSalsas(cliente, payload.sala);
+        falas = obtenerSalsas();
         usuarioLis = {
             nombre: payload.nombre,
-            sala: 'Juegos',
+            sala: payload.sala,
             img: payload.img,
             id: cliente.id,
             salas: falas
         };
-        sal = 'Juegos';
         if (!this.usuariosConectados.getUsuario(usuarioLis.nombre)) {
             this.usuariosConectados.agregar(usuarioLis);
         }
@@ -139,9 +137,9 @@ exports.ElSarmiento = (cliente) => {
             rotationratebeta1: va0.rotationratebeta1,
             rotationrategamma1: va0.rotationrategamma1,
             rotationratealpha1: va0.rotationratealpha1,
-            sala: 'Juegos'
+            sala: payload.sala
         };
-        cliente.to('Juegos').emit('Dispo1', paya);
+        cliente.to(payload.sala).emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
 
         // console.log(payload.de, 'ha enviado esto', paya);

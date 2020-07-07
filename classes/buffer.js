@@ -69,6 +69,7 @@ class ValorControl {
         cho = cho + 1;
         for (culo; culo < cho; culo++) {
             let alda = this.possi.pop();
+            console.log('sacando');
             this.possi.unshift(alda);
         }
         this.grabarArchivo();
