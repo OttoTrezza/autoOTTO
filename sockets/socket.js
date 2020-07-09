@@ -218,7 +218,8 @@ obtenerSalsas = () => {
                 // console.log('salasbusqueda', salas);
                 var i;
                 for (i = 0; i < salas.length; i++) {
-                    falas[i] = salas[i];
+                    salas.push(sala);
+                    falas.push(sala);
                 }
                 if (falas) console.log('salas, de obtener salas', falas);
                 // this.usuariosConectados.actualizarSalas(cliente.id, falas);
