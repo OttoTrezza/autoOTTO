@@ -217,7 +217,7 @@ obtenerSalsas = () => {
                 let i;
                 let salas = [];
                 for (i = 0; i < usuarios.length; i++) {
-                    salas.push();
+
                     salas = usuarios[i].sala;
                     i++;
                 }
