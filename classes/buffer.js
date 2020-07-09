@@ -40,7 +40,7 @@ class ValorControl {
         this.ultimos24b = [];
         this.codigoEvento = 2;
         this.possi = [];
-
+        // agregar vector matrices y esa papa es la que va!
         let data = require('./data/data.json');
         console.log('data', data);
 
