@@ -1,5 +1,5 @@
 var usuarios_lista = require('../classes/usuarios-lista');
-
+var Usuario = require('../models/usuario');
 var { ValorControl } = require('../classes/buffer');
 
 exports.usuariosConectados = new usuarios_lista.UsuariosLista();
@@ -37,7 +37,7 @@ exports.entrarChat = (cliente) => {
         //=====================================================================
         //Obtener todas las salas
         //=====================================================================
-        let falas = this.usuariosConectados.obtenerSalsas();
+        let falas = obtenerSalsas();
         usuarioLis = {
             nombre: payload.nombre,
             sala: payload.sala,
@@ -199,10 +199,35 @@ exports.obtenerUsuarios = (cliente) => {
 // Obtener Salas(metodo general)
 exports.obtenerSalas = (cliente) => {
     cliente.on('obtener-salas', (callback) => {
-        salas = this.usuariosConectados.obtenerSalsas();
+        salas = obtenerSalsas();
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
 
     });
+};
+obtenerSalsas = () => {
+    //                    let falas = [];
+    Usuario.find({}, 'nombre', 'sala')
+        .exec((err, usuarios) => {
+            if (err) {
+                console.log('Error', err);
+            } else {
+                // console.log('salasbusqueda', salas);
+                let i;
+                let salas = [];
+                for (i = 0; i < usuarios.length; i++) {
+                    salas.push(usuarios[i].sala);
+                    i++;
+                }
+                // this.salas = salas;
+                this.usuariosConectados.actualizarSalas(salas);
+            }
+            if (salas) console.log('salas, de obtener salas', salas);
+            // this.usuariosConectados.actualizarSalas(cliente.id, falas);
+            //    usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
+            //   cliente.emit('usuarios-activos', usuarios);
+            //   cliente.emit('salas-activas', falas);
+            return salas;
+        });
 };
