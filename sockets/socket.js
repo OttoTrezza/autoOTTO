@@ -199,7 +199,7 @@ exports.obtenerUsuarios = (cliente) => {
 // Obtener Salas
 exports.obtenerSalas = (cliente, sal) => {
     cliente.on('obtener-salas', (callback) => {
-        salas = obtenerSalsas(sal);
+        salas = obtenerSalsas(cliente, sal);
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
