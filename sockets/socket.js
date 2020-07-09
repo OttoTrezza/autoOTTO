@@ -233,5 +233,4 @@ obtenerSalsas = () => {
             }
             return salas;
         });
-    return salas;
 };
