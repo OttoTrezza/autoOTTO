@@ -1,3 +1,5 @@
+var Usuario = require('../models/usuario');
+
 class UsuariosLista {
     constructor() {
             this.lista = [];
@@ -10,16 +12,36 @@ class UsuariosLista {
         return usuarioLis;
     }
     actualizarSalas(id, salas) {
-            let usuarioLis = this.lista.find(usuarioLis => usuarioLis.id === id);
-            for (usuarioLis of this.lista) {
-                if (usuarioLis.id === id) {
-                    usuarioLis.salas = salas;
-                    console.log('actusu', usuarioLis);
-                    break;
-                }
+        let usuarioLis = this.lista.find(usuarioLis => usuarioLis.id === id);
+        for (usuarioLis of this.lista) {
+            if (usuarioLis.id === id) {
+                usuarioLis.salas = salas;
+                console.log('actusu', usuarioLis);
+                break;
             }
-            console.log('===== Actualizando salas ====');
-            // console.log(usuarioLis.salas);
+        }
+        console.log('===== Actualizando salas ====');
+        // console.log(usuarioLis.salas);
+    }
+    obtenerSalsas() {
+            //                    let falas = [];
+            Usuario.find({}, 'sala')
+                .exec((err, salas) => {
+                    if (err) {
+                        console.log('Error', err);
+                    } else {
+                        // console.log('salasbusqueda', salas);
+
+                        salas.push(sala);
+                        // falas.push(sala);
+                    }
+                    if (salas) console.log('salas, de obtener salas', salas);
+                    // this.usuariosConectados.actualizarSalas(cliente.id, falas);
+                    //    usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
+                    //   cliente.emit('usuarios-activos', usuarios);
+                    //   cliente.emit('salas-activas', falas);
+                    return falas;
+                });
         }
         // Obtener lista de usuarios
     getLista() {

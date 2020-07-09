@@ -1,5 +1,5 @@
 var usuarios_lista = require('../classes/usuarios-lista');
-var Usuario = require('../models/usuario');
+
 var { ValorControl } = require('../classes/buffer');
 
 exports.usuariosConectados = new usuarios_lista.UsuariosLista();
@@ -37,7 +37,7 @@ exports.entrarChat = (cliente) => {
         //=====================================================================
         //Obtener todas las salas
         //=====================================================================
-        falas = obtenerSalsas();
+        let falas = this.usuariosConectados.obtenerSalsas();
         usuarioLis = {
             nombre: payload.nombre,
             sala: payload.sala,
@@ -199,36 +199,10 @@ exports.obtenerUsuarios = (cliente) => {
 // Obtener Salas(metodo general)
 exports.obtenerSalas = (cliente) => {
     cliente.on('obtener-salas', (callback) => {
-        salas = obtenerSalsas();
+        salas = this.usuariosConectados.obtenerSalsas();
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
 
     });
-};
-
-obtenerSalsas = () => {
-
-    let falas = [];
-    Usuario.find({}, 'sala')
-        .exec((err, salas) => {
-            if (err) {
-                console.log('Error', err);
-            } else {
-                // console.log('salasbusqueda', salas);
-                var i;
-                for (i = 0; i < salas.length; i++) {
-                    salas.push(sala);
-                    falas.push(sala);
-                }
-                if (falas) console.log('salas, de obtener salas', falas);
-                // this.usuariosConectados.actualizarSalas(cliente.id, falas);
-                //    usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
-                //   cliente.emit('usuarios-activos', usuarios);
-                //   cliente.emit('salas-activas', falas);
-                return falas;
-            }
-
-        });
-
 };
