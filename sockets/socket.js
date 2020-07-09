@@ -32,19 +32,20 @@ exports.desconectar = (cliente) => {
 };
 
 
-exports.entrarChat = (cliente, salas) => {
+exports.entrarChat = (cliente) => {
     cliente.on('entrarChat', (payload) => {
         //=====================================================================
         //Obtener todas las salas
         //=====================================================================
-
+        falas = obtenerSalsas(cliente, payload.sala);
         usuarioLis = {
             nombre: payload.nombre,
-            sala: payload.sala,
+            sala: 'Juegos',
             img: payload.img,
             id: cliente.id,
-            salas
+            salas: falas
         };
+        sal = 'Juegos';
         if (!this.usuariosConectados.getUsuario(usuarioLis.nombre)) {
             this.usuariosConectados.agregar(usuarioLis);
         }
@@ -52,7 +53,7 @@ exports.entrarChat = (cliente, salas) => {
         usuarios = this.usuariosConectados.getUsuariosEnSala(usuarioLis.sala);
 
         cliente.emit('usuarios-activos', usuarios);
-        cliente.emit('salas', salas);
+        cliente.emit('salas', falas);
         if (payload.nombre === 'autoOTTO') {
             const pay = {
                 de: payload.nombre,
@@ -61,7 +62,6 @@ exports.entrarChat = (cliente, salas) => {
             };
             cliente.to(payload.sala).emit('mensaje-auto', pay);
         }
-        // valorControl.reiniciarConteo();
     });
 };
 
@@ -185,7 +185,7 @@ exports.configurarUsuario = (cliente) => {
     });
 };
 
-// Obtener Usuarios(metodo general)
+// Obtener Usuarios
 exports.obtenerUsuarios = (cliente) => {
     cliente.on('obtener-usuarios', (pay, callback) => {
         usuarios = this.usuariosConectados.getUsuariosEnSala(pay);
@@ -196,12 +196,39 @@ exports.obtenerUsuarios = (cliente) => {
     });
 };
 
-// Obtener Salas(metodo general)
-exports.obtenerSalas = (cliente, salas) => {
+// Obtener Salas
+exports.obtenerSalas = (cliente, sal) => {
     cliente.on('obtener-salas', (callback) => {
-        this.usuariosConectados.actualizarSalas(salas);
+        salas = obtenerSalsas(sal);
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };
+
     });
+};
+
+obtenerSalsas = (cliente, sal) => {
+
+    let falas = [];
+    Usuario.find({}, 'sala')
+        .exec((err, salas) => {
+            if (err) {
+                console.log('Error', err);
+            } else {
+                // console.log('salasbusqueda', salas);
+                var i;
+                falas[salas.length] = [];
+                for (i = 0; i < salas.length; i++) {
+                    falas[i] = salas[i].sala;
+                }
+                if (falas) console.log('falas111', falas);
+                this.usuariosConectados.actualizarSalas(cliente.id, falas);
+                usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
+                cliente.emit('usuarios-activos', usuarios);
+                cliente.emit('salas-activas', falas);
+                return falas;
+            }
+
+        });
+
 };
