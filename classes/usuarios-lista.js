@@ -25,22 +25,25 @@ class UsuariosLista {
     }
     obtenerSalsas() {
             //                    let falas = [];
-            Usuario.find({}, 'sala')
-                .exec((err, salas) => {
+            Usuario.find({}, 'nombre', 'sala')
+                .exec((err, usuarios) => {
                     if (err) {
                         console.log('Error', err);
                     } else {
                         // console.log('salasbusqueda', salas);
-
-                        salas.push(sala);
-                        // falas.push(sala);
+                        let i;
+                        for (i = 0; i < usuarios.length; i++) {
+                            salas.push(usuarios[i].sala);
+                            i++;
+                        }
+                        this.usuarioLis.salas = salas;
                     }
                     if (salas) console.log('salas, de obtener salas', salas);
                     // this.usuariosConectados.actualizarSalas(cliente.id, falas);
                     //    usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
                     //   cliente.emit('usuarios-activos', usuarios);
                     //   cliente.emit('salas-activas', falas);
-                    return falas;
+                    return salas;
                 });
         }
         // Obtener lista de usuarios
