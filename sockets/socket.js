@@ -199,6 +199,7 @@ exports.obtenerUsuarios = (cliente) => {
 // Obtener Salas(metodo general)
 exports.obtenerSalas = (cliente, salas) => {
     cliente.on('obtener-salas', (callback) => {
+        this.usuariosConectados.actualizarSalas(salas);
         cliente.emit('salas-activas', salas);
         console.log('Emitido', salas);
         callback = { entro: true };

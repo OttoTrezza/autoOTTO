@@ -52,8 +52,6 @@ class Server {
                         i++;
                     }
                     // this.salas = salas;
-                    this.usuariosConectados.actualizarSalas(salas);
-                    if (salas) console.log('salas, de obtener salas', salas);
                     // this.usuariosConectados.actualizarSalas(cliente.id, falas);
                     //    usuarios = this.usuariosConectados.getUsuariosEnSala(sal);
                     //   cliente.emit('usuarios-activos', usuarios);
