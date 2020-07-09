@@ -219,7 +219,7 @@ obtenerSalsas = () => {
                 for (i = 0; i < usuarios.length; i++) {
 
 
-                    salas = salas + usuarios[i].sala;
+                    salas = salas + ', ' + usuarios[i].sala + ', ';
                     i++;
                 }
                 // this.salas = salas;
@@ -232,4 +232,5 @@ obtenerSalsas = () => {
             //   cliente.emit('salas-activas', falas);
             return salas;
         });
+    return salas;
 };
