@@ -208,7 +208,7 @@ exports.obtenerSalas = (cliente) => {
 };
 obtenerSalsas = () => {
     //                    let falas = [];
-    Usuario.find({}, 'nombre', 'sala')
+    Usuario.find({}, 'sala')
         .exec((err, usuarios) => {
             if (err) {
                 console.log('Error', err);
@@ -217,7 +217,8 @@ obtenerSalsas = () => {
                 let i;
                 let salas = [];
                 for (i = 0; i < usuarios.length; i++) {
-                    salas.push(usuarios[i].sala);
+                    salas.push();
+                    salas = usuarios[i].sala;
                     i++;
                 }
                 // this.salas = salas;
