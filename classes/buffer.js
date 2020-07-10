@@ -99,7 +99,7 @@ class ValorControl {
                 this.ultimos14.splice(-1, 1);
             }
             this.ultimos14[pos1] = [];
-            console.log('ultim4AB', this.ultimos4[pos1]); //, this.ultimos4[1]
+            // console.log('ultim4AB', this.ultimos4[pos1]); //, this.ultimos4[1]
             this.ultimos24.unshift(pos1);
             if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
                 this.ultimos24.splice(-1, 1);
