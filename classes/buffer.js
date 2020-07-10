@@ -91,12 +91,15 @@ class ValorControl {
             if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
                 this.ultimos4.splice(-1, 1);
             }
+
             this.ultimos4[pos1] = [];
+
             this.ultimos14.unshift(pos1);
             if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.ultimos14.splice(-1, 1);
             }
             this.ultimos14[pos1] = [];
+            console.log('ultim4AB', this.ultimos4[pos1]); //, this.ultimos4[1]
             this.ultimos24.unshift(pos1);
             if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
                 this.ultimos24.splice(-1, 1);
@@ -170,7 +173,7 @@ class ValorControl {
         //     this.ultimos24b.splice(-1, 1);
         // }
         this.grabarArchivo();
-        console.log('ultim4AB', this.ultimos4[0]); //, this.ultimos4[1]
+
         // console.log('ultim4B', this.ultimos4b);
         // this.analisisUltimos14(this.ultimos14[0]);
         // this.analisisUltimos14(this.ultimos14[1]);
