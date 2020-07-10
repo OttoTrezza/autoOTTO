@@ -45,7 +45,7 @@ class ValorControl {
         let data = require('./data/data.json');
         // console.log('data', data);
 
-
+        this.pol = data.pol;
         this.ultimo = data.ultimo;
         this.valores = data.valores;
         this.valor = data.valor;
@@ -130,26 +130,26 @@ class ValorControl {
 
 
 
-
-        this.ultimos4[pos1Valor].unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
-        if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4[pos1Valor].splice(-1, 1);
+        this.pol = pos1Valor;
+        this.ultimos4[this.pol].unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
+        if (this.ultimos4[this.pol].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4[this.pol].splice(-1, 1);
         }
         // this.ultimos4b.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
         // if (this.ultimos4b.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
         //     this.ultimos4b.splice(-1, 1);
         // }
-        this.ultimos14[pos1Valor].unshift(atenderValor);
-        if (this.ultimos14[pos1Valor].length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.ultimos14[pos1Valor].splice(-1, 1);
+        this.ultimos14[this.pol].unshift(atenderValor);
+        if (this.ultimos14[this.pol].length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+            this.ultimos14[this.pol].splice(-1, 1);
         }
         // this.ultimos14b.unshift(atenderValor);
         // if (this.ultimos14b.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
         //     this.ultimos14b.splice(-1, 1);
         // }
-        this.ultimos24[pos1Valor].unshift(atenderValor);
-        if (this.ultimos24[pos1Valor].length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-            this.ultimos24[pos1Valor].splice(-1, 1);
+        this.ultimos24[this.pol].unshift(atenderValor);
+        if (this.ultimos24[this.pol].length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+            this.ultimos24[this.pol].splice(-1, 1);
         }
         // this.ultimos24b.unshift(atenderValor);
         // if (this.ultimos24b.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
@@ -158,8 +158,8 @@ class ValorControl {
         this.grabarArchivo();
         console.log('ultim4AB', this.ultimos4[0], this.ultimos4[1]);
         // console.log('ultim4B', this.ultimos4b);
-        this.analisisUltimos14(this.ultimos14[pos1Valor]);
-        this.analisisUltimos14(this.ultimos14[pos1Valor]);
+        this.analisisUltimos14(this.ultimos14[this.pol]);
+        this.analisisUltimos14(this.ultimos14[this.pol]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
         //  console.log('todo', as);
@@ -248,7 +248,8 @@ class ValorControl {
             ultimos24: this.ultimos24,
             //    ultimos24: this.ultimos24,
             codigoEvento: this.codigoEvento,
-            possi: this.possi
+            possi: this.possi,
+            pol: this.pol
         };
         let jsonDataString = JSON.stringify(jsonData);
         fs.writeFileSync('./classes/data/data.json', jsonDataString);
