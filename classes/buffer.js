@@ -33,9 +33,9 @@ class ValorControl {
         this.valor = {};
         this.poss = [];
         this.pol = 0;
-        this.ultimos4 = [{}];
-        this.ultimos14 = [{}];
-        this.ultimos24 = [{}];
+        this.ultimos4 = [];
+        this.ultimos14 = [];
+        this.ultimos24 = [];
         // this.ultimos4b = [];
         // this.ultimos14b = [];
         // this.ultimos24b = [];
@@ -91,14 +91,17 @@ class ValorControl {
             if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
                 this.ultimos4.splice(-1, 1);
             }
+            this.ultimos4[pos1] = [];
             this.ultimos14.unshift(pos1);
             if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.ultimos14.splice(-1, 1);
             }
+            this.ultimos14[pos1] = [];
             this.ultimos24.unshift(pos1);
             if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
                 this.ultimos24.splice(-1, 1);
             }
+            this.ultimos24[pos1] = [];
             this.grabarArchivo();
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
