@@ -85,6 +85,7 @@ class ValorControl {
 
         if (pos1 === -1) {
             this.possi.unshift(dispo1);
+            this.ultimos4.unshift(this.pol);
             this.grabarArchivo();
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
                 this.possi.splice(-1, 1);
