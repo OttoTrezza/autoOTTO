@@ -32,9 +32,9 @@ class ValorControl {
         this.valores = [];
         this.valor = {};
         this.poss = [];
-        this.ultimos4[pos1Valor] = [];
-        this.ultimos14[pos1Valor] = [];
-        this.ultimos24[pos1Valor] = [];
+        this.ultimos4[() => pos1Valor] = [];
+        this.ultimos14[() => pos1Valor] = [];
+        this.ultimos24[() => pos1Valor] = [];
         // this.ultimos4b = [];
         // this.ultimos14b = [];
         // this.ultimos24b = [];
@@ -49,9 +49,9 @@ class ValorControl {
         this.valores = data.valores;
         this.valor = data.valor;
         this.poss = data.poss;
-        this.ultimos4[pos1Valor] = data.ultimos4[pos1Valor];
-        this.ultimos14[pos1Valor] = data.ultimos14[pos1Valor];
-        this.ultimos24[pos1Valor] = data.ultimos24[pos1Valor];
+        this.ultimos = data.ultimos4;
+        this.ultimos14 = data.ultimos14;
+        this.ultimos24 = data.ultimos24;
         // this.ultimos4b = data.ultimos4b;
         // this.ultimos14b = data.ultimos14b;
         // this.ultimos24b = data.ultimos24b;
@@ -219,12 +219,12 @@ class ValorControl {
         this.ultimo = 0;
         this.valores = [];
         this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
-        this.ultimos4a = [];
-        this.ultimos4b = [];
-        this.ultimos14a = [];
-        this.ultimos14b = [];
-        this.ultimos24a = [];
-        this.ultimos24b = [];
+        this.ultimos4 = [];
+        // this.ultimos4b = [];
+        this.ultimos14 = [];
+        //  this.ultimos14b = [];
+        this.ultimos24 = [];
+        //   this.ultimos24b = [];
         this.codigoEvento = 0;
         this.possi = [];
 
@@ -240,12 +240,12 @@ class ValorControl {
             hoy: this.hoy,
             valores: this.valores,
             poss: this.poss,
-            ultimos4a: this.ultimos4a,
-            ultimos4b: this.ultimos4b,
-            ultimos14a: this.ultimos14a,
-            ultimos14b: this.ultimos14b,
-            ultimos24a: this.ultimos24a,
-            ultimos24b: this.ultimos24b,
+            ultimos4: this.ultimos4,
+            //   ultimos4: this.ultimos4,
+            ultimos14: this.ultimos14,
+            //   ultimos14: this.ultimos14,
+            ultimos24: this.ultimos24,
+            //    ultimos24: this.ultimos24,
             codigoEvento: this.codigoEvento,
             possi: this.possi
         };
