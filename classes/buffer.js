@@ -172,14 +172,14 @@ class ValorControl {
         this.grabarArchivo();
         console.log('ultim4AB', this.ultimos4[0]); //, this.ultimos4[1]
         // console.log('ultim4B', this.ultimos4b);
-        this.analisisUltimos14(this.ultimos14[0]);
+        // this.analisisUltimos14(this.ultimos14[0]);
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
         //  console.log('todo', as);
     }
     analisisUltimos14(ultimos14) {
-        if (ultimos14[3] === undefined) {
+        if (ultimos14[3] == undefined) {
             ultimos14[3] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
