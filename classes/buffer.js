@@ -33,9 +33,9 @@ class ValorControl {
         this.valor = {};
         this.poss = [];
         this.pol = 0;
-        this.ultimos4 = [{ pol }];
-        this.ultimos14 = [{ pol }];
-        this.ultimos24 = [{ pol }];
+        this.ultimos4 = [{}];
+        this.ultimos14 = [{}];
+        this.ultimos24 = [{}];
         // this.ultimos4b = [];
         // this.ultimos14b = [];
         // this.ultimos24b = [];
@@ -50,7 +50,7 @@ class ValorControl {
         this.valores = data.valores;
         this.valor = data.valor;
         this.poss = data.poss;
-        this.ultimos = data.ultimos4;
+        this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
         // this.ultimos4b = data.ultimos4b;
@@ -221,11 +221,11 @@ class ValorControl {
         this.ultimo = 0;
         this.valores = [];
         this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
-        this.ultimos4 = [];
+        this.ultimos4 = [{}];
         // this.ultimos4b = [];
-        this.ultimos14 = [];
+        this.ultimos14 = [{}];
         //  this.ultimos14b = [];
-        this.ultimos24 = [];
+        this.ultimos24 = [{}];
         //   this.ultimos24b = [];
         this.codigoEvento = 0;
         this.possi = [];
