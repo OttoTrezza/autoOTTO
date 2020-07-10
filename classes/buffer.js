@@ -181,14 +181,14 @@ class ValorControl {
 
         //  console.log('todo', as);
     }
-    analisisUltimos14(ultimos14) {
-        if (ultimos14[3] == undefined) {
-            ultimos14[3] = '0';
+    analisisUltimos14(ultimos14l) {
+        if (ultimos14l[3] == undefined) {
+            ultimos14l[3] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
-        let betasaaa0 = ultimos14[0].beta1;
-        let betasaaa1 = ultimos14[3].beta1;
+        let betasaaa0 = ultimos14l[0].beta1;
+        let betasaaa1 = ultimos14l[3].beta1;
         let betasa0 = parseInt(betasaaa0);
         let betasa1 = parseInt(betasaaa1);
         if (betasa0 > betasa1) {
