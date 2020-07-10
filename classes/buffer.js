@@ -85,7 +85,7 @@ class ValorControl {
 
         if (pos1 === -1) {
             this.possi.unshift(dispo1);
-            pos1 = this.possi.lenth - 1;
+            pos1 = this.possi.lenth;
             let valar = new Valor('', '', '', '', '', '', '', '', '', '', '', '', '', '');
             let verga = { pos1verga: valar };
             this.ultimos4.unshift(verga);
@@ -124,7 +124,7 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let pos1Valor = this.getUltimoValor().pos1;
+        let pos1Valor = 0; // this.getUltimoValor().pos1;
         let dispo1Valor = this.getUltimoValor().dispo1;
         let beta1Valor = this.getUltimoValor().beta1;
         let gamma1Valor = this.getUltimoValor().gamma1;
@@ -183,18 +183,18 @@ class ValorControl {
     }
     analisisUltimos4(ultimos4l) {
         console.log('srda', ultimos4l);
-        if (ultimos4l[0][0] == undefined) {
-            ultimos4l[0][0] = '0';
+        if (ultimos4l[0] == undefined) {
+            ultimos4l[0] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
-        if (ultimos4l[0][3] == undefined) {
-            ultimos4l[0][3] = '0';
+        if (ultimos4l[3] == undefined) {
+            ultimos4l[3] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
-        let betasaaa0 = ultimos4l[0][0].beta1;
-        let betasaaa1 = ultimos4l[0][3].beta1;
+        let betasaaa0 = ultimos4l[0].beta1;
+        let betasaaa1 = ultimos4l[3].beta1;
         let betasa0 = parseInt(betasaaa0);
         let betasa1 = parseInt(betasaaa1);
         if (betasa0 > betasa1) {
