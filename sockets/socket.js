@@ -188,7 +188,7 @@ exports.configurarUsuario = (cliente) => {
 
 // Obtener Usuarios
 exports.obtenerUsuarios = (cliente) => {
-    cliente.on('obtener-usuarios', pay, (callback) => {
+    cliente.on('obtener-usuarios', (pay, callback) => {
         usuarios = this.usuariosConectados.getUsuariosEnSala(pay);
         cliente.to(pay).emit('usuarios-activos', usuarios);
         cliente.emit('usuarios-activos', usuarios);
