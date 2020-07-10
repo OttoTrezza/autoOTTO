@@ -179,10 +179,10 @@ class ValorControl {
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
-        //  console.log('todo', as);
+        console.log('todo', this.ultimos4);
     }
     analisisUltimos4(ultimos4l) {
-        console.log('srda', ultimos4l);
+
         if (ultimos4l[0] == undefined) {
             ultimos4l[0] = '0';
             this.codigoEvento = 0;
@@ -193,6 +193,7 @@ class ValorControl {
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
+
         let betasaaa0 = ultimos4l[0].beta1;
         let betasaaa1 = ultimos4l[3].beta1;
         let betasa0 = parseInt(betasaaa0);
