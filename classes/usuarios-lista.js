@@ -6,7 +6,7 @@ class UsuariosLista {
         // Agregar un usuario
     agregar(usuarioLis) {
         this.lista.push(usuarioLis);
-        console.log(this.lista);
+        //  console.log(this.lista);
         return usuarioLis;
     }
     actualizarSalas(id, salas) {
@@ -18,7 +18,7 @@ class UsuariosLista {
                     break;
                 }
             }
-            console.log('===== Actualizando salas ====');
+            //  console.log('===== Actualizando salas ====');
             // console.log(usuarioLis.salas);
         }
         // Obtener lista de usuarios

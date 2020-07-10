@@ -42,7 +42,7 @@ class ValorControl {
         this.possi = [];
         // agregar vector matrices y esa papa es la que va!
         let data = require('./data/data.json');
-        console.log('data', data);
+        // console.log('data', data);
 
 
         this.ultimo = data.ultimo;
@@ -69,7 +69,7 @@ class ValorControl {
         cho = cho + 1;
         for (culo; culo < cho; culo++) {
             let alda = this.possi.pop();
-            console.log('sacando');
+            // console.log('sacando');
             this.possi.unshift(alda);
         }
         this.grabarArchivo();
@@ -152,6 +152,8 @@ class ValorControl {
             this.ultimos24b.splice(-1, 1);
         }
         this.grabarArchivo();
+        console.log('ultim24A', this.ultimos24a);
+        console.log('ultim24B', this.ultimos24b);
         this.analisisUltimos24(this.ultimos24a);
         this.analisisUltimos24(this.ultimos24b);
         // let as = this.getUltimos4Dispo(pos1Valor);
