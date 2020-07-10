@@ -175,7 +175,7 @@ class ValorControl {
         this.grabarArchivo();
 
         // console.log('ultim4B', this.ultimos4b);
-        // this.analisisUltimos14(this.ultimos14[0]);
+        this.analisisUltimos14(this.ultimos14[0]);
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
