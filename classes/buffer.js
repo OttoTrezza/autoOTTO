@@ -179,7 +179,7 @@ class ValorControl {
         //  console.log('todo', as);
     }
     analisisUltimos14(ultimos14) {
-        if (ultimos14[3] == undefined) {
+        if (ultimos14[3] == undefined || NaN) {
             ultimos14[3] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
