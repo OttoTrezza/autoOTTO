@@ -14,7 +14,7 @@ class Valor {
         this.accelerationz1 = accelerationz1;
         this.accelerationincludinggravityx1 = accelerationincludinggravityx1;
         this.accelerationincludinggravityy1 = accelerationincludinggravityy1;
-        this.accelerationincludinggravityy1 = accelerationincludinggravityz1;
+        this.accelerationincludinggravityz1 = accelerationincludinggravityz1;
         this.rotationratebet1a = rotationratebeta1;
         this.rotationrategamma1 = rotationrategamma1;
         this.rotationratealpha1 = rotationratealpha1;

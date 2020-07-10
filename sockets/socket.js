@@ -121,6 +121,7 @@ exports.ElSarmiento = (cliente) => {
         const paya = {
             pos1: va0.pos1,
             de: va0.dispo1,
+            sala: 'juegos',
             beta1: va0.beta1,
             gamma1: va0.gamma1,
             alpha1: va0.alpha1,
@@ -132,8 +133,8 @@ exports.ElSarmiento = (cliente) => {
             accelerationincludinggravityz1: va0.accelerationincludinggravityz1,
             rotationratebeta1: va0.rotationratebeta1,
             rotationrategamma1: va0.rotationrategamma1,
-            rotationratealpha1: va0.rotationratealpha1,
-            sala: 'juegos'
+            rotationratealpha1: va0.rotationratealpha1
+
         };
         cliente.to('Juegos').emit('Dispo1', paya);
         cliente.emit('Dispo1', paya);
@@ -187,7 +188,7 @@ exports.configurarUsuario = (cliente) => {
 
 // Obtener Usuarios
 exports.obtenerUsuarios = (cliente) => {
-    cliente.on('obtener-usuarios', (pay, callback) => {
+    cliente.on('obtener-usuarios', pay, (callback) => {
         usuarios = this.usuariosConectados.getUsuariosEnSala(pay);
         cliente.to(pay).emit('usuarios-activos', usuarios);
         cliente.emit('usuarios-activos', usuarios);
