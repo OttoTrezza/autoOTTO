@@ -32,12 +32,12 @@ class ValorControl {
         this.valores = [];
         this.valor = {};
         this.poss = [];
-        this.ultimos4a = [];
-        this.ultimos14a = [];
-        this.ultimos24a = [];
-        this.ultimos4b = [];
-        this.ultimos14b = [];
-        this.ultimos24b = [];
+        this.ultimos4[pos1Valor] = [];
+        this.ultimos14[pos1Valor] = [];
+        this.ultimos24[pos1Valor] = [];
+        // this.ultimos4b = [];
+        // this.ultimos14b = [];
+        // this.ultimos24b = [];
         this.codigoEvento = 2;
         this.possi = [];
         // agregar vector matrices y esa papa es la que va!
@@ -49,12 +49,12 @@ class ValorControl {
         this.valores = data.valores;
         this.valor = data.valor;
         this.poss = data.poss;
-        this.ultimos4a = data.ultimos4a;
-        this.ultimos14a = data.ultimos14a;
-        this.ultimos24a = data.ultimos24a;
-        this.ultimos4b = data.ultimos4b;
-        this.ultimos14b = data.ultimos14b;
-        this.ultimos24b = data.ultimos24b;
+        this.ultimos4[pos1Valor] = data.ultimos4[pos1Valor];
+        this.ultimos14[pos1Valor] = data.ultimos14[pos1Valor];
+        this.ultimos24[pos1Valor] = data.ultimos24[pos1Valor];
+        // this.ultimos4b = data.ultimos4b;
+        // this.ultimos14b = data.ultimos14b;
+        // this.ultimos24b = data.ultimos24b;
         this.codigoEvento = data.codigoEvento;
         this.possi = data.possi;
 
@@ -127,35 +127,38 @@ class ValorControl {
         let atenderValor = new Valor(pos1Valor, dispo1Valor, beta1Valor, gamma1Valor, alpha1Valor, accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor);
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
 
-        this.ultimos4a.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
-        if (this.ultimos4a.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4a.splice(-1, 1);
+
+
+
+        this.ultimos4[pos1Valor].unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
+        if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4[pos1Valor].splice(-1, 1);
         }
-        this.ultimos4b.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
-        if (this.ultimos4b.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4b.splice(-1, 1);
+        // this.ultimos4b.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
+        // if (this.ultimos4b.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        //     this.ultimos4b.splice(-1, 1);
+        // }
+        this.ultimos14[pos1Valor].unshift(atenderValor);
+        if (this.ultimos14[pos1Valor].length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+            this.ultimos14[pos1Valor].splice(-1, 1);
         }
-        this.ultimos14a.unshift(atenderValor);
-        if (this.ultimos14a.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.ultimos14a.splice(-1, 1);
+        // this.ultimos14b.unshift(atenderValor);
+        // if (this.ultimos14b.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
+        //     this.ultimos14b.splice(-1, 1);
+        // }
+        this.ultimos24[pos1Valor].unshift(atenderValor);
+        if (this.ultimos24[pos1Valor].length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+            this.ultimos24[pos1Valor].splice(-1, 1);
         }
-        this.ultimos14b.unshift(atenderValor);
-        if (this.ultimos14b.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.ultimos14b.splice(-1, 1);
-        }
-        this.ultimos24a.unshift(atenderValor);
-        if (this.ultimos24a.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-            this.ultimos24a.splice(-1, 1);
-        }
-        this.ultimos24b.unshift(atenderValor);
-        if (this.ultimos24b.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-            this.ultimos24b.splice(-1, 1);
-        }
+        // this.ultimos24b.unshift(atenderValor);
+        // if (this.ultimos24b.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
+        //     this.ultimos24b.splice(-1, 1);
+        // }
         this.grabarArchivo();
-        console.log('ultim24A', this.ultimos24a);
-        console.log('ultim24B', this.ultimos24b);
-        this.analisisUltimos24(this.ultimos24a);
-        this.analisisUltimos24(this.ultimos24b);
+        console.log('ultim4AB', this.ultimos4[0], this.ultimos4[1]);
+        // console.log('ultim4B', this.ultimos4b);
+        this.analisisUltimos24(this.ultimos24[pos1Valor]);
+        this.analisisUltimos24(this.ultimos24[pos1Valor]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
         //  console.log('todo', as);
