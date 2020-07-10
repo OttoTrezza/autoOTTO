@@ -177,7 +177,7 @@ class ValorControl {
         // console.log('ultim4B', this.ultimos4b);
         let sarda = [];
         sarda = this.ultimos4[pos1Valor];
-        this.analisisUltimos4(sarda);
+        this.analisisUltimos14(sarda);
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
