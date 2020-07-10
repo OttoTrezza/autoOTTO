@@ -176,22 +176,27 @@ class ValorControl {
 
         // console.log('ultim4B', this.ultimos4b);
         let sarda = [];
-        sarda = this.ultimos14[pos1Valor];
-        this.analisisUltimos14(sarda);
+        sarda = this.ultimos4[pos1Valor];
+        this.analisisUltimos4(sarda);
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
         //  console.log('todo', as);
     }
-    analisisUltimos14(ultimos14l) {
-        console.log('srda', ultimos14l);
-        if (ultimos14l[0][3] == undefined) {
-            ultimos14l[0][3] = '0';
+    analisisUltimos14(ultimos4l) {
+        console.log('srda', ultimos4l);
+        if (ultimos4l[0][0] == undefined) {
+            ultimos4l[0][0] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
-        let betasaaa0 = ultimos14l[0][0].beta1;
-        let betasaaa1 = ultimos14l[0][3].beta1;
+        if (ultimos4l[0][3] == undefined) {
+            ultimos4l[0][3] = '0';
+            this.codigoEvento = 0;
+            return this.codigoEvento;
+        }
+        let betasaaa0 = ultimos4l[0][0].beta1;
+        let betasaaa1 = ultimos4l[0][3].beta1;
         let betasa0 = parseInt(betasaaa0);
         let betasa1 = parseInt(betasaaa1);
         if (betasa0 > betasa1) {
