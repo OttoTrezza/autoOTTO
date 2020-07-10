@@ -157,20 +157,20 @@ class ValorControl {
         this.grabarArchivo();
         console.log('ultim4AB', this.ultimos4[0], this.ultimos4[1]);
         // console.log('ultim4B', this.ultimos4b);
-        this.analisisUltimos24(this.ultimos24[pos1Valor]);
-        this.analisisUltimos24(this.ultimos24[pos1Valor]);
+        this.analisisUltimos14(this.ultimos14[pos1Valor]);
+        this.analisisUltimos14(this.ultimos14[pos1Valor]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
         //  console.log('todo', as);
     }
-    analisisUltimos24(ultimos24) {
-        if (ultimos24[3] == undefined) {
-            ultimos24[3] = '0';
+    analisisUltimos14(ultimos14) {
+        if (ultimos14[3] == undefined) {
+            ultimos14[3] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
         }
-        let betasaaa0 = ultimos24[0].beta1;
-        let betasaaa1 = ultimos24[3].beta1;
+        let betasaaa0 = ultimos14[0].beta1;
+        let betasaaa1 = ultimos14[3].beta1;
         let betasa0 = parseInt(betasaaa0);
         let betasa1 = parseInt(betasaaa1);
         if (betasa0 > betasa1) {
