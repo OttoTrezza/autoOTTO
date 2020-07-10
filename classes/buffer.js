@@ -32,9 +32,10 @@ class ValorControl {
         this.valores = [];
         this.valor = {};
         this.poss = [];
-        this.ultimos4[() => pos1Valor] = [];
-        this.ultimos14[() => pos1Valor] = [];
-        this.ultimos24[() => pos1Valor] = [];
+        this.pol = 0;
+        this.ultimos4[pol] = [];
+        this.ultimos14[pol] = [];
+        this.ultimos24[pol] = [];
         // this.ultimos4b = [];
         // this.ultimos14b = [];
         // this.ultimos24b = [];
