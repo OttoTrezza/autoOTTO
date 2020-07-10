@@ -33,9 +33,9 @@ class ValorControl {
         this.valor = {};
         this.poss = [];
         this.pol = 0;
-        this.ultimos4[pol] = [];
-        this.ultimos14[pol] = [];
-        this.ultimos24[pol] = [];
+        this.ultimos4[this.pol] = [];
+        this.ultimos14[this.pol] = [];
+        this.ultimos24[this.pol] = [];
         // this.ultimos4b = [];
         // this.ultimos14b = [];
         // this.ultimos24b = [];
@@ -228,6 +228,7 @@ class ValorControl {
         //   this.ultimos24b = [];
         this.codigoEvento = 0;
         this.possi = [];
+        this.pol = 0;
 
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
