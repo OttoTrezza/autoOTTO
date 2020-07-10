@@ -148,7 +148,7 @@ class ValorControl {
         let atenderValor = new Valor(pos1Valor, dispo1Valor, beta1Valor, gamma1Valor, alpha1Valor, accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor);
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
 
-        this.ultimos4[pos1Valor] = atenderValor; // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
+        this.ultimos4[pos1Valor].unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
         // if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
         //     this.ultimos4[pos1Valor].splice(-1, 1);
         // }
@@ -175,14 +175,17 @@ class ValorControl {
         this.grabarArchivo();
 
         // console.log('ultim4B', this.ultimos4b);
-        this.analisisUltimos14(this.ultimos14[0]);
+        let sarda = [];
+        sarda = this.ultimos14[pos1Valor];
+        this.analisisUltimos14(sarda);
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
         //  console.log('todo', as);
     }
     analisisUltimos14(ultimos14l) {
-        if (ultimos14l[3] == undefined) {
+        console.log('srda', ultimos14l);
+        if (ultimos14l == undefined) {
             ultimos14l[3] = '0';
             this.codigoEvento = 0;
             return this.codigoEvento;
