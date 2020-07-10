@@ -33,9 +33,9 @@ class ValorControl {
         this.valor = {};
         this.poss = [];
         this.pol = 0;
-        this.ultimos4 = [];
-        this.ultimos14 = [];
-        this.ultimos24 = [];
+        this.ultimos4 = [{ pol }];
+        this.ultimos14 = [{ pol }];
+        this.ultimos24 = [{ pol }];
         // this.ultimos4b = [];
         // this.ultimos14b = [];
         // this.ultimos24b = [];
