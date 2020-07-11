@@ -83,13 +83,14 @@ class ValorControl {
         ind = this.possi.findIndex((element) => element === dispo1);
 
         pos1 = ind;
+
         // console.log('pos1, ind, dispo1', pos1, ind, dispo1);
 
-        if (pos1 === -1) {
+        if (ind === -1) {
             this.possi.unshift(dispo1);
-            pos1 = this.possi.lenth;
+            pos1 = this.possi.length;
             console.log('this.possi', this.possi, pos1);
-            let valar = new Valor('', '', '', '', '');
+            let valar = new Valor('', '', '', '', '', '');
             let verga = { pos1: [valar] };
 
             this.ultimos4.unshift(verga);
@@ -108,23 +109,16 @@ class ValorControl {
             }
 
             this.grabarArchivo();
-            if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 14
-                this.possi.splice(-1, 1);
-            }
-
-            //   console.log('pos1, ind, dispo1', pos1, ind, dispo1);
-            // forEach(this.arra);
         }
 
 
 
 
 
-        let valor = new Valor(pos1, dispo1, alpha1, beta1, gamma1); // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
+        let valor = new Valor(this.ultimo, pos1, dispo1, alpha1, beta1, gamma1); // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.valores.push(valor);
         this.valor = valor;
         // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
-        this.grabarArchivo();
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
