@@ -113,7 +113,7 @@ exports.mensajeAutoOTTO = (cliente) => {
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
         // valorControl.reiniciarConteo();
-        valorControl.siguiente(payload.pos1, payload.de, payload.beta1, payload.gamma1, payload.alpha1, payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1);
+        valorControl.siguiente(payload.pos1, payload.de, payload.alpha1, payload.beta1, payload.gamma1); // ,  payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1
 
         let va0 = valorControl.getUltimoValor();
         // let dispoConec = valorControl.getDispositivosConectados();
@@ -122,18 +122,19 @@ exports.ElSarmiento = (cliente) => {
             pos1: va0.pos1,
             de: va0.dispo1,
             sala: 'juegos',
-            beta1: va0.beta1,
-            gamma1: va0.gamma1,
             alpha1: va0.alpha1,
-            accelerationx1: va0.accelerationx1,
-            accelerationy1: va0.accelerationy1,
-            accelerationz1: va0.accelerationz1,
-            accelerationincludinggravityx1: va0.accelerationincludinggravityx1,
-            accelerationincludinggravityy1: va0.accelerationincludinggravityy1,
-            accelerationincludinggravityz1: va0.accelerationincludinggravityz1,
-            rotationratebeta1: va0.rotationratebeta1,
-            rotationrategamma1: va0.rotationrategamma1,
-            rotationratealpha1: va0.rotationratealpha1
+            beta1: va0.beta1,
+            gamma1: va0.gamma1
+
+            // accelerationx1: va0.accelerationx1,
+            // accelerationy1: va0.accelerationy1,
+            // accelerationz1: va0.accelerationz1,
+            // accelerationincludinggravityx1: va0.accelerationincludinggravityx1,
+            // accelerationincludinggravityy1: va0.accelerationincludinggravityy1,
+            // accelerationincludinggravityz1: va0.accelerationincludinggravityz1,
+            // rotationratebeta1: va0.rotationratebeta1,
+            // rotationrategamma1: va0.rotationrategamma1,
+            // rotationratealpha1: va0.rotationratealpha1
 
         };
         cliente.to('Juegos').emit('Dispo1', paya);
