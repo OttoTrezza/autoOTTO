@@ -89,24 +89,13 @@ class ValorControl {
             ind = this.possi.length;
             ind = ind;
             console.log('this.possi', this.possi, ind);
-            let valor = new Valor(this.ultimo, ind, dispo1, alpha1, beta1, gamma1);
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            let verga = { ind: [valor] };
+            this.ultimos4 = [{ ind: [] }];
+            this.ultimos14 = [{ ind: [] }];
+            this.ultimos24 = [{ ind: [] }];
 
-            this.ultimos4.unshift(verga);
-            if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-                this.ultimos4.splice(-1, 1);
-            }
-            this.ultimos14.unshift(verga);
-            if (this.ultimos14.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-                this.ultimos14.splice(-1, 1);
-            }
-
-            this.ultimos24.unshift(verga);
-            if (this.ultimos24.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-                this.ultimos24.splice(-1, 1);
-            }
 
             this.grabarArchivo();
         }
@@ -137,66 +126,58 @@ class ValorControl {
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
 
-        this.ultimos4[pos1Valor].pos1verga.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
-        if (this.ultimos4[pos1Valor].pos1verga.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4[pos1Valor].pos1verga.splice(-1, 1);
+        this.ultimos4[pos1Valor].unshift(atenderValor);
+        if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4[pos1Valor].splice(-1, 1);
         }
-        // this.ultimos4b.unshift(atenderValor); // UBICO ESTE TICKET AL INICIO DEL ARREGLO DEL LOS ULTIMOS 4        
-        // if (this.ultimos4b.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-        //     this.ultimos4b.splice(-1, 1);
-        // }
-        this.ultimos14[pos1Valor].pos1verga.unshift(atenderValor);
-        if (this.ultimos14[pos1Valor].pos1verga.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-            this.ultimos14[pos1Valor].pos1verga.splice(-1, 1);
+        this.ultimos14[pos1Valor].unshift(push(atenderValor));
+        if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos14[pos1Valor].splice(-1, 1);
         }
-        // this.ultimos14b.unshift(atenderValor);
-        // if (this.ultimos14b.length > 14) { // VERIFICO QUE SIEMPRE SEAN 14
-        //     this.ultimos14b.splice(-1, 1);
-        // }
-        this.ultimos24[pos1Valor].pos1verga.unshift(atenderValor);
-        if (this.ultimos24[pos1Valor].pos1verga.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-            this.ultimos24[pos1Valor].pos1verga.splice(-1, 1);
+        this.ultimos24[pos1Valor].unshift(push(atenderValor));
+        if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos24[pos1Valor].splice(-1, 1);
         }
-        // this.ultimos24b.unshift(atenderValor);
-        // if (this.ultimos24b.length > 24) { // VERIFICO QUE SIEMPRE SEAN 24
-        //     this.ultimos24b.splice(-1, 1);
-        // }
+
         this.grabarArchivo();
 
         // console.log('ultim4B', this.ultimos4b);
-        let sarda = [];
-        sarda = this.ultimos4[pos1Valor].pos1verga;
-        this.analisisUltimos4(sarda);
+
+
+        this.analisisUltimos4(this.ultimos4);
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
-        console.log('todo-0', this.ultimos4[0].pos1verga);
-        console.log('todo-1', this.ultimos4[1].pos1verga);
+        console.log('todo-0', this.ultimos4[0]);
+        console.log('todo-1', this.ultimos4[1]);
     }
     analisisUltimos4(ultimos4l) {
+        let al = 0;
+        for (al; al < this.ultimos4.length; i++) {
+            if (ultimos4l[al][0] == undefined) {
+                ultimos4l[al][0] = '0';
+                this.codigoEvento = 0;
+                return this.codigoEvento;
+            }
+            if (ultimos4l[al][3] == undefined) {
+                ultimos4l[al][3] = '0';
+                this.codigoEvento = 0;
+                return this.codigoEvento;
+            }
 
-        if (ultimos4l[0] == undefined) {
-            ultimos4l[0] = '0';
-            this.codigoEvento = 0;
-            return this.codigoEvento;
-        }
-        if (ultimos4l[3] == undefined) {
-            ultimos4l[3] = '0';
-            this.codigoEvento = 0;
+            let betasaaa0 = ultimos4l[al][0].beta1;
+            let betasaaa1 = ultimos4l[al][3].beta1;
+            let betasa0 = parseInt(betasaaa0);
+            let betasa1 = parseInt(betasaaa1);
+            if (betasa0 > betasa1) {
+                console.log('es mayor');
+                this.codigoEvento = 1;
+                return this.codigoEvento;
+            }
+            this.codigoEvento = 2;
             return this.codigoEvento;
         }
 
-        let betasaaa0 = ultimos4l[0].beta1;
-        let betasaaa1 = ultimos4l[3].beta1;
-        let betasa0 = parseInt(betasaaa0);
-        let betasa1 = parseInt(betasaaa1);
-        if (betasa0 > betasa1) {
-            console.log('es mayor');
-            this.codigoEvento = 1;
-            return this.codigoEvento;
-        }
-        this.codigoEvento = 2;
-        return this.codigoEvento;
     }
     getDispositivosConectados() {
         return this.possi;
