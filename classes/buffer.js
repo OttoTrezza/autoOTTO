@@ -92,9 +92,10 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            this.ultimos4.push(ind);
-            this.ultimos14.push(ind);
-            this.ultimos24.push(ind);
+            let indes = { ind: this.valor };
+            this.ultimos4.push(indes);
+            this.ultimos14.push(indes);
+            this.ultimos24.push(indes);
 
 
             this.grabarArchivo();
