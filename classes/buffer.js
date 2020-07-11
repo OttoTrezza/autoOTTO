@@ -135,128 +135,128 @@ class ValorControl {
         if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4[pos1Valor].splice(-1, 1);
         }
-        this.ultimos14[pos1Valor].unshift(push(atenderValor));
-        if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos14[pos1Valor].splice(-1, 1);
-        }
-        this.ultimos24[pos1Valor].unshift(push(atenderValor));
-        if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos24[pos1Valor].splice(-1, 1);
-        }
-
-        this.grabarArchivo();
-
-        // console.log('ultim4B', this.ultimos4b);
-
-
-        this.analisisUltimos4(this.ultimos4);
-        // this.analisisUltimos14(this.ultimos14[1]);
-        // let as = this.getUltimos4Dispo(pos1Valor);
-
-        console.log('todo-0', this.ultimos4[0]);
-        console.log('todo-1', this.ultimos4[1]);
+        this.ultimos14[pos1Valor].unshift(atenderValor));
+    if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        this.ultimos14[pos1Valor].splice(-1, 1);
     }
-    analisisUltimos4(ultimos4l) {
-        let al = 0;
-        for (al; al < this.ultimos4.length; i++) {
-            if (ultimos4l[al][0] == undefined) {
-                ultimos4l[al][0] = '0';
-                this.codigoEvento = 0;
-                return this.codigoEvento;
-            }
-            if (ultimos4l[al][3] == undefined) {
-                ultimos4l[al][3] = '0';
-                this.codigoEvento = 0;
-                return this.codigoEvento;
-            }
+    this.ultimos24[pos1Valor].unshift(atenderValor));
+if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+    this.ultimos24[pos1Valor].splice(-1, 1);
+}
 
-            let betasaaa0 = ultimos4l[al][0].beta1;
-            let betasaaa1 = ultimos4l[al][3].beta1;
-            let betasa0 = parseInt(betasaaa0);
-            let betasa1 = parseInt(betasaaa1);
-            if (betasa0 > betasa1) {
-                console.log('es mayor');
-                this.codigoEvento = 1;
-                return this.codigoEvento;
-            }
-            this.codigoEvento = 2;
+this.grabarArchivo();
+
+// console.log('ultim4B', this.ultimos4b);
+
+
+this.analisisUltimos4(this.ultimos4);
+// this.analisisUltimos14(this.ultimos14[1]);
+// let as = this.getUltimos4Dispo(pos1Valor);
+
+console.log('todo-0', this.ultimos4[0]);
+console.log('todo-1', this.ultimos4[1]);
+}
+analisisUltimos4(ultimos4l) {
+    let al = 0;
+    for (al; al < this.ultimos4.length; i++) {
+        if (ultimos4l[al][0] == undefined) {
+            ultimos4l[al][0] = '0';
+            this.codigoEvento = 0;
+            return this.codigoEvento;
+        }
+        if (ultimos4l[al][3] == undefined) {
+            ultimos4l[al][3] = '0';
+            this.codigoEvento = 0;
             return this.codigoEvento;
         }
 
-    }
-    getDispositivosConectados() {
-        return this.possi;
-    }
-    getDispositivosConectadosporPos(po) {
-
-        return this.possi[po];
-    }
-
-    getUltimoValor() {
-
-        return this.valor;
-    }
-    getCodigoEvento() {
-
+        let betasaaa0 = ultimos4l[al][0].beta1;
+        let betasaaa1 = ultimos4l[al][3].beta1;
+        let betasa0 = parseInt(betasaaa0);
+        let betasa1 = parseInt(betasaaa1);
+        if (betasa0 > betasa1) {
+            console.log('es mayor');
+            this.codigoEvento = 1;
+            return this.codigoEvento;
+        }
+        this.codigoEvento = 2;
         return this.codigoEvento;
     }
 
-    getUltimos4() {
+}
+getDispositivosConectados() {
+    return this.possi;
+}
+getDispositivosConectadosporPos(po) {
 
-        return this.ultimos4;
-    }
-    getUltimos4Dispo(pos) {
-        return this.ultimos4.filter(valor => valor.pos1 === pos);
-    }
-    getUltimos14() {
+    return this.possi[po];
+}
 
-        return this.ultimos14;
-    }
-    getUltimos24() {
+getUltimoValor() {
 
-        return this.ultimos14;
-    }
+    return this.valor;
+}
+getCodigoEvento() {
 
-    reiniciarConteo() {
+    return this.codigoEvento;
+}
 
-        this.ultimo = 0;
-        this.valores = [];
-        this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
-        this.ultimos4 = [{}];
-        // this.ultimos4b = [];
-        this.ultimos14 = [{}];
-        //  this.ultimos14b = [];
-        this.ultimos24 = [{}];
-        //   this.ultimos24b = [];
-        this.codigoEvento = 0;
-        this.possi = [];
-        this.pol = 0;
+getUltimos4() {
 
-        console.log('Se ha inicializado el sistema');
-        this.grabarArchivo();
+    return this.ultimos4;
+}
+getUltimos4Dispo(pos) {
+    return this.ultimos4.filter(valor => valor.pos1 === pos);
+}
+getUltimos14() {
 
-    }
+    return this.ultimos14;
+}
+getUltimos24() {
 
-    grabarArchivo() {
+    return this.ultimos14;
+}
 
-        let jsonData = {
-            ultimo: this.ultimo,
-            hoy: this.hoy,
-            valores: this.valores,
-            poss: this.poss,
-            ultimos4: this.ultimos4,
-            //   ultimos4: this.ultimos4,
-            ultimos14: this.ultimos14,
-            //   ultimos14: this.ultimos14,
-            ultimos24: this.ultimos24,
-            //    ultimos24: this.ultimos24,
-            codigoEvento: this.codigoEvento,
-            possi: this.possi,
-            pol: this.pol
-        };
-        let jsonDataString = JSON.stringify(jsonData);
-        fs.writeFileSync('./classes/data/data.json', jsonDataString);
-    }
+reiniciarConteo() {
+
+    this.ultimo = 0;
+    this.valores = [];
+    this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
+    this.ultimos4 = [{}];
+    // this.ultimos4b = [];
+    this.ultimos14 = [{}];
+    //  this.ultimos14b = [];
+    this.ultimos24 = [{}];
+    //   this.ultimos24b = [];
+    this.codigoEvento = 0;
+    this.possi = [];
+    this.pol = 0;
+
+    console.log('Se ha inicializado el sistema');
+    this.grabarArchivo();
+
+}
+
+grabarArchivo() {
+
+    let jsonData = {
+        ultimo: this.ultimo,
+        hoy: this.hoy,
+        valores: this.valores,
+        poss: this.poss,
+        ultimos4: this.ultimos4,
+        //   ultimos4: this.ultimos4,
+        ultimos14: this.ultimos14,
+        //   ultimos14: this.ultimos14,
+        ultimos24: this.ultimos24,
+        //    ultimos24: this.ultimos24,
+        codigoEvento: this.codigoEvento,
+        possi: this.possi,
+        pol: this.pol
+    };
+    let jsonDataString = JSON.stringify(jsonData);
+    fs.writeFileSync('./classes/data/data.json', jsonDataString);
+}
 
 
 }
