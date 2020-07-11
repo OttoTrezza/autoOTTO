@@ -81,7 +81,7 @@ class ValorControl {
 
         let ind = this.possi.findIndex((element) => element === dispo1);
 
-        pos1 = ind;
+        pos1 = ind - 1;
         // console.log('pos1, ind, dispo1', pos1, ind, dispo1);
 
         if (pos1 === -1) {
