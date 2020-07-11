@@ -76,22 +76,21 @@ class ValorControl {
         }
         this.grabarArchivo();
     }
-    siguiente(pos1, dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
+    siguiente(dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.ultimo = this.ultimo + 1;
         let ind = 0;
 
         ind = this.possi.findIndex((element) => element === dispo1);
 
-        pos1 = ind;
-
         // console.log('pos1, ind, dispo1', pos1, ind, dispo1);
 
         if (ind === -1) {
             this.possi.unshift(dispo1);
-            pos1 = this.possi.length;
-            console.log('this.possi', this.possi, pos1);
-            let valar = new Valor('', '', '', '', '', '');
-            let verga = { pos1: [valar] };
+            ind = this.possi.length;
+            ind = ind - 1;
+            console.log('this.possi', this.possi, ind);
+            let valor = new Valor(this.ultimo, pos1, dispo1, alpha1, beta1, gamma1);
+            let verga = { ind: [valor] };
 
             this.ultimos4.unshift(verga);
             if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4

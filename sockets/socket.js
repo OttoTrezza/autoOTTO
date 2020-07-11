@@ -113,7 +113,7 @@ exports.mensajeAutoOTTO = (cliente) => {
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
         // valorControl.reiniciarConteo();
-        valorControl.siguiente(payload.pos1, payload.de, payload.alpha1, payload.beta1, payload.gamma1); // ,  payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1
+        valorControl.siguiente(payload.de, payload.alpha1, payload.beta1, payload.gamma1); // ,  payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1
 
         let va0 = valorControl.getUltimoValor();
         // let dispoConec = valorControl.getDispositivosConectados();
