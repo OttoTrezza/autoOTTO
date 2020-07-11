@@ -130,20 +130,20 @@ class ValorControl {
 
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
-
-        this.ultimos4[pos1Valor].unshift(atenderValor);
-        this.ultimos4[pos1Valor].unshift(atenderValor);
-        if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4[pos1Valor].splice(-1, 1);
-        }
-        this.ultimos14[pos1Valor].unshift(atenderValor);
-        if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos14[pos1Valor].splice(-1, 1);
-        }
-        this.ultimos24[pos1Valor].unshift(atenderValor);
-        if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos24[pos1Valor].splice(-1, 1);
-        }
+        console.log('thisult4', this.ultimos4);
+        // this.ultimos4[pos1Valor].unshift(atenderValor);
+        // this.ultimos4[pos1Valor].unshift(atenderValor);
+        // if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        //     this.ultimos4[pos1Valor].splice(-1, 1);
+        // }
+        // this.ultimos14[pos1Valor].unshift(atenderValor);
+        // if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        //     this.ultimos14[pos1Valor].splice(-1, 1);
+        // }
+        // this.ultimos24[pos1Valor].unshift(atenderValor);
+        // if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        //     this.ultimos24[pos1Valor].splice(-1, 1);
+        // }
 
         this.grabarArchivo();
 
