@@ -181,7 +181,8 @@ class ValorControl {
         // this.analisisUltimos14(this.ultimos14[1]);
         // let as = this.getUltimos4Dispo(pos1Valor);
 
-        console.log('todo', this.ultimos4);
+        console.log('todo-0', this.ultimos4[0].pos1verga);
+        console.log('todo-1', this.ultimos4[1].pos1verga);
     }
     analisisUltimos4(ultimos4l) {
 
