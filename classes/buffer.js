@@ -89,7 +89,7 @@ class ValorControl {
             ind = this.possi.length;
             ind = ind - 1;
             console.log('this.possi', this.possi, ind);
-            let valor = new Valor(this.ultimo, indexedDB, dispo1, alpha1, beta1, gamma1);
+            let valor = new Valor(this.ultimo, ind, dispo1, alpha1, beta1, gamma1);
             let verga = { ind: [valor] };
 
             this.ultimos4.unshift(verga);
