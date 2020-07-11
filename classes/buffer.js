@@ -78,8 +78,9 @@ class ValorControl {
     }
     siguiente(pos1, dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.ultimo = this.ultimo + 1;
+        let ind = 0;
 
-        let ind = this.possi.findIndex((element) => element === dispo1);
+        ind = this.possi.findIndex((element) => element === dispo1);
 
         pos1 = ind;
         // console.log('pos1, ind, dispo1', pos1, ind, dispo1);
@@ -87,8 +88,9 @@ class ValorControl {
         if (pos1 === -1) {
             this.possi.unshift(dispo1);
             pos1 = this.possi.lenth;
+            console.log('this.possi', this.possi, pos1);
             let valar = new Valor('', '', '', '', '');
-            let verga = { pos1verga: [valar] };
+            let verga = { pos1: [valar] };
 
             this.ultimos4.unshift(verga);
             if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
@@ -126,7 +128,7 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let pos1Valor = 0; // this.getUltimoValor().pos1;
+        let pos1Valor = this.getUltimoValor().pos1;
         let dispo1Valor = this.getUltimoValor().dispo1;
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
