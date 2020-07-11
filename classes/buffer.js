@@ -89,6 +89,7 @@ class ValorControl {
             pos1 = this.possi.lenth;
             let valar = new Valor('', '', '', '', '');
             let verga = { pos1verga: [valar] };
+
             this.ultimos4.unshift(verga);
             if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
                 this.ultimos4.splice(-1, 1);
