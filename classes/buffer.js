@@ -92,12 +92,16 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            this.ultimos4 = { ind: [] };
-            this.ultimos14 = { ind: [] };
-            this.ultimos24 = { ind: [] };
+            this.ultimos4.push(ind);
+            this.ultimos14.push(ind);
+            this.ultimos24.push(ind);
 
 
             this.grabarArchivo();
+        } else {
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
+            this.valores.push(valor);
+            this.valor = valor;
         }
         // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
