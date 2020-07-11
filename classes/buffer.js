@@ -86,7 +86,7 @@ class ValorControl {
 
         if (pos1 === -1) {
             this.possi.unshift(dispo1);
-            pos1 = this.possi.lenth - 1;
+            pos1 = this.possi.lenth;
             let valar = new Valor('', '', '', '', '');
             let verga = { pos1verga: [valar] };
 
