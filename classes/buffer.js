@@ -87,7 +87,7 @@ class ValorControl {
         if (ind === -1) {
             this.possi.unshift(dispo1);
             ind = this.possi.length;
-            ind = ind - 1;
+            ind = ind;
             console.log('this.possi', this.possi, ind);
             let valor = new Valor(this.ultimo, ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
