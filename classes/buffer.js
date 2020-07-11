@@ -81,12 +81,12 @@ class ValorControl {
 
         let ind = this.possi.findIndex((element) => element === dispo1);
 
-        pos1 = ind - 1;
+        pos1 = ind;
         // console.log('pos1, ind, dispo1', pos1, ind, dispo1);
 
         if (pos1 === -1) {
             this.possi.unshift(dispo1);
-            pos1 = this.possi.lenth;
+            pos1 = this.possi.lenth - 1;
             let valar = new Valor('', '', '', '', '');
             let verga = { pos1verga: [valar] };
 
