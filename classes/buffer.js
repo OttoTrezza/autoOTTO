@@ -95,7 +95,7 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            let indes = [valores4];
+            let indes = [this.valores4];
             this.ultimos4.unshift(indes);
             this.ultimos14.unshift(indes);
             this.ultimos24.unshift(indes);
@@ -132,8 +132,8 @@ class ValorControl {
 
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
-        this.valores = this.ultimos4[pos1Valor].push(atenderValor);
-        this.ultimos4[pos1Valor].unshift(this.valores);
+        this.valores4 = this.ultimos4[pos1Valor].push(atenderValor);
+        this.ultimos4[pos1Valor].unshift(this.valores4);
         console.log('thisult4', this.ultimos4);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
