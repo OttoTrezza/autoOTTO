@@ -31,16 +31,12 @@ class ValorControl {
         this.ultimo = 0;
         this.hoy = new Date().getDay();
         this.valores = [];
-        this.valores4 = [{}];
         this.valor = {};
         this.poss = [];
         this.pol = 0;
-        this.ultimos4 = [{}];
-        this.ultimos14 = [{}];
-        this.ultimos24 = [{}];
-        // this.ultimos4b = [];
-        // this.ultimos14b = [];
-        // this.ultimos24b = [];
+        this.ultimos4 = [];
+        this.ultimos14 = [];
+        this.ultimos24 = [];
         this.codigoEvento = 2;
         this.possi = [];
         // agregar vector matrices y esa papa es la que va!
@@ -50,18 +46,13 @@ class ValorControl {
         this.pol = data.pol;
         this.ultimo = data.ultimo;
         this.valores = data.valores;
-        this.valores4 = data.valores4;
         this.valor = data.valor;
         this.poss = data.poss;
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
-        // this.ultimos4b = data.ultimos4b;
-        // this.ultimos14b = data.ultimos14b;
-        // this.ultimos24b = data.ultimos24b;
         this.codigoEvento = data.codigoEvento;
         this.possi = data.possi;
-
         this.reiniciarConteo();
 
     }
@@ -82,13 +73,13 @@ class ValorControl {
     siguiente(dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.ultimo = this.ultimo + 1;
         let ind = 0;
-
         ind = this.possi.findIndex((element) => element === dispo1);
-
-        // console.log('pos1, ind, dispo1', pos1, ind, dispo1);
 
         if (ind === -1) {
             this.possi.unshift(dispo1);
+            if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+                this.possi.splice(-1, 1);
+            }
             ind = this.possi.length;
             console.log('this.possi', this.possi[0], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
@@ -124,7 +115,9 @@ class ValorControl {
         this.possi[pos1Valor] = atenderValor;
         let lachot = this.possi[pos1Valor];
         this.ultimos4.unshift(lachot);
-
+        if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4.splice(-1, 1);
+        }
 
         console.log('thisult4', this.ultimos4);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
