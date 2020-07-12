@@ -90,16 +90,16 @@ class ValorControl {
         if (ind === -1) {
             this.possi.unshift(dispo1);
             ind = this.possi.length;
-            ind = ind;
-            console.log('this.possi', this.possi, ind);
+            console.log('this.possi', this.possi[0], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valor = valor;
-            this.valores4[ind].push(valor);
+            this.valores.push(valor);
             this.grabarArchivo();
         } else {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
+            this.grabarArchivo();
         }
         // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
@@ -119,17 +119,11 @@ class ValorControl {
         // let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
         // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
         // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
-
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-
-
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor
-        //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
-        this.valores4[ind].unshift(atenderValor);
-        let indes = this.valores4[ind];
-        this.ultimos4.unshift(indes);
-        // this.ultimos14.unshift(indes);
-        // this.ultimos24.unshift(indes);
+        this.possi[pos1Valor] = atenderValor;
+        let lachot = this.possi[pos1Valor];
+        this.ultimos4.unshift(lachot);
 
 
         console.log('thisult4', this.ultimos4);
