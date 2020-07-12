@@ -152,14 +152,14 @@ class ValorControl {
         // for (al; al < ultimos4l.length; al++) {
         if (ultimos4[0][0] == undefined) {
             ultimos4[0][0] = '0';
-            let codEv = [];
+            this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(0);
             return this.codigoEvento;
         }
         if (ultimos4[0][3] == undefined) {
             ultimos4[0][3] = '0';
-
+            this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(0);
             return this.codigoEvento;
@@ -167,14 +167,14 @@ class ValorControl {
 
         if (ultimos4[0][0].beta1 > ultimos4[0][3].beta1) {
             console.log('es mayor');
-
+            this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(1);
             console.log('coevif', this.codigoEvento);
             return this.codigoEvento;
         } else {
-            let codEv = [];
 
+            this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(2);
             console.log('coevelse[1]', this.codigoEvento);
