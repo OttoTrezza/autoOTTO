@@ -162,7 +162,7 @@ class ValorControl {
 
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(0);
-            return codEv;
+            return this.codigoEvento;
         }
 
         if (ultimos4[0][0].beta1 > ultimos4[0][3].beta1) {
