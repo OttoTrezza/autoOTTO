@@ -83,8 +83,12 @@ class ValorControl {
             this.valor = valor;
             this.valores.push(valor);
             this.ultimos4.push(dispo1);
-            let oned = this.ultimos4.length - 1;
-            this.ultimos4[oned] = []; // ACA CVOSA RARA
+            let oned4 = this.ultimos4.length - 1;
+            this.ultimos4[oned4] = []; // ACA CVOSA RARA
+            this.ultimos24.push(dispo1);
+            let oned24 = this.ultimos24.length - 1;
+            this.ultimos24[oned24] = []; // ACA CVOSA RARA
+
             this.grabarArchivo();
         } else {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
@@ -116,6 +120,10 @@ class ValorControl {
         if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4[pos1Valor].splice(-1, 1);
         }
+        this.ultimos24[pos1Valor].unshift(atenderValor);
+        if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos24[pos1Valor].splice(-1, 1);
+        }
 
         console.log('thisult4', this.ultimos4);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
@@ -138,30 +146,26 @@ class ValorControl {
         console.log('todo-0', this.ultimos4[0][0].beta1);
         // console.log('todo-1', this.ultimos4[1]);
     }
-    analisisUltimos4(ultimos4l) {
+    analisisUltimos4(ultimos4) {
 
         // let al = 0;
         // for (al; al < ultimos4l.length; al++) {
-        //     if (ultimos4l[al][0] == undefined) {
-        //         ultimos4l[al][0] = '0';
-        //         this.codigoEvento = 0;
-        //         return this.codigoEvento;
-        //     }
-        //     if (ultimos4l[al][3] == undefined) {
-        //         ultimos4l[al][3] = '0';
-        //         this.codigoEvento = 0;
-        //         return this.codigoEvento;
-        //     }
+        if (ultimos4[0][0] == undefined) {
+            ultimos4[0][0] = '0';
+            this.codigoEvento = 0;
+            return this.codigoEvento;
+        }
+        if (ultimos4[0][3] == undefined) {
+            ultimos4[0][3] = '0';
+            this.codigoEvento = 0;
+            return this.codigoEvento;
+        }
 
-        //     let betasaaa0 = ultimos4l[al][0].beta1;
-        //     let betasaaa1 = ultimos4l[al][3].beta1;
-        //     let betasa0 = parseInt(betasaaa0);
-        //     let betasa1 = parseInt(betasaaa1);
-        //     if (betasa0 > betasa1) {
-        //         console.log('es mayor');
-        //         this.codigoEvento = 1;
-        //         return this.codigoEvento;
-        //     }
+        if (ultimos4l[0][0].beta1 > ultimos4l[0][3].beta1) {
+            console.log('es mayor');
+            this.codigoEvento = 1;
+            return this.codigoEvento;
+        }
         //     this.codigoEvento = 2;
         //     return this.codigoEvento;
         // }
