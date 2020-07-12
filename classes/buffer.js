@@ -30,8 +30,8 @@ class ValorControl {
 
         this.ultimo = 0;
         this.hoy = new Date().getDay();
-        this.valores[0] = [];
-        this.valores4 = [];
+        this.valores = [];
+        this.valores4 = [{}];
         this.valor = {};
         this.poss = [];
         this.pol = 0;
@@ -224,7 +224,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.valores4 = [];
+        this.valores4 = [{}];
         this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
         this.ultimos4 = [{}];
         // this.ultimos4b = [];
