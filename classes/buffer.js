@@ -161,7 +161,7 @@ class ValorControl {
             return this.codigoEvento;
         }
 
-        if (ultimos4l[0][0].beta1 > ultimos4l[0][3].beta1) {
+        if (ultimos4[0][0].beta1 > ultimos4[0][3].beta1) {
             console.log('es mayor');
             this.codigoEvento = 1;
             return this.codigoEvento;
