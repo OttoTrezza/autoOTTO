@@ -153,18 +153,20 @@ class ValorControl {
         if (ultimos4[0][0] == undefined) {
             ultimos4[0][0] = '0';
             this.codigoEvento = 0;
-            return this.codigoEvento;
+            let coev = [ultimos4[0][0].pos1, this.codigoEvento];
+            return coev;
         }
         if (ultimos4[0][3] == undefined) {
             ultimos4[0][3] = '0';
             this.codigoEvento = 0;
-            return this.codigoEvento;
+            let coev = [ultimos4[0][0].pos1, this.codigoEvento];
+            return coev;
         }
 
         if (ultimos4[0][0].beta1 > ultimos4[0][3].beta1) {
             console.log('es mayor');
             this.codigoEvento = 1;
-            let coev = [ultimos4[0][0].pos1, this.codigoEvento];
+            let coev = [ultimos4[0][0].dispo1, this.codigoEvento];
             console.log('coev', coev);
             return coev;
         }

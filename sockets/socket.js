@@ -143,7 +143,7 @@ exports.ElSarmiento = (cliente) => {
         // console.log(payload.de, 'ha enviado esto', paya);
         let codEv = valorControl.getCodigoEvento();
 
-        if (codEv[1] == 1) {
+        if (codEv[1] === 1) {
             const pay = {
                 de: codEv[0],
                 cuerpo: 'Movimiento-1',
@@ -155,7 +155,7 @@ exports.ElSarmiento = (cliente) => {
             //   console.log('adentroo enviado', codEv);
         }
 
-        if (codEv == 2) {
+        if (codEv[1] === 2) {
             const pay = {
                 de: payload.de,
                 cuerpo: 'sin magicMoves',
