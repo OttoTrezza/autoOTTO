@@ -169,6 +169,11 @@ class ValorControl {
             let codEv = [ultimos4[0][0].dispo1, this.codigoEvento];
             console.log('coev', codEv);
             return codEv;
+        } else {
+            this.codigoEvento = 2;
+            let codEv = [ultimos4[0][0].dispo1, this.codigoEvento];
+            console.log('coev', codEv);
+            return codEv;
         }
 
 
