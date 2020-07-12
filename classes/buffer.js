@@ -76,6 +76,7 @@ class ValorControl {
         }
         this.grabarArchivo();
     }
+
     siguiente(dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.ultimo = this.ultimo + 1;
         let ind = 0;
@@ -92,10 +93,10 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            let indes = { ind: [this.valor] };
-            this.ultimos4.push(indes);
-            this.ultimos14.push(indes);
-            this.ultimos24.push(indes);
+            let indes = [{ ind: [valor, valor, valor, valor] }];
+            this.ultimos4.unshift(indes);
+            this.ultimos14.unshift(indes);
+            this.ultimos24.unshift(indes);
 
 
             this.grabarArchivo();
@@ -113,7 +114,6 @@ class ValorControl {
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
         let gamma1Valor = this.getUltimoValor().gamma1;
-
         // let accelerationx1Valor = this.getUltimoValor().accelerationx1;
         // let accelerationy1Valor = this.getUltimoValor().accelerationy1;
         // let accelerationz1Valor = this.getUltimoValor().accelerationz1;
@@ -123,7 +123,6 @@ class ValorControl {
         // let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
         // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
         // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
-
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
 
