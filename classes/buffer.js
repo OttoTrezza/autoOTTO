@@ -152,31 +152,32 @@ class ValorControl {
         console.log('todo-1', this.ultimos4[1]);
     }
     analisisUltimos4(ultimos4l) {
-        let al = 0;
-        for (al; al < ultimos4l.length; al++) {
-            if (ultimos4l[al][0] == undefined) {
-                ultimos4l[al][0] = '0';
-                this.codigoEvento = 0;
-                return this.codigoEvento;
-            }
-            if (ultimos4l[al][3] == undefined) {
-                ultimos4l[al][3] = '0';
-                this.codigoEvento = 0;
-                return this.codigoEvento;
-            }
 
-            let betasaaa0 = ultimos4l[al][0].beta1;
-            let betasaaa1 = ultimos4l[al][3].beta1;
-            let betasa0 = parseInt(betasaaa0);
-            let betasa1 = parseInt(betasaaa1);
-            if (betasa0 > betasa1) {
-                console.log('es mayor');
-                this.codigoEvento = 1;
-                return this.codigoEvento;
-            }
-            this.codigoEvento = 2;
-            return this.codigoEvento;
-        }
+        // let al = 0;
+        // for (al; al < ultimos4l.length; al++) {
+        //     if (ultimos4l[al][0] == undefined) {
+        //         ultimos4l[al][0] = '0';
+        //         this.codigoEvento = 0;
+        //         return this.codigoEvento;
+        //     }
+        //     if (ultimos4l[al][3] == undefined) {
+        //         ultimos4l[al][3] = '0';
+        //         this.codigoEvento = 0;
+        //         return this.codigoEvento;
+        //     }
+
+        //     let betasaaa0 = ultimos4l[al][0].beta1;
+        //     let betasaaa1 = ultimos4l[al][3].beta1;
+        //     let betasa0 = parseInt(betasaaa0);
+        //     let betasa1 = parseInt(betasaaa1);
+        //     if (betasa0 > betasa1) {
+        //         console.log('es mayor');
+        //         this.codigoEvento = 1;
+        //         return this.codigoEvento;
+        //     }
+        //     this.codigoEvento = 2;
+        //     return this.codigoEvento;
+        // }
 
     }
     getDispositivosConectados() {
