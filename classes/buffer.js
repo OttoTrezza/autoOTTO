@@ -33,7 +33,6 @@ class ValorControl {
         this.valores = [];
         this.valor = {};
         this.poss = [];
-        this.pol = 0;
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -41,9 +40,7 @@ class ValorControl {
         this.possi = [];
         // agregar vector matrices y esa papa es la que va!
         let data = require('./data/data.json');
-        // console.log('data', data);
 
-        this.pol = data.pol;
         this.ultimo = data.ultimo;
         this.valores = data.valores;
         this.valor = data.valor;
@@ -136,13 +133,7 @@ class ValorControl {
         // }
 
         this.grabarArchivo();
-
-        // console.log('ultim4B', this.ultimos4b);
-
-
         this.analisisUltimos4(this.ultimos4);
-        // this.analisisUltimos14(this.ultimos14[1]);
-        // let as = this.getUltimos4Dispo(pos1Valor);
 
         console.log('todo-0', this.ultimos4[0]);
         console.log('todo-1', this.ultimos4[1]);
@@ -176,6 +167,7 @@ class ValorControl {
 
     }
     getDispositivosConectados() {
+
         return this.possi;
     }
     getDispositivosConectadosporPos(po) {
@@ -197,6 +189,7 @@ class ValorControl {
         return this.ultimos4;
     }
     getUltimos4Dispo(pos) {
+
         return this.ultimos4.filter(valor => valor.pos1 === pos);
     }
     getUltimos14() {
@@ -212,18 +205,12 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.valores4 = [{}];
-        this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
-        this.ultimos4 = [{}];
-        // this.ultimos4b = [];
-        this.ultimos14 = [{}];
-        //  this.ultimos14b = [];
-        this.ultimos24 = [{}];
-        //   this.ultimos24b = [];
+        this.poss = [];
+        this.ultimos4 = [];
+        this.ultimos14 = [];
+        this.ultimos24 = [];
         this.codigoEvento = 0;
         this.possi = [];
-        this.pol = 0;
-
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
 
@@ -238,20 +225,14 @@ class ValorControl {
             valores4: this.valores4,
             poss: this.poss,
             ultimos4: this.ultimos4,
-            //   ultimos4: this.ultimos4,
             ultimos14: this.ultimos14,
-            //   ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
-            //    ultimos24: this.ultimos24,
             codigoEvento: this.codigoEvento,
-            possi: this.possi,
-            pol: this.pol
+            possi: this.possi
         };
         let jsonDataString = JSON.stringify(jsonData);
         fs.writeFileSync('./classes/data/data.json', jsonDataString);
     }
-
-
 }
 module.exports = {
     ValorControl
