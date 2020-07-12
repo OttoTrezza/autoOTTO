@@ -153,7 +153,7 @@ class ValorControl {
     }
     analisisUltimos4(ultimos4l) {
         let al = 0;
-        for (al; al < this.ultimos4.length; i++) {
+        for (al; al < ultimos4l.length; al++) {
             if (ultimos4l[al][0] == undefined) {
                 ultimos4l[al][0] = '0';
                 this.codigoEvento = 0;
