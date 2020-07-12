@@ -77,7 +77,7 @@ class ValorControl {
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
                 this.possi.splice(-1, 1);
             }
-            ind = this.possi.length;
+            ind = this.possi.length - 1;
             console.log('this.possi', this.possi[0], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valor = valor;
@@ -134,8 +134,8 @@ class ValorControl {
         this.grabarArchivo();
         this.analisisUltimos4(this.ultimos4);
 
-        console.log('todo-0', this.ultimos4[0]);
-        console.log('todo-1', this.ultimos4[1]);
+        // console.log('todo-0', this.ultimos4[0]);
+        // console.log('todo-1', this.ultimos4[1]);
     }
     analisisUltimos4(ultimos4l) {
 
