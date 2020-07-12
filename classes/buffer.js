@@ -161,7 +161,7 @@ class ValorControl {
             ultimos4[0][3] = '0';
 
             this.codigoEvento.push(ultimos4[0][0].dispo1);
-            this.codigoEventov.push(0);
+            this.codigoEvento.push(0);
             return codEv;
         }
 
