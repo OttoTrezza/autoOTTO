@@ -31,6 +31,7 @@ class ValorControl {
         this.ultimo = 0;
         this.hoy = new Date().getDay();
         this.valores = [];
+        this.valores4 = [];
         this.valor = {};
         this.poss = [];
         this.pol = 0;
@@ -49,6 +50,7 @@ class ValorControl {
         this.pol = data.pol;
         this.ultimo = data.ultimo;
         this.valores = data.valores;
+        this.valores4 = data.valores4;
         this.valor = data.valor;
         this.poss = data.poss;
         this.ultimos4 = data.ultimos4;
@@ -93,10 +95,11 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            let indes = [{ ind: [valor, valor, valor, valor] }];
+            let indes = [valores4];
             this.ultimos4.unshift(indes);
             this.ultimos14.unshift(indes);
             this.ultimos24.unshift(indes);
+
 
 
             this.grabarArchivo();
@@ -129,6 +132,8 @@ class ValorControl {
 
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor
         //  let analisisValor = { beta1Valor, gamma1Valor, alpha1Valor }; // console.log('atenderValor', atenderValor);
+        this.valores = this.ultimos4[pos1Valor].push(atenderValor);
+        this.ultimos4[pos1Valor].unshift(this.valores);
         console.log('thisult4', this.ultimos4);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
@@ -221,6 +226,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
+        this.valores4 = [];
         this.poss = []; // 'sin dispositivo', 'sin dispositivo', 'sin dispositivo', 'sin dispositivo'
         this.ultimos4 = [{}];
         // this.ultimos4b = [];
@@ -243,6 +249,7 @@ class ValorControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             valores: this.valores,
+            valores4: this.valores4,
             poss: this.poss,
             ultimos4: this.ultimos4,
             //   ultimos4: this.ultimos4,
