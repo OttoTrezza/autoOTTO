@@ -152,14 +152,18 @@ class ValorControl {
         // for (al; al < ultimos4l.length; al++) {
         if (ultimos4[0][0] == undefined) {
             ultimos4[0][0] = '0';
+            let codEv = [];
             this.codigoEvento = 0;
-            let codEv = [ultimos4[0][0].pos1, this.codigoEvento];
+            codEv.push(ultimos4[0][0].dispo1);
+            codEv.push(this.codigoEvento);
             return codEv;
         }
         if (ultimos4[0][3] == undefined) {
             ultimos4[0][3] = '0';
+            let codEv = [];
             this.codigoEvento = 0;
-            let codEv = [ultimos4[0][0].pos1, this.codigoEvento];
+            codEv.push(ultimos4[0][0].dispo1);
+            codEv.push(this.codigoEvento);
             return codEv;
         }
 
@@ -172,8 +176,10 @@ class ValorControl {
             console.log('coevif', codEv);
             return codEv;
         } else {
+            let codEv = [];
             this.codigoEvento = 2;
-            let codEv = [ultimos4[0][0].dispo1, this.codigoEvento];
+            codEv.push(ultimos4[0][0].dispo1);
+            codEv.push(this.codigoEvento);
             console.log('coevelse[1]', codEv[1]);
             return codEv;
         }
