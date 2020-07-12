@@ -112,13 +112,13 @@ class ValorControl {
         // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Valor
-        this.possi[pos1Valor] = atenderValor;
-        let lachot = this.possi[pos1Valor];
-        this.ultimos4.unshift(lachot);
-        if (this.ultimos4.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4.splice(-1, 1);
+        this.possi[pos1Valor] = [];
+        this.possi[pos1Valor].unshift(atenderValor);
+        if (this.possi[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.possi[pos1Valor].splice(-1, 1);
         }
-
+        let lachot = this.possi[pos1Valor];
+        this.ultimos4 = lachot;
         console.log('thisult4', this.ultimos4);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
