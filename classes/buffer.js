@@ -165,14 +165,16 @@ class ValorControl {
 
         if (ultimos4[0][0].beta1 > ultimos4[0][3].beta1) {
             console.log('es mayor');
+            let codEv = [];
             this.codigoEvento = 1;
-            let codEv = [ultimos4[0][0].dispo1, this.codigoEvento];
-            console.log('coev', codEv);
+            codEv.push(ultimos4[0][0].dispo1);
+            codEv.push(this.codigoEvento);
+            console.log('coevif', codEv);
             return codEv;
         } else {
             this.codigoEvento = 2;
             let codEv = [ultimos4[0][0].dispo1, this.codigoEvento];
-            console.log('coev', codEv);
+            console.log('coevelse[1]', codEv[1]);
             return codEv;
         }
 
