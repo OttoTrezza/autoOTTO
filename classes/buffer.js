@@ -36,7 +36,7 @@ class ValorControl {
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
-        this.codigoEvento = [ss];
+        this.codigoEvento = [];
         this.possi = [];
         // agregar vector matrices y esa papa es la que va!
         let data = require('./data/data.json');
@@ -226,7 +226,7 @@ class ValorControl {
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
-        this.codigoEvento = 0;
+        this.codigoEvento = [];
         this.possi = [];
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
