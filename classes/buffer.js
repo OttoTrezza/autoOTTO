@@ -36,7 +36,7 @@ class ValorControl {
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
-        this.codigoEvento = 2;
+        this.codigoEvento = [ss];
         this.possi = [];
         // agregar vector matrices y esa papa es la que va!
         let data = require('./data/data.json');
@@ -153,35 +153,32 @@ class ValorControl {
         if (ultimos4[0][0] == undefined) {
             ultimos4[0][0] = '0';
             let codEv = [];
-            this.codigoEvento = 0;
-            codEv.push(ultimos4[0][0].dispo1);
-            codEv.push(this.codigoEvento);
-            return codEv;
+            this.codigoEvento.push(ultimos4[0][0].dispo1);
+            this.codigoEvento.push(0);
+            return this.codigoEvento;
         }
         if (ultimos4[0][3] == undefined) {
             ultimos4[0][3] = '0';
-            let codEv = [];
-            this.codigoEvento = 0;
-            codEv.push(ultimos4[0][0].dispo1);
-            codEv.push(this.codigoEvento);
+
+            this.codigoEvento.push(ultimos4[0][0].dispo1);
+            this.codigoEventov.push(0);
             return codEv;
         }
 
         if (ultimos4[0][0].beta1 > ultimos4[0][3].beta1) {
             console.log('es mayor');
-            let codEv = [];
-            this.codigoEvento = 1;
-            codEv.push(ultimos4[0][0].dispo1);
-            codEv.push(this.codigoEvento);
-            console.log('coevif', codEv);
-            return codEv;
+
+            this.codigoEvento.push(ultimos4[0][0].dispo1);
+            this.codigoEvento.push(1);
+            console.log('coevif', this.codigoEvento);
+            return this.codigoEvento;
         } else {
             let codEv = [];
-            this.codigoEvento = 2;
-            codEv.push(ultimos4[0][0].dispo1);
-            codEv.push(this.codigoEvento);
-            console.log('coevelse[1]', codEv[1]);
-            return codEv;
+
+            this.codigoEvento.push(ultimos4[0][0].dispo1);
+            this.codigoEvento.push(2);
+            console.log('coevelse[1]', this.codigoEvento);
+            return this.codigoEvento;
         }
 
 
