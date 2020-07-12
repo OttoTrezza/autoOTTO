@@ -143,7 +143,7 @@ exports.ElSarmiento = (cliente) => {
         // console.log(payload.de, 'ha enviado esto', paya);
         let codEv = [];
         codEv = valorControl.getCodigoEvento();
-        console.log('adentroo enviado', codEv);
+        // console.log('adentroo enviado', codEv);
         if (codEv[1] === 1) {
             const pay = {
                 de: codEv[0],
@@ -153,7 +153,7 @@ exports.ElSarmiento = (cliente) => {
             cliente.to(payload.sala).emit('mensaje-auto', pay);
             cliente.emit('mensaje-auto', pay);
             // cliente.emit('mensaje-auto', pay);
-            console.log('adentroo enviadoooo', pay);
+            //   console.log('adentroo enviadoooo', pay);
         }
 
         if (codEv[1] === 2) {
