@@ -143,7 +143,7 @@ exports.ElSarmiento = (cliente) => {
         // console.log(payload.de, 'ha enviado esto', paya);
         let codEv = [];
         codEv = valorControl.getCodigoEvento();
-        console.log('adentroo enviado', codEv[1]);
+        console.log('adentroo enviado', codEv);
         if (codEv[1] === 1) {
             const pay = {
                 de: codEv[0],
