@@ -119,6 +119,7 @@ class ValorControl {
         }
         let lachot = this.possi[pos1Valor];
         this.ultimos4 = lachot;
+        this.possi[pos1Valor] = dispo1Valor;
         console.log('thisult4', this.ultimos4);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
