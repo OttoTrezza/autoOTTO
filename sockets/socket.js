@@ -143,9 +143,9 @@ exports.ElSarmiento = (cliente) => {
         // console.log(payload.de, 'ha enviado esto', paya);
         let codEv = valorControl.getCodigoEvento();
 
-        if (codEv == 1) {
+        if (codEv[1] == 1) {
             const pay = {
-                de: payload.de,
+                de: codEv[0],
                 cuerpo: 'Movimiento-1',
                 img: ''
             };
