@@ -84,7 +84,7 @@ class ValorControl {
             this.valores.push(valor);
             this.ultimos4.push(dispo1);
             let oned = this.ultimos4.length - 1;
-            this.ultimos4[oned] = [];
+            this.ultimos4[oned] = { dispo1: [] }; // ACA CVOSA RARA
             this.grabarArchivo();
         } else {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
@@ -112,9 +112,9 @@ class ValorControl {
         // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
-        this.ultimos4[pos1Valor].unshift(atenderValor);
-        if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos4[pos1Valor].splice(-1, 1);
+        this.ultimos4[pos1Valor].dispo1Valor.unshift(atenderValor);
+        if (this.ultimos4[pos1Valor].dispo1Valor.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.ultimos4[pos1Valor].dispo1Valor.splice(-1, 1);
         }
 
         console.log('thisult4', this.ultimos4);
@@ -135,7 +135,7 @@ class ValorControl {
         this.grabarArchivo();
         this.analisisUltimos4(this.ultimos4);
 
-        // console.log('todo-0', this.ultimos4[0]);
+        console.log('todo-0', this.ultimos4[0][0].beta1);
         // console.log('todo-1', this.ultimos4[1]);
     }
     analisisUltimos4(ultimos4l) {
