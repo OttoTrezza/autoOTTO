@@ -97,10 +97,10 @@ class ValorControl {
             this.Mvalores.push(valor);
             this.Multimos4.push(Mdispo1);
             let Moned4 = this.Multimos4.length - 1;
-            this.Multimos4[Moned4] = []; // ACA CVOSA RARA
+            this.Multimos4[Moned4] = [];
             this.Multimos24.push(Mdispo1);
             let Moned24 = this.Multimos24.length - 1;
-            this.Multimos24[Moned24] = []; // ACA CVOSA RARA
+            this.Multimos24[Moned24] = [];
 
             this.grabarArchivo();
         } else {
