@@ -114,6 +114,7 @@ exports.mousePos = (cliente) => {
         let posY = payload.posY;
         valorControl.posiMouse(de, posX, posY);
         const paya = {
+            de,
             posX,
             posY
         };
