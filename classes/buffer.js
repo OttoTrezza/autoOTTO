@@ -241,14 +241,14 @@ class ValorControl {
             this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(1);
-            console.log('coevif', this.codigoEvento);
+            //   console.log('coevif', this.codigoEvento);
             return this.codigoEvento;
         } else {
 
             this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(2);
-            console.log('coevelse[1]', this.codigoEvento);
+            //  console.log('coevelse[1]', this.codigoEvento);
             return this.codigoEvento;
         }
 
