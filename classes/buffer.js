@@ -87,7 +87,7 @@ class ValorControl {
         ind = this.possi.findIndex((element) => element === Mdispo1);
 
         if (ind === -1) {
-            this.possi.unshift(dispo1);
+            this.possi.unshift(Mdispo1);
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
                 this.possi.splice(-1, 1);
             }
