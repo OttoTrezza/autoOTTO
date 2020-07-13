@@ -31,6 +31,7 @@ class Server {
             socket.configurarUsuario(cliente);
             socket.obtenerUsuarios(cliente);
             socket.obtenerSalas(cliente);
+            socket.mousePos(cliente);
         });
     }
     start(callback) {

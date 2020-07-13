@@ -107,7 +107,13 @@ exports.mensajeAutoOTTO = (cliente) => {
 
     });
 };
-
+exports.mousePose = (cliente) => {
+    cliente.on('mousePos', (payload, callback) => {
+        let posX = payload.posX;
+        let posY = pyaload.posY;
+        valorControl.mousePos(posX, posY);
+    });
+};
 
 // Escuchar mensajes(eventos deviceMotionOrientation)
 exports.ElSarmiento = (cliente) => {

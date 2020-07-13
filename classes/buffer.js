@@ -23,16 +23,27 @@ class Valor {
         // this.cond1 = cond1;
     }
 }
-
+class Posicion {
+    constructor(Mpos1, Mdispo1, posX, posY) {
+        this.Mpos1 = Mpos1;
+        this.Mdispo1 = Mdispo1;
+        this.posX = posX;
+        this.posY = posY;
+    }
+}
 class ValorControl {
 
     constructor() {
 
         this.ultimo = 0;
         this.hoy = new Date().getDay();
+        this.Mvalores = [];
         this.valores = [];
         this.valor = {};
         this.poss = [];
+        this.Multimos4 = [];
+        this.Multimos14 = [];
+        this.Multimos24 = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -42,9 +53,13 @@ class ValorControl {
         let data = require('./data/data.json');
 
         this.ultimo = data.ultimo;
+        this.Mvalores = dala.Mvalores;
         this.valores = data.valores;
         this.valor = data.valor;
         this.poss = data.poss;
+        this.Multimos4 = data.Multimos4;
+        this.Multimos14 = data.Multimos14;
+        this.Multimos24 = data.Multimos24;
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
@@ -66,7 +81,61 @@ class ValorControl {
         }
         this.grabarArchivo();
     }
+    mousePos(Mdispo1, posX, posY) {
 
+        let ind = 0;
+        ind = this.possi.findIndex((element) => element === Mdispo1);
+
+        if (ind === -1) {
+            this.possi.unshift(dispo1);
+            if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+                this.possi.splice(-1, 1);
+            }
+            ind = this.possi.length - 1;
+            console.log('this.possi', this.possi[0], ind);
+            let valor = new Posicion(ind, Mdispo1, posX, posY);
+            this.Mvalores.push(valor);
+            this.Multimos4.push(Mdispo1);
+            let Moned4 = this.Multimos4.length - 1;
+            this.Multimos4[Moned4] = []; // ACA CVOSA RARA
+            this.Multimos24.push(Mdispo1);
+            let Moned24 = this.Multimos24.length - 1;
+            this.Multimos24[Moned24] = []; // ACA CVOSA RARA
+
+            this.grabarArchivo();
+        } else {
+            let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
+            this.Mvalores.push(Mvalor);
+            this.Mvalor = Mvalor;
+            this.grabarArchivo();
+        }
+        // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
+        if (this.Mvalores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
+            return 'No hay Valores';
+        }
+        let Mpos1Valor = this.getUltimoValor().Mpos1;
+        let Mdispo1Valor = this.getUltimoValor().Mdispo1;
+        let posXValor = this.getUltimoValor().posX;
+        let posYValor = this.getUltimoValor().posY;
+
+        this.Mvalores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
+        let atenderValor = new Posicion(Mpos1Valor, Mdispo1Valor, posXValor, posYValor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
+        this.Multimos4[Mpos1Valor].unshift(atenderValor);
+        if (this.Multimos4[Mpos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.Multimos4[Mpos1Valor].splice(-1, 1);
+        }
+        this.Multimos24[Mpos1Valor].unshift(atenderValor);
+        if (this.Multimos24[Mpos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+            this.Multimos24[Mpos1Valor].splice(-1, 1);
+        }
+
+        console.log('thisult4', this.Multimos4);
+
+        this.grabarArchivo();
+        //  this.analisisUltimos4(this.ultimos4);
+        //  console.log('todo-0', this.Multimos4[0][0].posX);
+
+    }
     siguiente(dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.ultimo = this.ultimo + 1;
         let ind = 0;
@@ -80,7 +149,6 @@ class ValorControl {
             ind = this.possi.length - 1;
             console.log('this.possi', this.possi[0], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
-            this.valor = valor;
             this.valores.push(valor);
             this.ultimos4.push(dispo1);
             let oned4 = this.ultimos4.length - 1;
@@ -125,7 +193,10 @@ class ValorControl {
             this.ultimos24[pos1Valor].splice(-1, 1);
         }
 
-        console.log('thisult4', this.ultimos4);
+        // console.log('thisult4', this.ultimos4);
+
+
+
         // this.ultimos4[pos1Valor].unshift(atenderValor);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
         // if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
@@ -143,7 +214,7 @@ class ValorControl {
         this.grabarArchivo();
         this.analisisUltimos4(this.ultimos4);
 
-        console.log('todo-0', this.ultimos4[0][0].beta1);
+        // console.log('todo-0', this.ultimos4[0][0].beta1);
         // console.log('todo-1', this.ultimos4[1]);
     }
     analisisUltimos4(ultimos4) {
@@ -221,8 +292,12 @@ class ValorControl {
     reiniciarConteo() {
 
         this.ultimo = 0;
+        this.Mvalores = [];
         this.valores = [];
         this.poss = [];
+        this.Multimos4 = [];
+        this.Multimos14 = [];
+        this.Multimos24 = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -239,8 +314,11 @@ class ValorControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             valores: this.valores,
-            valores4: this.valores4,
+            Mvalores: this.Mvalores,
             poss: this.poss,
+            Multimos4: this.Multimos4,
+            Multimos14: this.Multimos14,
+            Multimos24: this.Multimos24,
             ultimos4: this.ultimos4,
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
