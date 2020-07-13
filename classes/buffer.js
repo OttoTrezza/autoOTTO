@@ -81,7 +81,7 @@ class ValorControl {
         }
         this.grabarArchivo();
     }
-    mousePos(Mdispo1, posX, posY) {
+    posiMouse(Mdispo1, posX, posY) {
 
         let ind = 0;
         ind = this.possi.findIndex((element) => element === Mdispo1);

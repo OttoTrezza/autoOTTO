@@ -111,7 +111,12 @@ exports.mousePos = (cliente) => {
     cliente.on('mousePos', (payload, callback) => {
         let posX = payload.posX;
         let posY = pyaload.posY;
-        valorControl.mousePos(payload.de, posX, posY);
+        valorControl.posiMouse(payload.de, posX, posY);
+        const paya = {
+            posX,
+            posY
+        }
+        callback(paya);
     });
 };
 
