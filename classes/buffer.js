@@ -95,7 +95,7 @@ class ValorControl {
             }
             ind = this.possi.length - 1;
             console.log('this.possi', this.possi[0], ind);
-            let valor = new Posicion(ind, Mdispo1, posX, posY);
+            let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
             this.Mvalores.push(valor);
             this.Mvalor = Mvalor;
             this.Multimos4.push(Mdispo1);
