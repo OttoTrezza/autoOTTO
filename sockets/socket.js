@@ -110,7 +110,7 @@ exports.mensajeAutoOTTO = (cliente) => {
 exports.mousePos = (cliente) => {
     cliente.on('mousePos', (payload, callback) => {
         let posX = payload.posX;
-        let posY = pyaload.posY;
+        let posY = payload.posY;
         valorControl.posiMouse(payload.de, posX, posY);
         const paya = {
             posX,
