@@ -117,14 +117,15 @@ class ValorControl {
         if (this.Mvalores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let Mpos1Valor = this.getUltimoValor().Mpos1;
-        let Mdispo1Valor = this.getUltimoValor().Mdispo1;
-        let posXValor = this.getUltimoValor().posX;
-        let posYValor = this.getUltimoValor().posY;
+        let Mpos1Valor = this.getUltimoMValor().Mpos1;
+        let Mdispo1Valor = this.getUltimoMValor().Mdispo1;
+        let posXValor = this.getUltimoMValor().posX;
+        let posYValor = this.getUltimoMValor().posY;
 
         this.Mvalores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Posicion(Mpos1Valor, Mdispo1Valor, posXValor, posYValor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
         this.Multimos4[Mpos1Valor].unshift(atenderValor);
+
         if (this.Multimos4[Mpos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.Multimos4[Mpos1Valor].splice(-1, 1);
         }
@@ -271,6 +272,11 @@ class ValorControl {
 
         return this.valor;
     }
+    getUltimoMValor() {
+
+        return this.Mvalor;
+    }
+
     getCodigoEvento() {
 
         return this.codigoEvento;
