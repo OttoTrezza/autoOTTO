@@ -96,7 +96,7 @@ class ValorControl {
             ind = this.possi.length - 1;
             console.log('this.possi', this.possi[0], ind);
             let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
-            this.Mvalores.push(valor);
+            this.Mvalores.push(Mvalor);
             this.Mvalor = Mvalor;
             this.Multimos4.push(Mdispo1);
             let Moned4 = this.Multimos4.length - 1;
@@ -110,6 +110,7 @@ class ValorControl {
             let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
             this.Mvalores.push(Mvalor);
             this.Mvalor = Mvalor;
+
             this.grabarArchivo();
         }
         // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
