@@ -53,7 +53,7 @@ class ValorControl {
         let data = require('./data/data.json');
 
         this.ultimo = data.ultimo;
-        this.Mvalores = dala.Mvalores;
+        this.Mvalores = data.Mvalores;
         this.valores = data.valores;
         this.valor = data.valor;
         this.poss = data.poss;
