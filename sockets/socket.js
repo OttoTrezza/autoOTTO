@@ -115,7 +115,7 @@ exports.mousePos = (cliente) => {
         const paya = {
             posX,
             posY
-        }
+        };
         callback(paya);
     });
 };
