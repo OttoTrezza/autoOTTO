@@ -40,6 +40,7 @@ class ValorControl {
         this.Mvalores = [];
         this.valores = [];
         this.valor = {};
+        this.Mvalor = {};
         this.poss = [];
         this.Multimos4 = [];
         this.Multimos14 = [];
@@ -56,6 +57,7 @@ class ValorControl {
         this.Mvalores = data.Mvalores;
         this.valores = data.valores;
         this.valor = data.valor;
+        this.Mvalor = data.Mvalor;
         this.poss = data.poss;
         this.Multimos4 = data.Multimos4;
         this.Multimos14 = data.Multimos14;
@@ -95,6 +97,7 @@ class ValorControl {
             console.log('this.possi', this.possi[0], ind);
             let valor = new Posicion(ind, Mdispo1, posX, posY);
             this.Mvalores.push(valor);
+            this.Mvalor = Mvalor;
             this.Multimos4.push(Mdispo1);
             let Moned4 = this.Multimos4.length - 1;
             this.Multimos4[Moned4] = [];
@@ -168,7 +171,7 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let pos1Valor = this.getUltimoValor().pos1;
+        let pos1Valor = this.getUl
         let dispo1Valor = this.getUltimoValor().dispo1;
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
@@ -294,6 +297,8 @@ class ValorControl {
         this.ultimo = 0;
         this.Mvalores = [];
         this.valores = [];
+        this.valor = {};
+        this.Mvalor = {};
         this.poss = [];
         this.Multimos4 = [];
         this.Multimos14 = [];
