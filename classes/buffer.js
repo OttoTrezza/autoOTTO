@@ -175,20 +175,11 @@ class ValorControl {
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
         let gamma1Valor = this.getUltimoValor().gamma1;
-        // let accelerationx1Valor = this.getUltimoValor().accelerationx1;
-        // let accelerationy1Valor = this.getUltimoValor().accelerationy1;
-        // let accelerationz1Valor = this.getUltimoValor().accelerationz1;
-        // let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
-        // let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
-        // let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
-        // let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
-        // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
-        // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
+
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        console.log('this.valores', this.valores);
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
-        console.log('this.ultimos4...', this.ultimos4);
         this.ultimos4[pos1Valor].unshift(atenderValor);
+
         if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4[pos1Valor].splice(-1, 1);
         }
@@ -197,29 +188,12 @@ class ValorControl {
             this.ultimos24[pos1Valor].splice(-1, 1);
         }
 
-        // console.log('thisult4', this.ultimos4);
-
-
-
-        // this.ultimos4[pos1Valor].unshift(atenderValor);
-        // this.ultimos4[pos1Valor].unshift(atenderValor);
-        // if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-        //     this.ultimos4[pos1Valor].splice(-1, 1);
-        // }
-        // this.ultimos14[pos1Valor].unshift(atenderValor);
-        // if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-        //     this.ultimos14[pos1Valor].splice(-1, 1);
-        // }
-        // this.ultimos24[pos1Valor].unshift(atenderValor);
-        // if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-        //     this.ultimos24[pos1Valor].splice(-1, 1);
-        // }
+        console.log('thisult4', this.ultimos4);
 
         this.grabarArchivo();
-        this.analisisUltimos4(this.ultimos4);
+        //  this.analisisUltimos4(this.ultimos4);
+        //  console.log('todo-0', this.Multimos4[0][0].posX);
 
-        // console.log('todo-0', this.ultimos4[0][0].beta1);
-        // console.log('todo-1', this.ultimos4[1]);
     }
     analisisUltimos4(ultimos4) {
 
