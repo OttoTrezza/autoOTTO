@@ -158,10 +158,10 @@ class ValorControl {
             this.valores.push(valor);
             this.ultimos4.push(dispo1);
             let oned4 = this.ultimos4.length - 1;
-            this.ultimos4[oned4].dispo1 = this.valor; // ACA CVOSA RARA
+            this.ultimos4[oned4][dispo1] = this.valor; // ACA CVOSA RARA
             this.ultimos24.push(dispo1);
             let oned24 = this.ultimos24.length - 1;
-            this.ultimos24[oned24].dispo1 = [this.valor]; // ACA CVOSA RARA
+            this.ultimos24[oned24][dispo1] = [this.valor]; // ACA CVOSA RARA
 
 
             this.grabarArchivo();
