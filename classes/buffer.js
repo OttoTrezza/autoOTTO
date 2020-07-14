@@ -151,12 +151,12 @@ class ValorControl {
             ind = this.possi.length - 1;
             console.log('this.possi', this.possi[0], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
+
             this.valor = valor;
             this.valores.push(valor);
             let oned4 = this.ultimos4.length;
             this.ultimos4[oned4] = [];
             this.ultimos24[oned4] = []; // ACA CVOSA RARA
-            console.log('ultimos4[oned4]', this.ultimos4[oned4], ind);
 
             this.grabarArchivo();
         } else {
@@ -170,7 +170,7 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let pos1Valor = ind;
+        let pos1Valor = this.getUltimoValor().pos1;
         let dispo1Valor = this.getUltimoValor().dispo1;
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
