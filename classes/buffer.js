@@ -154,18 +154,15 @@ class ValorControl {
             }
             ind = this.possi.length - 1;
             console.log('this.possi', this.possi[0], ind);
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
-            this.valores.push(valor);
             this.valor = valor;
-            // let obje = {};
+            this.valores.push(valor);
             this.ultimos4.push(dispo1);
-            this.ultimos4[ind] = valor;
-            // let Moned4 = this.Multimos4.length - 1;
-            //  this.Multimos4[Moned4] = [];
+            let oned4 = this.ultimos4.length - 1;
+            this.ultimos4[oned4] = []; // ACA CVOSA RARA
             this.ultimos24.push(dispo1);
-            this.ultimos24[ind] = valor;
-            // vlet Moned24 = this.Multimos24.length - 1;
-            // this.Multimos24[Moned24] = [];
+            let oned24 = this.ultimos24.length - 1;
+            this.ultimos24[oned24] = []; // ACA CVOSA RARA
+
 
             this.grabarArchivo();
         } else {
