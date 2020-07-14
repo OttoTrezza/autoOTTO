@@ -96,15 +96,12 @@ class ValorControl {
             ind = this.possi.length - 1;
             console.log('this.possi', this.possi[0], ind);
             let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
-            this.Mvalores.push(Mvalor);
+
             this.Mvalor = Mvalor;
-            let obje = [];
-            this.Multimos4.push(obje);
-            // let Moned4 = this.Multimos4.length - 1;
-            //  this.Multimos4[Moned4] = [];
-            this.Multimos24.push(obje);
-            // vlet Moned24 = this.Multimos24.length - 1;
-            // this.Multimos24[Moned24] = [];
+            this.Mvalores.push(Mvalor);
+            let oned4 = this.Multimos4.length;
+            this.Multimos4[oned4] = [];
+            this.Multimos24[oned4] = []; // ACA CVOSA RARA
 
             this.grabarArchivo();
         } else {
