@@ -156,7 +156,7 @@ class ValorControl {
             let oned4 = this.ultimos4.length;
             this.ultimos4[oned4] = [];
             this.ultimos24[oned4] = []; // ACA CVOSA RARA
-            console.log('ultimos4[oned4]', ultimos4[oned4], ind);
+            console.log('ultimos4[oned4]', this.ultimos4[oned4], ind);
 
             this.grabarArchivo();
         } else {
