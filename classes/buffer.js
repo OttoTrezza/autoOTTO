@@ -98,12 +98,13 @@ class ValorControl {
             let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
             this.Mvalores.push(Mvalor);
             this.Mvalor = Mvalor;
-            this.Multimos4.push(Mdispo1);
-            let Moned4 = this.Multimos4.length - 1;
-            this.Multimos4[Moned4] = [];
-            this.Multimos24.push(Mdispo1);
-            let Moned24 = this.Multimos24.length - 1;
-            this.Multimos24[Moned24] = [];
+            let obje = [];
+            this.Multimos4.push(obje);
+            // let Moned4 = this.Multimos4.length - 1;
+            //  this.Multimos4[Moned4] = [];
+            this.Multimos24.push(obje);
+            // vlet Moned24 = this.Multimos24.length - 1;
+            // this.Multimos24[Moned24] = [];
 
             this.grabarArchivo();
         } else {
