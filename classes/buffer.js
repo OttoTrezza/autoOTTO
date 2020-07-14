@@ -157,18 +157,21 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            this.ultimos4.push(dispo1);
-            let oned4 = this.ultimos4.length - 1;
-            this.ultimos4[oned4] = [];
-            this.ultimos24.push(dispo1);
-            let oned24 = this.ultimos24.length - 1;
-            this.ultimos24[oned24] = [];
+            let obje = [];
+            this.ultimos4.push(obje);
+            // let Moned4 = this.Multimos4.length - 1;
+            //  this.Multimos4[Moned4] = [];
+            this.ultimos24.push(obje);
+            // vlet Moned24 = this.Multimos24.length - 1;
+            // this.Multimos24[Moned24] = [];
 
             this.grabarArchivo();
         } else {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
+
+            this.grabarArchivo();
         }
         // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
