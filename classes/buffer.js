@@ -146,7 +146,7 @@ class ValorControl {
         this.ultimo = this.ultimo + 1;
         let ind = 0;
         ind = this.possi.findIndex((element) => element === dispo1);
-
+        let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
         if (ind === -1) {
             this.possi.unshift(dispo1);
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
