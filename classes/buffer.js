@@ -270,7 +270,7 @@ class ValorControl {
     }
     getUltimoMValor() {
 
-        return this.Mvalores[this.valores.length - 1];
+        return this.Mvalores[this.Mvalores.length - 1];
     }
 
     getCodigoEvento() {
