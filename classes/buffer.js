@@ -159,7 +159,7 @@ class ValorControl {
             this.ultimos24.push(dispo1);
             let oned4 = this.ultimos4.length - 1;
             this.ultimos4[oned4] = []; // ACA CVOSA RARA
-            this.ultimos24[oned] = [];
+            this.ultimos24[oned4] = [];
 
             this.grabarArchivo();
         } else {
