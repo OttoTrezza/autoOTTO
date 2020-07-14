@@ -169,7 +169,7 @@ class ValorControl {
         if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
             return 'No hay Valores';
         }
-        let pos1Valor = this.getUltimoValor().pos1;
+        let pos1Valor = ind;
         let dispo1Valor = this.getUltimoValor().dispo1;
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
