@@ -183,7 +183,22 @@ exports.ElSarmiento = (cliente) => {
     });
 };
 
+// Configurar usuario(metodo general)
+exports.configurarUsuario = (cliente) => {
+    cliente.on('configurar-usuario', (payload, callback) => {
+        console.log('configUsuar', payload.nombre, payload.sala);
+        // this.usuariosConectados.actualizarSalas(cliente.id, );
 
+        cliente.emit('usuarios-activos', usuarios);
+
+
+        callback({
+            ok: true,
+            mensaje: `Usuario ${ payload.nombre } - Sala ${ payload.sala}, configurado`
+        });
+        console.log('configUsuar', payload.nombre, payload.sala);
+    });
+};
 // Obtener Usuarios
 exports.obtenerUsuarios = (cliente) => {
     cliente.on('obtener-usuarios', (pay, callback) => {
