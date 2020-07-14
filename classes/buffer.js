@@ -23,28 +23,16 @@ class Valor {
         // this.cond1 = cond1;
     }
 }
-class Posicion {
-    constructor(Mpos1, Mdispo1, posX, posY) {
-        this.Mpos1 = Mpos1;
-        this.Mdispo1 = Mdispo1;
-        this.posX = posX;
-        this.posY = posY;
-    }
-}
+
 class ValorControl {
 
     constructor() {
 
         this.ultimo = 0;
         this.hoy = new Date().getDay();
-        this.Mvalores = [];
         this.valores = [];
         this.valor = {};
-        this.Mvalor = {};
         this.poss = [];
-        this.Multimos4 = [];
-        this.Multimos14 = [];
-        this.Multimos24 = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -54,14 +42,9 @@ class ValorControl {
         let data = require('./data/data.json');
 
         this.ultimo = data.ultimo;
-        this.Mvalores = data.Mvalores;
         this.valores = data.valores;
         this.valor = data.valor;
-        this.Mvalor = data.Mvalor;
         this.poss = data.poss;
-        this.Multimos4 = data.Multimos4;
-        this.Multimos14 = data.Multimos14;
-        this.Multimos24 = data.Multimos24;
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
@@ -78,92 +61,39 @@ class ValorControl {
         cho = cho + 1;
         for (culo; culo < cho; culo++) {
             let alda = this.possi.pop();
-            // console.log('sacando', this.possi);
+            // console.log('sacando');
             this.possi.unshift(alda);
         }
         this.grabarArchivo();
     }
-    posiMouse(Mdispo1, posX, posY) {
 
-        let ind = 0;
-        ind = this.possi.findIndex((element) => element === Mdispo1);
-
-        if (ind === -1) {
-            this.possi.unshift(Mdispo1);
-            if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-                this.possi.splice(-1, 1);
-            }
-            ind = this.possi.length - 1;
-            console.log('this.possi', this.possi[ind], ind);
-            let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
-
-            this.Mvalor = Mvalor;
-            this.Mvalores.push(Mvalor);
-            let oned4 = this.Multimos4.length;
-            this.Multimos4[oned4] = [];
-            this.Multimos24[oned4] = []; // ACA CVOSA RARA
-
-            this.grabarArchivo();
-        } else {
-            let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
-            this.Mvalores.push(Mvalor);
-            this.Mvalor = Mvalor;
-
-            this.grabarArchivo();
-        }
-        // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
-        if (this.Mvalores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
-            return 'No hay Valores';
-        }
-        let Mpos1Valor = this.getUltimoMValor().Mpos1;
-        let Mdispo1Valor = this.getUltimoMValor().Mdispo1;
-        let posXValor = this.getUltimoMValor().posX;
-        let posYValor = this.getUltimoMValor().posY;
-
-        this.Mvalores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Posicion(Mpos1Valor, Mdispo1Valor, posXValor, posYValor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
-        this.Multimos4[Mpos1Valor].unshift(atenderValor);
-
-        if (this.Multimos4[Mpos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.Multimos4[Mpos1Valor].splice(-1, 1);
-        }
-        this.Multimos24[Mpos1Valor].unshift(atenderValor);
-        if (this.Multimos24[Mpos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.Multimos24[Mpos1Valor].splice(-1, 1);
-        }
-
-        console.log('thisult4', this.Multimos4);
-
-        this.grabarArchivo();
-        //  this.analisisUltimos4(this.ultimos4);
-        //  console.log('todo-0', this.Multimos4[0][0].posX);
-
-    }
     siguiente(dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.ultimo = this.ultimo + 1;
         let ind = 0;
         ind = this.possi.findIndex((element) => element === dispo1);
+
         if (ind === -1) {
             this.possi.unshift(dispo1);
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
                 this.possi.splice(-1, 1);
             }
             ind = this.possi.length - 1;
-            console.log('this.possi', this.possi[ind], ind);
+            console.log('this.possi', this.possi[0], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
-
             this.valor = valor;
             this.valores.push(valor);
-            let oned4 = this.ultimos4.length;
-            this.ultimos4[oned4] = [];
-            this.ultimos24[oned4] = []; // ACA CVOSA RARA
+            this.ultimos4.push(dispo1);
+            let oned4 = this.ultimos4.length - 1;
+            this.ultimos4[oned4] = []; // ACA CVOSA RARA
+            this.ultimos24.push(dispo1);
+            let oned24 = this.ultimos24.length - 1;
+            this.ultimos24[oned24] = []; // ACA CVOSA RARA
 
             this.grabarArchivo();
         } else {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-
             this.grabarArchivo();
         }
         // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
@@ -175,12 +105,18 @@ class ValorControl {
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
         let gamma1Valor = this.getUltimoValor().gamma1;
-
+        // let accelerationx1Valor = this.getUltimoValor().accelerationx1;
+        // let accelerationy1Valor = this.getUltimoValor().accelerationy1;
+        // let accelerationz1Valor = this.getUltimoValor().accelerationz1;
+        // let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
+        // let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
+        // let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
+        // let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
+        // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
+        // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
-        console.log('ultm4', this.ultimos4);
         this.ultimos4[pos1Valor].unshift(atenderValor);
-
         if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4[pos1Valor].splice(-1, 1);
         }
@@ -190,11 +126,25 @@ class ValorControl {
         }
 
         console.log('thisult4', this.ultimos4);
+        // this.ultimos4[pos1Valor].unshift(atenderValor);
+        // this.ultimos4[pos1Valor].unshift(atenderValor);
+        // if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        //     this.ultimos4[pos1Valor].splice(-1, 1);
+        // }
+        // this.ultimos14[pos1Valor].unshift(atenderValor);
+        // if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        //     this.ultimos14[pos1Valor].splice(-1, 1);
+        // }
+        // this.ultimos24[pos1Valor].unshift(atenderValor);
+        // if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        //     this.ultimos24[pos1Valor].splice(-1, 1);
+        // }
 
         this.grabarArchivo();
-        //  this.analisisUltimos4(this.ultimos4);
-        //  console.log('todo-0', this.Multimos4[0][0].posX);
+        this.analisisUltimos4(this.ultimos4);
 
+        console.log('todo-0', this.ultimos4[0][0].beta1);
+        // console.log('todo-1', this.ultimos4[1]);
     }
     analisisUltimos4(ultimos4) {
 
@@ -220,14 +170,14 @@ class ValorControl {
             this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(1);
-            //   console.log('coevif', this.codigoEvento);
+            console.log('coevif', this.codigoEvento);
             return this.codigoEvento;
         } else {
 
             this.codigoEvento = [];
             this.codigoEvento.push(ultimos4[0][0].dispo1);
             this.codigoEvento.push(2);
-            //  console.log('coevelse[1]', this.codigoEvento);
+            console.log('coevelse[1]', this.codigoEvento);
             return this.codigoEvento;
         }
 
@@ -244,13 +194,8 @@ class ValorControl {
 
     getUltimoValor() {
 
-        return this.valores[this.valores.length - 1];
+        return this.valor;
     }
-    getUltimoMValor() {
-
-        return this.Mvalores[this.Mvalores.length - 1];
-    }
-
     getCodigoEvento() {
 
         return this.codigoEvento;
@@ -276,14 +221,8 @@ class ValorControl {
     reiniciarConteo() {
 
         this.ultimo = 0;
-        this.Mvalores = [];
         this.valores = [];
-        this.valor = {};
-        this.Mvalor = {};
         this.poss = [];
-        this.Multimos4 = [];
-        this.Multimos14 = [];
-        this.Multimos24 = [];
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -300,11 +239,8 @@ class ValorControl {
             ultimo: this.ultimo,
             hoy: this.hoy,
             valores: this.valores,
-            Mvalores: this.Mvalores,
+            valores4: this.valores4,
             poss: this.poss,
-            Multimos4: this.Multimos4,
-            Multimos14: this.Multimos14,
-            Multimos24: this.Multimos24,
             ultimos4: this.ultimos4,
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
