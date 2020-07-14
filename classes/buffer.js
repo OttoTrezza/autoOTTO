@@ -156,13 +156,9 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valor = valor;
             this.valores.push(valor);
-            this.ultimos4.push(dispo1);
-            let oned4 = this.ultimos4.length - 1;
-            this.ultimos4[oned4][dispo1] = this.valor; // ACA CVOSA RARA
-            this.ultimos24.push(dispo1);
-            let oned24 = this.ultimos24.length - 1;
-            this.ultimos24[oned24][dispo1] = [this.valor]; // ACA CVOSA RARA
-
+            let oned4 = this.ultimos4.length;
+            this.ultimos4[oned4] = [];
+            this.ultimos24[oned4] = []; // ACA CVOSA RARA
 
             this.grabarArchivo();
         } else {
@@ -273,11 +269,11 @@ class ValorControl {
 
     getUltimoValor() {
 
-        return this.valor;
+        return this.valores[this.valores.length - 1];
     }
     getUltimoMValor() {
 
-        return this.Mvalor;
+        return this.Mvalores[this.valores.length - 1];
     }
 
     getCodigoEvento() {
