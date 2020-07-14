@@ -154,8 +154,9 @@ class ValorControl {
             this.valor = valor;
             this.valores.push(valor);
             let oned4 = this.ultimos4.length;
-            this.ultimos4[oned4].push(valor);
-            this.ultimos24[oned4].push(valor); // ACA CVOSA RARA
+            this.ultimos4[oned4].unshift(valor);
+            this.ultimos24[oned4].unshift(valor); // ACA CVOSA RARA
+            console.log('ultimos4[oned4]', ultimos4[oned4], ind);
 
             this.grabarArchivo();
         } else {
@@ -184,7 +185,9 @@ class ValorControl {
         // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
         // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
+        console.log('this.valores', this.valores);
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
+        console.log('this.ultimos4...', this.ultimos4);
         this.ultimos4[pos1Valor].unshift(atenderValor);
         if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
             this.ultimos4[pos1Valor].splice(-1, 1);
