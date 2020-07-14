@@ -157,11 +157,13 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            let obje = [];
-            this.ultimos4.push(obje);
+            // let obje = {};
+            this.ultimos4.push(dispo1);
+            this.ultimos4[ind].dispo1 = valor;
             // let Moned4 = this.Multimos4.length - 1;
             //  this.Multimos4[Moned4] = [];
-            this.ultimos24.push(obje);
+            this.ultimos24.push(dispo1);
+            this.ultimos24[ind].dispo1 = valor;
             // vlet Moned24 = this.Multimos24.length - 1;
             // this.Multimos24[Moned24] = [];
 
