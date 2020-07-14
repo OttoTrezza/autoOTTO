@@ -94,7 +94,7 @@ class ValorControl {
                 this.possi.splice(-1, 1);
             }
             ind = this.possi.length - 1;
-            console.log('this.possi', this.possi[0], ind);
+            console.log('this.possi', this.possi[ind], ind);
             let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
 
             this.Mvalor = Mvalor;
@@ -149,7 +149,7 @@ class ValorControl {
                 this.possi.splice(-1, 1);
             }
             ind = this.possi.length - 1;
-            console.log('this.possi', this.possi[0], ind);
+            console.log('this.possi', this.possi[ind], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
 
             this.valor = valor;
@@ -178,6 +178,7 @@ class ValorControl {
 
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
         let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
+        console.log('ultm4', this.ultimos4);
         this.ultimos4[pos1Valor].unshift(atenderValor);
 
         if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
