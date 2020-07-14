@@ -98,7 +98,7 @@ class ValorControl {
             let Mvalor = new Posicion(ind, Mdispo1, posX, posY);
             this.Mvalores.push(Mvalor);
             this.Mvalor = Mvalor;
-            let obje = [];
+            let obje = {};
             this.Multimos4.push(obje);
             // let Moned4 = this.Multimos4.length - 1;
             //  this.Multimos4[Moned4] = [];
@@ -157,7 +157,7 @@ class ValorControl {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valores.push(valor);
             this.valor = valor;
-            let obje = [];
+            let obje = {};
             this.ultimos4.push(obje);
             // let Moned4 = this.Multimos4.length - 1;
             //  this.Multimos4[Moned4] = [];
