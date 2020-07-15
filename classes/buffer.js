@@ -207,8 +207,8 @@ class ValorControl {
     }
 
     getUltimoValor() {
-
-        return this.valores[this.valores.length - 1];
+        return this.valor;
+        // return this.valores[this.valores.length - 1];
     }
     getCodigoEvento() {
 
