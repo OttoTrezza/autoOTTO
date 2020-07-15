@@ -98,11 +98,11 @@ class ValorControl {
 
             let este = this.getUltimos4Dispo(ind);
             let anterior = este.length - 1;
-            let Tinterval = tiempo - this.ultimos4[anterior].tiempo;
+            let Tinterval = tiempo - este[anterior].tiempo;
             if (Tinterval < 300) { return 'muchas muestras'; }
-            let Ainterval = alpha1 - this.ultimos4[anterior].alpha1;
-            let Binterval = beta1 - this.ultimos4[anterior].beta1;
-            let Ginterval = gamma1 - this.ultimos4[anterior].gamma1;
+            let Ainterval = alpha1 - este[anterior].alpha1;
+            let Binterval = beta1 - este[anterior].beta1;
+            let Ginterval = gamma1 - este[anterior].gamma1;
             // calculando la pendiente de alpha... malpha
             alpha1 = Ainterval / Tinterval;
             beta1 = Binterval / Tinterval;
