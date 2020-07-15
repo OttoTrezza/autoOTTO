@@ -3,12 +3,13 @@
 const fs = require('fs');
 
 class Valor {
-    constructor(pos1, dispo1, alpha1, beta1, gamma1) { // , accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1/
+    constructor(pos1, dispo1, alpha1, beta1, gamma1, tiempo) { // , accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1/
         this.pos1 = pos1;
         this.dispo1 = dispo1;
         this.alpha1 = alpha1;
         this.beta1 = beta1;
         this.gamma1 = gamma1;
+        this.tiempo = tiempo;
 
         // this.accelerationx1 = accelerationx1;
         // this.accelerationy1 = accelerationy1;
@@ -29,7 +30,8 @@ class ValorControl {
     constructor() {
 
         this.ultimo = 0;
-        this.hoy = new Date().getDay();
+        this.SumaDeIntervalos = 0;
+        this.Tmuestra = 0;
         this.valores = [];
         this.valor = {};
         this.poss = [];
@@ -42,6 +44,8 @@ class ValorControl {
         let data = require('./data/data.json');
 
         this.ultimo = data.ultimo;
+        this.SumaDeIntervalos = data.SumaDeIntervalos;
+        this.Tmuestra = data.Tmuestra;
         this.valores = data.valores;
         this.valor = data.valor;
         this.poss = data.poss;
@@ -67,7 +71,7 @@ class ValorControl {
         this.grabarArchivo();
     }
 
-    siguiente(dispo1, alpha1, beta1, gamma1) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
+    siguiente(dispo1, alpha1, beta1, gamma1, tiempo) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
         this.ultimo = this.ultimo + 1;
         let ind = 0;
         ind = this.possi.findIndex((element) => element === dispo1);
@@ -79,7 +83,7 @@ class ValorControl {
             }
             ind = this.possi.length - 1;
             console.log('this.possi', this.possi[ind], ind);
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
             this.valor = valor;
             this.valores.push(valor);
             this.ultimos4.push(dispo1);
@@ -90,8 +94,18 @@ class ValorControl {
             this.ultimos24[oned24] = []; // ACA CVOSA RARA
 
             this.grabarArchivo();
-        } else {
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
+        } else { // ahora grabo las pendiente en vez de los valores absolutos.
+            let anterior = this.ultimos4.length - 1;
+            let Tinterval = tiempo - this.ultimos4[anterior].tiempo;
+            let Ainterval = alpha1 - this.ultimos4[anterior].alpha1;
+            let Binterval = beta1 - this.ultimos4[anterior].beta1;
+            let Ginterval = gamma1 - this.ultimos4[anterior].gamma1;
+            // calculando la pendiente de alpha... malpha
+            alpha1 = Ainterval / Tinterval;
+            beta1 = Binterval / Tinterval;
+            gamma1 = Ginterval / Tinterval;
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+
             this.valores.push(valor);
             this.valor = valor;
             this.grabarArchivo();
@@ -105,6 +119,7 @@ class ValorControl {
         let alpha1Valor = this.getUltimoValor().alpha1;
         let beta1Valor = this.getUltimoValor().beta1;
         let gamma1Valor = this.getUltimoValor().gamma1;
+        let tiempoValor = this.getUltimoValor().tiempo;
         // let accelerationx1Valor = this.getUltimoValor().accelerationx1;
         // let accelerationy1Valor = this.getUltimoValor().accelerationy1;
         // let accelerationz1Valor = this.getUltimoValor().accelerationz1;
@@ -115,14 +130,13 @@ class ValorControl {
         // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
         // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
         this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
+        let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor, tiempoValor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
+
         this.ultimos4[pos1Valor].unshift(atenderValor);
-        if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+        this.SumaDeIntervalos = this.SumaDeIntervalos + tiempoValor;
+        if (Tmuestra >= SumaDeIntervalos) {
             this.ultimos4[pos1Valor].splice(-1, 1);
-        }
-        this.ultimos24[pos1Valor].unshift(atenderValor);
-        if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-            this.ultimos24[pos1Valor].splice(-1, 1);
+            this.SumaDeIntervalos = 0;
         }
 
         console.log('thisult4', this.ultimos4);
@@ -237,7 +251,7 @@ class ValorControl {
 
         let jsonData = {
             ultimo: this.ultimo,
-            hoy: this.hoy,
+            Tmuestra: this.Tmuestra,
             valores: this.valores,
             valores4: this.valores4,
             poss: this.poss,
