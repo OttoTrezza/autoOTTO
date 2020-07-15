@@ -96,7 +96,7 @@ class ValorControl {
             this.grabarArchivo();
         } else { // ahora grabo las pendiente en vez de los valores absolutos.
 
-            let este = this.getUltimos4pos(ind);
+            let este = this.getUltimos4Dispo(ind);
             let anterior = este.length - 1;
             let Tinterval = tiempo - this.ultimos4[anterior].tiempo;
             if (Tinterval < 300) { return 'muchas muestras'; }
