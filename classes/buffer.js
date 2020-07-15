@@ -206,9 +206,9 @@ class ValorControl {
         return this.possi[po];
     }
 
-    getUltimoValor(pos1) {
+    getUltimoValor() {
 
-        return this.valores[this.valores.length][pos1];
+        return this.valores[this.valores.length - 1];
     }
     getCodigoEvento() {
 
