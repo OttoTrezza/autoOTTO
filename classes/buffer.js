@@ -134,7 +134,7 @@ class ValorControl {
 
         this.ultimos4[pos1Valor].unshift(atenderValor);
         this.SumaDeIntervalos = this.SumaDeIntervalos + tiempoValor;
-        if (Tmuestra >= SumaDeIntervalos) {
+        if (this.Tmuestra >= this.SumaDeIntervalos) {
             this.ultimos4[pos1Valor].splice(-1, 1);
             this.SumaDeIntervalos = 0;
         }
