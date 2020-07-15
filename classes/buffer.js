@@ -78,7 +78,7 @@ class ValorControl {
                 this.possi.splice(-1, 1);
             }
             ind = this.possi.length - 1;
-            console.log('this.possi', this.possi[0], ind);
+            console.log('this.possi', this.possi[ind], ind);
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1);
             this.valor = valor;
             this.valores.push(valor);
@@ -192,9 +192,9 @@ class ValorControl {
         return this.possi[po];
     }
 
-    getUltimoValor() {
+    getUltimoValor(pos1) {
 
-        return this.valor;
+        return this.valores[this.valores.length][pos1];
     }
     getCodigoEvento() {
 
@@ -254,3 +254,9 @@ class ValorControl {
 module.exports = {
     ValorControl
 };
+
+// TO DO THINGHS...yellow
+// determinar de modo fehaciente ubicacion y horario de los clientes... mas alla de errores en su configuracion.
+
+// retomar el valor anterior para cada variable.
+// calcular la pendiente
