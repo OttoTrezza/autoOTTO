@@ -31,7 +31,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.SumaDeIntervalos = 0;
-        this.Tmuestra = 0;
+        this.Tmuestra = 1000;
         this.valores = [];
         this.valor = {};
         this.poss = [];
@@ -95,8 +95,11 @@ class ValorControl {
 
             this.grabarArchivo();
         } else { // ahora grabo las pendiente en vez de los valores absolutos.
-            let anterior = this.ultimos4.length - 1;
+
+            let este = this.getUltimos4pos(ind);
+            let anterior = este.length - 1;
             let Tinterval = tiempo - this.ultimos4[anterior].tiempo;
+            if (Tinterval < 300) { return 'muchas muestras'; }
             let Ainterval = alpha1 - this.ultimos4[anterior].alpha1;
             let Binterval = beta1 - this.ultimos4[anterior].beta1;
             let Ginterval = gamma1 - this.ultimos4[anterior].gamma1;
@@ -138,7 +141,7 @@ class ValorControl {
             this.ultimos4[pos1Valor].splice(-1, 1);
             this.SumaDeIntervalos = 0;
         }
-
+        this.grabarArchivo();
         console.log('thisult4', this.ultimos4);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
         // this.ultimos4[pos1Valor].unshift(atenderValor);
@@ -154,7 +157,7 @@ class ValorControl {
         //     this.ultimos24[pos1Valor].splice(-1, 1);
         // }
 
-        this.grabarArchivo();
+
         this.analisisUltimos4(this.ultimos4);
 
         console.log('todo-0', this.ultimos4[0][0].beta1);
@@ -221,7 +224,7 @@ class ValorControl {
     }
     getUltimos4Dispo(pos) {
 
-        return this.ultimos4.filter(valor => valor.pos1 === pos);
+        return this.ultimos4[pos];
     }
     getUltimos14() {
 
