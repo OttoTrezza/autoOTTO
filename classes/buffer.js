@@ -232,6 +232,7 @@ class ValorControl {
         this.ultimos24 = [];
         this.codigoEvento = [];
         this.possi = [];
+        this.SumaDeIntervalos = 0;
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
 
@@ -249,7 +250,8 @@ class ValorControl {
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
             codigoEvento: this.codigoEvento,
-            possi: this.possi
+            possi: this.possi,
+            SumaDeIntervalos: this.SumaDeIntervalos
         };
         let jsonDataString = JSON.stringify(jsonData);
         fs.writeFileSync('./classes/data/data.json', jsonDataString);
