@@ -100,7 +100,11 @@ class ValorControl {
             return 'No habia anterior';
         } else {
             let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
+            if (ultValxdispo.tiempo > tiempo) {
+                ultValxdispo.tiempo = (60000 - ultValxdispo.tiempo);
+            }
             let Tinterval = tiempo - ultValxdispo.tiempo;
+
             if (Tinterval < 300) {
                 console.log('muchas muestras');
                 return 'muchas muestras';
@@ -112,7 +116,7 @@ class ValorControl {
             // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
             alpha1 = Math.round(Ainterval / Tinterval);
             beta1 = Math.round(Binterval / Tinterval);
-            gamma1 = Math.round(Tinterval);
+            gamma1 = Math.round(Tinterval); // ATENCION CAMBIAR ESTO!     Ginterval/Tinterval
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
             // this.valores.push(valor);
             this.valor = valor;
