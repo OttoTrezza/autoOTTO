@@ -112,8 +112,8 @@ exports.mousePos = (cliente) => {
         //  let de = payload.de;
         let posX = payload.posX;
         let posY = payload.posY;
-        console.log('posX, posY', posX, posY);
-        valorControl.siguiente(payload.de, payload.posX, payload.posY, 0);
+        // console.log('posX, posY', posX, posY);
+        valorControl.siguiente(payload.de, posX, posY, 0);
         const paya = {
             de: payload.de,
             posX: payload.posX,

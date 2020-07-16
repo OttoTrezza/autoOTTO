@@ -85,48 +85,50 @@ class ValorControl {
             this.ultimos4.push(dispo1);
             ind = this.possi.findIndex((element) => element === dispo1);
             this.ultimos4[ind] = [];
+            console.log('primera vez');
             this.grabarArchivo();
+            return 'No hay Valores';
         }
 
 
         // ahora grabo las pendiente en vez de los valores absolutos.
-        let anterior = this.getUltimos4Dispo(ind - 1);
-        if (anterior == null) {
+        if (this.ultimos4[ind - 1] == null) {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
             this.ultimos4[ind].unshift(valor);
             this.grabarArchivo();
-            return 'No hay Valores';
+            console.log('return no habia anterior');
+            return 'No habia anterior';
+        } else {
+            let ultValxdispo = anterior[anterior.length - 1];
+            let Tinterval = tiempo - ultValxdispo.tiempo;
+            if (Tinterval < 300) { return 'muchas muestras'; }
+            let Ainterval = alpha1 - ultValxdispo.alpha1;
+            let Binterval = beta1 - ultValxdispo.beta1;
+            let Ginterval = gamma1 - ultValxdispo.gamma1;
+
+            // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
+            alpha1 = Ainterval / Tinterval;
+            beta1 = Binterval / Tinterval;
+            gamma1 = Ginterval / Tinterval;
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+            // this.valores.push(valor);
+            this.valor = valor;
+
+            this.ultimos4[ind].unshift(valor);
+            this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
+            if (this.Tmuestra >= this.SumaDeIntervalos) {
+                this.ultimos4[ind].splice(-1, 1);
+                this.SumaDeIntervalos = 0;
+            }
+            this.grabarArchivo();
+            console.log('thisult4', this.ultimos4);
+
+
+
+            // this.analisisUltimos4(this.ultimos4);
+
+            console.log('todo-0', this.ultimos4[ind][0].beta1);
         }
-        let ultValxdispo = anterior[anterior.length - 1];
-        let Tinterval = tiempo - ultValxdispo.tiempo;
-        if (Tinterval < 300) { return 'muchas muestras'; }
-        let Ainterval = alpha1 - ultValxdispo.alpha1;
-        let Binterval = beta1 - ultValxdispo.beta1;
-        let Ginterval = gamma1 - ultValxdispo.gamma1;
-
-        // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
-        alpha1 = Ainterval / Tinterval;
-        beta1 = Binterval / Tinterval;
-        gamma1 = Ginterval / Tinterval;
-        let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
-        // this.valores.push(valor);
-        this.valor = valor;
-
-        this.ultimos4[ind].unshift(valor);
-        this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
-        if (this.Tmuestra >= this.SumaDeIntervalos) {
-            this.ultimos4[ind].splice(-1, 1);
-            this.SumaDeIntervalos = 0;
-        }
-        this.grabarArchivo();
-        console.log('thisult4', this.ultimos4);
-
-
-
-        // this.analisisUltimos4(this.ultimos4);
-
-        console.log('todo-0', this.ultimos4[ind][0].beta1);
-
     }
 
 
