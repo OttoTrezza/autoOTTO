@@ -111,6 +111,7 @@ class ValorControl {
             if (this.SumaDeIntervalos > 2000) {
                 this.ultimos4[ind].splice(-1, 1);
                 this.SumaDeIntervalos = 0;
+                this.grabarArchivo();
                 console.log('thisultimos4', this.ultimos4[ind].length);
             }
             if (Tinterval > 300) {
