@@ -126,7 +126,7 @@ class ValorControl {
         // this.analisisUltimos4(this.ultimos4);
 
         console.log('todo-0', this.ultimos4[ind][0].beta1);
-        // console.log('todo-1', this.ultimos4[1]);
+
     }
 
 
