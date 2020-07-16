@@ -109,7 +109,7 @@ class ValorControl {
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
             console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
             if (this.SumaDeIntervalos > 2000) {
-                this.ultimos4[ind].splice((this.ultimos4[ind].lenth - 1), this.ultimos4[ind].lenth);
+                this.ultimos4[ind] = [];
                 this.SumaDeIntervalos = 0;
                 this.grabarArchivo();
                 console.log('thisultimos4', this.ultimos4[ind].length);
