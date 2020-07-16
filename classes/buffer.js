@@ -105,39 +105,41 @@ class ValorControl {
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
 
-            if (Tinterval < 300) {
+            if (Tinterval > 300) {
+
+                let Ainterval = alpha1 - ultValxdispo.alpha1;
+                let Binterval = beta1 - ultValxdispo.beta1;
+                let Ginterval = gamma1 - ultValxdispo.gamma1;
+
+                // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
+                alpha1 = Math.round(Ainterval / Tinterval);
+                beta1 = Math.round(Binterval / Tinterval);
+                gamma1 = Math.round(Ginterval / Tinterval);
+                let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+                // this.valores.push(valor);
+                this.valor = valor;
+
+                this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
+                if (this.Tmuestra >= this.SumaDeIntervalos) {
+                    this.ultimos4[ind] = [];
+                    this.SumaDeIntervalos = 0;
+                    this.grabarArchivo();
+
+                }
+                this.ultimos4[ind].unshift(valor);
+
+                this.grabarArchivo();
+                console.log('thisult4', this.ultimos4);
+
+
+
+                // this.analisisUltimos4(this.ultimos4);
+
+                console.log('todo-0', this.ultimos4[ind][0].beta1);
+            } else {
                 console.log('muchas muestras');
                 return 'muchas muestras';
             }
-            let Ainterval = alpha1 - ultValxdispo.alpha1;
-            let Binterval = beta1 - ultValxdispo.beta1;
-            let Ginterval = gamma1 - ultValxdispo.gamma1;
-
-            // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
-            alpha1 = Math.round(Ainterval / Tinterval);
-            beta1 = Math.round(Binterval / Tinterval);
-            gamma1 = Math.round(Tinterval); // ATENCION CAMBIAR ESTO!     Ginterval/Tinterval
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
-            // this.valores.push(valor);
-            this.valor = valor;
-
-            this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
-            if (this.Tmuestra >= this.SumaDeIntervalos) {
-                this.ultimos4[ind] = [];
-                this.SumaDeIntervalos = 0;
-                this.grabarArchivo();
-
-            }
-            this.ultimos4[ind].unshift(valor);
-
-            this.grabarArchivo();
-            console.log('thisult4', this.ultimos4);
-
-
-
-            // this.analisisUltimos4(this.ultimos4);
-
-            console.log('todo-0', this.ultimos4[ind][0].beta1);
         }
     }
 
