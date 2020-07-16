@@ -100,18 +100,18 @@ class ValorControl {
             return 'No habia anterior';
         } else {
             let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
-            console.log('ultValxdispo', ultValxdispo.tiempo);
+            //    console.log('ultValxdispo', ultValxdispo.tiempo);
             if (ultValxdispo.tiempo > tiempo) {
                 ultValxdispo.tiempo = ultValxdispo.tiempo - 1000;
-                console.log('ultValxdispoAAA', ultValxdispo.tiempo);
+                //        console.log('ultValxdispoAAA', ultValxdispo.tiempo);
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
-            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+            //    console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
             if (this.SumaDeIntervalos > 2000) {
                 this.ultimos4[ind].splice(-1, 1);
                 this.SumaDeIntervalos = 0;
-                console.log('mayor');
+                console.log('thisultimos4', this.ultimos4[ind]);
             }
             if (Tinterval > 300) {
 
