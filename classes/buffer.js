@@ -107,12 +107,13 @@ class ValorControl {
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
-            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+            // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
             if (this.SumaDeIntervalos > 2000) {
+                console.log('thisultimos4', this.ultimos4[ind]);
                 this.ultimos4[ind] = [];
                 this.SumaDeIntervalos = 0;
                 this.grabarArchivo();
-                console.log('thisultimos4', this.ultimos4[ind].length);
+
             }
             if (Tinterval > 300) {
 
