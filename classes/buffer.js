@@ -122,9 +122,10 @@ class ValorControl {
                 this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
                 console.log('SumaDeIntervalos', this.SumaDeIntervalos);
                 if (this.SumaDeIntervalos > this.Tmuestra) {
-                    this.ultimos4[ind].pop();
+                    let saqeu = this.ultimos4[ind].pop();
                     this.SumaDeIntervalos = 0;
                     this.grabarArchivo();
+                    console.log('saqeu', saqeu);
 
                 }
                 this.ultimos4[ind].unshift(valor);
