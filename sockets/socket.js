@@ -113,7 +113,7 @@ exports.mousePos = (cliente) => {
         let posX = payload.posX;
         let posY = payload.posY;
         // console.log('posX, posY', posX, posY);
-        let tiempo = new Date().getUTCSeconds();
+        let tiempo = new Date().getUTCMilliseconds();
         valorControl.siguiente(payload.de, posX, posY, 0, tiempo);
         const paya = {
             de: payload.de,
