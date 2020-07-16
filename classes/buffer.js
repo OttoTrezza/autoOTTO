@@ -116,7 +116,7 @@ class ValorControl {
                 this.grabarArchivo();
 
             }
-            if (Tinterval > 200) {
+            if (Tinterval > 50) {
 
                 let Ainterval = alpha1 - ultValxdispo.alpha1;
                 let Binterval = beta1 - ultValxdispo.beta1;
