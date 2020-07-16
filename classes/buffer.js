@@ -72,134 +72,104 @@ class ValorControl {
     }
 
     siguiente(dispo1, alpha1, beta1, gamma1, tiempo) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
-        this.ultimo = this.ultimo + 1;
+        //  this.ultimo = this.ultimo + 1;
         let ind = 0;
         ind = this.possi.findIndex((element) => element === dispo1);
 
         if (ind === -1) {
-            this.possi.unshift(dispo1);
+            this.possi.push(dispo1);
             if (this.possi.length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-                this.possi.splice(-1, 1);
+                this.possi.shift();
+                console.log('maximo 4 usuarios que envian datos');
             }
-            ind = this.possi.length - 1;
-            console.log('this.possi', this.possi[ind], ind);
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
-            this.valor = valor;
-            this.valores.push(valor);
             this.ultimos4.push(dispo1);
-            let oned4 = this.ultimos4.length - 1;
-            this.ultimos4[oned4] = []; // ACA CVOSA RARA
-            this.ultimos24.push(dispo1);
-            let oned24 = this.ultimos24.length - 1;
-            this.ultimos24[oned24] = []; // ACA CVOSA RARA
-
-            this.grabarArchivo();
-        } else { // ahora grabo las pendiente en vez de los valores absolutos.
-
-            let este = this.getUltimos4Dispo(ind);
-            let anterior = este.length - 1;
-            let Tinterval = tiempo - este[anterior].tiempo;
-            if (Tinterval < 300) { return 'muchas muestras'; }
-            let Ainterval = alpha1 - este[anterior].alpha1;
-            let Binterval = beta1 - este[anterior].beta1;
-            let Ginterval = gamma1 - este[anterior].gamma1;
-            // calculando la pendiente de alpha... malpha
-            alpha1 = Ainterval / Tinterval;
-            beta1 = Binterval / Tinterval;
-            gamma1 = Ginterval / Tinterval;
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
-
-            this.valores.push(valor);
-            this.valor = valor;
+            ind = this.possi.findIndex((element) => element === dispo1);
+            this.ultimos4[ind] = [];
             this.grabarArchivo();
         }
-        // { pos1, dispo1, beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1 };
-        if (this.valores.length === 0) { //VERIFICA QUE HAYAN TICKETS PENDIENTES DE ATENDER
+
+
+        // ahora grabo las pendiente en vez de los valores absolutos.
+        let anterior = this.getUltimos4Dispo(ind - 1);
+        if (anterior.length === 0) {
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+            this.ultimos4[ind].unshift(valor);
+            this.grabarArchivo();
             return 'No hay Valores';
         }
-        let pos1Valor = this.getUltimoValor().pos1;
-        let dispo1Valor = this.getUltimoValor().dispo1;
-        let alpha1Valor = this.getUltimoValor().alpha1;
-        let beta1Valor = this.getUltimoValor().beta1;
-        let gamma1Valor = this.getUltimoValor().gamma1;
-        let tiempoValor = this.getUltimoValor().tiempo;
-        // let accelerationx1Valor = this.getUltimoValor().accelerationx1;
-        // let accelerationy1Valor = this.getUltimoValor().accelerationy1;
-        // let accelerationz1Valor = this.getUltimoValor().accelerationz1;
-        // let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
-        // let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
-        // let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
-        // let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
-        // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
-        // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
-        this.valores.shift(); // ELIMINO LA PRIMERA POSICION DEL ARREGLO
-        let atenderValor = new Valor(pos1Valor, dispo1Valor, alpha1Valor, beta1Valor, gamma1Valor, tiempoValor); // ,  accelerationx1Valor, accelerationy1Valor, accelerationz1Valor, accelerationincludinggravityx1Valor, accelerationincludinggravityy1Valor, accelerationincludinggravityz1Valor, rotationratebeta1Valor, rotationrategamma1Valor, rotationratealpha1Val
+        let ultValxdispo = anterior[anterior.length - 1];
+        let Tinterval = tiempo - ultValxdispo.tiempo;
+        if (Tinterval < 300) { return 'muchas muestras'; }
+        let Ainterval = alpha1 - ultValxdispo.alpha1;
+        let Binterval = beta1 - ultValxdispo.beta1;
+        let Ginterval = gamma1 - ultValxdispo.gamma1;
 
-        this.ultimos4[pos1Valor].unshift(atenderValor);
-        this.SumaDeIntervalos = this.SumaDeIntervalos + tiempoValor;
+        // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
+        alpha1 = Ainterval / Tinterval;
+        beta1 = Binterval / Tinterval;
+        gamma1 = Ginterval / Tinterval;
+        let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+        // this.valores.push(valor);
+        this.valor = valor;
+
+        this.ultimos4[ind].unshift(valor);
+        this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
         if (this.Tmuestra >= this.SumaDeIntervalos) {
-            this.ultimos4[pos1Valor].splice(-1, 1);
+            this.ultimos4[ind].splice(-1, 1);
             this.SumaDeIntervalos = 0;
         }
         this.grabarArchivo();
         console.log('thisult4', this.ultimos4);
-        // this.ultimos4[pos1Valor].unshift(atenderValor);
-        // this.ultimos4[pos1Valor].unshift(atenderValor);
-        // if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-        //     this.ultimos4[pos1Valor].splice(-1, 1);
-        // }
-        // this.ultimos14[pos1Valor].unshift(atenderValor);
-        // if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-        //     this.ultimos14[pos1Valor].splice(-1, 1);
-        // }
-        // this.ultimos24[pos1Valor].unshift(atenderValor);
-        // if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-        //     this.ultimos24[pos1Valor].splice(-1, 1);
-        // }
 
 
-        this.analisisUltimos4(this.ultimos4);
 
-        console.log('todo-0', this.ultimos4[0][0].beta1);
+        // this.analisisUltimos4(this.ultimos4);
+
+        console.log('todo-0', this.ultimos4[ind][0].beta1);
         // console.log('todo-1', this.ultimos4[1]);
     }
-    analisisUltimos4(ultimos4) {
-
-        // let al = 0;
-        // for (al; al < ultimos4l.length; al++) {
-        if (ultimos4[0][0] == undefined) {
-            ultimos4[0][0] = '0';
-            this.codigoEvento = [];
-            this.codigoEvento.push(ultimos4[0][0].dispo1);
-            this.codigoEvento.push(0);
-            return this.codigoEvento;
-        }
-        if (ultimos4[0][3] == undefined) {
-            ultimos4[0][3] = '0';
-            this.codigoEvento = [];
-            this.codigoEvento.push(ultimos4[0][0].dispo1);
-            this.codigoEvento.push(0);
-            return this.codigoEvento;
-        }
-
-        if (ultimos4[0][0].beta1 > 2 * (ultimos4[0][3].beta1)) {
-            console.log('es mayor');
-            this.codigoEvento = [];
-            this.codigoEvento.push(ultimos4[0][0].dispo1);
-            this.codigoEvento.push(1);
-            console.log('coevif', this.codigoEvento);
-            return this.codigoEvento;
-        } else {
-
-            this.codigoEvento = [];
-            this.codigoEvento.push(ultimos4[0][0].dispo1);
-            this.codigoEvento.push(2);
-            console.log('coevelse[1]', this.codigoEvento);
-            return this.codigoEvento;
-        }
 
 
-    }
+
+
+
+    // analisisUltimos4(ultimos4) {
+
+    //     // let al = 0;
+    //     // for (al; al < ultimos4l.length; al++) {
+    //     if (ultimos4[0][0] == undefined) {
+    //         ultimos4[0][0] = '0';
+    //         this.codigoEvento = [];
+    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+    //         this.codigoEvento.push(0);
+    //         return this.codigoEvento;
+    //     }
+    //     if (ultimos4[0][3] == undefined) {
+    //         ultimos4[0][3] = '0';
+    //         this.codigoEvento = [];
+    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+    //         this.codigoEvento.push(0);
+    //         return this.codigoEvento;
+    //     }
+
+    //     if (ultimos4[0][0].beta1 > 2 * (ultimos4[0][3].beta1)) {
+    //         console.log('es mayor');
+    //         this.codigoEvento = [];
+    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+    //         this.codigoEvento.push(1);
+    //         console.log('coevif', this.codigoEvento);
+    //         return this.codigoEvento;
+    //     } else {
+
+    //         this.codigoEvento = [];
+    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+    //         this.codigoEvento.push(2);
+    //         console.log('coevelse[1]', this.codigoEvento);
+    //         return this.codigoEvento;
+    //     }
+
+
+    // }
     getDispositivosConectados() {
 
         return this.possi;
@@ -222,9 +192,9 @@ class ValorControl {
 
         return this.ultimos4;
     }
-    getUltimos4Dispo(pos) {
+    getUltimos4Dispo(ind) {
 
-        return this.ultimos4[pos];
+        return this.ultimos4[ind];
     }
     getUltimos14() {
 
@@ -277,3 +247,34 @@ module.exports = {
 
 // retomar el valor anterior para cada variable.
 // calcular la pendiente
+
+
+
+
+// CODIGO VIEJO:
+
+// let accelerationx1Valor = this.getUltimoValor().accelerationx1;
+// let accelerationy1Valor = this.getUltimoValor().accelerationy1;
+// let accelerationz1Valor = this.getUltimoValor().accelerationz1;
+// let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
+// let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
+// let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
+// let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
+// let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
+// let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
+
+
+
+// this.ultimos4[pos1Valor].unshift(atenderValor);
+// this.ultimos4[pos1Valor].unshift(atenderValor);
+// if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+//     this.ultimos4[pos1Valor].splice(-1, 1);
+// }
+// this.ultimos14[pos1Valor].unshift(atenderValor);
+// if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+//     this.ultimos14[pos1Valor].splice(-1, 1);
+// }
+// this.ultimos24[pos1Valor].unshift(atenderValor);
+// if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+//     this.ultimos24[pos1Valor].splice(-1, 1);
+// }
