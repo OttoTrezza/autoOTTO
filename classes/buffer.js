@@ -124,23 +124,19 @@ class ValorControl {
 
 
                 console.log('SumaDeIntervalos', this.SumaDeIntervalos);
-                if (this.SumaDeIntervalos > this.Tmuestra) {
-                    let saqeu = this.ultimos4[ind].pop();
-                    this.SumaDeIntervalos = 0;
-                    this.grabarArchivo();
-                    console.log('saqeu', saqeu);
-
-                }
                 this.ultimos4[ind].unshift(valor);
 
+                if (this.SumaDeIntervalos > this.Tmuestra) {
+                    this.ultimos4[ind].splice(-1, 1);
+                    this.SumaDeIntervalos = 0;
+                    this.grabarArchivo();
+                    console.log('thisult4', this.ultimos4[ind]);
+                }
+
                 this.grabarArchivo();
-                console.log('thisult4', this.ultimos4);
 
 
 
-                // this.analisisUltimos4(this.ultimos4);
-
-                console.log('todo-0', this.ultimos4[ind][0].beta1);
             } else {
                 console.log('muchas muestras');
             }
