@@ -31,7 +31,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.SumaDeIntervalos = 0;
-        this.Tmuestra = 1000;
+        this.Tmuestra = 2000;
         this.valores = [];
         this.valor = {};
         this.poss = [];
@@ -115,9 +115,10 @@ class ValorControl {
             this.valor = valor;
 
             this.ultimos4[ind].unshift(valor);
+            let indiceVal = this.ultimos4[ind].length - 1;
             this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
             if (this.Tmuestra >= this.SumaDeIntervalos) {
-                this.ultimos4[ind].splice(-1, 1);
+                this.ultimos4[ind][indiceVal].splice(-1, 1);
                 this.SumaDeIntervalos = 0;
             }
             this.grabarArchivo();
