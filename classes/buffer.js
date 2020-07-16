@@ -101,7 +101,10 @@ class ValorControl {
         } else {
             let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
             let Tinterval = tiempo - ultValxdispo.tiempo;
-            if (Tinterval < 300) { return 'muchas muestras'; }
+            if (Tinterval < 300) {
+                console.log('muchas muestras');
+                return 'muchas muestras';
+            }
             let Ainterval = alpha1 - ultValxdispo.alpha1;
             let Binterval = beta1 - ultValxdispo.beta1;
             let Ginterval = gamma1 - ultValxdispo.gamma1;
@@ -114,13 +117,14 @@ class ValorControl {
             // this.valores.push(valor);
             this.valor = valor;
 
-            this.ultimos4[ind].unshift(valor);
-            let indiceVal = this.ultimos4[ind].length - 1;
-            this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
+
             if (this.Tmuestra >= this.SumaDeIntervalos) {
-                this.ultimos4[ind][indiceVal].splice(-1, 1);
+                this.ultimos4[ind] = [];
                 this.SumaDeIntervalos = 0;
             }
+            this.ultimos4[ind].unshift(valor);
+            this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
+
             this.grabarArchivo();
             console.log('thisult4', this.ultimos4);
 
