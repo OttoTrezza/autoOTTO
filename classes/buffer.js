@@ -120,7 +120,7 @@ class ValorControl {
                 this.valor = valor;
 
                 this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
-                if (this.Tmuestra >= this.SumaDeIntervalos) {
+                if (this.Tmuestra <= this.SumaDeIntervalos) {
                     this.ultimos4[ind] = [];
                     this.SumaDeIntervalos = 0;
                     this.grabarArchivo();
