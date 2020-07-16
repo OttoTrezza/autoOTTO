@@ -101,7 +101,7 @@ class ValorControl {
         } else {
             let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
             if (ultValxdispo.tiempo > tiempo) {
-                ultValxdispo.tiempo = (60000 - ultValxdispo.tiempo);
+                ultValxdispo.tiempo = (1000 - ultValxdispo.tiempo);
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
 
