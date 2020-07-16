@@ -111,11 +111,12 @@ class ValorControl {
             if (this.SumaDeIntervalos > 2000) {
                 console.log('thisultimos4', this.ultimos4[ind]);
                 this.ultimos4[ind] = [];
+                this.ultimos4[ind].unshift(valor);
                 this.SumaDeIntervalos = 0;
                 this.grabarArchivo();
 
             }
-            if (Tinterval > 300) {
+            if (Tinterval > 200) {
 
                 let Ainterval = alpha1 - ultValxdispo.alpha1;
                 let Binterval = beta1 - ultValxdispo.beta1;
