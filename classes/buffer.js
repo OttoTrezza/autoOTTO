@@ -117,13 +117,12 @@ class ValorControl {
             // this.valores.push(valor);
             this.valor = valor;
 
-
+            this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
             if (this.Tmuestra >= this.SumaDeIntervalos) {
                 this.ultimos4[ind] = [];
                 this.SumaDeIntervalos = 0;
             }
             this.ultimos4[ind].unshift(valor);
-            this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
 
             this.grabarArchivo();
             console.log('thisult4', this.ultimos4);
