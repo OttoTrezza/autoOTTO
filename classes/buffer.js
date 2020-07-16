@@ -99,7 +99,7 @@ class ValorControl {
             console.log('return no habia anterior');
             return 'No habia anterior';
         } else {
-            let ultValxdispo = this.ultimos4[ind][this.ultimos4[ind].length - 1];
+            let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
             let Tinterval = tiempo - ultValxdispo.tiempo;
             if (Tinterval < 300) { return 'muchas muestras'; }
             let Ainterval = alpha1 - ultValxdispo.alpha1;
