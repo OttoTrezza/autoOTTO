@@ -92,7 +92,7 @@ class ValorControl {
 
         // ahora grabo las pendiente en vez de los valores absolutos.
 
-        if (this.ultimos4[ind - 1] == null) {
+        if (this.ultimos4[ind][0] == null) {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
             this.ultimos4[ind].unshift(valor);
             this.grabarArchivo();
