@@ -100,14 +100,19 @@ class ValorControl {
             return 'No habia anterior';
         } else {
             let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
-            console.log('ultValxdispo', ultValxdispo);
+            console.log('ultValxdispo', ultValxdispo.tiempo);
             if (ultValxdispo.tiempo > tiempo) {
-                ultValxdispo.tiempo = (ultValxdispo.tiempo - 1000);
-                console.log('ultValxdispo', ultValxdispo);
+                ultValxdispo.tiempo = ultValxdispo.tiempo - 1000;
+                console.log('ultValxdispoAAA', ultValxdispo.tiempo);
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
-            console.log('Tinterval', Tinterval);
+            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+            if (this.SumaDeIntervalos > this.Tmuestra) {
+                this.ultimos4[ind].splice(-1, 1);
+                this.SumaDeIntervalos = 0;
+                console.log('mayor');
+            }
             if (Tinterval > 300) {
 
                 let Ainterval = alpha1 - ultValxdispo.alpha1;
@@ -121,21 +126,8 @@ class ValorControl {
                 let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
                 // this.valores.push(valor);
                 this.valor = valor;
-
-
-                console.log('SumaDeIntervalos', this.SumaDeIntervalos);
                 this.ultimos4[ind].unshift(valor);
-
-                if (this.SumaDeIntervalos > this.Tmuestra) {
-                    this.ultimos4[ind].splice(-1, 1);
-                    this.SumaDeIntervalos = 0;
-                    this.grabarArchivo();
-                    console.log('thisult4', this.ultimos4[ind]);
-                }
-
                 this.grabarArchivo();
-
-
 
             } else {
                 console.log('muchas muestras');
