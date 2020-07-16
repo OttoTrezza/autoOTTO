@@ -107,11 +107,11 @@ class ValorControl {
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
-            //    console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
             if (this.SumaDeIntervalos > 2000) {
                 this.ultimos4[ind].splice(-1, 1);
                 this.SumaDeIntervalos = 0;
-                console.log('thisultimos4', this.ultimos4[ind]);
+                console.log('thisultimos4', this.ultimos4[ind].length);
             }
             if (Tinterval > 300) {
 
@@ -131,6 +131,7 @@ class ValorControl {
 
             } else {
                 console.log('muchas muestras');
+
             }
         }
     }
