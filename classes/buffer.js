@@ -87,11 +87,11 @@ class ValorControl {
             this.ultimos4[ind] = [];
             console.log('primera vez');
             this.grabarArchivo();
-            return 'No hay Valores';
         }
 
 
         // ahora grabo las pendiente en vez de los valores absolutos.
+
         if (this.ultimos4[ind - 1] == null) {
             let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
             this.ultimos4[ind].unshift(valor);
