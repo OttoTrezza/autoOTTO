@@ -101,7 +101,7 @@ class ValorControl {
         } else {
             let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
             if (ultValxdispo.tiempo > tiempo) {
-                ultValxdispo.tiempo = (1000 - ultValxdispo.tiempo);
+                ultValxdispo.tiempo = (ultValxdispo.tiempo - 1000);
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
 
@@ -120,7 +120,7 @@ class ValorControl {
                 this.valor = valor;
 
                 this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
-                console.log('SumadeInter', this.SumaDeIntervalos);
+                console.log('SumaDeIntervalos', this.SumaDeIntervalos);
                 if (this.SumaDeIntervalos > this.Tmuestra) {
                     this.ultimos4[ind].pop();
                     this.SumaDeIntervalos = 0;
@@ -139,7 +139,6 @@ class ValorControl {
                 console.log('todo-0', this.ultimos4[ind][0].beta1);
             } else {
                 console.log('muchas muestras');
-                return 'muchas muestras';
             }
         }
     }
