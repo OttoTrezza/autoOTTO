@@ -119,7 +119,7 @@ class ValorControl {
                 // this.valores.push(valor);
                 this.valor = valor;
 
-                this.SumaDeIntervalos = this.SumaDeIntervalos + tiempo;
+                this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
                 if (this.Tmuestra >= this.SumaDeIntervalos) {
                     this.ultimos4[ind] = [];
                     this.SumaDeIntervalos = 0;
