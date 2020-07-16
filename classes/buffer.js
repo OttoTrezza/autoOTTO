@@ -103,6 +103,7 @@ class ValorControl {
             console.log('ultValxdispo', ultValxdispo);
             if (ultValxdispo.tiempo > tiempo) {
                 ultValxdispo.tiempo = (ultValxdispo.tiempo - 1000);
+                console.log('ultValxdispo', ultValxdispo);
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
