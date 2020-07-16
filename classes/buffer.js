@@ -121,6 +121,8 @@ class ValorControl {
             if (this.Tmuestra >= this.SumaDeIntervalos) {
                 this.ultimos4[ind] = [];
                 this.SumaDeIntervalos = 0;
+                this.grabarArchivo();
+
             }
             this.ultimos4[ind].unshift(valor);
 
