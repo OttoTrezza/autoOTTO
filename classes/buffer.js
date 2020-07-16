@@ -100,11 +100,13 @@ class ValorControl {
             return 'No habia anterior';
         } else {
             let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
+            console.log('ultValxdispo', this.ultValxdispo);
             if (ultValxdispo.tiempo > tiempo) {
                 ultValxdispo.tiempo = (ultValxdispo.tiempo - 1000);
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
+            console.log('Tinterval', this.Tinterval);
             if (Tinterval > 300) {
 
                 let Ainterval = alpha1 - ultValxdispo.alpha1;
