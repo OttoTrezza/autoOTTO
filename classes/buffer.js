@@ -104,7 +104,7 @@ class ValorControl {
                 ultValxdispo.tiempo = (ultValxdispo.tiempo - 1000);
             }
             let Tinterval = tiempo - ultValxdispo.tiempo;
-
+            this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
             if (Tinterval > 300) {
 
                 let Ainterval = alpha1 - ultValxdispo.alpha1;
@@ -119,7 +119,7 @@ class ValorControl {
                 // this.valores.push(valor);
                 this.valor = valor;
 
-                this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
+
                 console.log('SumaDeIntervalos', this.SumaDeIntervalos);
                 if (this.SumaDeIntervalos > this.Tmuestra) {
                     let saqeu = this.ultimos4[ind].pop();
