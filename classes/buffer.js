@@ -124,9 +124,9 @@ class ValorControl {
                 let Ginterval = gamma1 - ultValxdispo.gamma1;
 
                 // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
-                alpha1 = Math.round(Ainterval / (Tinterval));
-                beta1 = Math.round(Binterval / (Tinterval));
-                gamma1 = Math.round(Ginterval / (Tinterval));
+                alpha1 = Math.floor(Ainterval / (Tinterval));
+                beta1 = Math.floor(Binterval / (Tinterval));
+                gamma1 = Math.floor(Ginterval / (Tinterval));
                 let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
                 // this.valores.push(valor);
                 this.valor = valor;
