@@ -119,6 +119,7 @@ class ValorControl {
             if (Tinterval > 50) {
 
                 let Ainterval = alpha1 - ultValxdispo.alpha1;
+                console.log('alpha y alpha anterior', alpha1, ultValxdispo.alpha1);
                 let Binterval = beta1 - ultValxdispo.beta1;
                 let Ginterval = gamma1 - ultValxdispo.gamma1;
 
