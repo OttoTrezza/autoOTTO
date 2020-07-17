@@ -113,33 +113,34 @@ class ValorControl {
                 let diant = this.ultimos4[ind][0];
                 console.log('thisultimos4', this.ultimos4[ind]);
                 this.ultimos4[ind] = [];
+                this.grabarArchivo();
                 this.ultimos4[ind].unshift(diant);
                 this.SumaDeIntervalos = 0;
                 this.grabarArchivo();
 
             }
-            if (Tinterval > 50) {
+            // if (Tinterval > 5) {
 
-                let Ainterval = alpha1 - ultValxdispo.alpha1;
-                console.log('alpha y alpha anterior', alpha1, ultValxdispo.alpha1);
-                let Binterval = beta1 - ultValxdispo.beta1;
-                let Ginterval = gamma1 - ultValxdispo.gamma1;
+            let Ainterval = alpha1 - ultValxdispo.alpha1;
+            console.log('alpha y alpha anterior', alpha1, ultValxdispo.alpha1);
+            let Binterval = beta1 - ultValxdispo.beta1;
+            let Ginterval = gamma1 - ultValxdispo.gamma1;
 
-                // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
-                alpha1 = Math.floor(Ainterval / (Tinterval));
-                beta1 = Math.floor(Binterval / (Tinterval));
-                gamma1 = Math.floor(Ginterval / (Tinterval));
-                let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
-                // this.valores.push(valor);
-                this.valor = valor;
-                this.ultimos4[ind].unshift(valor);
+            // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
+            alpha1 = Math.floor(Ainterval / (Tinterval));
+            beta1 = Math.floor(Binterval / (Tinterval));
+            gamma1 = Math.floor(Ginterval / (Tinterval));
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+            // this.valores.push(valor);
+            this.valor = valor;
+            this.ultimos4[ind].unshift(valor);
 
-                this.grabarArchivo();
+            this.grabarArchivo();
 
-            } else {
-                console.log('muchas muestras');
+            // } else {
+            //     console.log('muchas muestras');
 
-            }
+            // }
         }
     }
 
