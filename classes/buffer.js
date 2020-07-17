@@ -72,7 +72,6 @@ class ValorControl {
     }
 
     siguiente(dispo1, alpha1, beta1, gamma1, tiempo) { // ,  accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1
-        //  this.ultimo = this.ultimo + 1;
         let ind = 0;
         ind = this.possi.findIndex((element) => element === dispo1);
 
@@ -93,18 +92,14 @@ class ValorControl {
         // ahora grabo las pendiente en vez de los valores absolutos.
 
         if (this.ultimos4[ind][0] == null) {
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+            let valor = new Valor(ind, dispo1, 0, 0, 0, tiempo);
             this.ultimos4[ind].unshift(valor);
             this.grabarArchivo();
             console.log('return no habia anterior');
             return 'No habia anterior';
         } else {
             let ultValxdispo = this.ultimos4[ind][0];
-            //    console.log('ultValxdispo', ultValxdispo.tiempo);
-            // if (ultValxdispo.tiempo > tiempo) {
-            //     ultValxdispo.tiempo = ultValxdispo.tiempo - 1000;
-            //     //        console.log('ultValxdispoAAA', ultValxdispo.tiempo);
-            // }
+
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
             // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
@@ -120,11 +115,13 @@ class ValorControl {
 
             }
             // if (Tinterval > 5) {
+            let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
 
-            let Ainterval = alpha1 - ultValxdispo.alpha1;
-            console.log('alpha y alpha anterior', alpha1, ultValxdispo.alpha1);
-            let Binterval = beta1 - ultValxdispo.beta1;
-            let Ginterval = gamma1 - ultValxdispo.gamma1;
+
+            let Ainterval = alpha1 - this.possi.alpha1;
+            console.log('alpha y alpha anterior', alpha1, this.possi.alpha1);
+            let Binterval = beta1 - this.possi.beta1;
+            let Ginterval = gamma1 - this.possi.gamma1;
 
             // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
             alpha1 = Math.floor(Ainterval / (Tinterval));
@@ -134,7 +131,7 @@ class ValorControl {
             // this.valores.push(valor);
             this.valor = valor;
             this.ultimos4[ind].unshift(valor);
-
+            this.possi.unshift(valar);
             this.grabarArchivo();
 
             // } else {
