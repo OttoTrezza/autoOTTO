@@ -101,17 +101,19 @@ class ValorControl {
         } else {
             let ultValxdispo = this.ultimos4[ind][0];
             //    console.log('ultValxdispo', ultValxdispo.tiempo);
-            if (ultValxdispo.tiempo > tiempo) {
-                ultValxdispo.tiempo = ultValxdispo.tiempo - 1000;
-                //        console.log('ultValxdispoAAA', ultValxdispo.tiempo);
-            }
+            // if (ultValxdispo.tiempo > tiempo) {
+            //     ultValxdispo.tiempo = ultValxdispo.tiempo - 1000;
+            //     //        console.log('ultValxdispoAAA', ultValxdispo.tiempo);
+            // }
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
             // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
             if (this.SumaDeIntervalos > 2000) {
+
+                let diant = this.ultimos4[ind][0];
                 console.log('thisultimos4', this.ultimos4[ind]);
                 this.ultimos4[ind] = [];
-                // this.ultimos4[ind].unshift(valor);
+                this.ultimos4[ind].unshift(diant);
                 this.SumaDeIntervalos = 0;
                 this.grabarArchivo();
 
