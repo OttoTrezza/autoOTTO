@@ -34,7 +34,7 @@ class ValorControl {
         this.Tmuestra = 2000;
         this.valores = [];
         this.valor = {};
-        this.poss = [];
+        this.valorAnt = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -48,7 +48,7 @@ class ValorControl {
         this.Tmuestra = data.Tmuestra;
         this.valores = data.valores;
         this.valor = data.valor;
-        this.poss = data.poss;
+        this.valorAnt = data.valorAnt;
         this.ultimos4 = data.ultimos4;
         this.ultimos14 = data.ultimos14;
         this.ultimos24 = data.ultimos24;
@@ -118,10 +118,10 @@ class ValorControl {
             let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
 
 
-            let Ainterval = alpha1 - this.possi.alpha1;
-            console.log('alpha y alpha anterior', alpha1, this.possi.alpha1);
-            let Binterval = beta1 - this.possi.beta1;
-            let Ginterval = gamma1 - this.possi.gamma1;
+            let Ainterval = alpha1 - this.valorAnt.alpha1;
+            console.log('alpha y alpha anterior', alpha1, this.valorAnt.alpha1);
+            let Binterval = beta1 - this.valorAnt.beta1;
+            let Ginterval = gamma1 - this.valorAnt.gamma1;
 
             // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
             alpha1 = Math.floor(Ainterval / (Tinterval));
@@ -131,7 +131,7 @@ class ValorControl {
             // this.valores.push(valor);
             this.valor = valor;
             this.ultimos4[ind].unshift(valor);
-            this.possi.unshift(valar);
+            this.valorAnt = valar;
             this.grabarArchivo();
 
             // } else {
@@ -221,7 +221,7 @@ class ValorControl {
 
         this.ultimo = 0;
         this.valores = [];
-        this.poss = [];
+        this.valorAnt = {};
         this.ultimos4 = [];
         this.ultimos14 = [];
         this.ultimos24 = [];
@@ -240,7 +240,7 @@ class ValorControl {
             Tmuestra: this.Tmuestra,
             valores: this.valores,
             valores4: this.valores4,
-            poss: this.poss,
+            valorAnt: this.valorAnt,
             ultimos4: this.ultimos4,
             ultimos14: this.ultimos14,
             ultimos24: this.ultimos24,
