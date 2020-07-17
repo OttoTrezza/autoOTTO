@@ -113,8 +113,8 @@ exports.mousePos = (cliente) => {
         let posX = payload.posX;
         let posY = payload.posY;
         // console.log('posX, posY', posX, posY);
-        let tiempo = new Date().getUTCMilliseconds();
-        valorControl.siguiente(payload.de, posX, posY, 0, tiempo);
+
+        valorControl.siguiente(payload.de, posX, posY, 0, payload.tiempo);
         const paya = {
             de: payload.de,
             posX: payload.posX,
@@ -128,8 +128,7 @@ exports.mousePos = (cliente) => {
 exports.ElSarmiento = (cliente) => {
     cliente.on('ElSarmiento', (payload, callback) => {
         // valorControl.reiniciarConteo();
-        tiempo = new Date().getUTCMilliseconds();
-        valorControl.siguiente(payload.de, payload.alpha1, payload.beta1, payload.gamma1, tiempo); // ,  payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1
+        valorControl.siguiente(payload.de, payload.alpha1, payload.beta1, payload.gamma1, payload.tiempo); // ,  payload.accelerationx1, payload.accelerationy1, payload.accelerationz1, payload.accelerationincludinggravityx1, payload.accelerationincludinggravityy1, payload.accelerationincludinggravityz1, payload.rotationratebeta1, payload.rotationrategamma1, payload.rotationratealpha1
 
         let va0 = valorControl.getUltimoValor();
         // let dispoConec = valorControl.getDispositivosConectados();
