@@ -99,7 +99,7 @@ class ValorControl {
             console.log('return no habia anterior');
             return 'No habia anterior';
         } else {
-            let ultValxdispo = this.ultimos4[ind][(this.ultimos4[ind].length) - 1];
+            let ultValxdispo = this.ultimos4[ind][0];
             //    console.log('ultValxdispo', ultValxdispo.tiempo);
             if (ultValxdispo.tiempo > tiempo) {
                 ultValxdispo.tiempo = ultValxdispo.tiempo - 1000;
