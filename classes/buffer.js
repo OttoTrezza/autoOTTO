@@ -256,9 +256,9 @@ module.exports = {
 // determinar de modo fehaciente ubicacion y horario de los clientes... mas alla de errores en su configuracion.
 
 // retomar el valor anterior para cada variable.
-// calcular la pendiente
+// calcular la pendiente. HECHO!
 
-
+//
 
 
 // CODIGO VIEJO:
