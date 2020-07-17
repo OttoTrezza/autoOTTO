@@ -114,30 +114,26 @@ class ValorControl {
                 this.grabarArchivo();
 
             }
-            // if (Tinterval > 5) {
-            let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+            if (Tinterval > 50) {
+                let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
 
 
-            let Ainterval = alpha1 - this.valorAnt.alpha1;
-            console.log('alpha y alpha anterior', alpha1, this.valorAnt.alpha1);
-            let Binterval = beta1 - this.valorAnt.beta1;
-            let Ginterval = gamma1 - this.valorAnt.gamma1;
+                let Ainterval = alpha1 - this.valorAnt.alpha1;
+                let Binterval = beta1 - this.valorAnt.beta1;
+                let Ginterval = gamma1 - this.valorAnt.gamma1;
 
-            // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
-            alpha1 = Math.floor(Ainterval / (Tinterval));
-            beta1 = Math.floor(Binterval / (Tinterval));
-            gamma1 = Math.floor(Ginterval / (Tinterval));
-            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
-            // this.valores.push(valor);
-            this.valor = valor;
-            this.ultimos4[ind].unshift(valor);
-            this.valorAnt = valar;
-            this.grabarArchivo();
+                // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
+                alpha1 = Math.floor(Ainterval / (Tinterval));
+                beta1 = Math.floor(Binterval / (Tinterval));
+                gamma1 = Math.floor(Ginterval / (Tinterval));
+                let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+                // this.valores.push(valor);
+                this.valor = valor;
+                this.ultimos4[ind].unshift(valor);
+                this.valorAnt = valar;
+                this.grabarArchivo();
 
-            // } else {
-            //     console.log('muchas muestras');
-
-            // }
+            }
         }
     }
 
