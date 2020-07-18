@@ -103,28 +103,16 @@ class ValorControl {
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos.push(Tinterval);
             // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
-            var suma = this.SumaDeIntervalos
-                .map((caca) => {
-                    suma = suma + caca;
-                    return suma;
-                });
-            console.log('suma de intervalos', suma);
-            if (this.suma > 2000) {
-                this.SumaDeIntervalos.shift();
-                let diant = this.ultimos4[ind][0];
-                console.log('suma de intervalosaca', suma);
-                console.log('thisultimos4', this.ultimos4[ind]);
-                this.ultimos4[ind] = [];
-                this.grabarArchivo();
-                this.ultimos4[ind].unshift(diant);
-                //   this.SumaDeIntervalos = 0;
-                this.grabarArchivo();
-
+            let suma;
+            let cacon;
+            for (suma of this.SumaDeIntervalos) {
+                cacon = cacon + suma;
             }
             if (Tinterval > 50) {
-                let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
-
-
+                let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
+                if (this.valorAnt.alpha1 === 'undefined') {
+                    this.valorAnt = valar;
+                }
                 let Ainterval = alpha1 - this.valorAnt.alpha1;
                 let Binterval = beta1 - this.valorAnt.beta1;
                 let Ginterval = gamma1 - this.valorAnt.gamma1;
@@ -133,13 +121,22 @@ class ValorControl {
                 alpha1 = (Ainterval / (Tinterval)).toFixed(2);
                 beta1 = (Binterval / (Tinterval)).toFixed(2);
                 gamma1 = (Ginterval / (Tinterval)).toFixed(2);
-                let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
+                let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // pendiente de recta entre punto actual y anterior
                 // this.valores.push(valor);
                 this.valor = valor;
                 this.ultimos4[ind].unshift(valor);
                 this.valorAnt = valar;
                 this.grabarArchivo();
 
+                if (cacon > 2000) {
+                    this.SumaDeIntervalos.shift(3);
+                    this.ultimos4[ind].pop();
+                    console.log('suma de intervalosaca', cacon);
+                    console.log('thisultimos4', this.ultimos4[ind]);
+                    //   this.SumaDeIntervalos = 0;
+                    this.grabarArchivo();
+
+                }
             }
         }
     }
