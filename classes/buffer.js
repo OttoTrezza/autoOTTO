@@ -101,7 +101,7 @@ class ValorControl {
             let ultValxdispo = this.ultimos4[ind][0];
 
             let Tinterval = tiempo - ultValxdispo.tiempo;
-            this.SumaDeIntervalos = push(Tinterval);
+            this.SumaDeIntervalos.push(Tinterval);
             // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
             var suma = this.SumaDeIntervalos
                 .map(suma, (caca) => {
