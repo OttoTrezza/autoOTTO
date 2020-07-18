@@ -119,7 +119,7 @@ class ValorControl {
                     for (let i = this.SumaDeIntervalos.length - 1; i > 1; i--) {
 
                         this.cacon = this.cacon + this.SumaDeIntervalos[i];
-                        if (cacon > 2000) {
+                        if (this.cacon > 2000) {
                             this.SumaDeIntervalos.splice(0, i);
                         }
                     }
