@@ -103,15 +103,7 @@ class ValorControl {
             let ultValxdispo = this.ultimos4[ind][0];
 
             let Tinterval = tiempo - ultValxdispo.tiempo;
-            this.SumaDeIntervalos.push(Tinterval);
-            this.grabarArchivo();
-            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
-            for (let i = 0; i < this.SumaDeIntervalos.length; i++) {
-                this.cacon = this.cacon + this.SumaDeIntervalos[i];
-                this.grabarArchivo();
-            }
-            // console.log('for cacon', this.cacon);
             if (Tinterval > 50 || Tinterval < 1200) {
                 let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
                 if (this.valorAnt.alpha1 === 'undefined') {
@@ -135,20 +127,31 @@ class ValorControl {
                 this.valorAnt = valar;
                 this.grabarArchivo();
 
-                if (this.cacon > 2000) {
-                    this.SumaDeIntervalos.shift();
-                    this.ultimos4[ind].pop();
-                    console.log('suma de intervalosaca', this.cacon);
-                    console.log('thisultimos4', this.ultimos4[ind]);
-                    this.cacon = 0;
-                    this.grabarArchivo();
-
-                }
             } else if (Tinterval > 1200) {
                 this.valorAnt = {};
                 this.SumaDeIntervalos = [];
                 this.cacon = 0;
                 this.grabarArchivo();
+            }
+
+
+            this.SumaDeIntervalos.push(Tinterval);
+            this.grabarArchivo();
+            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+
+            for (let i = 0; i < this.SumaDeIntervalos.length; i++) {
+                this.cacon = this.cacon + this.SumaDeIntervalos[i];
+                this.grabarArchivo();
+            }
+            // console.log('for cacon', this.cacon);
+            if (this.cacon > 2000) {
+                this.SumaDeIntervalos.shift();
+                this.ultimos4[ind].pop();
+                console.log('suma de intervalosaca', this.cacon);
+                console.log('thisultimos4', this.ultimos4[ind]);
+                this.cacon = 0;
+                this.grabarArchivo();
+
             }
         }
     }
