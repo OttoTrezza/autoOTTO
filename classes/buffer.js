@@ -105,6 +105,27 @@ class ValorControl {
             let Tinterval = tiempo - ultValxdispo.tiempo;
 
             if (Tinterval > 50 || Tinterval < 1200) {
+
+                this.SumaDeIntervalos.push(Tinterval);
+                this.grabarArchivo();
+                console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+
+                for (let i = 0; i < this.SumaDeIntervalos.length; i++) {
+                    this.cacon = this.cacon + this.SumaDeIntervalos[i];
+                    this.grabarArchivo();
+                }
+                // console.log('for cacon', this.cacon);
+                if (this.cacon > 2000) {
+                    this.SumaDeIntervalos.shift();
+                    this.ultimos4[ind].pop();
+                    console.log('suma de intervalosaca', this.cacon);
+                    console.log('thisultimos4', this.ultimos4[ind]);
+                    this.cacon = 0;
+                    this.grabarArchivo();
+
+                }
+
+
                 let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
                 if (this.valorAnt.alpha1 === 'undefined') {
                     let valor = new Valor(ind, dispo1, 0, 0, 0, tiempo);
@@ -135,24 +156,7 @@ class ValorControl {
             }
 
 
-            this.SumaDeIntervalos.push(Tinterval);
-            this.grabarArchivo();
-            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
-            for (let i = 0; i < this.SumaDeIntervalos.length; i++) {
-                this.cacon = this.cacon + this.SumaDeIntervalos[i];
-                this.grabarArchivo();
-            }
-            // console.log('for cacon', this.cacon);
-            if (this.cacon > 2000) {
-                this.SumaDeIntervalos.shift();
-                this.ultimos4[ind].pop();
-                console.log('suma de intervalosaca', this.cacon);
-                console.log('thisultimos4', this.ultimos4[ind]);
-                this.cacon = 0;
-                this.grabarArchivo();
-
-            }
         }
     }
 
