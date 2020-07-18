@@ -138,7 +138,7 @@ class ValorControl {
                 if (this.cacon > 2000) {
                     this.SumaDeIntervalos.shift();
                     this.ultimos4[ind].pop();
-                    console.log('suma de intervalosaca', cacon);
+                    console.log('suma de intervalosaca', this.cacon);
                     console.log('thisultimos4', this.ultimos4[ind]);
                     this.cacon = 0;
                     this.grabarArchivo();
