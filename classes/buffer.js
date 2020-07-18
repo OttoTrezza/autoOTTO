@@ -146,6 +146,8 @@ class ValorControl {
                 }
             } else if (Tinterval > 1200) {
                 this.valorAnt = {};
+                this.SumaDeIntervalos = [];
+                this.cacon = 0;
                 this.grabarArchivo();
             }
         }
