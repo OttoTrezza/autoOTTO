@@ -108,7 +108,7 @@ class ValorControl {
 
                 this.SumaDeIntervalos.push(Tinterval);
                 this.grabarArchivo();
-                console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+                //    console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
 
                 this.cacon = this.cacon + Tinterval;
