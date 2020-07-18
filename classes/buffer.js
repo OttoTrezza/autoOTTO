@@ -108,7 +108,7 @@ class ValorControl {
 
                 this.SumaDeIntervalos.push(Tinterval);
                 this.grabarArchivo();
-                console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+                // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
 
                 this.cacon = this.cacon + Tinterval;
@@ -120,7 +120,7 @@ class ValorControl {
 
                         this.cacon = this.cacon + this.SumaDeIntervalos[i];
                         if (this.cacon > 2000) {
-                            this.SumaDeIntervalos.splice(0, i);
+                            this.SumaDeIntervalos.splice(0, i + 1);
                         }
                     }
                     this.ultimos4[ind].pop();
