@@ -154,6 +154,7 @@ class ValorControl {
                 this.cacon = 0;
                 this.grabarArchivo();
             }
+            return;
 
 
 
