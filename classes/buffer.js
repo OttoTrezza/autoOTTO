@@ -105,7 +105,7 @@ class ValorControl {
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos.push(Tinterval);
             this.grabarArchivo();
-            // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+            console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
             for (let i = 0; i < this.SumaDeIntervalos.length; i++) {
                 this.cacon = this.cacon + this.SumaDeIntervalos[i];
