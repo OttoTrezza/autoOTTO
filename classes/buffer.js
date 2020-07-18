@@ -114,7 +114,7 @@ class ValorControl {
                 this.cacon = this.cacon + Tinterval;
                 this.grabarArchivo();
 
-                console.log('for cacon', this.cacon);
+                // console.log('for cacon', this.cacon);
                 if (this.cacon > 2000) {
                     let i;
                     for (i = this.SumaDeIntervalos.length - 1; i > 1; i--) {
