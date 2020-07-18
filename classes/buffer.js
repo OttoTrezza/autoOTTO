@@ -104,8 +104,8 @@ class ValorControl {
             this.SumaDeIntervalos.push(Tinterval);
             // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
             var suma = this.SumaDeIntervalos
-                .map(suma, (caca) => {
-                    suma = caco + caca;
+                .map((caca) => {
+                    suma = suma + caca;
                     return suma;
                 });
             console.log('suma de intervalos', suma);
