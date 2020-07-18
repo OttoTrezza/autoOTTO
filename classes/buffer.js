@@ -112,7 +112,7 @@ class ValorControl {
                 this.grabarArchivo();
             }
             // console.log('for cacon', this.cacon);
-            if (Tinterval > 50) {
+            if (Tinterval > 50 || Tinterval < 1200) {
                 let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
                 if (this.valorAnt.alpha1 === 'undefined') {
                     let valor = new Valor(ind, dispo1, 0, 0, 0, tiempo);
@@ -144,6 +144,9 @@ class ValorControl {
                     this.grabarArchivo();
 
                 }
+            } else if (Tinterval > 1200) {
+                this.valorAnt = {};
+                this.grabarArchivo();
             }
         }
     }
