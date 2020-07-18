@@ -102,16 +102,21 @@ class ValorControl {
 
             let Tinterval = tiempo - ultValxdispo.tiempo;
             this.SumaDeIntervalos.push(Tinterval);
+            this.grabarArchivo();
             // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
             for (let i = 0; i < this.SumaDeIntervalos.length; i++) {
                 this.cacon = this.cacon + this.SumaDeIntervalos[i];
+                this.grabarArchivo();
             }
+            console.log('for cacon', this.cacon);
             if (Tinterval > 50) {
                 let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
                 if (this.valorAnt.alpha1 === 'undefined') {
                     let valor = new Valor(ind, dispo1, 0, 0, 0, tiempo);
                     this.valorAnt = valor;
+                    console.log('  if (this.valorAnt.alpha1 === undefined');
+                    this.grabarArchivo();
                 }
                 let Ainterval = alpha1 - this.valorAnt.alpha1;
                 let Binterval = beta1 - this.valorAnt.beta1;
@@ -129,7 +134,7 @@ class ValorControl {
                 this.grabarArchivo();
 
                 if (this.cacon > 2000) {
-                    this.SumaDeIntervalos.shift(3);
+                    this.SumaDeIntervalos.shift();
                     this.ultimos4[ind].pop();
                     console.log('suma de intervalosaca', cacon);
                     console.log('thisultimos4', this.ultimos4[ind]);
