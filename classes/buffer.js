@@ -116,201 +116,207 @@ class ValorControl {
                 }
                 // console.log('for cacon', this.cacon);
                 if (this.cacon > 2000) {
-                    this.SumaDeIntervalos.shift();
-                    this.ultimos4[ind].pop();
-                    console.log('suma de intervalosaca', this.cacon);
-                    console.log('thisultimos4', this.ultimos4[ind]);
+                    for (let i = this.SumaDeIntervalos.length - 1; i > 1; i--) {
+
+                        this.cacon = this.cacon + this.SumaDeIntervalos[i];
+                        if (cacon > 2000) {
+                            this.SumaDeIntervalos.splice(0, i);
+                        }
+
+                        this.ultimos4[ind].pop();
+                        console.log('suma de intervalosaca', this.cacon);
+                        console.log('thisultimos4', this.ultimos4[ind]);
+                        this.cacon = 0;
+                        this.grabarArchivo();
+
+                    }
+
+
+                    let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
+                    if (this.valorAnt.alpha1 === 'undefined') {
+                        let valor = new Valor(ind, dispo1, 0, 0, 0, tiempo);
+                        this.valorAnt = valor;
+                        console.log('  if (this.valorAnt.alpha1 === undefined');
+                        this.grabarArchivo();
+                    }
+                    let Ainterval = alpha1 - this.valorAnt.alpha1;
+                    let Binterval = beta1 - this.valorAnt.beta1;
+                    let Ginterval = gamma1 - this.valorAnt.gamma1;
+
+                    // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
+                    alpha1 = (Ainterval / (Tinterval)).toFixed(2);
+                    beta1 = (Binterval / (Tinterval)).toFixed(2);
+                    gamma1 = (Ginterval / (Tinterval)).toFixed(2);
+                    let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // pendiente de recta entre punto actual y anterior
+                    // this.valores.push(valor);
+                    this.valor = valor;
+                    this.ultimos4[ind].unshift(valor);
+                    this.valorAnt = valar;
+                    this.grabarArchivo();
+
+                } else if (Tinterval > 1200) {
+                    this.valorAnt = {};
+                    this.SumaDeIntervalos = [];
                     this.cacon = 0;
                     this.grabarArchivo();
-
                 }
+                return;
 
 
-                let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
-                if (this.valorAnt.alpha1 === 'undefined') {
-                    let valor = new Valor(ind, dispo1, 0, 0, 0, tiempo);
-                    this.valorAnt = valor;
-                    console.log('  if (this.valorAnt.alpha1 === undefined');
-                    this.grabarArchivo();
-                }
-                let Ainterval = alpha1 - this.valorAnt.alpha1;
-                let Binterval = beta1 - this.valorAnt.beta1;
-                let Ginterval = gamma1 - this.valorAnt.gamma1;
 
-                // calculando la pendiente de las 3 variables en func' del tiempo. m=(alpha-alpha')/(tiempo - tiempo')
-                alpha1 = (Ainterval / (Tinterval)).toFixed(2);
-                beta1 = (Binterval / (Tinterval)).toFixed(2);
-                gamma1 = (Ginterval / (Tinterval)).toFixed(2);
-                let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // pendiente de recta entre punto actual y anterior
-                // this.valores.push(valor);
-                this.valor = valor;
-                this.ultimos4[ind].unshift(valor);
-                this.valorAnt = valar;
-                this.grabarArchivo();
-
-            } else if (Tinterval > 1200) {
-                this.valorAnt = {};
-                this.SumaDeIntervalos = [];
-                this.cacon = 0;
-                this.grabarArchivo();
             }
-            return;
+        }
 
 
+
+
+
+        // analisisUltimos4(ultimos4) {
+
+        //     // let al = 0;
+        //     // for (al; al < ultimos4l.length; al++) {
+        //     if (ultimos4[0][0] == undefined) {
+        //         ultimos4[0][0] = '0';
+        //         this.codigoEvento = [];
+        //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+        //         this.codigoEvento.push(0);
+        //         return this.codigoEvento;
+        //     }
+        //     if (ultimos4[0][3] == undefined) {
+        //         ultimos4[0][3] = '0';
+        //         this.codigoEvento = [];
+        //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+        //         this.codigoEvento.push(0);
+        //         return this.codigoEvento;
+        //     }
+
+        //     if (ultimos4[0][0].beta1 > 2 * (ultimos4[0][3].beta1)) {
+        //         console.log('es mayor');
+        //         this.codigoEvento = [];
+        //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+        //         this.codigoEvento.push(1);
+        //         console.log('coevif', this.codigoEvento);
+        //         return this.codigoEvento;
+        //     } else {
+
+        //         this.codigoEvento = [];
+        //         this.codigoEvento.push(ultimos4[0][0].dispo1);
+        //         this.codigoEvento.push(2);
+        //         console.log('coevelse[1]', this.codigoEvento);
+        //         return this.codigoEvento;
+        //     }
+
+
+        // }
+        getDispositivosConectados() {
+
+            return this.possi;
+        }
+        getDispositivosConectadosporPos(po) {
+
+            return this.possi[po];
+        }
+
+        getUltimoValor() {
+            return this.valor;
+            // return this.valores[this.valores.length - 1];
+        }
+        getCodigoEvento() {
+
+            return this.codigoEvento;
+        }
+
+        getUltimos4() {
+
+            return this.ultimos4;
+        }
+        getUltimos4Dispo(ind) {
+
+            return this.ultimos4[ind];
+        }
+        getUltimos14() {
+
+            return this.ultimos14;
+        }
+        getUltimos24() {
+
+            return this.ultimos14;
+        }
+
+        reiniciarConteo() {
+
+            this.ultimo = 0;
+            this.valores = [];
+            this.valorAnt = {};
+            this.ultimos4 = [];
+            this.ultimos14 = [];
+            this.ultimos24 = [];
+            this.codigoEvento = [];
+            this.possi = [];
+            this.SumaDeIntervalos = [];
+            this.cacon = 0;
+            console.log('Se ha inicializado el sistema');
+            this.grabarArchivo();
 
         }
+
+        grabarArchivo() {
+
+            let jsonData = {
+                ultimo: this.ultimo,
+                Tmuestra: this.Tmuestra,
+                valores: this.valores,
+                valores4: this.valores4,
+                valorAnt: this.valorAnt,
+                ultimos4: this.ultimos4,
+                ultimos14: this.ultimos14,
+                ultimos24: this.ultimos24,
+                codigoEvento: this.codigoEvento,
+                possi: this.possi,
+                SumaDeIntervalos: this.SumaDeIntervalos,
+                cacon: this.cacon
+            };
+            let jsonDataString = JSON.stringify(jsonData);
+            fs.writeFileSync('./classes/data/data.json', jsonDataString);
+        }
     }
+    module.exports = {
+        ValorControl
+    };
+
+    // TO DO THINGHS...yellow
+    // determinar de modo fehaciente ubicacion y horario de los clientes... mas alla de errores en su configuracion.
+
+    // retomar el valor anterior para cada variable.
+    // calcular la pendiente. HECHO!
+
+    //
+
+
+    // CODIGO VIEJO:
+
+    // let accelerationx1Valor = this.getUltimoValor().accelerationx1;
+    // let accelerationy1Valor = this.getUltimoValor().accelerationy1;
+    // let accelerationz1Valor = this.getUltimoValor().accelerationz1;
+    // let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
+    // let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
+    // let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
+    // let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
+    // let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
+    // let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
 
 
 
-
-
-    // analisisUltimos4(ultimos4) {
-
-    //     // let al = 0;
-    //     // for (al; al < ultimos4l.length; al++) {
-    //     if (ultimos4[0][0] == undefined) {
-    //         ultimos4[0][0] = '0';
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(0);
-    //         return this.codigoEvento;
-    //     }
-    //     if (ultimos4[0][3] == undefined) {
-    //         ultimos4[0][3] = '0';
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(0);
-    //         return this.codigoEvento;
-    //     }
-
-    //     if (ultimos4[0][0].beta1 > 2 * (ultimos4[0][3].beta1)) {
-    //         console.log('es mayor');
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(1);
-    //         console.log('coevif', this.codigoEvento);
-    //         return this.codigoEvento;
-    //     } else {
-
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(2);
-    //         console.log('coevelse[1]', this.codigoEvento);
-    //         return this.codigoEvento;
-    //     }
-
-
+    // this.ultimos4[pos1Valor].unshift(atenderValor);
+    // this.ultimos4[pos1Valor].unshift(atenderValor);
+    // if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+    //     this.ultimos4[pos1Valor].splice(-1, 1);
     // }
-    getDispositivosConectados() {
-
-        return this.possi;
-    }
-    getDispositivosConectadosporPos(po) {
-
-        return this.possi[po];
-    }
-
-    getUltimoValor() {
-        return this.valor;
-        // return this.valores[this.valores.length - 1];
-    }
-    getCodigoEvento() {
-
-        return this.codigoEvento;
-    }
-
-    getUltimos4() {
-
-        return this.ultimos4;
-    }
-    getUltimos4Dispo(ind) {
-
-        return this.ultimos4[ind];
-    }
-    getUltimos14() {
-
-        return this.ultimos14;
-    }
-    getUltimos24() {
-
-        return this.ultimos14;
-    }
-
-    reiniciarConteo() {
-
-        this.ultimo = 0;
-        this.valores = [];
-        this.valorAnt = {};
-        this.ultimos4 = [];
-        this.ultimos14 = [];
-        this.ultimos24 = [];
-        this.codigoEvento = [];
-        this.possi = [];
-        this.SumaDeIntervalos = [];
-        this.cacon = 0;
-        console.log('Se ha inicializado el sistema');
-        this.grabarArchivo();
-
-    }
-
-    grabarArchivo() {
-
-        let jsonData = {
-            ultimo: this.ultimo,
-            Tmuestra: this.Tmuestra,
-            valores: this.valores,
-            valores4: this.valores4,
-            valorAnt: this.valorAnt,
-            ultimos4: this.ultimos4,
-            ultimos14: this.ultimos14,
-            ultimos24: this.ultimos24,
-            codigoEvento: this.codigoEvento,
-            possi: this.possi,
-            SumaDeIntervalos: this.SumaDeIntervalos,
-            cacon: this.cacon
-        };
-        let jsonDataString = JSON.stringify(jsonData);
-        fs.writeFileSync('./classes/data/data.json', jsonDataString);
-    }
-}
-module.exports = {
-    ValorControl
-};
-
-// TO DO THINGHS...yellow
-// determinar de modo fehaciente ubicacion y horario de los clientes... mas alla de errores en su configuracion.
-
-// retomar el valor anterior para cada variable.
-// calcular la pendiente. HECHO!
-
-//
-
-
-// CODIGO VIEJO:
-
-// let accelerationx1Valor = this.getUltimoValor().accelerationx1;
-// let accelerationy1Valor = this.getUltimoValor().accelerationy1;
-// let accelerationz1Valor = this.getUltimoValor().accelerationz1;
-// let accelerationincludinggravityx1Valor = this.getUltimoValor().accelerationincludinggravityx1;
-// let accelerationincludinggravityy1Valor = this.getUltimoValor().accelerationincludinggravityy1;
-// let accelerationincludinggravityz1Valor = this.getUltimoValor().accelerationincludinggravityz1;
-// let rotationratebeta1Valor = this.getUltimoValor().rotationratebeta1;
-// let rotationrategamma1Valor = this.getUltimoValor().rotationrategamma1;
-// let rotationratealpha1Valor = this.getUltimoValor().rotationratealpha1;
-
-
-
-// this.ultimos4[pos1Valor].unshift(atenderValor);
-// this.ultimos4[pos1Valor].unshift(atenderValor);
-// if (this.ultimos4[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-//     this.ultimos4[pos1Valor].splice(-1, 1);
-// }
-// this.ultimos14[pos1Valor].unshift(atenderValor);
-// if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-//     this.ultimos14[pos1Valor].splice(-1, 1);
-// }
-// this.ultimos24[pos1Valor].unshift(atenderValor);
-// if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
-//     this.ultimos24[pos1Valor].splice(-1, 1);
-// }
+    // this.ultimos14[pos1Valor].unshift(atenderValor);
+    // if (this.ultimos14[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+    //     this.ultimos14[pos1Valor].splice(-1, 1);
+    // }
+    // this.ultimos24[pos1Valor].unshift(atenderValor);
+    // if (this.ultimos24[pos1Valor].length > 4) { // VERIFICO QUE SIEMPRE SEAN 4
+    //     this.ultimos24[pos1Valor].splice(-1, 1);
+    // }
