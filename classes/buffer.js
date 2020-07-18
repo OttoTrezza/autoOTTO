@@ -108,22 +108,25 @@ class ValorControl {
 
                 this.SumaDeIntervalos.push(Tinterval);
                 this.grabarArchivo();
-                // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+                console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
 
                 this.cacon = this.cacon + Tinterval;
                 this.grabarArchivo();
 
-                // console.log('for cacon', this.cacon);
+                console.log('for cacon', this.cacon);
                 if (this.cacon > 2000) {
-                    for (let i = this.SumaDeIntervalos.length - 1; i > 1; i--) {
+                    let i;
+                    for (i = this.SumaDeIntervalos.length - 1; i > 1; i--) {
 
                         this.cacon = this.cacon + this.SumaDeIntervalos[i];
                         if (this.cacon > 2000) {
                             this.SumaDeIntervalos.splice(0, i + 1);
+                            this.grabarArchivo();
+                            break;
                         }
                     }
-                    this.ultimos4[ind].pop();
+                    this.ultimos4[ind].splice(-this.ultimos4[ind], i);
                     console.log('suma de intervalosaca', this.cacon);
                     console.log('thisultimos4', this.ultimos4[ind]);
                     this.cacon = 0;
