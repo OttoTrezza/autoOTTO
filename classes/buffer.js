@@ -100,7 +100,7 @@ class ValorControl {
             console.log('return no habia anterior');
             return 'No habia anterior';
         } else {
-            let ultValxdispo = this.ultimos4[ind][1];
+            let ultValxdispo = this.ultimos4[ind][0];
 
             let Tinterval = tiempo - ultValxdispo.tiempo;
 
