@@ -111,7 +111,7 @@ class ValorControl {
                 this.cacon = this.cacon + this.SumaDeIntervalos[i];
                 this.grabarArchivo();
             }
-            console.log('for cacon', this.cacon);
+            // console.log('for cacon', this.cacon);
             if (Tinterval > 50) {
                 let valar = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo); // posicion del punto
                 if (this.valorAnt.alpha1 === 'undefined') {
