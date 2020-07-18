@@ -108,13 +108,13 @@ class ValorControl {
 
                 this.SumaDeIntervalos.push(Tinterval);
                 this.grabarArchivo();
-                //    console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
+                // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
 
                 this.cacon = this.cacon + Tinterval;
                 this.grabarArchivo();
 
-                // console.log('for cacon', this.cacon);
+                //  console.log('for cacon', this.cacon);
                 if (this.cacon > 2000) {
                     let i;
                     for (i = this.SumaDeIntervalos.length - 1; i > 1; i--) {
