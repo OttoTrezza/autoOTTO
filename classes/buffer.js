@@ -30,7 +30,7 @@ class ValorControl {
     constructor() {
 
         this.ultimo = 0;
-        this.SumaDeIntervalos = 0;
+        this.SumaDeIntervalos = [];
         this.Tmuestra = 2000;
         this.valores = [];
         this.valor = {};
@@ -101,16 +101,23 @@ class ValorControl {
             let ultValxdispo = this.ultimos4[ind][0];
 
             let Tinterval = tiempo - ultValxdispo.tiempo;
-            this.SumaDeIntervalos = this.SumaDeIntervalos + Tinterval;
+            this.SumaDeIntervalos = push(Tinterval);
             // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
-            if (this.SumaDeIntervalos > 2000) {
-
+            var suma = this.SumaDeIntervalos
+                .map(suma, (caca) => {
+                    suma = caco + caca;
+                    return suma;
+                });
+            console.log('suma de intervalos', suma);
+            if (this.suma > 2000) {
+                this.SumaDeIntervalos.shift();
                 let diant = this.ultimos4[ind][0];
+                console.log('suma de intervalosaca', suma);
                 console.log('thisultimos4', this.ultimos4[ind]);
                 this.ultimos4[ind] = [];
                 this.grabarArchivo();
                 this.ultimos4[ind].unshift(diant);
-                this.SumaDeIntervalos = 0;
+                //   this.SumaDeIntervalos = 0;
                 this.grabarArchivo();
 
             }
@@ -223,7 +230,7 @@ class ValorControl {
         this.ultimos24 = [];
         this.codigoEvento = [];
         this.possi = [];
-        this.SumaDeIntervalos = 0;
+        this.SumaDeIntervalos = [];
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
 
