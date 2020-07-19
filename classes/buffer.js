@@ -126,9 +126,9 @@ class ValorControl {
                             break;
                         }
                     }
-                    this.ultimos4[ind].splice(-i, i);
                     console.log('suma de intervalosaca', this.cacon);
                     console.log('thisultimos4', this.ultimos4[ind]);
+                    this.ultimos4[ind] = [];
                     this.cacon = 0;
                     this.grabarArchivo();
 
