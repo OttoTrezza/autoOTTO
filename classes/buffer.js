@@ -103,11 +103,11 @@ class ValorControl {
             let ultValxdispo = this.ultimos4[ind][0];
 
             let Tinterval = tiempo - ultValxdispo.tiempo;
+            this.SumaDeIntervalos.push(Tinterval);
+            this.grabarArchivo();
+            if (Tinterval > 20) {
 
-            if (Tinterval > 50 || Tinterval < 1200) {
 
-                this.SumaDeIntervalos.push(Tinterval);
-                this.grabarArchivo();
                 // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
 
