@@ -121,12 +121,12 @@ class ValorControl {
 
                         this.cacon = this.cacon + this.SumaDeIntervalos[i];
                         if (this.cacon > 2000) {
-                            this.SumaDeIntervalos.splice(-i, i);
+                            this.SumaDeIntervalos.splice(0, i + 1);
                             this.grabarArchivo();
                             break;
                         }
                     }
-                    this.ultimos4[ind].splice(-this.ultimos4[ind], i);
+                    this.ultimos4[ind].splice(-i, i);
                     console.log('suma de intervalosaca', this.cacon);
                     console.log('thisultimos4', this.ultimos4[ind]);
                     this.cacon = 0;
