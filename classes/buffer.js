@@ -40,7 +40,7 @@ class ValorControl {
         this.ultimos24 = [];
         this.codigoEvento = [];
         this.possi = [];
-        this.cacon = 0;
+        this.cacon = [];
         // agregar vector matrices y esa papa es la que va!
         let data = require('./data/data.json');
 
@@ -84,8 +84,12 @@ class ValorControl {
                 console.log('maximo 4 usuarios que envian datos');
             }
             this.ultimos4.push(dispo1);
+            this.SumaDeIntervalos.push(dispo1);
+            this.cacon.push(dispo1);
             ind = this.possi.findIndex((element) => element === dispo1);
             this.ultimos4[ind] = [];
+            this.SumaDeIntervalos[ind] = [];
+            this.cacon[ind] = 0;
             console.log('primera vez');
             this.grabarArchivo();
         }
@@ -94,7 +98,7 @@ class ValorControl {
         // ahora grabo las pendiente en vez de los valores absolutos.
 
         if (this.ultimos4[ind][0] == null) {
-            let valor = new Valor(ind, dispo1, 0, 0, 0, tiempo);
+            let valor = new Valor(ind, dispo1, alpha1, beta1, gamma1, tiempo);
             this.ultimos4[ind].unshift(valor);
             this.grabarArchivo();
             console.log('return no habia anterior');
@@ -103,7 +107,7 @@ class ValorControl {
             let ultValxdispo = this.ultimos4[ind][0];
 
             let Tinterval = tiempo - ultValxdispo.tiempo;
-            this.SumaDeIntervalos.push(Tinterval);
+            this.SumaDeIntervalos[ind].push(Tinterval);
             this.grabarArchivo();
             if (Tinterval > 20) {
 
@@ -111,25 +115,25 @@ class ValorControl {
                 // console.log('Tinterval, suma de.', Tinterval, this.SumaDeIntervalos);
 
 
-                this.cacon = this.cacon + Tinterval;
+                this.cacon[ind] = this.cacon[ind] + Tinterval;
                 this.grabarArchivo();
 
                 //  console.log('for cacon', this.cacon);
-                if (this.cacon > 2000) {
+                if (this.cacon[ind] > 2000) {
                     let i;
-                    for (i = this.SumaDeIntervalos.length - 1; i > 1; i--) {
+                    for (i = this.SumaDeIntervalos[ind].length - 1; i > 1; i--) {
 
-                        this.cacon = this.cacon + this.SumaDeIntervalos[i];
-                        if (this.cacon > 2000) {
-                            this.SumaDeIntervalos.splice(0, i + 1);
+                        this.cacon[ind] = this.cacon[ind] + this.SumaDeIntervalos[ind][i];
+                        if (this.cacon[ind] > 2000) {
+                            this.SumaDeIntervalos[ind].splice(0, i + 1);
                             this.grabarArchivo();
                             break;
                         }
                     }
-                    console.log('suma de intervalosaca', this.cacon);
+                    console.log('suma de intervalosaca', this.cacon[ind]);
                     console.log('thisultimos4', this.ultimos4[ind]);
                     this.ultimos4[ind] = [];
-                    this.cacon = 0;
+                    this.cacon[ind] = 0;
                     this.grabarArchivo();
 
                 }
@@ -159,8 +163,8 @@ class ValorControl {
 
             } else if (Tinterval > 1200) {
                 this.valorAnt = {};
-                this.SumaDeIntervalos = [];
-                this.cacon = 0;
+                this.SumaDeIntervalos[ind] = [];
+                this.cacon[ind] = 0;
                 this.grabarArchivo();
             }
             return;
@@ -257,7 +261,7 @@ class ValorControl {
         this.codigoEvento = [];
         this.possi = [];
         this.SumaDeIntervalos = [];
-        this.cacon = 0;
+        this.cacon = [];
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
 
