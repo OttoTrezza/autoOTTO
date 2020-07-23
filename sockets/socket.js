@@ -134,8 +134,8 @@ exports.ElSarmiento = (cliente) => {
         // let dispoConec = valorControl.getDispositivosConectados();
         //  console.log('DISPOCONEC', dispoConec);
         const paya = {
-            de: va0.de,
-            sala: va0.sala,
+            de: payload.de,
+            sala: payload.sala,
             alpha1: va0.alpha1,
             beta1: va0.beta1,
             gamma1: va0.gamma1
