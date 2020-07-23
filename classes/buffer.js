@@ -41,6 +41,7 @@ class ValorControl {
         this.codigoEvento = [];
         this.possi = [];
         this.cacon = [];
+        this.comparar = false;
         // agregar vector matrices y esa papa es la que va!
         let data = require('./data/data.json');
 
@@ -56,6 +57,7 @@ class ValorControl {
         this.codigoEvento = data.codigoEvento;
         this.possi = data.possi;
         this.cacon = data.cacon;
+        this.comparar = data.comparar;
         this.reiniciarConteo();
 
     }
@@ -158,10 +160,14 @@ class ValorControl {
                 // this.valores.push(valor);
                 this.valor = valor;
                 this.ultimos4[ind].unshift(valor);
+                if (ind === 1) {
+                    this.comparar = true;
+                }
                 this.valorAnt = valar;
                 this.grabarArchivo();
-                if (this.ultimos4[1][0] !== undefined)
+                if (this.comparar === true) {
                     this.Analisis(this.ultimos4[0], this.ultimos4[1]);
+                }
             } else if (Tinterval > 1200) {
                 this.valorAnt = {};
                 this.SumaDeIntervalos[ind] = [];
@@ -289,6 +295,7 @@ class ValorControl {
         this.possi = [];
         this.SumaDeIntervalos = [];
         this.cacon = [];
+        this.comparar = false;
         console.log('Se ha inicializado el sistema');
         this.grabarArchivo();
 
@@ -308,7 +315,8 @@ class ValorControl {
             codigoEvento: this.codigoEvento,
             possi: this.possi,
             SumaDeIntervalos: this.SumaDeIntervalos,
-            cacon: this.cacon
+            cacon: this.cacon,
+            comparar: this.comparar
         };
         let jsonDataString = JSON.stringify(jsonData);
         fs.writeFileSync('./classes/data/data.json', jsonDataString);
