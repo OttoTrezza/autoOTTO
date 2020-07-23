@@ -130,8 +130,8 @@ class ValorControl {
                             break;
                         }
                     }
-                    console.log('suma de intervalosaca', this.cacon[ind]);
-                    console.log('thisultimos4', this.ultimos4[ind]);
+                    //     console.log('suma de intervalosaca', this.cacon[ind]);
+                    //    console.log('thisultimos4', this.ultimos4[ind]);
                     this.ultimos4[ind] = [];
                     this.cacon[ind] = 0;
                     this.grabarArchivo();
@@ -160,7 +160,7 @@ class ValorControl {
                 this.ultimos4[ind].unshift(valor);
                 this.valorAnt = valar;
                 this.grabarArchivo();
-
+                this.Analisis(this.ultimos4[0], this.ultimos4[1]);
             } else if (Tinterval > 1200) {
                 this.valorAnt = {};
                 this.SumaDeIntervalos[ind] = [];
@@ -174,47 +174,72 @@ class ValorControl {
         }
     }
 
+    Analisis(elSarmientoa, elSarmientob) {
+
+        let maxA = elSarmientoa.map((vala) => { // todas las veces que el mas reciente tiempo de dispoA se encuentra incluido en tiempo de dispB, lo conservo.
+            let rvala = { vala };
+            if (elSarmientob[elSarmientob.length - 1].tiempo < rvala.tiempo < elSarmientob[0].tiempo) { // elSarmientob.length -1
+                maxA.push(rvala);
+            }
+        });
+
+        let maxB = elSarmientob.map((valb) => {
+            let rvalb = { valb };
+            if (maxA[maxA.length - 1].tiempo < rvalb.tiempo < maxA[0].tiempo) {
+                maxB.push(rvalb);
+            }
+        });
+        if (!maxA[0] || !maxB[0]) {
+            this.codigoEvento = [];
+            // this.codigoEvento.push(elSarmiento[0][0].dispo1);
+            this.codigoEvento.push(2);
+            console.log('codevent', this.codigoEvento);
+            return this.codigoEvento;
+        } else {
+            console.log('maxA', maxA);
+            console.log('maxB', maxB);
+        }
+        // if (elSarmientoa[elSarmientoa.length - 1].tiempo > elSarmientob[elSarmientob.length - 1].tiempo) {
+
+        // }
+        // let maxminA = elSarmientoa.length;
+        // let maxA
+        // let minA
+        //     // let al = 0;
+        //     // for (al; al < elSarmientol.length; al++) {
+        // if (elSarmientoa[0][0] == undefined) {
+        //     elSarmiento[0][0] = '0';
+        //     this.codigoEvento = [];
+        //     this.codigoEvento.push(elSarmiento[0][0].dispo1);
+        //     this.codigoEvento.push(0);
+        //     return this.codigoEvento;
+        // }
+        // if (elSarmiento[0][3] == undefined) {
+        //     elSarmiento[0][3] = '0';
+        //     this.codigoEvento = [];
+        //     this.codigoEvento.push(elSarmiento[0][0].dispo1);
+        //     this.codigoEvento.push(0);
+        //     return this.codigoEvento;
+        // }
+
+        // if (elSarmiento[0][0].beta1 > 2 * (elSarmiento[0][3].beta1)) {
+        //     console.log('es mayor');
+        //     this.codigoEvento = [];
+        //     this.codigoEvento.push(elSarmiento[0][0].dispo1);
+        //     this.codigoEvento.push(1);
+        //     console.log('coevif', this.codigoEvento);
+        //     return this.codigoEvento;
+        // } else {
+
+        //     this.codigoEvento = [];
+        //     this.codigoEvento.push(elSarmiento[0][0].dispo1);
+        //     this.codigoEvento.push(2);
+        //     console.log('coevelse[1]', this.codigoEvento);
+        //     return this.codigoEvento;
+        // }
 
 
-
-
-    // analisisUltimos4(ultimos4) {
-
-    //     // let al = 0;
-    //     // for (al; al < ultimos4l.length; al++) {
-    //     if (ultimos4[0][0] == undefined) {
-    //         ultimos4[0][0] = '0';
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(0);
-    //         return this.codigoEvento;
-    //     }
-    //     if (ultimos4[0][3] == undefined) {
-    //         ultimos4[0][3] = '0';
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(0);
-    //         return this.codigoEvento;
-    //     }
-
-    //     if (ultimos4[0][0].beta1 > 2 * (ultimos4[0][3].beta1)) {
-    //         console.log('es mayor');
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(1);
-    //         console.log('coevif', this.codigoEvento);
-    //         return this.codigoEvento;
-    //     } else {
-
-    //         this.codigoEvento = [];
-    //         this.codigoEvento.push(ultimos4[0][0].dispo1);
-    //         this.codigoEvento.push(2);
-    //         console.log('coevelse[1]', this.codigoEvento);
-    //         return this.codigoEvento;
-    //     }
-
-
-    // }
+    }
     getDispositivosConectados() {
 
         return this.possi;
