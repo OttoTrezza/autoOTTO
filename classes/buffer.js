@@ -187,14 +187,14 @@ class ValorControl {
         let maxA = elSarmientoa.map((vala) => { // todas las veces que el mas reciente tiempo de dispoA se encuentra incluido en tiempo de dispB, lo conservo.
             let rvala = { vala };
             if (pipob[pipob.length - 1].tiempo < rvala.tiempo < pipob[0].tiempo) { // elSarmientob.length -1
-                maxA.push(rvala);
+                return rvala;
             }
         });
 
         let maxB = elSarmientob.map((valb) => {
             let rvalb = { valb };
             if (maxA[maxA.length - 1].tiempo < rvalb.tiempo < maxA[0].tiempo) {
-                maxB.push(rvalb);
+                return rvalb;
             }
         });
         if (!maxA[0] || !maxB[0]) {
