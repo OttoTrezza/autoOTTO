@@ -136,9 +136,9 @@ exports.ElSarmiento = (cliente) => {
         const paya = {
             de: payload.de,
             sala: payload.sala,
-            alpha1: va0.alpha1,
-            beta1: va0.beta1,
-            gamma1: va0.gamma1
+            alpha1: payload.alpha1,
+            beta1: payload.beta1,
+            gamma1: payload.gamma1
 
             // accelerationx1: va0.accelerationx1,
             // accelerationy1: va0.accelerationy1,
