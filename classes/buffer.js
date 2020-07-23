@@ -160,7 +160,8 @@ class ValorControl {
                 this.ultimos4[ind].unshift(valor);
                 this.valorAnt = valar;
                 this.grabarArchivo();
-                this.Analisis(this.ultimos4[0], this.ultimos4[1]);
+                if (this.ultimos4[1][0] !== undefined)
+                    this.Analisis(this.ultimos4[0], this.ultimos4[1]);
             } else if (Tinterval > 1200) {
                 this.valorAnt = {};
                 this.SumaDeIntervalos[ind] = [];
