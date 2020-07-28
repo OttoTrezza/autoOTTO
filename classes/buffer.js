@@ -201,7 +201,7 @@ class ValorControl {
             this.codigoEvento = [];
             // this.codigoEvento.push(elSarmiento[0][0].dispo1);
             this.codigoEvento.push(2);
-            console.log('codevent', this.codigoEvento);
+            console.log('codevent', this.codigoEvento, maxA, maxB);
             return this.codigoEvento;
         } else {
             console.log('maxA', maxA);
