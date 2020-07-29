@@ -168,12 +168,12 @@ class ValorControl {
                 if (this.comparar === true) {
 
                     let elSarmientoA = this.ultimos4[0].map((value, ind) => {
-
-                        elSarmientoA[ind].push([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
+                        //  elSarmientoA[ind].push
+                        return ([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
                     });
                     let elSarmientoB = this.ultimos4[1].map((value, ind) => {
-
-                        elSarmientoB[ind].push([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
+                        //  elSarmientoB[ind].push
+                        return ([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
                     });
                     console.log('els y elsB', elSarmientoA, elSarmientoB);
                     // this.Analisis(this.ultimos4[0], this.ultimos4[1]);
