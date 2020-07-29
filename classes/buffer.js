@@ -175,7 +175,7 @@ class ValorControl {
 
                     let elSarmientoB = this.ultimos4[1].map((value, ind) => {
                         //  elSarmientoB[ind].push
-                        if (elSarmientoA[inicioA].tiempo < value.tiempo < elSarmientoA[0]) {
+                        if (elSarmientoA[inicioA][4] < value.tiempo < elSarmientoA[0][4]) {
                             return ([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
                         } else {
                             console.log('no cuenta');
