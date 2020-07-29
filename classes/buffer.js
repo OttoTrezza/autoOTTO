@@ -171,11 +171,17 @@ class ValorControl {
                         //  elSarmientoA[ind].push
                         return ([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
                     });
+                    let inicioA = elSarmientoA.length - 1;
+
                     let elSarmientoB = this.ultimos4[1].map((value, ind) => {
                         //  elSarmientoB[ind].push
-                        return ([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
+                        if (elSarmientoA[inicioA].tiempo < value.tiempo < elSarmientoA[0]) {
+                            return ([ind, value.alpha1, value.beta1, value.gamma1, value.tiempo]);
+                        } else {
+                            console.log('no cuenta');
+                        }
                     });
-                    console.log('els y elsB', elSarmientoA, elSarmientoB);
+                    if (elSarmientoB[1]) { console.log('els y elsB', elSarmientoA, elSarmientoB); }
                     // this.Analisis(this.ultimos4[0], this.ultimos4[1]);
                 }
             } else if (Tinterval > 1200) {
