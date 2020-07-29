@@ -126,7 +126,7 @@ class ValorControl {
                     for (i = this.SumaDeIntervalos[ind].length - 1; i > 1; i--) {
 
                         this.cacon[ind] = this.cacon[ind] + this.SumaDeIntervalos[ind][i];
-                        if (this.cacon[ind] > 2000) {
+                        if (this.cacon[ind] > 20000) {
                             this.SumaDeIntervalos[ind].splice(0, i + 1);
                             this.grabarArchivo();
                             break;
